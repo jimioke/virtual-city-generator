@@ -57,7 +57,7 @@ def getGraph(location, type='drive'):
 	# gdf = ox.gdf_from_place(location)
 	# areaSqM = ox.project_gdf(gdf).unary_union.area
 	try:
-        G = ox.graph_from_place(location, network_type='drive')
+		G = ox.graph_from_place(location, network_type='drive')
 		ox.plot_graph(ox.project_graph(G))
 	except ValueError:
 		G = ox.graph_from_place(location, network_type='drive',which_result=2)
