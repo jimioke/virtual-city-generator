@@ -57,7 +57,7 @@ def getGraph(location, type='drive'):
 	# gdf = ox.gdf_from_place(location)
 	# areaSqM = ox.project_gdf(gdf).unary_union.area
 	try:
-        G = ox.graph_from_place(location, network_type='drive')
+		G = ox.graph_from_place(location, network_type='drive')
 		ox.plot_graph(ox.project_graph(G))
 	except ValueError:
 		G = ox.graph_from_place(location, network_type='drive',which_result=2)
@@ -97,7 +97,6 @@ def writeToDataFrame(stats, index):
 def main():
 
 	g = getGraph('Mountainside, NJ, USA', type='drive')
-	return g
 
 	# G = ox.graph_from_place('Manhattan, New York, USA', network_type='drive')
 	# ox.plot_graph(ox.project_graph(G))

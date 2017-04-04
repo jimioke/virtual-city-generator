@@ -1,0 +1,3 @@
+[submodule "proposal/bib"]
+	path = proposal/bib
+	url = http://github.com/jimioke/references.git

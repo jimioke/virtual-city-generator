@@ -1,0 +1,235 @@
+\documentclass[11pt,twoside]{article}
+\usepackage{etex}
+\newcommand{\num}{6{} }
+
+\raggedbottom
+
+%geometry (sets margin) and other useful packages
+\usepackage{geometry}
+\geometry{top=1in, left=1in,right=1in,bottom=1in}
+ \usepackage{graphicx,booktabs,calc}
+
+%=== GRAPHICS PATH ===========
+%\graphicspath{{./140408-Images/}}
+% Marginpar width
+%Marginpar width
+\newcommand{\pts}[1]{\marginpar{ \small\hspace{0pt} \textit{[#1]} } } 
+\setlength{\marginparwidth}{.5in}
+%\reversemarginpar
+%\setlength{\marginparsep}{.02in}
+
+%% Fonts
+% \usepackage{fourier}
+% \usepackage[T1]{pbsi}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+
+\usepackage{rotating}
+%% Cite Title
+\usepackage[style=authoryear,natbib,maxcitenames=2,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{bib/references.bib}
+
+%%% Counters
+\usepackage{chngcntr,mathtools}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+
+\numberwithin{equation}{section}
+
+%% Captions
+\usepackage{caption}
+\captionsetup{
+  labelsep=quad,
+  justification=raggedright,
+  labelfont=sc
+}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+\usepackage{bm}
+\usepackage[mathscr]{eucal}
+\usepackage{colortbl}
+\usepackage{color}
+
+
+\usepackage{epstopdf,subfigure,hyperref,enumerate,polynom,polynomial}
+\usepackage{multirow,minitoc,fancybox,array,multicol}
+
+\definecolor{slblue}{rgb}{0,.3,.62}%
+%\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+%\fancyheadoffset{30pt}
+%\fancyfootoffset{30pt}
+\fancyhead[LO,RE]{\small  \it \nouppercase{\leftmark}}
+\fancyhead[RO,LE]{\small Page \thepage} 
+\fancyfoot[RO,LE]{\small }% PR \num S-2015} 
+\fancyfoot[LO,RE]{\small }%\scshape MODL} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{0.1pt} 
+\renewcommand{\footrulewidth}{0pt}
+%\setlength\voffset{-0.25in}
+%\setlength\textheight{648pt}
+
+
+\usepackage{paralist}
+
+
+%%% FORMAT PYTHON CODE
+\usepackage{listings}
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{8} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{8}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+
+% % Python style for highlighting
+% \newcommand\pythonstyle{\lstset{
+% language=Python,
+% basicstyle=\footnotesize\ttm,
+% otherkeywords={self},             % Add keywords here
+% keywordstyle=\footnotesize\ttb\color{deepblue},
+% emph={MyClass,__init__},          % Custom highlighting
+% emphstyle=\footnotesize\ttb\color{deepred},    % Custom highlighting style
+% stringstyle=\color{deepgreen},
+% frame=tb,                         % Any extra options here
+% showstringspaces=false            % 
+% }}
+
+% % Python environment
+% \lstnewenvironment{python}[1][]
+% {
+% \pythonstyle
+% \lstset{#1}
+% }
+% {}
+
+% % Python for external files
+% \newcommand\pythonexternal[2][]{{
+% \pythonstyle
+% \lstinputlisting[#1]{#2}}}
+
+% % Python for inline
+% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+\newcommand{\osn}{\oldstylenums}
+\newcommand{\dg}{^{\circ}}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\pt}{\phantom}
+\newcommand{\tf}{\therefore}
+\newcommand{\?}{\stackrel{?}{=}}
+\newcommand{\fr}{\frac}
+\newcommand{\dfr}{\dfrac}
+\newcommand{\ul}{\underline}
+\newcommand{\tn}{\tabularnewline}
+\newcommand{\nl}{\newline}
+\newcommand\relph[1]{\mathrel{\phantom{#1}}}
+\newcommand{\cm}{\checkmark}
+\newcommand{\ol}{\overline}
+\newcommand{\rd}{\color{red}}
+\newcommand{\bl}{\color{blue}}
+\newcommand{\pl}{\color{purple}}
+\newcommand{\og}{\color{orange!90!black}}
+\newcommand{\gr}{\color{green!40!black}}
+\newcommand{\nin}{\noindent}
+\newcommand{\la}{\lambda}
+\renewcommand{\th}{\theta}
+\newcommand{\al}{\alpha}
+\newcommand{\G}{\Gamma}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1pt] (char) {\small #1};}}
+
+\newcommand{\bc}{\begin{compactenum}[\quad--]}
+\newcommand{\ec}{\end{compactenum}}
+
+\newcommand{\p}{\partial}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pdd}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Virtual city generation}
+%\author{Jimi Oke}
+\date{\small\today}
+\maketitle
+
+\thispagestyle{empty}
+
+\tableofcontents
+\section{Objective} 
+
+
+\section{Network synthesis approach}
+We propose using the Latent Space modeling approach for generating our representative street networks.
+The Latent Space Model was introduced by \textcite{hoff2002latent} for modeling social networks.
+The formulation was further extended by \cite{zhou2015generating} to develop urban network models.
+Essentially, given a relationship specifications between actors $y_{i,j}$ in a network at positions $z_i$ and $z_j$,
+then the probability of pairwise connections is
+\begin{equation}
+  \label{eq:1}
+  P(Y, Z, \theta) = \prod_{i\ne j} P(y_{i,}|z_i, z_j, x_{i,j},\theta)
+\end{equation}
+where $x_{i,j}$ are possible covariates for pairing tendencies.
+This probability is parametrized by a logit model, which, for now, ignoring any covariates, is given by
+\begin{equation}
+  \label{eq:2}
+  P(y_{i,j}|z_i,z_j,\theta) = \frac{1}{1+e^{\lambda D_{i,j}}}
+\end{equation}
+where $D_{i,j}$ is the distance metric specified.
+
+For urban street networks, the Euclidean distance (i.e.\ $|z_i - z_j|$) is not the only measure of interest.
+The accessibility of one node from the other is of overall importance and one means of capturing this is by using the shortest distance between the pair of nodes in the network.
+
+Further, the distance or similarity matrix must be generated on a latent space using a kernel approach in order to reduce dimensionality.
+A readily applicable one is multi-dimensional scaling (MDS).
+Similar techniques, such as exploratory factor analysis or auto-encoding approaches may be applied to uncover the latent structure in the pair-wise nodal relationships.
+The similarity matrix in the latent space can thus be denoted $D_{i,j}^L$.
+
+Following the approach of \cite{zhou2015generating}, the model can be evaluated and tuned (via the parameter $\lambda$) by comparing the following properties of the synthesized networks to the actual ones in our clusters:
+\begin{itemize}
+\item connectivity
+\item diameter
+\item path length
+\item triads, clustering coefficient
+\item degree distributions
+\end{itemize}
+
+Besides accessibility, we will also explore the encoding of other information into the latent space model.
+
+
+
+% \section{}
+% \subsection{Pump price of gasoline}
+% Currently, it appears there is no readily available source of data on gas prices
+% by city on a global scale. However, there are multiple sources on current
+% gasoline prices on a country basis from
+% \href{http://www.globalpetrolprices.com/gasoline_prices/}{Global Petrol
+%   Prices}. Prices for cities in these countries Further disaggregation for
+% US/Canadian cities is available from
+% \href{http://then.gasbuddy.com/GB_Price_List.aspx}{GasBuddy.com}.
+
+
+%\subsection{Modeshare}
+
+\printbibliography
+
+\end{document}
