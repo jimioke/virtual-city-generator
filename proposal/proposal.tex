@@ -175,9 +175,62 @@
 \thispagestyle{empty}
 
 \tableofcontents
-\section{Objective} 
+\section{Introduction} 
 
+\subsection{Review of previous work}
 
+\textcite{weber2009interactive} present a detailed procedural generation model that evolves in time.
+In their framework, a city is defined as a planar graph $G(V,E)$ with set $V$ nodes and $E$ edges.
+Induced cycles on the graph form blocks (faces in $G$), which are also subdivided into lots.
+The following hierarchies and attributes are defined:
+
+\begin{tabular}{l l }
+  $node[i].pos \in R^2$ & location in 2D \\
+  $node[i].hierarchy \in \{major, minor\}$ &  \\
+  $node[i].growth \in \{unfinished, finished\}$ &  \\
+  $street[j].nodes in \mathbb{N}^2$ & indices \\
+  $street[j].status \in \{planned,built\}$ & status flag \\
+  $street[j].hierarchy \in \{major,minor\}$ & classification \\
+  $street[j].width$ & meters \\
+  $lot[k].lut$ & land use type \\
+  $lot[k].luv$ & suitability of lot \\
+\end{tabular}
+
+Further, quarters are the faces in the graph induced by major street cycles.
+
+In their system pipeline, the following are the parameters listed as the most important user input:
+
+\begin{tabular}{l l}
+  $height map$ & terrain as floating point image \\
+  $citycenter[i]$ & one or multiple city centers $\in \mathbb{R}^2$ \\
+  $growthcenter[i]$ & one or more grwoth centers $\in \mathbb{R}^2$ \\
+  $avgprice[t]$ & average annual land price \\
+  $street pattern[i]$ & patterns defining street expansion \\
+  $land use type_t$ & set $T$ of land use typologies \\
+  $goal_t$ & land use percentages for all $t\in T$ \\
+  $setback_t$ & construction setback values \\
+  $shape grammar_t$ & building generation rules \\            
+\end{tabular}
+
+The pipeline sequence is given as follows:
+\begin{compactitem}
+\item topography input (height map/water map/forest map)
+\item initial urban layout configuration (single street up to entire city) 
+\item land-use typology definitions 
+\item other user input data for simulation control 
+\end{compactitem}
+\textcite{weber2009interactive} describe their street expansion methodolgy thus:
+\begin{itemize}
+\item Of existing nodes, sample which to expand based on the probabilistic function
+  \begin{equation}
+    e^{-f||node[i].pos - growthcenter[j]||^2}
+  \end{equation}
+\item Ratio of major nodes with valence 2 and those with valence 4 must remain within user-specified threshold (which is a factor of street pattern).
+\item If a new quarter is produced, then the aboves steps are repeated within tha tquarter until expansion is finished (measured by a valence of 4 or greater for the node)
+\item Edge creation is constrained to three directions (straight, left or right) and parametrized by deviation $\phi$ and length $l$.
+  The value of $\phi
+  
+\end{itemize}
 \section{Network synthesis approach}
 We propose using the Latent Space modeling approach for generating our representative street networks.
 The Latent Space Model was introduced by \textcite{hoff2002latent} for modeling social networks.
