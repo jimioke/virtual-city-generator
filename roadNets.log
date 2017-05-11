@@ -1,0 +1,12 @@
+2017-03-20 11:17:01,322 ERROR Internal Python error in the inspect module.
+Below is the traceback from this internal error.
+
+2017-03-20 11:17:01,330 INFO 
+Unfortunately, your original traceback can not be constructed.
+
+2017-03-21 17:04:59,226 DEBUG Starting new HTTPS connection (1): nominatim.openstreetmap.org
+2017-03-21 17:04:59,808 DEBUG https://nominatim.openstreetmap.org:443 "GET /search?format=json&limit=1&dedupe=0&polygon_geojson=1&q=Summit%2C+NJ%2C+USA HTTP/1.1" 200 None
+2017-03-21 17:04:59,898 DEBUG Starting new HTTP connection (1): overpass-api.de
+2017-03-21 17:05:00,458 DEBUG http://overpass-api.de:80 "GET /api/status HTTP/1.1" 200 149
+2017-03-21 17:05:00,462 DEBUG Starting new HTTP connection (1): www.overpass-api.de
+2017-03-21 17:05:03,731 DEBUG http://www.overpass-api.de:80 "POST /api/interpreter HTTP/1.1" 200 None
