@@ -1,3 +1,6 @@
 [submodule "proposal/bib"]
 	path = proposal/bib
 	url = http://github.com/jimioke/references.git
+[submodule "review/bib"]
+	path = review/bib
+	url = https://github.com/jimioke/references.git
