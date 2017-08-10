@@ -2,6 +2,9 @@
 
 library(ipfp)
 library(plyr)
+library(bnlearn)
+library(ggplot2)
+library(data.table)
 # individual variables
 
 # household number: pcode
@@ -71,7 +74,7 @@ for (i in 1:length(rel_raw)){
 # sex: male=1, female=2
 # age: 0-9 = 1, 10-19 = 2, 20-29 = 3, ... 50-59 = 6, >=60 = 7
 # work: 
-#   1. working or imployment: 1; 
+#   1. working or employment: 1; 
 #   2. student: 12
 #   3. retired: 3,7,8
 #   4. unemployed: 2,4,5,6,9,10,11,13
@@ -91,8 +94,9 @@ for (i in 1:length(emp_raw)){
 # Marriage: 
 # Not married: 1; Married: 2;
 
-inRawData$marriage <- ifelse(inRawData$marriage == 2, 2, 1)
 
+inRawData$marriage <- ifelse(inRawData$marriage == 2, 2, 1)
+inRawData <- inRawData[!is.na(inRawData$marriage), ]
 
 # Education:
 # 1. Never schooled: 1
@@ -113,7 +117,56 @@ for (i in 1:length(edu_raw)){
 
 # income
 # 6 categories
+inRawData$inc[is.na(inRawData$inc)] <- mean(inRawData$inc,na.rm = T)
 inRawData$inc <- cut(inRawData$inc, breaks=c(0,5000,10000,15000,20000,30000,max(inRawData$inc,na.rm = T)),labels = 1:6,include.lowest = T)
+
+
+# structure learning
+for (i in 2:8){
+  inRawData[,i] <- as.factor(inRawData[,i]) 
+}
+bn.hc <- hc(inRawData[,2:8], score='aic')
+ptm <- proc.time()
+bn.tb <- tabu(inRawData[,2:8], score='aic', tabu=500)
+proc.time()-ptm
+graphviz.plot(bn.hc)
+graphviz.plot(bn.tb)
+par(mfrow=c(1,2))
+graphviz.compare(bn.hc, bn.tb)
+
+
+# parameter learning
+fitted.hc <- bn.fit(bn.hc, inRawData[,2:8], method = 'mle')
+fitted.tb <- bn.fit(bn.tb, inRawData[,2:8], method = 'mle')
+
+ptm <- proc.time()
+simulation0 <- rbn(fitted.tb, 19612368,debug=T)
+proc.time()-ptm
+
+eduCompare <- melt(cbind())
+ggplot(simulation0,aes(x=edu))+geom_histogram(stat='count')
+
+# Plot barplot which compares the marginal distributions of a certain attribute
+# from sample data and simulation data
+plotCompareBarplot <- function(df1, df2, labs){
+  Sample <- table(df1)/length(df1)
+  Simulation <- table(df2)/length(df2)
+  prob <- cbind(Sample, Simulation)
+  df <- melt(prob,id.var = 1)
+  names(df) <- c('Categories', 'Probability', 'Data')
+  g <- ggplot(df, aes(x=Categories, y=Data, fill=Probability)) +
+    geom_bar(stat='identity',position = position_dodge())+
+    #theme(axis.text.x = element_text(angle = 90)) +
+    scale_x_continuous(breaks=1:length(labs),labels = labs)
+  g
+  
+}
+# barplot in comparing the distribution of attributes
+edu_labs <- c('Never', 'Primary','Middle','High','University','Other')
+plotCompareBarplot(inRawData$edu, simulation0$edu, labs = edu_labs)
+
+
+
 
 #inContTable <- table(inRawData[,2:dim(inRawData)[2]])
 inContTable <- xtabs(~hh_size+rel+sex+age+inc+emp_status+marriage+edu,data=inRawData)
