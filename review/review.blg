@@ -1,0 +1,15 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'review.blg'
+[29] biber:303> INFO - === Mon Aug 14, 2017, 14:07:21
+[49] Biber.pm:359> INFO - Reading 'review.bcf'
+[129] Biber.pm:835> INFO - Found 9 citekeys in bib section 0
+[142] Biber.pm:3670> INFO - Processing section 0
+[154] Biber.pm:3840> INFO - Looking for bibtex format file 'bib/references.bib' for section 0
+[165] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[186] bibtex.pm:1292> INFO - Found BibTeX data source 'bib/references.bib'
+[231] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[231] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[231] Biber.pm:3499> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'en-US'
+[231] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[241] bbl.pm:608> INFO - Writing 'review.bbl' with encoding 'UTF-8'
+[243] bbl.pm:712> INFO - Output to review.bbl
