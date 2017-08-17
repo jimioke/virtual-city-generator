@@ -15,7 +15,7 @@ def preprocessingPersonPUMS(dirname,filename,pumaInArea):
 
 	df = pd.read_csv(os.path.join(dirname,filename))
 	print df.shape
-	# Specify all variable names that is related
+	# Specify all person variable names that is related
 	df = df[df['PUMA'].isin(map(int,pumaInArea))][['SERIALNO','SPORDER','PUMA','AGEP',
 	'COW','JWMNP','JWTR','MAR','RELP','SEX','SCHL','ESR','PINCP','ADJINC']]
 	print df.shape
@@ -24,8 +24,17 @@ def preprocessingPersonPUMS(dirname,filename,pumaInArea):
 	return df
 
 
+def preprocessingHouseholdPUMS(dirname, filename, pumaInArea):
+	
+	df = pd.read_csv(os.path.join(dirname, filename))
+	print df.shape
+	# Specify all household variable names that is related
+	df = df[df['PUMA'].isin(map(int,pumaInArea))][['SERIALNO','PUMA','NP','VEH','HHT',
+	'HINCP','HUPAC','WIF']]
+	print df.shape
+	df.to_csv('data/ss15htx_clean.csv', index = False)
 
-
+	return df
 
 def preprocessingMarginal():
 	pass
@@ -52,9 +61,10 @@ print pumaInArea
 
 
 
-#household = pd.read_csv(os.path.join(dirname,hhfilename))
+household = preprocessingHouseholdPUMS(dirname, hhfilename, pumaInArea)
 # Write a subset of the whole data, easier to open in excel
-#household[0:500].to_csv(os.path.join(dirname,'sample_'+hhfilename),index = False)
+# household[0:500].to_csv(os.path.join(dirname, 'sample_'+hhfilename), index = False)
+# household[housthold['PUMA'].isin(pumaInArea)].to_csv(os.path.join(dirname,hhfilename+'_clean'),index = False)
 
 person = preprocessingPersonPUMS(dirname, psfilename, pumaInArea)
 #person[0:500].to_csv(os.path.join(dirname, 'sample_'+psfilename), index = False)
