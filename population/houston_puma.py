@@ -1,5 +1,6 @@
 
 import pandas as pd 
+import numpy as np
 import os
 import ipfn
 
@@ -37,23 +38,61 @@ def preprocessingHouseholdPUMS(dirname, filename, pumaInArea):
 	return df
 
 
+def getMarginal(dirname, filename, relevantSubjects):
 
-def preprocessingMarginal(dirname, marginal_filename):
+	'''
+	relevantSubjects specify names of variables we need
+	marginalDF is MultiIndex pandas DataFrame
+
+	'''
+
+	marginal = dict()
+	rawTable = pd.read_csv(os.path.join(dirname,filename), skiprows = [0])
+
+	# delete all columns which is just Margin of Error, and delete Female&Male subcategory
+	colNameToDrop = [cname for cname in rawTable.columns if cname.find('Margin of Error')>-1]
+	rawTable.drop(colNameToDrop,1,inplace = True)
+	colNameToDrop = [cname for cname in rawTable.columns[3:] if not cname.split(';')[0]=='Total']
+	rawTable.drop(colNameToDrop,1,inplace = True)
+
+	nrow, ncol = rawTable.shape
+
+	for i in range(nrow):
+		subjects = []
+		rownames = []
+		numbers = []
+		county = rawTable['Geography'][i]
+		for j in range(3,ncol):
+			if rawTable.columns[j].split(';')[-1].split('-')[0].split('(')[0].strip() in relevantSubjects:
+				cname = rawTable.columns[j].split(';')[-1]
+				subjects.append(cname.split('-')[0].split('(')[0].strip())
+				rownames.append(cname.split('-')[-1].strip())
+				numbers.append(rawTable.iloc[i,j])
+		arrays = [subjects,rownames]
+		marginal[county] = pd.Series(numbers, index = arrays, name = county)
+	
+	marginalDF = pd.concat([marginal[county] for county in marginal.keys()], axis = 1)
+	return marginalDF
+	
+
+
+
+
+def getMarginalS0101(dirname, filename):
 	'''
 	construct a dict object 'marginal' whose keys are the names of counties in the area
 	within each county, the marginal distribution for variables are recorded
 
 	marginal: dictionary - keys are county names
-	marginal[Countyi]: dictionary - keys are names of variables
+	marginal[County]: MultiIndex pandas Series
 
 	'''
-	
-	rawTable = pd.read_csv(os.path.join(dirname,marginal_filename))
-	
-	print range(rawTable.shape[0])
-	print rawTable.columns[1:10]
 
-	# delete all columns which is just Margin of Error
+
+	marginal = dict()
+	rawTable = pd.read_csv(os.path.join(dirname,filename), skiprows = [0])
+
+	# delete all columns which is just Margin of Error, and delete Female&Male subcategory
 	colNameToDrop = [cname for cname in rawTable.columns if cname.find('Margin of Error')>-1]
 	rawTable.drop(colNameToDrop,1,inplace = True)
 
@@ -62,30 +101,37 @@ def preprocessingMarginal(dirname, marginal_filename):
 	for subject in subjectsToDrop:
 		rawTable.drop([name for name in rawTable.columns if name.find(subject)>-1],1,inplace = True)
 
+	nrow, ncol = rawTable.shape
 
-	marginal = dict()
-	nrow = rawTable.shape[0]
-	ncol = rawTable.shape[1]
-
-	df = pd.DataFrame()
-	vNameList = ['AGE']
 	# reformat one line in rawTable into a table
-	for i in range(3, ncol):
-		cname = rawTable.columns[i]
-		v1 = cname.split(';')[0]
-		v2 = cname.split(';')[2]
-		df.set_value(v2,v1,rawTable.iloc[0,i])
+	# the iteration of columns starts at 3! 
+	
+	for i in range(nrow):
 		
-	print df
-
-
-
-
-	#for i in range(nrow):
-	#	marginal[rawTable['Geography'][i]] = dict()
+		subjects = []
+		rownames = []
+		numbers = []
+		county = rawTable['Geography'][i]
+		for j in range(3, ncol):
+			cname = rawTable.columns[j]
+			v1 = cname.split(';')[0]
+			v2 = cname.split(';')[2].strip()
+			v3 = v2.split('-')[0]
+			if v2 == 'Total population':
+				subjects.append(v3)
+				rownames.append(v1)
+				numbers.append(rawTable.iloc[i,j])
+			elif v1 == 'Total':
+				print v2
+				subjects.append(v3)
+				rownames.append(v2.split('-')[1])
+				numbers.append(rawTable.iloc[i,j])
+		print subjects, rownames, numbers
+		arrays = [np.array(subjects), np.array(rownames)]
+		marginal[county] = pd.Series(numbers,index = arrays)
+	
+	return marginal
 		
-	#	rawTable['Total'][3]
-
 
 
 
@@ -95,7 +141,7 @@ hhfilename = 'ss15htx.csv'
 psfilename = 'ss15ptx.csv'
 map_filename = '2010_Census_Tract_to_2010_PUMA.txt'
 
-marginal_filename = 'ACS_15_5YR_S0101.csv'
+marginal_filenames = ['ACS_15_5YR_S0101.csv','ACS_15_5YR_S0601.csv','ACS_15_5YR_S0801.csv']
 
 
 # Give all the counties in A specific metro area
@@ -104,8 +150,6 @@ stateID = '48'
 countyInArea = ['015','039','071','157','167','201','291','339','473']
 # Read the map file
 mapCTtoPUMA = pd.read_csv(os.path.join(dirname,map_filename),sep = ',',converters={'STATEFP':str,'COUNTYFP':str,'PUMA5CE':str})
-
-
 # Get PUMA which is in Houston metro area
 pumaInArea = mapCTtoPUMA[mapCTtoPUMA['STATEFP']==stateID]
 pumaInArea = pumaInArea[pumaInArea['COUNTYFP'].isin(countyInArea)]['PUMA5CE'].unique()
@@ -113,9 +157,24 @@ pumaInArea = pumaInArea[pumaInArea['COUNTYFP'].isin(countyInArea)]['PUMA5CE'].un
 
 
 
+#########################  Marginal Distribution #########################
+#marginal = getMarginalS0101(dirname, marginal_filenames[0])
+
+# Get marginals from file S0601
+relevantSubjectsS0601 = ['Total population','AGE','SEX','MARITAL STATUS','EDUCATIONAL ATTAINMENT',
+	'INDIVIDUALS\' INCOME IN THE PAST 12 MONTHS']
+marginalDF1 = getMarginal(dirname, marginal_filenames[1], relevantSubjectsS0601)
+
+# Get marginals from file S0801
+relevantSubjectsS0801 = ['VEHICLES AVAILABLE']
+marginalDF2 = getMarginal(dirname, marginal_filenames[2], relevantSubjectsS0801)
+
+# Concatenate marginal dafaframes from different files
+marginalDF = pd.concat([marginalDF1,marginalDF2])
+marginalDF.to_csv('person_marginals.csv')
 
 
-preprocessingMarginal(dirname, marginal_filename)
+#########################       Sample Data      #######################
 
 
 
