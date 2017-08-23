@@ -5,6 +5,10 @@ import os
 import math
 
 def categorizePersonPUMS(dirname, psfilename):
+	'''
+	replace values of each variable in sample data with categories from aggregate data
+
+	'''
 
 	df = pd.read_csv(os.path.join(dirname, psfilename))
 	selectColumns = ['SERIALNO','SPORDER','PUMA','SEX','AGEP','MAR','SCHL','PINCP']
@@ -64,25 +68,52 @@ def categorizePersonPUMS(dirname, psfilename):
 
 	# categorize education attainment and income
 
-	newdf.loc[df['age'] < 15,'edu'] = 'Less than 15'
+	newdf.loc[df['age'] < 25,'edu'] = 'Less than 25'
 	newdf.loc[df['age'] < 15,'inc'] = 'Less than 15'
 
 
 	for cat in eduC.keys():
-		newdf.loc[df['age'] >= 15,'edu'] = newdf.loc[df['age'] >= 15,'edu'].replace(eduC[cat], cat)
+		newdf.loc[df['age'] >= 25,'edu'] = newdf.loc[df['age'] >= 25,'edu'].replace(eduC[cat], cat)
 
 	newdf.loc[df['age'] >= 15, 'inc'] = pd.cut(newdf.loc[df['age'] >= 15, 'inc'], 
 		bins=[min(min(df['inc']),1), 9999,14999,24999,34999,49999,64999,74999,max(max(df['inc']),80000)],
 		include_lowest = True, labels = incC.keys())
 
-	return newdf
+	categories['edu']['Less than 25'] = []
+	categories['inc']['Less than 15'] = []
+	
+	return newdf, categories
 
 
+def getHhJointDist(sample_df, categories):
+	'''
+	Get joint distribution from sample data
+	Combinations in which no samples fall will be filled with 0
+
+	'''
+
+	productList = []
+	subjects = sample_df.columns[3:]
+	for sub in subjects:
+		productList.append(categories[sub].keys())
+	
+	joint_dist = sample_df[subjects].groupby(list(subjects)).size()
+	print joint_dist.shape
+	Indexes = pd.MultiIndex.from_product(productList,names = subjects)
+	
+	joint_dist = joint_dist.reindex(Indexes).fillna(0)
+	print joint_dist.shape
+
+	return joint_dist
+	
 
 
 
 
 dirname = 'data'
 psfilename = 'ss15ptx_clean.csv'
-person = categorizePersonPUMS(dirname, psfilename)
+person, categories = categorizePersonPUMS(dirname, psfilename)
+getHhJointDist(person, categories)
+
+
 

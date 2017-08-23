@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 import os
 import ipfn
+from categorize import *
 
 
-def preprocessingPersonPUMS(dirname,filename,pumaInArea):
+def selectPersonPUMS(dirname,filename,pumaInArea):
 	'''
 	delete unnecessary columns
-	and aggregate variables like age into categories
 
 	df: Data Frame - original PUMS data
 	pumaInArea: list - all related puma
@@ -22,7 +22,6 @@ def preprocessingPersonPUMS(dirname,filename,pumaInArea):
 	print df.shape
 	df.to_csv('data/ss15ptx_clean.csv', index = False)
 
-	return df
 
 
 def preprocessingHouseholdPUMS(dirname, filename, pumaInArea):
@@ -74,6 +73,16 @@ def getMarginal(dirname, filename, relevantSubjects):
 	marginalDF = pd.concat([marginal[county] for county in marginal.keys()], axis = 1)
 	return marginalDF
 	
+
+
+def getCountyId_and_Name(dirname, filename):
+
+	df = pd.read_csv(os.path.join(dirname, filename),dtype={'Id2': str},skiprows = [0])
+	countyTable = pd.DataFrame()
+	countyTable['name'] = df['Geography']
+	countyTable['id'] = df['Id2'].str[2:]
+
+	return countyTable 
 
 
 
@@ -135,7 +144,6 @@ def getMarginalS0101(dirname, filename):
 
 
 
-
 dirname = 'data'
 hhfilename = 'ss15htx.csv'
 psfilename = 'ss15ptx.csv'
@@ -147,18 +155,26 @@ marginal_filenames = ['ACS_15_5YR_S0101.csv','ACS_15_5YR_S0601.csv','ACS_15_5YR_
 # Give all the counties in A specific metro area
 # Here we are in Texas (48), Houston metro area
 stateID = '48'
-countyInArea = ['015','039','071','157','167','201','291','339','473']
-# Read the map file
+countyTable = getCountyId_and_Name(dirname, marginal_filenames[1])
+countyInArea = countyTable['id']
+
+
+# Read the file which map census tract to puma and conty
 mapCTtoPUMA = pd.read_csv(os.path.join(dirname,map_filename),sep = ',',converters={'STATEFP':str,'COUNTYFP':str,'PUMA5CE':str})
+# select puma which is in Houston metro area
+mapCTtoPUMA = mapCTtoPUMA[mapCTtoPUMA['STATEFP']==stateID]
+mapCTtoPUMA = mapCTtoPUMA[mapCTtoPUMA['COUNTYFP'].isin(countyInArea)] 
 # Get PUMA which is in Houston metro area
-pumaInArea = mapCTtoPUMA[mapCTtoPUMA['STATEFP']==stateID]
-pumaInArea = pumaInArea[pumaInArea['COUNTYFP'].isin(countyInArea)]['PUMA5CE'].unique()
-#print pumaInArea
+pumaInArea = mapCTtoPUMA['PUMA5CE'].unique()
+
 
 
 
 #########################  Marginal Distribution #########################
 #marginal = getMarginalS0101(dirname, marginal_filenames[0])
+
+# TODO:  write "get marginal distribution" into a function
+# add new categories to variables that only apply to people over 15
 
 # Get marginals from file S0601
 relevantSubjectsS0601 = ['Total population','AGE','SEX','MARITAL STATUS','EDUCATIONAL ATTAINMENT',
@@ -174,7 +190,7 @@ marginalDF = pd.concat([marginalDF1,marginalDF2])
 marginalDF.to_csv('person_marginals.csv')
 
 
-#########################       Sample Data      #######################
+#########################       Sample Data      #########################
 
 
 
@@ -182,6 +198,20 @@ marginalDF.to_csv('person_marginals.csv')
 # Write a subset of the whole data, easier to open in excel
 # household[0:500].to_csv(os.path.join(dirname, 'sample_'+hhfilename), index = False)
 
-#person = preprocessingPersonPUMS(dirname, psfilename, pumaInArea)
+
+#selectPersonPUMS(dirname, psfilename, pumaInArea)
+#Write a subset of the PUMS person data
 #person[0:500].to_csv(os.path.join(dirname, 'sample_'+psfilename), index = False)
+psfilename = 'ss15ptx_clean.csv'
+person, categories = categorizePersonPUMS(dirname, psfilename)
+
+
+
+
+#########################  Iterative Proportional Fitting  #########################
+
+
+result = setup_IPF_for_county(person, marginalDF, countyTable, mapCTtoPUMA, categories)
+
+
 
