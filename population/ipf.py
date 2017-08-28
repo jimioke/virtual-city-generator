@@ -6,7 +6,7 @@ from categorize import *
 
 
 def getIPFresult_for_county(marginal1d, marginal2d, joint_dist, 
-	tolerance = 1e-3, max_iterations = 1000):
+	tolerance = 1e-3, max_iterations = 500, jd_zero_sub = 0.001):
 
 	'''
 	the "marginals" is marginal distributions of varaibles in the level of county
@@ -17,8 +17,9 @@ def getIPFresult_for_county(marginal1d, marginal2d, joint_dist,
 
 	'''
 	# joint distribution needs zero cells to be augmented
-
+	# zero cell problem
 	df = joint_dist.rename('total').reset_index()
+	df.replace(0, jd_zero_sub, inplace = True)
 
 	aggregates = []
 	dimensions = []
@@ -31,10 +32,11 @@ def getIPFresult_for_county(marginal1d, marginal2d, joint_dist,
 		aggregates.append(marginal2d[key])
 		dimensions.append([key[0], key[1]])
 
-	IPF = ipfn(df, aggregates, dimensions)
+	IPF = ipfn(df, aggregates, dimensions,convergence_rate = tolerance, max_iteration = max_iterations)
 	result = IPF.iteration()
 
 	return result
+	
 
 
 
