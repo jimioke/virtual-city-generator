@@ -173,7 +173,7 @@ pumaInArea = mapCTtoPUMA['PUMA5CE'].unique()
 
 
 
-#########################  Marginal Distribution #########################
+######################## Person Marginal Distribution ########################
 #marginal = getMarginalS0101(dirname, marginal_filenames[0])
 
 # TODO:  write "get marginal distribution" into a function
@@ -219,6 +219,9 @@ person, categories = categorizePersonPUMS(dirname, psfilename)
 hh_marginal_files = ['ACS_15_5YR_B08202.csv','ACS_15_5YR_B08203.csv','ACS_15_5YR_B11016.csv','ACS_15_5YR_B19001.csv'] 
 one_marginal, two_marginal = main_marginal_process(dirname, hh_marginal_files)
 # write marginal distributions
+#write_aggregate_data(one_marginal, two_marginal, out_dir)
+
+
 
 # HOUSEHOLD PUMS DATA
 hh_sample_categorized = categorizeHhPUMS('data','ss15htx_clean.csv')
@@ -246,6 +249,17 @@ for county in one_marginal.keys():
 
 
 #result = setup_IPF_for_county(person, marginalDF, countyTable, mapCTtoPUMA, categories)
+
+
+
+##################### Draw household and person from IPF result ####################
+
+
+
+
+
+
+
 
 
 

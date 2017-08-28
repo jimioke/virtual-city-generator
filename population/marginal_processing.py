@@ -215,6 +215,35 @@ def main_marginal_process(dirname, marginal_files):
 	return one_marginal, two_marginal
 
 	
+def write_aggregate_data(one_marginal, two_marginal, out_dir):
+	'''
+	write output file for aggregate data
+
+	'''
+
+	aggregates_1d = []
+	aggregates_2d = []
+	for county in one_marginal.keys():
+		distributions = []
+		for dist in one_marginal[county].keys():
+			distributions.append(one_marginal[county][dist])
+		df = pd.concat(distributions, keys = one_marginal[county].keys()).rename(county)
+		aggregates_1d.append(df)
+		distributions = []
+		for dist in two_marginal[county].keys():
+			distributions.append(two_marginal[county][dist])
+		df = pd.concat(distributions, keys = two_marginal[county].keys()).rename(county)
+		aggregates_2d.append(df)
+	
+	marginals1d = pd.concat(aggregates_1d, axis = 1)
+	marginals2d = pd.concat(aggregates_2d, axis = 1)
+	marginals1d.to_csv(os.path.join(out_dir,'hh_marginals_1d.csv'))
+	marginals2d.to_csv(os.path.join(out_dir,'hh_marginals_2d.csv'))
+
+
+
+
+
 '''
 dirname = 'data'
 marginal_files = ['ACS_15_5YR_B08202.csv','ACS_15_5YR_B08203.csv','ACS_15_5YR_B11016.csv','ACS_15_5YR_B19001.csv'] 
