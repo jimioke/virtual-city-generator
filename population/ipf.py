@@ -5,7 +5,7 @@ from categorize import *
 
 
 
-def getIPFresult_for_county(marginals, joint_dist, 
+def getIPFresult_for_county(marginal1d, marginal2d, joint_dist, 
 	tolerance = 1e-3, max_iterations = 1000):
 
 	'''
@@ -16,14 +16,20 @@ def getIPFresult_for_county(marginals, joint_dist,
 	joint_dist - MultiIndex pandas Series developed from product
 
 	'''
+	# joint distribution needs zero cells to be augmented
 
 	df = joint_dist.rename('total').reset_index()
 
-	aggreagtes = []
-	for key in marginals.index.levels[0]:
-		aggregates.append(marginals[key])
-
-	dimensions = [[key] for key in marginals.index.levels[0]]
+	aggregates = []
+	dimensions = []
+	#for key in marginals.index.levels[0]:
+	#	aggregates.append(marginals[key])
+	for key in marginal1d.keys():
+		aggregates.append(marginal1d[key])
+		dimensions.append([key])
+	for key in marginal2d.keys():
+		aggregates.append(marginal2d[key])
+		dimensions.append([key[0], key[1]])
 
 	IPF = ipfn(df, aggregates, dimensions)
 	result = IPF.iteration()

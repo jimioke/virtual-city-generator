@@ -4,6 +4,8 @@ import numpy as np
 import os
 import ipfn
 from categorize import *
+from marginal_processing import *
+from datetime import datetime
 
 
 def selectPersonPUMS(dirname,filename,pumaInArea):
@@ -208,10 +210,36 @@ person, categories = categorizePersonPUMS(dirname, psfilename)
 
 
 
+####################################################################################
+
+# HOUSEHLD MARGINAL DATA
+
+
+hh_marginal_files = ['ACS_15_5YR_B08202.csv','ACS_15_5YR_B08203.csv','ACS_15_5YR_B11016.csv','ACS_15_5YR_B19001.csv'] 
+one_marginal, two_marginal = main_marginal_process(dirname, hh_marginal_files)
+# HOUSEHOLD PUMS DATA
+hh_sample_categorized = categorizeHhPUMS('data','ss15htx_clean.csv')
+
+hh_joint_dist = getHhJointDist(hh_sample_categorized, one_marginal, two_marginal, mapCTtoPUMA, countyTable)
+
+
+# ipf
+# ipf
+for county in one_marginal.keys():
+	time1 = datetime.now()
+	ipf_result = getIPFresult_for_county(one_marginal[county],two_marginal[county], hh_joint_dist[county])
+	print datetime.now()-time1
+	print ipf_result
+	pd.concat(hh_joint_dist[county], ipf_result).to_csv(county+'ipf_result.csv')
+	break
+
+
+
+
 #########################  Iterative Proportional Fitting  #########################
 
 
-result = setup_IPF_for_county(person, marginalDF, countyTable, mapCTtoPUMA, categories)
+#result = setup_IPF_for_county(person, marginalDF, countyTable, mapCTtoPUMA, categories)
 
 
 

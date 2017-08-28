@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np 
 import os
 import math
+from ipf import *
 
 def categorizePersonPUMS(dirname, psfilename):
 	'''
@@ -62,6 +63,7 @@ def categorizePersonPUMS(dirname, psfilename):
 
 	categories = {'sex': sexC, 'age': ageC, 'mar': marC, 'edu': eduC, 'inc': incC}
 	newdf = df.copy()
+	# processing sex, age, marriage status
 	for sub in ['sex','age','mar']:
 		for cat in categories[sub].keys():
 			newdf[sub] = newdf[sub].replace(categories[sub][cat],cat)
@@ -85,7 +87,7 @@ def categorizePersonPUMS(dirname, psfilename):
 	return newdf, categories
 
 
-def getHhJointDist(sample_df, categories):
+def getPsJointDist(sample_df, categories):
 	'''
 	Get joint distribution from sample data
 	Combinations in which no samples fall will be filled with 0
@@ -101,6 +103,8 @@ def getHhJointDist(sample_df, categories):
 	print joint_dist.shape
 	Indexes = pd.MultiIndex.from_product(productList,names = subjects)
 	
+	# change index to all possible combinations of characteristics 
+	# fill combinations where no sample fall with 0
 	joint_dist = joint_dist.reindex(Indexes).fillna(0)
 	print joint_dist.shape
 
@@ -108,12 +112,81 @@ def getHhJointDist(sample_df, categories):
 	
 
 
+def categorizeHhPUMS(dirname, hhfilename):
+	rawdf = pd.read_csv(os.path.join(dirname, hhfilename))
+	selectColumns = ['SERIALNO','PUMA','NP','VEH','HHT','HINCP','WIF']
+	rawdf = rawdf[selectColumns]
+	rawdf.columns.values[2:] = ['hh_size','vehicle','hh_type','hh_inc','workers']
+	
+	# IMPUTATION
+	# one person household with income will be assigned with 1 worker
+	rawdf.loc[(rawdf['hh_size'] == 1) &(rawdf['hh_inc'] > 0), 'workers'] = 1
+	# drop records with na in any of variables we select
+	rawdf.dropna(axis = 0, how='any',inplace =True)
 
 
-dirname = 'data'
-psfilename = 'ss15ptx_clean.csv'
-person, categories = categorizePersonPUMS(dirname, psfilename)
-getHhJointDist(person, categories)
+	df = rawdf.copy()
+
+	oldC,newC = {}, {}
+	# household size 
+	oldC['hh_size'] = range(1,21)
+	newC['hh_size'] = np.repeat(['1-person household','2-person household',
+	'3-person household','4-or-more-person household'],[1,1,1,20-3])
+	# vehicle
+	oldC['vehicle'] = range(0,7)
+	newC['vehicle'] = np.repeat(['No vehicle available','1 vehicle available', 
+		'2 vehicles available','3 vehicles available', '4 or more vehicles available'], [1,1,1,1,3])
+	# hh_type
+	oldC['hh_type'] = range(1,8)
+	newC['hh_type'] = np.repeat(['Family households', 'Nonfamily households'],[3,4])
+	# workers
+	oldC['workers'] = range(0,4)
+	newC['workers'] = ['No workers', '1 worker', '2 workers', '3 or more workers']
+
+	subjects = df.columns[[2,3,4,6]]
+	for sub in subjects:
+		df[sub].replace(oldC[sub],newC[sub],inplace=True)
+
+	# hh income
+	inc_bins = [min(df['hh_inc']),14999,24999,34999, 44999,59999, 99999,149999,max(df['hh_inc'])]
+	inc_labels = ['Less than $15,000', '$15,000 to $24,999', '$25,000 to $34,999', '$35,000 to $44,999',
+	'$45,000 to $59,999', '$60,000 to $99,999', '$100,000 to $149,999', '$150,000 or more']
+	df['hh_inc'] = pd.cut(df['hh_inc'],bins = inc_bins,include_lowest= True,labels = inc_labels)
+
+	return df
+
+	
+def getHhJointDist(sample_df, one_marginal,two_marginal,mapCTtoPUMA,countyTable):
+
+	print sample_df.shape
+	hh_joint_dist = {}
+	for county in one_marginal.keys():
+		countyId = countyTable.loc[countyTable['name'] == county,'id'].values[0]
+		pumaInCounty = mapCTtoPUMA.loc[mapCTtoPUMA['COUNTYFP']==countyId,'PUMA5CE']
+
+		pumaInCounty = [int(x) for x in pumaInCounty.tolist()]
+		county_sample = sample_df[sample_df['PUMA'].isin(pumaInCounty)]
+		
+		subjects = one_marginal[county].keys()
+		productList = []
+		for sub in subjects:
+			productList.append(one_marginal[county][sub].index)
+
+		joint_dist = county_sample[subjects].groupby(list(subjects)).size()
+		#print joint_dist
+
+		Indexes = pd.MultiIndex.from_product(productList, names = subjects)
+		hh_joint_dist[county] = joint_dist.reindex(Indexes).fillna(0)
+
+	return hh_joint_dist
+
+	
+
+#hh_sample_categorized = categorizeHhPUMS('data','ss15htx_clean.csv')
+
+
+
+
 
 
 
