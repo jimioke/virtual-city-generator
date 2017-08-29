@@ -2,10 +2,10 @@
 import pandas as pd 
 import numpy as np
 import os
-import ipfn
 from categorize import *
 from marginal_processing import *
-from datetime import datetime
+from ipf import *
+
 
 
 def selectPersonPUMS(dirname,filename,pumaInArea):
@@ -225,30 +225,26 @@ one_marginal, two_marginal = main_marginal_process(dirname, hh_marginal_files)
 
 # HOUSEHOLD PUMS DATA
 hh_sample_categorized = categorizeHhPUMS('data','ss15htx_clean.csv')
-subjects = hh_sample_categorized.columns[2:]
 
 hh_joint_dist = getHhJointDist(hh_sample_categorized, one_marginal, two_marginal, mapCTtoPUMA, countyTable)
 
 
 # ipf
-# ipf
 
-for county in one_marginal.keys():
-	#print one_marginal[county]
-	time1 = datetime.now()
-	ipf_result = getIPFresult_for_county(one_marginal[county],two_marginal[county], hh_joint_dist[county])
-	print datetime.now()-time1
-	#print ipf_result
-	jd = hh_joint_dist[county].rename('sample').reset_index()
-	jd_and_ipf = pd.merge(jd,ipf_result, on=list(subjects))
-	jd_and_ipf.to_csv(os.path.join(out_dir, county+'ipf_result.csv'))
+ipf_results = setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir)
+
+
+
+# draw synth hh and person from ipf results
+
+
 
 
 
 #########################  Iterative Proportional Fitting  #########################
 
 
-#result = setup_IPF_for_county(person, marginalDF, countyTable, mapCTtoPUMA, categories)
+#result = setup_IPF_for_Ps(person, marginalDF, countyTable, mapCTtoPUMA, categories)
 
 
 

@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np 
 import os
 import math
-from ipf import *
 
 def categorizePersonPUMS(dirname, psfilename):
 	'''
@@ -157,6 +156,17 @@ def categorizeHhPUMS(dirname, hhfilename):
 
 	
 def getHhJointDist(sample_df, one_marginal,two_marginal,mapCTtoPUMA,countyTable):
+
+	'''
+	this function takes all sample data of households as input
+	then seperate those samples with respect to the county they belong to
+	In each county, a joint distribution of all related variables are calculated from sample
+
+	the output hh_joint_dist: is a dist, whose keys are names of the counties
+	hh_joint_dist[county] is a MultiIndex Series, where each row is a combination of household,
+	there are combination of households doesn't exist in sample data and will be recored as 0
+
+	'''
 
 	print sample_df.shape
 	hh_joint_dist = {}

@@ -2,6 +2,8 @@ from ipfn import *
 import numpy as np
 import pandas as pd
 from categorize import *
+import sys, datetime
+from datetime import datetime
 
 
 
@@ -41,7 +43,7 @@ def getIPFresult_for_county(marginal1d, marginal2d, joint_dist,
 
 
 
-def setup_IPF_for_county(df, marginalDF, countyTable, mapCTtoPUMA, categories):
+def setup_IPF_for_Ps(df, marginalDF, countyTable, mapCTtoPUMA, categories):
 
 	'''
 	Do IPF one by one in the level of county
@@ -65,5 +67,41 @@ def setup_IPF_for_county(df, marginalDF, countyTable, mapCTtoPUMA, categories):
 
 	result = pd.concat(results, axis = 1)
 	return result
+
+
+
+def setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir, write = True): 
+
+	'''
+	Select sample data and aggregate for each county
+	Then perform IPF on selected data
+	Return IPF result for each county
+
+	'''
+
+	ipf_results = {}
+	for county in one_marginal.keys():
+		#print one_marginal[county]
+		time1 = datetime.now()
+		ipf_result = getIPFresult_for_county(one_marginal[county],two_marginal[county], hh_joint_dist[county])
+		print datetime.now()-time1
+		ipf_results[county] = ipf_result
+
+		#print ipf_result
+		if write:
+			jd = hh_joint_dist[county].rename('sample').reset_index()
+			subjects = jd.columns.values[:-1]
+			jd_and_ipf = pd.merge(jd,ipf_result, on=list(subjects))
+			jd_and_ipf.to_csv(os.path.join(out_dir, county+'ipf_result.csv'))
+
+	return ipf_result
+
+
+
+
+
+
+
+
 
 
