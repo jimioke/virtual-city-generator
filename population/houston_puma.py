@@ -238,7 +238,7 @@ ipf_results = setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_di
 
 
 # draw synth hh and person from ipf results
-draw_synth_hh(ipf_results, hh_sample, ps_sample, mapCTtoPUMA, countyTable, out_dir)
+synth_hh, synth_ps = draw_synth_hh(ipf_results, hh_sample, ps_sample, mapCTtoPUMA, countyTable, out_dir)
 
 
 

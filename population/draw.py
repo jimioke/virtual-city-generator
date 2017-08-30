@@ -37,8 +37,9 @@ def draw_synth_hh(ipf_results, hh_sample, ps_sample,mapCTtoPUMA, countyTable, ou
 
 	synth_hh = []
 	synth_ps = []
-
+	i = 0
 	for county in ipf_results.keys():
+		i += 1
 		# modify index for weights
 		ipf_result = ipf_results[county]
 		index_title = list(ipf_result.columns.values[:-1])
@@ -59,8 +60,10 @@ def draw_synth_hh(ipf_results, hh_sample, ps_sample,mapCTtoPUMA, countyTable, ou
 
 		columnsToKeep = merge_df.columns[:-1]
 		synth_hh_c = merge_df[columnsToKeep].sample(int(tot),replace = True,weights = merge_df['total'])
-		synth_hh_c.reset_index(drop=True)
-		synth_hh_c['county'] = county
+		synth_hh_c.reset_index(drop=True,inplace=True)
+		synth_hh_c.index += i*10000000
+		synth_hh_c['county'] = countyId
+		synth_hh_c.index.name = 'hh_newid'
 		# write synthetic household in this county to a csv file
 		synth_hh_c.to_csv(os.path.join(out_dir, county+'synth_hh.csv'))
 		synth_hh.append(synth_hh_c)
@@ -71,13 +74,18 @@ def draw_synth_hh(ipf_results, hh_sample, ps_sample,mapCTtoPUMA, countyTable, ou
 		})
 		
 		synth_ps_c = pd.merge(psspc, subdf, left_on = 'SERIALNO', right_on='SERIALNO')
-		synth_ps_c['county'] = county
+		synth_ps_c['county'] = countyId
 		synth_ps_c.to_csv(os.path.join(out_dir, county+'synth_ps.csv'))
 		synth_ps.append(synth_ps_c)		
 
 
+
 	synth_hh = pd.concat(synth_hh)
 	synth_ps = pd.concat(synth_ps)
+	synth_hh.to_csv(os.path.join(out_dir, 'synth_hh.csv'))
+	synth_ps.to_csv(os.path.join(out_dir, 'synth_ps.csv'))
+
+	return synth_hh, synth_ps
 
 
 def test_merge():
