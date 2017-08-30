@@ -5,6 +5,7 @@ import os
 from categorize import *
 from marginal_processing import *
 from ipf import *
+from draw import *
 
 
 
@@ -206,7 +207,7 @@ marginalDF.to_csv('person_marginals.csv')
 #Write a subset of the PUMS person data
 #person[0:500].to_csv(os.path.join(dirname, 'sample_'+psfilename), index = False)
 psfilename = 'ss15ptx_clean.csv'
-person, categories = categorizePersonPUMS(dirname, psfilename)
+ps_sample, categories = categorizePersonPUMS(dirname, psfilename)
 
 
 
@@ -224,19 +225,20 @@ one_marginal, two_marginal = main_marginal_process(dirname, hh_marginal_files)
 
 
 # HOUSEHOLD PUMS DATA
-hh_sample_categorized = categorizeHhPUMS('data','ss15htx_clean.csv')
+hh_sample = categorizeHhPUMS('data','ss15htx_clean.csv')
 
-hh_joint_dist = getHhJointDist(hh_sample_categorized, one_marginal, two_marginal, mapCTtoPUMA, countyTable)
+# JOINT DISTRIBUTION OF SAMPLE DATA 
+hh_joint_dist = getHhJointDist(hh_sample, one_marginal, two_marginal, mapCTtoPUMA, countyTable)
 
 
 # ipf
 
-ipf_results = setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir)
+ipf_results = setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir, write = True)
 
 
 
 # draw synth hh and person from ipf results
-
+draw_synth_hh(ipf_results, hh_sample, ps_sample, mapCTtoPUMA, countyTable, out_dir)
 
 
 
@@ -249,6 +251,7 @@ ipf_results = setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_di
 
 
 ##################### Draw household and person from IPF result ####################
+
 
 
 

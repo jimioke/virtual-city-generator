@@ -112,6 +112,16 @@ def getPsJointDist(sample_df, categories):
 
 
 def categorizeHhPUMS(dirname, hhfilename):
+	'''
+	Rename variables 
+	Categorize sample data according to categories in aggregate data
+
+	Return:
+	df: dataframe with columns ['SERIALNO','PUMA', OTHER VARIABLES]
+
+	'''
+
+
 	rawdf = pd.read_csv(os.path.join(dirname, hhfilename))
 	selectColumns = ['SERIALNO','PUMA','NP','VEH','HHT','HINCP','WIF']
 	rawdf = rawdf[selectColumns]
@@ -162,7 +172,8 @@ def getHhJointDist(sample_df, one_marginal,two_marginal,mapCTtoPUMA,countyTable)
 	then seperate those samples with respect to the county they belong to
 	In each county, a joint distribution of all related variables are calculated from sample
 
-	the output hh_joint_dist: is a dist, whose keys are names of the counties
+	Return:
+	hh_joint_dist: is a dist, whose keys are names of the counties
 	hh_joint_dist[county] is a MultiIndex Series, where each row is a combination of household,
 	there are combination of households doesn't exist in sample data and will be recored as 0
 
@@ -173,16 +184,17 @@ def getHhJointDist(sample_df, one_marginal,two_marginal,mapCTtoPUMA,countyTable)
 	for county in one_marginal.keys():
 		countyId = countyTable.loc[countyTable['name'] == county,'id'].values[0]
 		pumaInCounty = mapCTtoPUMA.loc[mapCTtoPUMA['COUNTYFP']==countyId,'PUMA5CE']
-
+		# select sample in this county
 		pumaInCounty = [int(x) for x in pumaInCounty.tolist()]
 		county_sample = sample_df[sample_df['PUMA'].isin(pumaInCounty)]
 		
-		subjects = one_marginal[county].keys()
+		subjects = list(one_marginal[county].keys())
+		subjects.sort()
 		productList = []
 		for sub in subjects:
 			productList.append(one_marginal[county][sub].index)
 
-		joint_dist = county_sample[subjects].groupby(list(subjects)).size()
+		joint_dist = county_sample[subjects].groupby(subjects).size()
 		#print joint_dist
 
 		Indexes = pd.MultiIndex.from_product(productList, names = subjects)

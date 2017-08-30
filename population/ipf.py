@@ -2,7 +2,7 @@ from ipfn import *
 import numpy as np
 import pandas as pd
 from categorize import *
-import sys, datetime
+import sys
 from datetime import datetime
 
 
@@ -87,6 +87,8 @@ def setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir, write =
 		print datetime.now()-time1
 		ipf_results[county] = ipf_result
 
+		#break
+
 		#print ipf_result
 		if write:
 			jd = hh_joint_dist[county].rename('sample').reset_index()
@@ -94,7 +96,7 @@ def setup_IPF_for_Hh(one_marginal, two_marginal, hh_joint_dist, out_dir, write =
 			jd_and_ipf = pd.merge(jd,ipf_result, on=list(subjects))
 			jd_and_ipf.to_csv(os.path.join(out_dir, county+'ipf_result.csv'))
 
-	return ipf_result
+	return ipf_results
 
 
 
