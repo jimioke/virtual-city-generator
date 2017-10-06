@@ -1,0 +1,384 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global/}
+    \entry{adnan2016simmobility}{inproceedings}{}
+      \name{author}{10}{}{%
+        {{uniquename=0,hash=c0279004272b887bf96dd912b1b6c663}{%
+           family={Adnan},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=521889893f6bda2b1fa1bc60b25da8a8}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={Francisco\bibnamedelima C},
+           giveni={F\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=0,hash=0124f58ecf226cfa04113dbea3c9162e}{%
+           family={Lima\bibnamedelima Azevedo},
+           familyi={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Carlos\bibnamedelima Miguel},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=4c537b63dd516f4e2697d7770d724125}{%
+           family={Basak},
+           familyi={B\bibinitperiod},
+           given={Kakali},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=b35d17e3c0603ab9cc34c9dd8e418473}{%
+           family={Lovric},
+           familyi={L\bibinitperiod},
+           given={Milan},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=85c9dd41777ba7b39a5081328b592a14}{%
+           family={Raveau},
+           familyi={R\bibinitperiod},
+           given={Sebasti\'{a}n},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=017c8fdccfa4d7fe6b3cf42ea7acad7a}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{uniquename=0,hash=12f4a503ad9388dc847d56f43e7ed844}{%
+           family={Ferreira},
+           familyi={F\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{uniquename=0,hash=9216216576e916a5fe1a462cca747872}{%
+           family={Zegras},
+           familyi={Z\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{uniquename=0,hash=681527d6d41402ce37b1bcde343cedaf}{%
+           family={Ben-Akiva},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Moshe\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{989b8b4e5d6d22b25446d4e12bf73922}
+      \strng{fullhash}{d70f423478403cdff46ae55c7f3b09c5}
+      \strng{authornamehash}{989b8b4e5d6d22b25446d4e12bf73922}
+      \strng{authorfullhash}{d70f423478403cdff46ae55c7f3b09c5}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Transportation Research Board 95th Annual Meeting}
+      \field{number}{16-2691}
+      \field{title}{SimMobility: A Multi-scale Integrated Agent-Based Simulation Platform}
+      \field{year}{2016}
+    \endentry
+    \entry{beckman1996creating}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=331f7d9a13d54e2af26a6068209b0384}{%
+           family={Beckman},
+           familyi={B\bibinitperiod},
+           given={{Richard J.}},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=e6502d01b35ac3c2b342bedc964392e9}{%
+           family={Baggerly},
+           familyi={B\bibinitperiod},
+           given={{Keith A.}},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=55f7ed979f72832dbc19dd1eaa066c2b}{%
+           family={McKay},
+           familyi={M\bibinitperiod},
+           given={{Michael D.}},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Limited}%
+      }
+      \strng{namehash}{84d7a1ce20bac75eae684128aeacf5ab}
+      \strng{fullhash}{62e815ee336eade5c5190831eb9693a2}
+      \strng{authornamehash}{84d7a1ce20bac75eae684128aeacf5ab}
+      \strng{authorfullhash}{62e815ee336eade5c5190831eb9693a2}
+      \field{sortinit}{B}
+      \field{sortinithash}{5f6fa000f686ee5b41be67ba6ff7962d}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0965-8564}
+      \field{journaltitle}{Transportation Research, Part A: Policy and Practice}
+      \field{month}{11}
+      \field{number}{6 PART A}
+      \field{title}{Creating synthetic baseline populations}
+      \field{volume}{30}
+      \field{year}{1996}
+      \field{pages}{415\bibrangedash 429}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1016/0965-8564(96)00004-3
+      \endverb
+    \endentry
+    \entry{farooq2013simulation}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=3a2dd67d2ce89da953481ff45338b1e9}{%
+           family={Farooq},
+           familyi={F\bibinitperiod},
+           given={Bilal},
+           giveni={B\bibinitperiod}}}%
+        {{uniquename=0,hash=71d559ccc546fefcab513ee70a3a7d55}{%
+           family={Bierlaire},
+           familyi={B\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=07891554c28882f063a01027fa16ffee}{%
+           family={Hurtubia},
+           familyi={H\bibinitperiod},
+           given={Ricardo},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=d725fcee35eec227f45602275cb66b75}{%
+           family={Fl\"{o}tter\"{o}d},
+           familyi={F\bibinitperiod},
+           given={Gunnar},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed00e05fdd82382ca807c41471d72bf7}
+      \strng{fullhash}{6db14d4b7eb661f5bd25be6e75563052}
+      \strng{authornamehash}{ed00e05fdd82382ca807c41471d72bf7}
+      \strng{authorfullhash}{6db14d4b7eb661f5bd25be6e75563052}
+      \field{sortinit}{F}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0191-2615}
+      \field{journaltitle}{Transportation Research Part B: Methodological}
+      \field{title}{Simulation based population synthesis}
+      \field{volume}{58}
+      \field{year}{2013}
+      \field{pages}{243\bibrangedash 263}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/j.trb.2013.09.012
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0191261513001720
+      \endverb
+      \keyw{Markov chain Monte Carlo simulation,Population synthesis,Agent based model,Integrated urban systems planning}
+    \endentry
+    \entry{fielbaum2016parametric}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=f46a59e0b822d595e923d9331fcb6a20}{%
+           family={Fielbaum},
+           familyi={F\bibinitperiod},
+           given={Andr\'{e}s},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=35e8d288d3b19228b02d4b98bc6d3145}{%
+           family={Jara-Diaz},
+           familyi={J\bibinithyphendelim D\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=c5fb58bfdc71817c134547fa3a7f0f22}{%
+           family={Gschwender},
+           familyi={G\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{894ed700b43e3f65f0d4de798df71dbb}
+      \strng{fullhash}{a06f8e967224a1bb33dd49f7c3ee5984}
+      \strng{authornamehash}{894ed700b43e3f65f0d4de798df71dbb}
+      \strng{authorfullhash}{a06f8e967224a1bb33dd49f7c3ee5984}
+      \field{sortinit}{F}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1572-9427}
+      \field{journaltitle}{Networks and Spatial Economics}
+      \field{title}{A Parametric Description of Cities for the Normative Analysis of Transport Systems}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 23}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1007/s11067-016-9329-7
+      \endverb
+    \endentry
+    \entry{ge2014virtual}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=2545a9bf75ba8675ee538201db306db5}{%
+           family={Ge},
+           familyi={G\bibinitperiod},
+           given={Yuanzheng},
+           giveni={Y\bibinitperiod}}}%
+        {{uniquename=0,hash=d2c8d93b8a752b61be145b7002992c87}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={Rongqing},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=d55abbcdda25c35e3206805ee75c45d0}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Zhidong},
+           giveni={Z\bibinitperiod}}}%
+        {{uniquename=0,hash=5112881d7907588b6557ac1eceae7cd0}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Xiaogang},
+           giveni={X\bibinitperiod}}}%
+        {{uniquename=0,hash=e3870a7b1afb344956d38632e5bfea79}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Kedi},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{0e9c497109ad2519697423f566c99366}
+      \strng{fullhash}{4e97fb301055fc61707baa6a445dd65b}
+      \strng{authornamehash}{0e9c497109ad2519697423f566c99366}
+      \strng{authorfullhash}{4e97fb301055fc61707baa6a445dd65b}
+      \field{sortinit}{G}
+      \field{sortinithash}{618d986594b7198ba52cf8b00d348f3f}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Simulation}
+      \field{number}{8}
+      \field{title}{Virtual city: An individual-based digital environment for human mobility and interactive behavior}
+      \field{volume}{90}
+      \field{year}{2014}
+      \field{pages}{917\bibrangedash 935}
+      \range{pages}{19}
+    \endentry
+    \entry{moekel2003microsimulation}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=23002d4a15a419feac964c305d34b6b7}{%
+           family={Moekel},
+           familyi={M\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=3681bf9e6e73ab4bf2a332044df98a90}{%
+           family={Spiekermann},
+           familyi={S\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=6f42541ef24000345125717bc661dcd2}{%
+           family={Sch\"{u}rmann},
+           familyi={S\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod}}}%
+        {{uniquename=0,hash=a0ca0462c2f70a110507be6003e4ce04}{%
+           family={Wegener},
+           familyi={W\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis Group}%
+      }
+      \strng{namehash}{4b6a20b83a3e9638b2cf9e5f5dd5fa22}
+      \strng{fullhash}{87aa133269072625561f960f116481e9}
+      \strng{authornamehash}{4b6a20b83a3e9638b2cf9e5f5dd5fa22}
+      \strng{authorfullhash}{87aa133269072625561f960f116481e9}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Urban Sciences}
+      \field{number}{1}
+      \field{title}{Microsimulation of land use}
+      \field{volume}{7}
+      \field{year}{2003}
+      \field{pages}{14\bibrangedash 31}
+      \range{pages}{18}
+    \endentry
+    \entry{sun2015bayesian}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=3b600865594bcf4059598900b5eeb5d1}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Lijun},
+           giveni={L\bibinitperiod}}}%
+        {{uniquename=0,hash=b73344c244dee0ed749bfc7b25fbf464}{%
+           family={Erath},
+           familyi={E\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{913dfdbd807ad76ae49fa8d9c804ac29}
+      \strng{fullhash}{913dfdbd807ad76ae49fa8d9c804ac29}
+      \strng{authornamehash}{913dfdbd807ad76ae49fa8d9c804ac29}
+      \strng{authorfullhash}{913dfdbd807ad76ae49fa8d9c804ac29}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transportation Research Part C: Emerging Technologies}
+      \field{title}{A Bayesian network approach for population synthesis}
+      \field{volume}{61}
+      \field{year}{2015}
+      \field{pages}{49\bibrangedash 62}
+      \range{pages}{14}
+    \endentry
+    \entry{ye2009methodology}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=5e058b60e07be2686cd99a299ae4ab0a}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Xin},
+           giveni={X\bibinitperiod}}}%
+        {{uniquename=0,hash=bd9a7b5f7cbc26690d83afb6d413dbf0}{%
+           family={Konduri},
+           familyi={K\bibinitperiod},
+           given={Karthik},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=4b685faf39d476d91aef9d8aba9e145c}{%
+           family={Pendyala},
+           familyi={P\bibinitperiod},
+           given={Ram\bibnamedelima M},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=53775a17953aa632571b5698cf136158}{%
+           family={Sana},
+           familyi={S\bibinitperiod},
+           given={Bhargava},
+           giveni={B\bibinitperiod}}}%
+        {{uniquename=0,hash=538e9ddcdd3176f8669241806bcc837e}{%
+           family={Waddell},
+           familyi={W\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{450d7c946c4d33c798e22c78787004f1}
+      \strng{fullhash}{0c90d452e89e785a76461eb724a0d319}
+      \strng{authornamehash}{450d7c946c4d33c798e22c78787004f1}
+      \strng{authorfullhash}{0c90d452e89e785a76461eb724a0d319}
+      \field{sortinit}{Y}
+      \field{sortinithash}{f86c10978eb0c0879609ce6a4f43da7b}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{88th Annual Meeting of the Transportation Research Board, Washington, DC}
+      \field{title}{A methodology to match distributions of both household and person attributes in the generation of synthetic populations}
+      \field{year}{2009}
+    \endentry
+  \endsortlist
+  \missing{karduni2016protocol}
+\endrefsection
+\endinput
+
