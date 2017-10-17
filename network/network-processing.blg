@@ -1,0 +1,15 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'network-processing.blg'
+[26] biber:303> INFO - === Fri Oct  6, 2017, 15:10:21
+[42] Biber.pm:359> INFO - Reading 'network-processing.bcf'
+[108] Biber.pm:835> INFO - Found 1 citekeys in bib section 0
+[120] Biber.pm:3670> INFO - Processing section 0
+[130] Biber.pm:3840> INFO - Looking for bibtex format file 'bib/references.bib' for section 0
+[141] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[164] bibtex.pm:1292> INFO - Found BibTeX data source 'bib/references.bib'
+[189] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[189] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[189] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
+[189] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[191] bbl.pm:608> INFO - Writing 'network-processing.bbl' with encoding 'ascii'
+[191] bbl.pm:712> INFO - Output to network-processing.bbl

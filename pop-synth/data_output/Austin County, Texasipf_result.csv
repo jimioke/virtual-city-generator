@@ -1,0 +1,1281 @@
+,hh_inc,hh_size,hh_type,vehicle,workers,sample,total
+0,"$100,000 to $149,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+1,"$100,000 to $149,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+2,"$100,000 to $149,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+3,"$100,000 to $149,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+4,"$100,000 to $149,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+5,"$100,000 to $149,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+6,"$100,000 to $149,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+7,"$100,000 to $149,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+8,"$100,000 to $149,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+9,"$100,000 to $149,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+10,"$100,000 to $149,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+11,"$100,000 to $149,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+12,"$100,000 to $149,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+13,"$100,000 to $149,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+14,"$100,000 to $149,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+15,"$100,000 to $149,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+16,"$100,000 to $149,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+17,"$100,000 to $149,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+18,"$100,000 to $149,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+19,"$100,000 to $149,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+20,"$100,000 to $149,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,14.1902224741
+21,"$100,000 to $149,999",1-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.00234078259153
+22,"$100,000 to $149,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+23,"$100,000 to $149,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+24,"$100,000 to $149,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,80.2687084451
+25,"$100,000 to $149,999",1-person household,Nonfamily households,1 vehicle available,1 worker,3.0,19.7788137364
+26,"$100,000 to $149,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+27,"$100,000 to $149,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+28,"$100,000 to $149,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,38.6599404563
+29,"$100,000 to $149,999",1-person household,Nonfamily households,2 vehicles available,1 worker,5.0,33.9308614981
+30,"$100,000 to $149,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+31,"$100,000 to $149,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+32,"$100,000 to $149,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,9.02811325388
+33,"$100,000 to $149,999",1-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.00682545066974
+34,"$100,000 to $149,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+35,"$100,000 to $149,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+36,"$100,000 to $149,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,6.08020203164
+37,"$100,000 to $149,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0124854345993
+38,"$100,000 to $149,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+39,"$100,000 to $149,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+40,"$100,000 to $149,999",2-person household,Family households,No vehicle available,No workers,0.0,0.00589068848992
+41,"$100,000 to $149,999",2-person household,Family households,No vehicle available,1 worker,0.0,0.00375183188468
+42,"$100,000 to $149,999",2-person household,Family households,No vehicle available,2 workers,1.0,0.266810029506
+43,"$100,000 to $149,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+44,"$100,000 to $149,999",2-person household,Family households,1 vehicle available,No workers,0.0,0.0333213913878
+45,"$100,000 to $149,999",2-person household,Family households,1 vehicle available,1 worker,2.0,21.1344656799
+46,"$100,000 to $149,999",2-person household,Family households,1 vehicle available,2 workers,1.0,19.4562373337
+47,"$100,000 to $149,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+48,"$100,000 to $149,999",2-person household,Family households,2 vehicles available,No workers,2.0,32.0972650969
+49,"$100,000 to $149,999",2-person household,Family households,2 vehicles available,1 worker,10.0,108.769510252
+50,"$100,000 to $149,999",2-person household,Family households,2 vehicles available,2 workers,11.0,152.470299013
+51,"$100,000 to $149,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+52,"$100,000 to $149,999",2-person household,Family households,3 vehicles available,No workers,1.0,3.74777794552
+53,"$100,000 to $149,999",2-person household,Family households,3 vehicles available,1 worker,6.0,65.6394409528
+54,"$100,000 to $149,999",2-person household,Family households,3 vehicles available,2 workers,4.0,53.7163316375
+55,"$100,000 to $149,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+56,"$100,000 to $149,999",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00252403203611
+57,"$100,000 to $149,999",2-person household,Family households,4 or more vehicles available,1 worker,2.0,40.0235816802
+58,"$100,000 to $149,999",2-person household,Family households,4 or more vehicles available,2 workers,1.0,22.9726762117
+59,"$100,000 to $149,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+60,"$100,000 to $149,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.716044072962
+61,"$100,000 to $149,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.456054837796
+62,"$100,000 to $149,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.032432158068
+63,"$100,000 to $149,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+64,"$100,000 to $149,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,4.0503898393
+65,"$100,000 to $149,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.28450255952
+66,"$100,000 to $149,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,2.36500766401
+67,"$100,000 to $149,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+68,"$100,000 to $149,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,1.95079543505
+69,"$100,000 to $149,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.3221504289
+70,"$100,000 to $149,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,1.684869482
+71,"$100,000 to $149,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+72,"$100,000 to $149,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.455562060234
+73,"$100,000 to $149,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.32980303653
+74,"$100,000 to $149,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,1.63237544118
+75,"$100,000 to $149,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+76,"$100,000 to $149,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.306809328403
+77,"$100,000 to $149,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,2.43253810568
+78,"$100,000 to $149,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,2.79244924759
+79,"$100,000 to $149,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+80,"$100,000 to $149,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00206508146945
+81,"$100,000 to $149,999",3-person household,Family households,No vehicle available,1 worker,0.0,0.00260623766839
+82,"$100,000 to $149,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000282702941925
+83,"$100,000 to $149,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0485485361572
+84,"$100,000 to $149,999",3-person household,Family households,1 vehicle available,No workers,0.0,0.0116813829163
+85,"$100,000 to $149,999",3-person household,Family households,1 vehicle available,1 worker,0.0,0.00734060616912
+86,"$100,000 to $149,999",3-person household,Family households,1 vehicle available,2 workers,0.0,0.0206151753111
+87,"$100,000 to $149,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.00931113027929
+88,"$100,000 to $149,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.0056261222678
+89,"$100,000 to $149,999",3-person household,Family households,2 vehicles available,1 worker,1.0,7.55575418899
+90,"$100,000 to $149,999",3-person household,Family households,2 vehicles available,2 workers,6.0,88.1194939271
+91,"$100,000 to $149,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0336941309196
+92,"$100,000 to $149,999",3-person household,Family households,3 vehicles available,No workers,0.0,0.00131384757489
+93,"$100,000 to $149,999",3-person household,Family households,3 vehicles available,1 worker,2.0,15.1989737993
+94,"$100,000 to $149,999",3-person household,Family households,3 vehicles available,2 workers,3.0,42.6870150219
+95,"$100,000 to $149,999",3-person household,Family households,3 vehicles available,3 or more workers,3.0,43.647222244
+96,"$100,000 to $149,999",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.000884842543448
+97,"$100,000 to $149,999",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.013901337987
+98,"$100,000 to $149,999",3-person household,Family households,4 or more vehicles available,2 workers,2.0,48.682151574
+99,"$100,000 to $149,999",3-person household,Family households,4 or more vehicles available,3 or more workers,5.0,86.5175970118
+100,"$100,000 to $149,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0434291509974
+101,"$100,000 to $149,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0548097936619
+102,"$100,000 to $149,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00594530963251
+103,"$100,000 to $149,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.02098718073
+104,"$100,000 to $149,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.245662241434
+105,"$100,000 to $149,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.154374681312
+106,"$100,000 to $149,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.433542005324
+107,"$100,000 to $149,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.195815268713
+108,"$100,000 to $149,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.118318679971
+109,"$100,000 to $149,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.15889929498
+110,"$100,000 to $149,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.308862294634
+111,"$100,000 to $149,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.708595530529
+112,"$100,000 to $149,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0276305247814
+113,"$100,000 to $149,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.159819004213
+114,"$100,000 to $149,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.29923933566
+115,"$100,000 to $149,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.305970463876
+116,"$100,000 to $149,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0186084476553
+117,"$100,000 to $149,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.292348420842
+118,"$100,000 to $149,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.511898572249
+119,"$100,000 to $149,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.363897099474
+120,"$100,000 to $149,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0170514639671
+121,"$100,000 to $149,999",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.0045740187283
+122,"$100,000 to $149,999",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000408721640068
+123,"$100,000 to $149,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0358547902581
+124,"$100,000 to $149,999",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.096453666758
+125,"$100,000 to $149,999",4-or-more-person household,Family households,1 vehicle available,1 worker,1.0,12.8829655491
+126,"$100,000 to $149,999",4-or-more-person household,Family households,1 vehicle available,2 workers,0.0,0.0298046713136
+127,"$100,000 to $149,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,1.0,6.87659504602
+128,"$100,000 to $149,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0464551266102
+129,"$100,000 to $149,999",4-or-more-person household,Family households,2 vehicles available,1 worker,2.0,26.5211124726
+130,"$100,000 to $149,999",4-or-more-person household,Family households,2 vehicles available,2 workers,3.0,63.6999810377
+131,"$100,000 to $149,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,3.0,74.6528789131
+132,"$100,000 to $149,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0108484943151
+133,"$100,000 to $149,999",4-or-more-person household,Family households,3 vehicles available,1 worker,1.0,13.3373083452
+134,"$100,000 to $149,999",4-or-more-person household,Family households,3 vehicles available,2 workers,9.0,185.146005244
+135,"$100,000 to $149,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,2.0,21.4899991195
+136,"$100,000 to $149,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00730618184771
+137,"$100,000 to $149,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0243972301805
+138,"$100,000 to $149,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,2.0,70.3828856462
+139,"$100,000 to $149,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,3.0,38.3377610124
+140,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+141,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+142,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+143,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+144,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+145,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+146,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+147,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+148,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+149,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+150,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+151,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+152,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+153,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+154,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+155,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+156,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+157,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+158,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+159,"$100,000 to $149,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+160,"$15,000 to $24,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+161,"$15,000 to $24,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+162,"$15,000 to $24,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+163,"$15,000 to $24,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+164,"$15,000 to $24,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+165,"$15,000 to $24,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+166,"$15,000 to $24,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+167,"$15,000 to $24,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+168,"$15,000 to $24,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+169,"$15,000 to $24,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+170,"$15,000 to $24,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+171,"$15,000 to $24,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+172,"$15,000 to $24,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+173,"$15,000 to $24,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+174,"$15,000 to $24,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+175,"$15,000 to $24,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+176,"$15,000 to $24,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+177,"$15,000 to $24,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+178,"$15,000 to $24,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+179,"$15,000 to $24,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+180,"$15,000 to $24,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,20.9966756602
+181,"$15,000 to $24,999",1-person household,Nonfamily households,No vehicle available,1 worker,2.0,6.92711519574
+182,"$15,000 to $24,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+183,"$15,000 to $24,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+184,"$15,000 to $24,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,118.770233516
+185,"$15,000 to $24,999",1-person household,Nonfamily households,1 vehicle available,1 worker,25.0,243.882326796
+186,"$15,000 to $24,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+187,"$15,000 to $24,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+188,"$15,000 to $24,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,57.20348869
+189,"$15,000 to $24,999",1-person household,Nonfamily households,2 vehicles available,1 worker,4.0,40.1648554869
+190,"$15,000 to $24,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+191,"$15,000 to $24,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+192,"$15,000 to $24,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,13.3585196541
+193,"$15,000 to $24,999",1-person household,Nonfamily households,3 vehicles available,1 worker,3.0,30.2979972744
+194,"$15,000 to $24,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+195,"$15,000 to $24,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+196,"$15,000 to $24,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,8.99661934407
+197,"$15,000 to $24,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0184741727086
+198,"$15,000 to $24,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+199,"$15,000 to $24,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+200,"$15,000 to $24,999",2-person household,Family households,No vehicle available,No workers,0.0,0.00871620412326
+201,"$15,000 to $24,999",2-person household,Family households,No vehicle available,1 worker,1.0,5.55142791865
+202,"$15,000 to $24,999",2-person household,Family households,No vehicle available,2 workers,1.0,0.394787584386
+203,"$15,000 to $24,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+204,"$15,000 to $24,999",2-person household,Family households,1 vehicle available,No workers,2.0,98.6085241152
+205,"$15,000 to $24,999",2-person household,Family households,1 vehicle available,1 worker,7.0,109.451231424
+206,"$15,000 to $24,999",2-person household,Family households,1 vehicle available,2 workers,0.0,0.0287885764731
+207,"$15,000 to $24,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+208,"$15,000 to $24,999",2-person household,Family households,2 vehicles available,No workers,7.0,166.225408458
+209,"$15,000 to $24,999",2-person household,Family households,2 vehicles available,1 worker,3.0,48.2825015461
+210,"$15,000 to $24,999",2-person household,Family households,2 vehicles available,2 workers,0.0,0.0205094447125
+211,"$15,000 to $24,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+212,"$15,000 to $24,999",2-person household,Family households,3 vehicles available,No workers,1.0,5.54542947529
+213,"$15,000 to $24,999",2-person household,Family households,3 vehicles available,1 worker,1.0,16.1873202332
+214,"$15,000 to $24,999",2-person household,Family households,3 vehicles available,2 workers,0.0,0.0198704494435
+215,"$15,000 to $24,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+216,"$15,000 to $24,999",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.0037347040975
+217,"$15,000 to $24,999",2-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0296106056418
+218,"$15,000 to $24,999",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0339917032552
+219,"$15,000 to $24,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+220,"$15,000 to $24,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,1.0595003134
+221,"$15,000 to $24,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.674805171658
+222,"$15,000 to $24,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0479885008963
+223,"$15,000 to $24,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+224,"$15,000 to $24,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,5.9931915732
+225,"$15,000 to $24,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.90062443886
+226,"$15,000 to $24,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,3.49940241923
+227,"$15,000 to $24,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+228,"$15,000 to $24,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.88650999687
+229,"$15,000 to $24,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.95633040852
+230,"$15,000 to $24,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,2.49303054325
+231,"$15,000 to $24,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+232,"$15,000 to $24,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.674076029416
+233,"$15,000 to $24,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.96765365032
+234,"$15,000 to $24,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,2.41535731781
+235,"$15,000 to $24,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+236,"$15,000 to $24,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.453972865457
+237,"$15,000 to $24,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,3.59932437489
+238,"$15,000 to $24,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,4.13186976148
+239,"$15,000 to $24,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+240,"$15,000 to $24,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00305561423757
+241,"$15,000 to $24,999",3-person household,Family households,No vehicle available,1 worker,0.0,0.00385634031579
+242,"$15,000 to $24,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000418303658779
+243,"$15,000 to $24,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0718352280477
+244,"$15,000 to $24,999",3-person household,Family households,1 vehicle available,No workers,1.0,17.2844512342
+245,"$15,000 to $24,999",3-person household,Family households,1 vehicle available,1 worker,3.0,32.5847590827
+246,"$15,000 to $24,999",3-person household,Family households,1 vehicle available,2 workers,2.0,61.0068165566
+247,"$15,000 to $24,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.013777288049
+248,"$15,000 to $24,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.00832473660632
+249,"$15,000 to $24,999",3-person household,Family households,2 vehicles available,1 worker,2.0,22.3598636828
+250,"$15,000 to $24,999",3-person household,Family households,2 vehicles available,2 workers,0.0,0.0217311184598
+251,"$15,000 to $24,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0498557890734
+252,"$15,000 to $24,999",3-person household,Family households,3 vehicles available,No workers,0.0,0.00194404502448
+253,"$15,000 to $24,999",3-person household,Family households,3 vehicles available,1 worker,0.0,0.0112446412949
+254,"$15,000 to $24,999",3-person household,Family households,3 vehicles available,2 workers,0.0,0.0210540605443
+255,"$15,000 to $24,999",3-person household,Family households,3 vehicles available,3 or more workers,0.0,0.021527653298
+256,"$15,000 to $24,999",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.00130926431415
+257,"$15,000 to $24,999",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.020569225429
+258,"$15,000 to $24,999",3-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0360164665814
+259,"$15,000 to $24,999",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0256032902469
+260,"$15,000 to $24,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0642602890376
+261,"$15,000 to $24,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0810997475639
+262,"$15,000 to $24,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00879702473176
+263,"$15,000 to $24,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.51071181063
+264,"$15,000 to $24,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.363496091395
+265,"$15,000 to $24,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.228421726269
+266,"$15,000 to $24,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.641493879854
+267,"$15,000 to $24,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.289739621349
+268,"$15,000 to $24,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.175071176821
+269,"$15,000 to $24,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.235116606906
+270,"$15,000 to $24,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.457010553285
+271,"$15,000 to $24,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,1.04847901828
+272,"$15,000 to $24,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0408837259753
+273,"$15,000 to $24,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.236477461994
+274,"$15,000 to $24,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.442771865425
+275,"$15,000 to $24,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.45273163288
+276,"$15,000 to $24,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0275341377257
+277,"$15,000 to $24,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.432575668451
+278,"$15,000 to $24,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.757434797946
+279,"$15,000 to $24,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.538443240429
+280,"$15,000 to $24,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0252303344154
+281,"$15,000 to $24,999",4-or-more-person household,Family households,No vehicle available,1 worker,1.0,6.7679832277
+282,"$15,000 to $24,999",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000604768228793
+283,"$15,000 to $24,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.053052825866
+284,"$15,000 to $24,999",4-or-more-person household,Family households,1 vehicle available,No workers,1.0,142.718435941
+285,"$15,000 to $24,999",4-or-more-person household,Family households,1 vehicle available,1 worker,4.0,76.2495301733
+286,"$15,000 to $24,999",4-or-more-person household,Family households,1 vehicle available,2 workers,0.0,0.0441007192011
+287,"$15,000 to $24,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0101750086083
+288,"$15,000 to $24,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0687376979446
+289,"$15,000 to $24,999",4-or-more-person household,Family households,2 vehicles available,1 worker,1.0,19.6210876099
+290,"$15,000 to $24,999",4-or-more-person household,Family households,2 vehicles available,2 workers,0.0,0.0314180613648
+291,"$15,000 to $24,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0368202422127
+292,"$15,000 to $24,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0160520609843
+293,"$15,000 to $24,999",4-or-more-person household,Family households,3 vehicles available,1 worker,0.0,0.019734654479
+294,"$15,000 to $24,999",4-or-more-person household,Family households,3 vehicles available,2 workers,0.0,0.0304391956346
+295,"$15,000 to $24,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0158989241457
+296,"$15,000 to $24,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.0108106501397
+297,"$15,000 to $24,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0360995558769
+298,"$15,000 to $24,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0520712985524
+299,"$15,000 to $24,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0189089244369
+300,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+301,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+302,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+303,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+304,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+305,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+306,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+307,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+308,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+309,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+310,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+311,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+312,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+313,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+314,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+315,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+316,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+317,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+318,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+319,"$15,000 to $24,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+320,"$150,000 or more",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+321,"$150,000 or more",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+322,"$150,000 or more",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+323,"$150,000 or more",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+324,"$150,000 or more",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+325,"$150,000 or more",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+326,"$150,000 or more",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+327,"$150,000 or more",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+328,"$150,000 or more",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+329,"$150,000 or more",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+330,"$150,000 or more",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+331,"$150,000 or more",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+332,"$150,000 or more",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+333,"$150,000 or more",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+334,"$150,000 or more",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+335,"$150,000 or more",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+336,"$150,000 or more",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+337,"$150,000 or more",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+338,"$150,000 or more",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+339,"$150,000 or more",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+340,"$150,000 or more",1-person household,Nonfamily households,No vehicle available,No workers,0.0,14.267527964
+341,"$150,000 or more",1-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.00235353470626
+342,"$150,000 or more",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+343,"$150,000 or more",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+344,"$150,000 or more",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,80.7059962917
+345,"$150,000 or more",1-person household,Nonfamily households,1 vehicle available,1 worker,3.0,19.8865647521
+346,"$150,000 or more",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+347,"$150,000 or more",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+348,"$150,000 or more",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,38.8705520687
+349,"$150,000 or more",1-person household,Nonfamily households,2 vehicles available,1 worker,1.0,6.82314200711
+350,"$150,000 or more",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+351,"$150,000 or more",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+352,"$150,000 or more",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,9.07729660665
+353,"$150,000 or more",1-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.00686263435792
+354,"$150,000 or more",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+355,"$150,000 or more",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+356,"$150,000 or more",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,6.1133257545
+357,"$150,000 or more",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0125534527463
+358,"$150,000 or more",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+359,"$150,000 or more",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+360,"$150,000 or more",2-person household,Family households,No vehicle available,No workers,0.0,0.00592277978097
+361,"$150,000 or more",2-person household,Family households,No vehicle available,1 worker,0.0,0.00377227111334
+362,"$150,000 or more",2-person household,Family households,No vehicle available,2 workers,0.0,0.000268263557108
+363,"$150,000 or more",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+364,"$150,000 or more",2-person household,Family households,1 vehicle available,No workers,1.0,33.5029196542
+365,"$150,000 or more",2-person household,Family households,1 vehicle available,1 worker,0.0,0.010624801008
+366,"$150,000 or more",2-person household,Family households,1 vehicle available,2 workers,0.0,0.0195622310178
+367,"$150,000 or more",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+368,"$150,000 or more",2-person household,Family households,2 vehicles available,No workers,2.0,32.2721245684
+369,"$150,000 or more",2-person household,Family households,2 vehicles available,1 worker,4.0,43.7448259033
+370,"$150,000 or more",2-person household,Family households,2 vehicles available,2 workers,10.0,139.364478785
+371,"$150,000 or more",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+372,"$150,000 or more",2-person household,Family households,3 vehicles available,No workers,0.0,0.00376819508913
+373,"$150,000 or more",2-person household,Family households,3 vehicles available,1 worker,3.0,32.9985157401
+374,"$150,000 or more",2-person household,Family households,3 vehicles available,2 workers,3.0,40.5067255901
+375,"$150,000 or more",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+376,"$150,000 or more",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00253778245711
+377,"$150,000 or more",2-person household,Family households,4 or more vehicles available,1 worker,1.0,20.1208110684
+378,"$150,000 or more",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0230978267505
+379,"$150,000 or more",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+380,"$150,000 or more",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.719944937656
+381,"$150,000 or more",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.458539333209
+382,"$150,000 or more",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0326088419694
+383,"$150,000 or more",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+384,"$150,000 or more",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,4.0724555519
+385,"$150,000 or more",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.2915002722
+386,"$150,000 or more",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,2.37789175208
+387,"$150,000 or more",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+388,"$150,000 or more",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,1.96142297786
+389,"$150,000 or more",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.32935323962
+390,"$150,000 or more",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,1.69404831347
+391,"$150,000 or more",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+392,"$150,000 or more",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.458043871094
+393,"$150,000 or more",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.33704753712
+394,"$150,000 or more",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,1.64126829563
+395,"$150,000 or more",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+396,"$150,000 or more",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.308480764174
+397,"$150,000 or more",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,2.44579008606
+398,"$150,000 or more",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,2.80766195179
+399,"$150,000 or more",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+400,"$150,000 or more",3-person household,Family households,No vehicle available,No workers,0.0,0.00207633161968
+401,"$150,000 or more",3-person household,Family households,No vehicle available,1 worker,0.0,0.00262043592921
+402,"$150,000 or more",3-person household,Family households,No vehicle available,2 workers,0.0,0.00028424305093
+403,"$150,000 or more",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0488130188585
+404,"$150,000 or more",3-person household,Family households,1 vehicle available,No workers,0.0,0.0117450207508
+405,"$150,000 or more",3-person household,Family households,1 vehicle available,1 worker,0.0,0.00738059632128
+406,"$150,000 or more",3-person household,Family households,1 vehicle available,2 workers,0.0,0.0207274826572
+407,"$150,000 or more",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.00936185545213
+408,"$150,000 or more",3-person household,Family households,2 vehicles available,No workers,0.0,0.00565677225506
+409,"$150,000 or more",3-person household,Family households,2 vehicles available,1 worker,1.0,7.59691642447
+410,"$150,000 or more",3-person household,Family households,2 vehicles available,2 workers,0.0,0.0147665918801
+411,"$150,000 or more",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0338776897963
+412,"$150,000 or more",3-person household,Family households,3 vehicles available,No workers,0.0,0.00132100515333
+413,"$150,000 or more",3-person household,Family households,3 vehicles available,1 worker,1.0,7.64088738216
+414,"$150,000 or more",3-person household,Family households,3 vehicles available,2 workers,5.0,71.5326088832
+415,"$150,000 or more",3-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0146283345229
+416,"$150,000 or more",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.0008896629884
+417,"$150,000 or more",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0139770696921
+418,"$150,000 or more",3-person household,Family households,4 or more vehicles available,2 workers,1.0,24.4736810926
+419,"$150,000 or more",3-person household,Family households,4 or more vehicles available,3 or more workers,1.0,17.3977855103
+420,"$150,000 or more",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0436657443136
+421,"$150,000 or more",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0551083864399
+422,"$150,000 or more",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00597769848861
+423,"$150,000 or more",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.0265493144
+424,"$150,000 or more",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.247000560122
+425,"$150,000 or more",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.155215683657
+426,"$150,000 or more",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.435903855335
+427,"$150,000 or more",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.196882031077
+428,"$150,000 or more",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.118963256441
+429,"$150,000 or more",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.159764946513
+430,"$150,000 or more",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.310544914554
+431,"$150,000 or more",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.712455817055
+432,"$150,000 or more",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0277810503463
+433,"$150,000 or more",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.160689666138
+434,"$150,000 or more",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.300869531627
+435,"$150,000 or more",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.307637329681
+436,"$150,000 or more",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0187098227511
+437,"$150,000 or more",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.293941076484
+438,"$150,000 or more",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.514687293143
+439,"$150,000 or more",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.365879537987
+440,"$150,000 or more",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0171443569276
+441,"$150,000 or more",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.0045989370662
+442,"$150,000 or more",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.0004109482737
+443,"$150,000 or more",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0360501199741
+444,"$150,000 or more",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.0969791270159
+445,"$150,000 or more",4-or-more-person household,Family households,1 vehicle available,1 worker,0.0,0.0129531493651
+446,"$150,000 or more",4-or-more-person household,Family households,1 vehicle available,2 workers,0.0,0.0299670411933
+447,"$150,000 or more",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.00691405735852
+448,"$150,000 or more",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0467082048355
+449,"$150,000 or more",4-or-more-person household,Family households,2 vehicles available,1 worker,2.0,26.6655941814
+450,"$150,000 or more",4-or-more-person household,Family households,2 vehicles available,2 workers,1.0,21.3490019253
+451,"$150,000 or more",4-or-more-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0250198576151
+452,"$150,000 or more",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0109075947392
+453,"$150,000 or more",4-or-more-person household,Family households,3 vehicles available,1 worker,1.0,13.4099673298
+454,"$150,000 or more",4-or-more-person household,Family households,3 vehicles available,2 workers,2.0,41.3676985772
+455,"$150,000 or more",4-or-more-person household,Family households,3 vehicles available,3 or more workers,2.0,21.6070723305
+456,"$150,000 or more",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00734598446306
+457,"$150,000 or more",4-or-more-person household,Family households,4 or more vehicles available,1 worker,1.0,24.5301414041
+458,"$150,000 or more",4-or-more-person household,Family households,4 or more vehicles available,2 workers,3.0,106.149476265
+459,"$150,000 or more",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,4.0,51.395489941
+460,"$150,000 or more",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+461,"$150,000 or more",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+462,"$150,000 or more",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+463,"$150,000 or more",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+464,"$150,000 or more",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+465,"$150,000 or more",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+466,"$150,000 or more",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+467,"$150,000 or more",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+468,"$150,000 or more",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+469,"$150,000 or more",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+470,"$150,000 or more",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+471,"$150,000 or more",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+472,"$150,000 or more",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+473,"$150,000 or more",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+474,"$150,000 or more",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+475,"$150,000 or more",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+476,"$150,000 or more",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+477,"$150,000 or more",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+478,"$150,000 or more",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+479,"$150,000 or more",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+480,"$25,000 to $34,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+481,"$25,000 to $34,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+482,"$25,000 to $34,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+483,"$25,000 to $34,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+484,"$25,000 to $34,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+485,"$25,000 to $34,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+486,"$25,000 to $34,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+487,"$25,000 to $34,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+488,"$25,000 to $34,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+489,"$25,000 to $34,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+490,"$25,000 to $34,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+491,"$25,000 to $34,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+492,"$25,000 to $34,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+493,"$25,000 to $34,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+494,"$25,000 to $34,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+495,"$25,000 to $34,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+496,"$25,000 to $34,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+497,"$25,000 to $34,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+498,"$25,000 to $34,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+499,"$25,000 to $34,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+500,"$25,000 to $34,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,18.1247319421
+501,"$25,000 to $34,999",1-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0029898091509
+502,"$25,000 to $34,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+503,"$25,000 to $34,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+504,"$25,000 to $34,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,102.524736773
+505,"$25,000 to $34,999",1-person household,Nonfamily households,1 vehicle available,1 worker,18.0,151.577199481
+506,"$25,000 to $34,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+507,"$25,000 to $34,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+508,"$25,000 to $34,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,49.3791453198
+509,"$25,000 to $34,999",1-person household,Nonfamily households,2 vehicles available,1 worker,4.0,34.671071315
+510,"$25,000 to $34,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+511,"$25,000 to $34,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+512,"$25,000 to $34,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,11.5313296158
+513,"$25,000 to $34,999",1-person household,Nonfamily households,3 vehicles available,1 worker,1.0,8.71793687513
+514,"$25,000 to $34,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+515,"$25,000 to $34,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+516,"$25,000 to $34,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,7.76605385705
+517,"$25,000 to $34,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0159472591573
+518,"$25,000 to $34,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+519,"$25,000 to $34,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+520,"$25,000 to $34,999",2-person household,Family households,No vehicle available,No workers,1.0,7.52399407616
+521,"$25,000 to $34,999",2-person household,Family households,No vehicle available,1 worker,0.0,0.00479209873742
+522,"$25,000 to $34,999",2-person household,Family households,No vehicle available,2 workers,0.0,0.000340788192229
+523,"$25,000 to $34,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+524,"$25,000 to $34,999",2-person household,Family households,1 vehicle available,No workers,1.0,42.5603818365
+525,"$25,000 to $34,999",2-person household,Family households,1 vehicle available,1 worker,6.0,80.98319654
+526,"$25,000 to $34,999",2-person household,Family households,1 vehicle available,2 workers,1.0,24.8508497256
+527,"$25,000 to $34,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+528,"$25,000 to $34,999",2-person household,Family households,2 vehicles available,No workers,7.0,143.488951252
+529,"$25,000 to $34,999",2-person household,Family households,2 vehicles available,1 worker,3.0,41.6783786242
+530,"$25,000 to $34,999",2-person household,Family households,2 vehicles available,2 workers,3.0,53.1124346125
+531,"$25,000 to $34,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+532,"$25,000 to $34,999",2-person household,Family households,3 vehicles available,No workers,3.0,14.3607622992
+533,"$25,000 to $34,999",2-person household,Family households,3 vehicles available,1 worker,2.0,27.9464087396
+534,"$25,000 to $34,999",2-person household,Family households,3 vehicles available,2 workers,1.0,17.1525519353
+535,"$25,000 to $34,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+536,"$25,000 to $34,999",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00322386799442
+537,"$25,000 to $34,999",2-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0255604410234
+538,"$25,000 to $34,999",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0293422882615
+539,"$25,000 to $34,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+540,"$25,000 to $34,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.914580930981
+541,"$25,000 to $34,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.582504728242
+542,"$25,000 to $34,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0414245916412
+543,"$25,000 to $34,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+544,"$25,000 to $34,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,5.17343757172
+545,"$25,000 to $34,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.64065536061
+546,"$25,000 to $34,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,3.02075108614
+547,"$25,000 to $34,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+548,"$25,000 to $34,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.49169062703
+549,"$25,000 to $34,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.68874181886
+550,"$25,000 to $34,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,2.15203163829
+551,"$25,000 to $34,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+552,"$25,000 to $34,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.581875318715
+553,"$25,000 to $34,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.69851625772
+554,"$25,000 to $34,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,2.08498262478
+555,"$25,000 to $34,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+556,"$25,000 to $34,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.391878058628
+557,"$25,000 to $34,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,3.10700562904
+558,"$25,000 to $34,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,3.56670899043
+559,"$25,000 to $34,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+560,"$25,000 to $34,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00263766464133
+561,"$25,000 to $34,999",3-person household,Family households,No vehicle available,1 worker,1.0,3.32886670405
+562,"$25,000 to $34,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000361087717335
+563,"$25,000 to $34,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0620095425311
+564,"$25,000 to $34,999",3-person household,Family households,1 vehicle available,No workers,0.0,0.01492026883
+565,"$25,000 to $34,999",3-person household,Family households,1 vehicle available,1 worker,0.0,0.0093759290491
+566,"$25,000 to $34,999",3-person household,Family households,1 vehicle available,2 workers,1.0,26.331125332
+567,"$25,000 to $34,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0118928185022
+568,"$25,000 to $34,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.00718607182964
+569,"$25,000 to $34,999",3-person household,Family households,2 vehicles available,1 worker,3.0,28.9521928665
+570,"$25,000 to $34,999",3-person household,Family households,2 vehicles available,2 workers,1.0,18.7587170112
+571,"$25,000 to $34,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0430364705032
+572,"$25,000 to $34,999",3-person household,Family households,3 vehicles available,No workers,0.0,0.00167813684043
+573,"$25,000 to $34,999",3-person household,Family households,3 vehicles available,1 worker,1.0,9.70658939315
+574,"$25,000 to $34,999",3-person household,Family households,3 vehicles available,2 workers,0.0,0.0181742676713
+575,"$25,000 to $34,999",3-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0185830819927
+576,"$25,000 to $34,999",3-person household,Family households,4 or more vehicles available,No workers,1.0,1.13018199258
+577,"$25,000 to $34,999",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0177557487285
+578,"$25,000 to $34,999",3-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0310901026835
+579,"$25,000 to $34,999",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.022101249744
+580,"$25,000 to $34,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0554707103245
+581,"$25,000 to $34,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0700068529397
+582,"$25,000 to $34,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00759375997092
+583,"$25,000 to $34,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.30407532376
+584,"$25,000 to $34,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.313776777102
+585,"$25,000 to $34,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.197178002145
+586,"$25,000 to $34,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.553749784155
+587,"$25,000 to $34,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.250108781739
+588,"$25,000 to $34,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.151124787658
+589,"$25,000 to $34,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.202957151135
+590,"$25,000 to $34,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.394500248851
+591,"$25,000 to $34,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.905067138282
+592,"$25,000 to $34,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0352916140672
+593,"$25,000 to $34,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.20413186727
+594,"$25,000 to $34,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.382209141209
+595,"$25,000 to $34,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.390806602933
+596,"$25,000 to $34,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0237679942106
+597,"$25,000 to $34,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.373407589002
+598,"$25,000 to $34,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.653832201751
+599,"$25,000 to $34,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.464794501603
+600,"$25,000 to $34,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0217793071383
+601,"$25,000 to $34,999",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.00584225254396
+602,"$25,000 to $34,999",4-or-more-person household,Family households,No vehicle available,2 workers,1.0,0.522047499868
+603,"$25,000 to $34,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0457962137984
+604,"$25,000 to $34,999",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.12319728306
+605,"$25,000 to $34,999",4-or-more-person household,Family households,1 vehicle available,1 worker,3.0,49.3650394043
+606,"$25,000 to $34,999",4-or-more-person household,Family households,1 vehicle available,2 workers,0.0,0.0380685841372
+607,"$25,000 to $34,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0087832620039
+608,"$25,000 to $34,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0593356953131
+609,"$25,000 to $34,999",4-or-more-person household,Family households,2 vehicles available,1 worker,2.0,33.8745960643
+610,"$25,000 to $34,999",4-or-more-person household,Family households,2 vehicles available,2 workers,1.0,27.1206713668
+611,"$25,000 to $34,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,1.0,31.7839371788
+612,"$25,000 to $34,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0138564459997
+613,"$25,000 to $34,999",4-or-more-person household,Family households,3 vehicles available,1 worker,2.0,34.0706622505
+614,"$25,000 to $34,999",4-or-more-person household,Family households,3 vehicles available,2 workers,0.0,0.02627569575
+615,"$25,000 to $34,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0137242553522
+616,"$25,000 to $34,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00933195992888
+617,"$25,000 to $34,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0311618269523
+618,"$25,000 to $34,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0449489406519
+619,"$25,000 to $34,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0163225451628
+620,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+621,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+622,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+623,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+624,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+625,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+626,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+627,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+628,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+629,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+630,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+631,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+632,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+633,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+634,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+635,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+636,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+637,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+638,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+639,"$25,000 to $34,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+640,"$35,000 to $44,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+641,"$35,000 to $44,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+642,"$35,000 to $44,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+643,"$35,000 to $44,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+644,"$35,000 to $44,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+645,"$35,000 to $44,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+646,"$35,000 to $44,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+647,"$35,000 to $44,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+648,"$35,000 to $44,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+649,"$35,000 to $44,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+650,"$35,000 to $44,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+651,"$35,000 to $44,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+652,"$35,000 to $44,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+653,"$35,000 to $44,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+654,"$35,000 to $44,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+655,"$35,000 to $44,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+656,"$35,000 to $44,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+657,"$35,000 to $44,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+658,"$35,000 to $44,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+659,"$35,000 to $44,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+660,"$35,000 to $44,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,16.6207706918
+661,"$35,000 to $44,999",1-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.00274171957235
+662,"$35,000 to $44,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+663,"$35,000 to $44,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+664,"$35,000 to $44,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,94.0173981929
+665,"$35,000 to $44,999",1-person household,Nonfamily households,1 vehicle available,1 worker,14.0,108.110773592
+666,"$35,000 to $44,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+667,"$35,000 to $44,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+668,"$35,000 to $44,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,45.2817428659
+669,"$35,000 to $44,999",1-person household,Nonfamily households,2 vehicles available,1 worker,3.0,23.8455909778
+670,"$35,000 to $44,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+671,"$35,000 to $44,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+672,"$35,000 to $44,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,10.5744783386
+673,"$35,000 to $44,999",1-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.00799453642513
+674,"$35,000 to $44,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+675,"$35,000 to $44,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+676,"$35,000 to $44,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,7.12163913653
+677,"$35,000 to $44,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0146239811139
+678,"$35,000 to $44,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+679,"$35,000 to $44,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+680,"$35,000 to $44,999",2-person household,Family households,No vehicle available,No workers,0.0,0.00689966508887
+681,"$35,000 to $44,999",2-person household,Family households,No vehicle available,1 worker,1.0,4.39445805331
+682,"$35,000 to $44,999",2-person household,Family households,No vehicle available,2 workers,0.0,0.000312510133424
+683,"$35,000 to $44,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+684,"$35,000 to $44,999",2-person household,Family households,1 vehicle available,No workers,1.0,39.028789464
+685,"$35,000 to $44,999",2-person household,Family households,1 vehicle available,1 worker,2.0,24.7544468313
+686,"$35,000 to $44,999",2-person household,Family households,1 vehicle available,2 workers,1.0,22.7887659858
+687,"$35,000 to $44,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+688,"$35,000 to $44,999",2-person household,Family households,2 vehicles available,No workers,6.0,112.784972325
+689,"$35,000 to $44,999",2-person household,Family households,2 vehicles available,1 worker,7.0,89.1799380889
+690,"$35,000 to $44,999",2-person household,Family households,2 vehicles available,2 workers,2.0,32.4701665252
+691,"$35,000 to $44,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+692,"$35,000 to $44,999",2-person household,Family households,3 vehicles available,No workers,0.0,0.00438970974204
+693,"$35,000 to $44,999",2-person household,Family households,3 vehicles available,1 worker,1.0,12.8137302335
+694,"$35,000 to $44,999",2-person household,Family households,3 vehicles available,2 workers,0.0,0.0157292606261
+695,"$35,000 to $44,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+696,"$35,000 to $44,999",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00295635658762
+697,"$35,000 to $44,999",2-person household,Family households,4 or more vehicles available,1 worker,1.0,23.4394765334
+698,"$35,000 to $44,999",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.02690751214
+699,"$35,000 to $44,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+700,"$35,000 to $44,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.838690468994
+701,"$35,000 to $44,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.534169418114
+702,"$35,000 to $44,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0379872453214
+703,"$35,000 to $44,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+704,"$35,000 to $44,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,4.74415400142
+705,"$35,000 to $44,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.50451640444
+706,"$35,000 to $44,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,2.77009399533
+707,"$35,000 to $44,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+708,"$35,000 to $44,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.28493412642
+709,"$35,000 to $44,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.54861272534
+710,"$35,000 to $44,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,1.97345949699
+711,"$35,000 to $44,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+712,"$35,000 to $44,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.533592235982
+713,"$35,000 to $44,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.5575760969
+714,"$35,000 to $44,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,1.91197410331
+715,"$35,000 to $44,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+716,"$35,000 to $44,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.359360644472
+717,"$35,000 to $44,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,2.8491912743
+718,"$35,000 to $44,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,3.27074918645
+719,"$35,000 to $44,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+720,"$35,000 to $44,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00241879545062
+721,"$35,000 to $44,999",3-person household,Family households,No vehicle available,1 worker,0.0,0.00305264267236
+722,"$35,000 to $44,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000331125236423
+723,"$35,000 to $44,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0568640899299
+724,"$35,000 to $44,999",3-person household,Family households,1 vehicle available,No workers,0.0,0.0136822088004
+725,"$35,000 to $44,999",3-person household,Family households,1 vehicle available,1 worker,1.0,8.59792946154
+726,"$35,000 to $44,999",3-person household,Family households,1 vehicle available,2 workers,1.0,24.1462106914
+727,"$35,000 to $44,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0109059714558
+728,"$35,000 to $44,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.00658978308958
+729,"$35,000 to $44,999",3-person household,Family households,2 vehicles available,1 worker,0.0,0.00884992874552
+730,"$35,000 to $44,999",3-person household,Family households,2 vehicles available,2 workers,0.0,0.0172021486945
+731,"$35,000 to $44,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.039465373055
+732,"$35,000 to $44,999",3-person household,Family households,3 vehicles available,No workers,0.0,0.00153888773105
+733,"$35,000 to $44,999",3-person household,Family households,3 vehicles available,1 worker,0.0,0.00890115213942
+734,"$35,000 to $44,999",3-person household,Family households,3 vehicles available,2 workers,0.0,0.0166661960255
+735,"$35,000 to $44,999",3-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0170410875887
+736,"$35,000 to $44,999",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.00103640129955
+737,"$35,000 to $44,999",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0162824051147
+738,"$35,000 to $44,999",3-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0285102957185
+739,"$35,000 to $44,999",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0202673234104
+740,"$35,000 to $44,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0508678395553
+741,"$35,000 to $44,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0641977963194
+742,"$35,000 to $44,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00696364192134
+743,"$35,000 to $44,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.19586524039
+744,"$35,000 to $44,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.287740082297
+745,"$35,000 to $44,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.180816487085
+746,"$35,000 to $44,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.50780051327
+747,"$35,000 to $44,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.229355155296
+748,"$35,000 to $44,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.138584694633
+749,"$35,000 to $44,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.186116091539
+750,"$35,000 to $44,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.361765249546
+751,"$35,000 to $44,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.829966115588
+752,"$35,000 to $44,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0323631724115
+753,"$35,000 to $44,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.18719333161
+754,"$35,000 to $44,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.350494038346
+755,"$35,000 to $44,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.358378096456
+756,"$35,000 to $44,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0217957640886
+757,"$35,000 to $44,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.342422824856
+758,"$35,000 to $44,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.599578252021
+759,"$35,000 to $44,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.426226597702
+760,"$35,000 to $44,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0199720950869
+761,"$35,000 to $44,999",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.00535747177761
+762,"$35,000 to $44,999",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000478728833797
+763,"$35,000 to $44,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0419961172682
+764,"$35,000 to $44,999",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.112974569673
+765,"$35,000 to $44,999",4-or-more-person household,Family households,1 vehicle available,1 worker,2.0,30.1792049578
+766,"$35,000 to $44,999",4-or-more-person household,Family households,1 vehicle available,2 workers,1.0,34.9097139493
+767,"$35,000 to $44,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.00805444097926
+768,"$35,000 to $44,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0544121142749
+769,"$35,000 to $44,999",4-or-more-person household,Family households,2 vehicles available,1 worker,1.0,15.5318681473
+770,"$35,000 to $44,999",4-or-more-person household,Family households,2 vehicles available,2 workers,4.0,99.4809658394
+771,"$35,000 to $44,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0291465569377
+772,"$35,000 to $44,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.012706660286
+773,"$35,000 to $44,999",4-or-more-person household,Family households,3 vehicles available,1 worker,3.0,46.8652998338
+774,"$35,000 to $44,999",4-or-more-person household,Family households,3 vehicles available,2 workers,3.0,72.2861417025
+775,"$35,000 to $44,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0125854386069
+776,"$35,000 to $44,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00855760882855
+777,"$35,000 to $44,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0285760684222
+778,"$35,000 to $44,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0412191494914
+779,"$35,000 to $44,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,2.0,29.9362529745
+780,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+781,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+782,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+783,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+784,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+785,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+786,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+787,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+788,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+789,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+790,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+791,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+792,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+793,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+794,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+795,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+796,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+797,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+798,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+799,"$35,000 to $44,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+800,"$45,000 to $59,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+801,"$45,000 to $59,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+802,"$45,000 to $59,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+803,"$45,000 to $59,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+804,"$45,000 to $59,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+805,"$45,000 to $59,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+806,"$45,000 to $59,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+807,"$45,000 to $59,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+808,"$45,000 to $59,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+809,"$45,000 to $59,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+810,"$45,000 to $59,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+811,"$45,000 to $59,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+812,"$45,000 to $59,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+813,"$45,000 to $59,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+814,"$45,000 to $59,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+815,"$45,000 to $59,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+816,"$45,000 to $59,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+817,"$45,000 to $59,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+818,"$45,000 to $59,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+819,"$45,000 to $59,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+820,"$45,000 to $59,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,18.6025280347
+821,"$45,000 to $59,999",1-person household,Nonfamily households,No vehicle available,1 worker,1.0,3.06862516508
+822,"$45,000 to $59,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+823,"$45,000 to $59,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+824,"$45,000 to $59,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,105.227448117
+825,"$45,000 to $59,999",1-person household,Nonfamily households,1 vehicle available,1 worker,7.0,60.5006149803
+826,"$45,000 to $59,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+827,"$45,000 to $59,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+828,"$45,000 to $59,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,50.6808563058
+829,"$45,000 to $59,999",1-person household,Nonfamily households,2 vehicles available,1 worker,9.0,80.0663728946
+830,"$45,000 to $59,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+831,"$45,000 to $59,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+832,"$45,000 to $59,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,11.8353133795
+833,"$45,000 to $59,999",1-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.00894775523534
+834,"$45,000 to $59,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+835,"$45,000 to $59,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+836,"$45,000 to $59,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,7.97077910206
+837,"$45,000 to $59,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0163676536843
+838,"$45,000 to $59,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+839,"$45,000 to $59,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+840,"$45,000 to $59,999",2-person household,Family households,No vehicle available,No workers,0.0,0.00772233824928
+841,"$45,000 to $59,999",2-person household,Family households,No vehicle available,1 worker,0.0,0.00491842590514
+842,"$45,000 to $59,999",2-person household,Family households,No vehicle available,2 workers,0.0,0.000349771898424
+843,"$45,000 to $59,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+844,"$45,000 to $59,999",2-person household,Family households,1 vehicle available,No workers,0.0,0.0436823396235
+845,"$45,000 to $59,999",2-person household,Family households,1 vehicle available,1 worker,1.0,13.8530065694
+846,"$45,000 to $59,999",2-person household,Family households,1 vehicle available,2 workers,1.0,25.5059567326
+847,"$45,000 to $59,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+848,"$45,000 to $59,999",2-person household,Family households,2 vehicles available,No workers,6.0,126.232751084
+849,"$45,000 to $59,999",2-person household,Family households,2 vehicles available,1 worker,10.0,142.590284787
+850,"$45,000 to $59,999",2-person household,Family households,2 vehicles available,2 workers,5.0,90.854268174
+851,"$45,000 to $59,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+852,"$45,000 to $59,999",2-person household,Family households,3 vehicles available,No workers,0.0,0.00491311143476
+853,"$45,000 to $59,999",2-person household,Family households,3 vehicles available,1 worker,1.0,14.3415597458
+854,"$45,000 to $59,999",2-person household,Family households,3 vehicles available,2 workers,1.0,17.6047198526
+855,"$45,000 to $59,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+856,"$45,000 to $59,999",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00330885416335
+857,"$45,000 to $59,999",2-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0262342539595
+858,"$45,000 to $59,999",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0301157965663
+859,"$45,000 to $59,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+860,"$45,000 to $59,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.938690705215
+861,"$45,000 to $59,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.597860457857
+862,"$45,000 to $59,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0425166082341
+863,"$45,000 to $59,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+864,"$45,000 to $59,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,5.30981742356
+865,"$45,000 to $59,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.68390558484
+866,"$45,000 to $59,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,3.10038277781
+867,"$45,000 to $59,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+868,"$45,000 to $59,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.55737546305
+869,"$45,000 to $59,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.73325967684
+870,"$45,000 to $59,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,2.20876253567
+871,"$45,000 to $59,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+872,"$45,000 to $59,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.597214456117
+873,"$45,000 to $59,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.74329178509
+874,"$45,000 to $59,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,2.139946006
+875,"$45,000 to $59,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+876,"$45,000 to $59,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.402208573076
+877,"$45,000 to $59,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,3.18891112447
+878,"$45,000 to $59,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,3.66073298065
+879,"$45,000 to $59,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+880,"$45,000 to $59,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00270719757915
+881,"$45,000 to $59,999",3-person household,Family households,No vehicle available,1 worker,0.0,0.0034166208021
+882,"$45,000 to $59,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000370606550549
+883,"$45,000 to $59,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0636442104102
+884,"$45,000 to $59,999",3-person household,Family households,1 vehicle available,No workers,0.0,0.0153135902965
+885,"$45,000 to $59,999",3-person household,Family households,1 vehicle available,1 worker,1.0,9.62309310527
+886,"$45,000 to $59,999",3-person household,Family households,1 vehicle available,2 workers,0.0,0.0270252547038
+887,"$45,000 to $59,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0122063316746
+888,"$45,000 to $59,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.00737550784735
+889,"$45,000 to $59,999",3-person household,Family households,2 vehicles available,1 worker,1.0,9.90513921685
+890,"$45,000 to $59,999",3-person household,Family households,2 vehicles available,2 workers,1.0,19.2532259351
+891,"$45,000 to $59,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0441709787271
+892,"$45,000 to $59,999",3-person household,Family households,3 vehicles available,No workers,0.0,0.0017223751347
+893,"$45,000 to $59,999",3-person household,Family households,3 vehicles available,1 worker,1.0,9.96247016971
+894,"$45,000 to $59,999",3-person household,Family households,3 vehicles available,2 workers,1.0,18.6533696027
+895,"$45,000 to $59,999",3-person household,Family households,3 vehicles available,3 or more workers,2.0,38.1459218094
+896,"$45,000 to $59,999",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.00115997534576
+897,"$45,000 to $59,999",3-person household,Family households,4 or more vehicles available,1 worker,1.0,18.2238178503
+898,"$45,000 to $59,999",3-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0319096860919
+899,"$45,000 to $59,999",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0226838730238
+900,"$45,000 to $59,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.056933004428
+901,"$45,000 to $59,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0718523423458
+902,"$45,000 to $59,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00779394328142
+903,"$45,000 to $59,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.3384527753
+904,"$45,000 to $59,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.32204842043
+905,"$45,000 to $59,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.202375920617
+906,"$45,000 to $59,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.568347488771
+907,"$45,000 to $59,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.256702037794
+908,"$45,000 to $59,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.155108671848
+909,"$45,000 to $59,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.208307416953
+910,"$45,000 to $59,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.404899888306
+911,"$45,000 to $59,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.928926114159
+912,"$45,000 to $59,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0362219558431
+913,"$45,000 to $59,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.209513100431
+914,"$45,000 to $59,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.392284767971
+915,"$45,000 to $59,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.401108872143
+916,"$45,000 to $59,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.024394555464
+917,"$45,000 to $59,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.383251193174
+918,"$45,000 to $59,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.671068234382
+919,"$45,000 to $59,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.477047206769
+920,"$45,000 to $59,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.0223534435108
+921,"$45,000 to $59,999",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.00599626339754
+922,"$45,000 to $59,999",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000535809483018
+923,"$45,000 to $59,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0470034731431
+924,"$45,000 to $59,999",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.126444954841
+925,"$45,000 to $59,999",4-or-more-person household,Family households,1 vehicle available,1 worker,1.0,16.8887928455
+926,"$45,000 to $59,999",4-or-more-person household,Family households,1 vehicle available,2 workers,2.0,78.1442623169
+927,"$45,000 to $59,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,2.0,18.029604872
+928,"$45,000 to $59,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0608998764254
+929,"$45,000 to $59,999",4-or-more-person household,Family households,2 vehicles available,1 worker,2.0,34.7675830441
+930,"$45,000 to $59,999",4-or-more-person household,Family households,2 vehicles available,2 workers,6.0,167.013686392
+931,"$45,000 to $59,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,1.0,32.6218111423
+932,"$45,000 to $59,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0142217234436
+933,"$45,000 to $59,999",4-or-more-person household,Family households,3 vehicles available,1 worker,1.0,17.4844089198
+934,"$45,000 to $59,999",4-or-more-person household,Family households,3 vehicles available,2 workers,1.0,26.9683639119
+935,"$45,000 to $59,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0140860480453
+936,"$45,000 to $59,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00957796489074
+937,"$45,000 to $59,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0319833011238
+938,"$45,000 to $59,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0461338645601
+939,"$45,000 to $59,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,1.0,16.752832812
+940,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+941,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+942,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+943,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+944,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+945,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+946,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+947,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+948,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+949,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+950,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+951,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+952,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+953,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+954,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+955,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+956,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+957,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+958,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+959,"$45,000 to $59,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+960,"$60,000 to $99,999",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+961,"$60,000 to $99,999",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+962,"$60,000 to $99,999",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+963,"$60,000 to $99,999",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+964,"$60,000 to $99,999",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+965,"$60,000 to $99,999",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+966,"$60,000 to $99,999",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+967,"$60,000 to $99,999",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+968,"$60,000 to $99,999",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+969,"$60,000 to $99,999",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+970,"$60,000 to $99,999",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+971,"$60,000 to $99,999",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+972,"$60,000 to $99,999",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+973,"$60,000 to $99,999",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+974,"$60,000 to $99,999",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+975,"$60,000 to $99,999",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+976,"$60,000 to $99,999",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+977,"$60,000 to $99,999",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+978,"$60,000 to $99,999",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+979,"$60,000 to $99,999",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+980,"$60,000 to $99,999",1-person household,Nonfamily households,No vehicle available,No workers,0.0,16.9983648672
+981,"$60,000 to $99,999",1-person household,Nonfamily households,No vehicle available,1 worker,1.0,2.80400653607
+982,"$60,000 to $99,999",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+983,"$60,000 to $99,999",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+984,"$60,000 to $99,999",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,96.1533052819
+985,"$60,000 to $99,999",1-person household,Nonfamily households,1 vehicle available,1 worker,13.0,102.669224317
+986,"$60,000 to $99,999",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+987,"$60,000 to $99,999",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+988,"$60,000 to $99,999",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,46.3104630544
+989,"$60,000 to $99,999",1-person household,Nonfamily households,2 vehicles available,1 worker,6.0,48.7746402897
+990,"$60,000 to $99,999",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+991,"$60,000 to $99,999",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+992,"$60,000 to $99,999",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,10.8147115686
+993,"$60,000 to $99,999",1-person household,Nonfamily households,3 vehicles available,1 worker,2.0,16.3523159808
+994,"$60,000 to $99,999",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+995,"$60,000 to $99,999",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+996,"$60,000 to $99,999",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,7.28343003704
+997,"$60,000 to $99,999",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0149562118023
+998,"$60,000 to $99,999",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+999,"$60,000 to $99,999",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+1000,"$60,000 to $99,999",2-person household,Family households,No vehicle available,No workers,0.0,0.00705641313613
+1001,"$60,000 to $99,999",2-person household,Family households,No vehicle available,1 worker,0.0,0.00449429227855
+1002,"$60,000 to $99,999",2-person household,Family households,No vehicle available,2 workers,0.0,0.000319609804572
+1003,"$60,000 to $99,999",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+1004,"$60,000 to $99,999",2-person household,Family households,1 vehicle available,No workers,2.0,79.8309074755
+1005,"$60,000 to $99,999",2-person household,Family households,1 vehicle available,1 worker,1.0,12.6584117887
+1006,"$60,000 to $99,999",2-person household,Family households,1 vehicle available,2 workers,3.0,69.9194579392
+1007,"$60,000 to $99,999",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+1008,"$60,000 to $99,999",2-person household,Family households,2 vehicles available,No workers,7.0,134.571785977
+1009,"$60,000 to $99,999",2-person household,Family households,2 vehicles available,1 worker,18.0,234.529577328
+1010,"$60,000 to $99,999",2-person household,Family households,2 vehicles available,2 workers,13.0,215.850899025
+1011,"$60,000 to $99,999",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+1012,"$60,000 to $99,999",2-person household,Family households,3 vehicles available,No workers,0.0,0.00448943609415
+1013,"$60,000 to $99,999",2-person household,Family households,3 vehicles available,1 worker,6.0,78.6290115629
+1014,"$60,000 to $99,999",2-person household,Family households,3 vehicles available,2 workers,4.0,64.3464051511
+1015,"$60,000 to $99,999",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+1016,"$60,000 to $99,999",2-person household,Family households,4 or more vehicles available,No workers,1.0,3.02351972034
+1017,"$60,000 to $99,999",2-person household,Family households,4 or more vehicles available,1 worker,1.0,23.9719795068
+1018,"$60,000 to $99,999",2-person household,Family households,4 or more vehicles available,2 workers,1.0,27.5188026781
+1019,"$60,000 to $99,999",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+1020,"$60,000 to $99,999",2-person household,Nonfamily households,No vehicle available,No workers,0.0,0.857744016025
+1021,"$60,000 to $99,999",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.546304791659
+1022,"$60,000 to $99,999",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0388502475756
+1023,"$60,000 to $99,999",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+1024,"$60,000 to $99,999",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,4.85193269299
+1025,"$60,000 to $99,999",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.53869632555
+1026,"$60,000 to $99,999",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,2.83302557518
+1027,"$60,000 to $99,999",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+1028,"$60,000 to $99,999",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.33684374201
+1029,"$60,000 to $99,999",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.58379443598
+1030,"$60,000 to $99,999",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,2.01829296622
+1031,"$60,000 to $99,999",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+1032,"$60,000 to $99,999",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.545714496982
+1033,"$60,000 to $99,999",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,1.59296143931
+1034,"$60,000 to $99,999",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,1.9554107344
+1035,"$60,000 to $99,999",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+1036,"$60,000 to $99,999",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.367524675415
+1037,"$60,000 to $99,999",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,2.91391980282
+1038,"$60,000 to $99,999",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,3.34505475656
+1039,"$60,000 to $99,999",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+1040,"$60,000 to $99,999",3-person household,Family households,No vehicle available,No workers,0.0,0.00247374615601
+1041,"$60,000 to $99,999",3-person household,Family households,No vehicle available,1 worker,0.0,0.00312199325267
+1042,"$60,000 to $99,999",3-person household,Family households,No vehicle available,2 workers,0.0,0.000338647809409
+1043,"$60,000 to $99,999",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0581559403227
+1044,"$60,000 to $99,999",3-person household,Family households,1 vehicle available,No workers,0.0,0.0139930441067
+1045,"$60,000 to $99,999",3-person household,Family households,1 vehicle available,1 worker,0.0,0.00879325903713
+1046,"$60,000 to $99,999",3-person household,Family households,1 vehicle available,2 workers,0.0,0.0246947694005
+1047,"$60,000 to $99,999",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0111537356164
+1048,"$60,000 to $99,999",3-person household,Family households,2 vehicles available,No workers,0.0,0.00673949117219
+1049,"$60,000 to $99,999",3-person household,Family households,2 vehicles available,1 worker,5.0,45.2549164701
+1050,"$60,000 to $99,999",3-person household,Family households,2 vehicles available,2 workers,6.0,105.557704428
+1051,"$60,000 to $99,999",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0403619557269
+1052,"$60,000 to $99,999",3-person household,Family households,3 vehicles available,No workers,1.0,1.57384850721
+1053,"$60,000 to $99,999",3-person household,Family households,3 vehicles available,1 worker,1.0,9.10337039178
+1054,"$60,000 to $99,999",3-person household,Family households,3 vehicles available,2 workers,2.0,34.0896443664
+1055,"$60,000 to $99,999",3-person household,Family households,3 vehicles available,3 or more workers,3.0,52.2846918361
+1056,"$60,000 to $99,999",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.00105994648294
+1057,"$60,000 to $99,999",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0166523122296
+1058,"$60,000 to $99,999",3-person household,Family households,4 or more vehicles available,2 workers,2.0,58.315997264
+1059,"$60,000 to $99,999",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0207277607398
+1060,"$60,000 to $99,999",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.052023465867
+1061,"$60,000 to $99,999",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0656562554014
+1062,"$60,000 to $99,999",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00712184340777
+1063,"$60,000 to $99,999",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.22303315924
+1064,"$60,000 to $99,999",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.294277022197
+1065,"$60,000 to $99,999",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.184924314189
+1066,"$60,000 to $99,999",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.519336832471
+1067,"$60,000 to $99,999",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.234565694106
+1068,"$60,000 to $99,999",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.141733090966
+1069,"$60,000 to $99,999",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.190344316176
+1070,"$60,000 to $99,999",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.369983908815
+1071,"$60,000 to $99,999",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.848821460917
+1072,"$60,000 to $99,999",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0330984057906
+1073,"$60,000 to $99,999",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.191446029214
+1074,"$60,000 to $99,999",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.35845663586
+1075,"$60,000 to $99,999",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.366519805665
+1076,"$60,000 to $99,999",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0222909248558
+1077,"$60,000 to $99,999",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.350202058839
+1078,"$60,000 to $99,999",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.613199597256
+1079,"$60,000 to $99,999",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.435909703478
+1080,"$60,000 to $99,999",4-or-more-person household,Family households,No vehicle available,No workers,0.0,0.020425825357
+1081,"$60,000 to $99,999",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.00547918395183
+1082,"$60,000 to $99,999",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000489604696451
+1083,"$60,000 to $99,999",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.042950193921
+1084,"$60,000 to $99,999",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.115541149783
+1085,"$60,000 to $99,999",4-or-more-person household,Family households,1 vehicle available,1 worker,2.0,30.8648225036
+1086,"$60,000 to $99,999",4-or-more-person household,Family households,1 vehicle available,2 workers,1.0,35.7028001964
+1087,"$60,000 to $99,999",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.00823742346884
+1088,"$60,000 to $99,999",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0556482601675
+1089,"$60,000 to $99,999",4-or-more-person household,Family households,2 vehicles available,1 worker,5.0,79.4236220249
+1090,"$60,000 to $99,999",4-or-more-person household,Family households,2 vehicles available,2 workers,6.0,152.611493116
+1091,"$60,000 to $99,999",4-or-more-person household,Family households,2 vehicles available,3 or more workers,3.0,89.4261437035
+1092,"$60,000 to $99,999",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0129953328754
+1093,"$60,000 to $99,999",4-or-more-person household,Family households,3 vehicles available,1 worker,2.0,31.9533304024
+1094,"$60,000 to $99,999",4-or-more-person household,Family households,3 vehicles available,2 workers,7.0,172.49949155
+1095,"$60,000 to $99,999",4-or-more-person household,Family households,3 vehicles available,3 or more workers,3.0,38.6140717698
+1096,"$60,000 to $99,999",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.00875202239149
+1097,"$60,000 to $99,999",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0292252655739
+1098,"$60,000 to $99,999",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0421555748264
+1099,"$60,000 to $99,999",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,6.0,91.8490532576
+1100,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+1101,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+1102,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+1103,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+1104,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+1105,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+1106,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+1107,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+1108,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+1109,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+1110,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+1111,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+1112,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+1113,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+1114,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+1115,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+1116,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+1117,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+1118,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+1119,"$60,000 to $99,999",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+1120,"Less than $15,000",1-person household,Family households,No vehicle available,No workers,0.0,0.0
+1121,"Less than $15,000",1-person household,Family households,No vehicle available,1 worker,0.0,0.0
+1122,"Less than $15,000",1-person household,Family households,No vehicle available,2 workers,0.0,0.0
+1123,"Less than $15,000",1-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+1124,"Less than $15,000",1-person household,Family households,1 vehicle available,No workers,0.0,0.0
+1125,"Less than $15,000",1-person household,Family households,1 vehicle available,1 worker,0.0,0.0
+1126,"Less than $15,000",1-person household,Family households,1 vehicle available,2 workers,0.0,0.0
+1127,"Less than $15,000",1-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+1128,"Less than $15,000",1-person household,Family households,2 vehicles available,No workers,0.0,0.0
+1129,"Less than $15,000",1-person household,Family households,2 vehicles available,1 worker,0.0,0.0
+1130,"Less than $15,000",1-person household,Family households,2 vehicles available,2 workers,0.0,0.0
+1131,"Less than $15,000",1-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+1132,"Less than $15,000",1-person household,Family households,3 vehicles available,No workers,0.0,0.0
+1133,"Less than $15,000",1-person household,Family households,3 vehicles available,1 worker,0.0,0.0
+1134,"Less than $15,000",1-person household,Family households,3 vehicles available,2 workers,0.0,0.0
+1135,"Less than $15,000",1-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+1136,"Less than $15,000",1-person household,Family households,4 or more vehicles available,No workers,0.0,0.0
+1137,"Less than $15,000",1-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0
+1138,"Less than $15,000",1-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0
+1139,"Less than $15,000",1-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+1140,"Less than $15,000",1-person household,Nonfamily households,No vehicle available,No workers,0.0,21.4094078784
+1141,"Less than $15,000",1-person household,Nonfamily households,No vehicle available,1 worker,15.0,52.9746126409
+1142,"Less than $15,000",1-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+1143,"Less than $15,000",1-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+1144,"Less than $15,000",1-person household,Nonfamily households,1 vehicle available,No workers,0.0,121.104903191
+1145,"Less than $15,000",1-person household,Nonfamily households,1 vehicle available,1 worker,23.0,228.782221993
+1146,"Less than $15,000",1-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+1147,"Less than $15,000",1-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+1148,"Less than $15,000",1-person household,Nonfamily households,2 vehicles available,No workers,0.0,58.3279392058
+1149,"Less than $15,000",1-person household,Nonfamily households,2 vehicles available,1 worker,4.0,40.9543771315
+1150,"Less than $15,000",1-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+1151,"Less than $15,000",1-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+1152,"Less than $15,000",1-person household,Nonfamily households,3 vehicles available,No workers,0.0,13.6211084342
+1153,"Less than $15,000",1-person household,Nonfamily households,3 vehicles available,1 worker,1.0,10.2978552739
+1154,"Less than $15,000",1-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+1155,"Less than $15,000",1-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+1156,"Less than $15,000",1-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,9.1734661325
+1157,"Less than $15,000",1-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0188373200184
+1158,"Less than $15,000",1-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+1159,"Less than $15,000",1-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+1160,"Less than $15,000",2-person household,Family households,No vehicle available,No workers,2.0,17.7750775643
+1161,"Less than $15,000",2-person household,Family households,No vehicle available,1 worker,0.0,0.00566055248656
+1162,"Less than $15,000",2-person household,Family households,No vehicle available,2 workers,0.0,0.000402547934551
+1163,"Less than $15,000",2-person household,Family households,No vehicle available,3 or more workers,0.0,0.0
+1164,"Less than $15,000",2-person household,Family households,1 vehicle available,No workers,4.0,201.093749052
+1165,"Less than $15,000",2-person household,Family households,1 vehicle available,1 worker,3.0,47.8297359532
+1166,"Less than $15,000",2-person household,Family households,1 vehicle available,2 workers,0.0,0.0293544742951
+1167,"Less than $15,000",2-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0
+1168,"Less than $15,000",2-person household,Family households,2 vehicles available,No workers,0.0,0.0242132722548
+1169,"Less than $15,000",2-person household,Family households,2 vehicles available,1 worker,1.0,16.4105306592
+1170,"Less than $15,000",2-person household,Family households,2 vehicles available,2 workers,1.0,20.9125994188
+1171,"Less than $15,000",2-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0
+1172,"Less than $15,000",2-person household,Family households,3 vehicles available,No workers,0.0,0.00565443613164
+1173,"Less than $15,000",2-person household,Family households,3 vehicles available,1 worker,0.0,0.0165055148224
+1174,"Less than $15,000",2-person household,Family households,3 vehicles available,2 workers,0.0,0.0202610434026
+1175,"Less than $15,000",2-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0
+1176,"Less than $15,000",2-person household,Family households,4 or more vehicles available,No workers,0.0,0.00380811727639
+1177,"Less than $15,000",2-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0301926621134
+1178,"Less than $15,000",2-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0346598790804
+1179,"Less than $15,000",2-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0
+1180,"Less than $15,000",2-person household,Nonfamily households,No vehicle available,No workers,0.0,1.08032693955
+1181,"Less than $15,000",2-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.688069835067
+1182,"Less than $15,000",2-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0489318121492
+1183,"Less than $15,000",2-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+1184,"Less than $15,000",2-person household,Nonfamily households,1 vehicle available,No workers,0.0,6.11099990115
+1185,"Less than $15,000",2-person household,Nonfamily households,1 vehicle available,1 worker,0.0,1.93798506458
+1186,"Less than $15,000",2-person household,Nonfamily households,1 vehicle available,2 workers,0.0,3.56819026671
+1187,"Less than $15,000",2-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+1188,"Less than $15,000",2-person household,Nonfamily households,2 vehicles available,No workers,0.0,2.94325020152
+1189,"Less than $15,000",2-person household,Nonfamily households,2 vehicles available,1 worker,0.0,1.99478604798
+1190,"Less than $15,000",2-person household,Nonfamily households,2 vehicles available,2 workers,0.0,2.54203611169
+1191,"Less than $15,000",2-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+1192,"Less than $15,000",2-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.687326360056
+1193,"Less than $15,000",2-person household,Nonfamily households,3 vehicles available,1 worker,0.0,2.00633187105
+1194,"Less than $15,000",2-person household,Nonfamily households,3 vehicles available,2 workers,0.0,2.46283606157
+1195,"Less than $15,000",2-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+1196,"Less than $15,000",2-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.462896622283
+1197,"Less than $15,000",2-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,3.67007639094
+1198,"Less than $15,000",2-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,4.21309003651
+1199,"Less than $15,000",2-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0
+1200,"Less than $15,000",3-person household,Family households,No vehicle available,No workers,0.0,0.00311567852882
+1201,"Less than $15,000",3-person household,Family households,No vehicle available,1 worker,0.0,0.0039321445011
+1202,"Less than $15,000",3-person household,Family households,No vehicle available,2 workers,1.0,0.426526265051
+1203,"Less than $15,000",3-person household,Family households,No vehicle available,3 or more workers,0.0,0.0732472950576
+1204,"Less than $15,000",3-person household,Family households,1 vehicle available,No workers,3.0,52.8726364711
+1205,"Less than $15,000",3-person household,Family households,1 vehicle available,1 worker,3.0,33.2252785684
+1206,"Less than $15,000",3-person household,Family households,1 vehicle available,2 workers,0.0,0.0311030145953
+1207,"Less than $15,000",3-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0140481085707
+1208,"Less than $15,000",3-person household,Family households,2 vehicles available,No workers,1.0,8.4883761777
+1209,"Less than $15,000",3-person household,Family households,2 vehicles available,1 worker,2.0,22.7993921247
+1210,"Less than $15,000",3-person household,Family households,2 vehicles available,2 workers,0.0,0.0221582876399
+1211,"Less than $15,000",3-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0508358056602
+1212,"Less than $15,000",3-person household,Family households,3 vehicles available,No workers,1.0,1.98225916981
+1213,"Less than $15,000",3-person household,Family households,3 vehicles available,1 worker,0.0,0.0114656775113
+1214,"Less than $15,000",3-person household,Family households,3 vehicles available,2 workers,0.0,0.0214679207787
+1215,"Less than $15,000",3-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0219508229579
+1216,"Less than $15,000",3-person household,Family households,4 or more vehicles available,No workers,0.0,0.00133500055799
+1217,"Less than $15,000",3-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0209735552465
+1218,"Less than $15,000",3-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0367244432337
+1219,"Less than $15,000",3-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0261065748119
+1220,"Less than $15,000",3-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0655234552675
+1221,"Less than $15,000",3-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0826939274831
+1222,"Less than $15,000",3-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.00896994808352
+1223,"Less than $15,000",3-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,1.54040791332
+1224,"Less than $15,000",3-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.37064134384
+1225,"Less than $15,000",3-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.232911818286
+1226,"Less than $15,000",3-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.654103742304
+1227,"Less than $15,000",3-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.295435040879
+1228,"Less than $15,000",3-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.178512555653
+1229,"Less than $15,000",3-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.239738300371
+1230,"Less than $15,000",3-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.465994022023
+1231,"Less than $15,000",3-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,1.06908899854
+1232,"Less than $15,000",3-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0416873784764
+1233,"Less than $15,000",3-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.241125905825
+1234,"Less than $15,000",3-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.451475443893
+1235,"Less than $15,000",3-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.461630990765
+1236,"Less than $15,000",3-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0280753770115
+1237,"Less than $15,000",3-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.441078820001
+1238,"Less than $15,000",3-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.772323714141
+1239,"Less than $15,000",3-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.549027433688
+1240,"Less than $15,000",4-or-more-person household,Family households,No vehicle available,No workers,1.0,25.7262877776
+1241,"Less than $15,000",4-or-more-person household,Family households,No vehicle available,1 worker,0.0,0.00690102165604
+1242,"Less than $15,000",4-or-more-person household,Family households,No vehicle available,2 workers,0.0,0.000616656174133
+1243,"Less than $15,000",4-or-more-person household,Family households,No vehicle available,3 or more workers,0.0,0.0540956866909
+1244,"Less than $15,000",4-or-more-person household,Family households,1 vehicle available,No workers,0.0,0.145523856075
+1245,"Less than $15,000",4-or-more-person household,Family households,1 vehicle available,1 worker,3.0,58.3112769291
+1246,"Less than $15,000",4-or-more-person household,Family households,1 vehicle available,2 workers,0.0,0.0449676082246
+1247,"Less than $15,000",4-or-more-person household,Family households,1 vehicle available,3 or more workers,0.0,0.0103750190262
+1248,"Less than $15,000",4-or-more-person household,Family households,2 vehicles available,No workers,0.0,0.0700888767219
+1249,"Less than $15,000",4-or-more-person household,Family households,2 vehicles available,1 worker,1.0,20.0067798568
+1250,"Less than $15,000",4-or-more-person household,Family households,2 vehicles available,2 workers,0.0,0.0320356470421
+1251,"Less than $15,000",4-or-more-person household,Family households,2 vehicles available,3 or more workers,0.0,0.0375440187042
+1252,"Less than $15,000",4-or-more-person household,Family households,3 vehicles available,No workers,0.0,0.0163675967788
+1253,"Less than $15,000",4-or-more-person household,Family households,3 vehicles available,1 worker,1.0,20.1225791129
+1254,"Less than $15,000",4-or-more-person household,Family households,3 vehicles available,2 workers,0.0,0.0310375397219
+1255,"Less than $15,000",4-or-more-person household,Family households,3 vehicles available,3 or more workers,0.0,0.0162114497252
+1256,"Less than $15,000",4-or-more-person household,Family households,4 or more vehicles available,No workers,0.0,0.0110231553802
+1257,"Less than $15,000",4-or-more-person household,Family households,4 or more vehicles available,1 worker,0.0,0.0368091658178
+1258,"Less than $15,000",4-or-more-person household,Family households,4 or more vehicles available,2 workers,0.0,0.0530948654685
+1259,"Less than $15,000",4-or-more-person household,Family households,4 or more vehicles available,3 or more workers,0.0,0.0192806176732
+1260,"Less than $15,000",4-or-more-person household,Nonfamily households,No vehicle available,No workers,0.0,0.0
+1261,"Less than $15,000",4-or-more-person household,Nonfamily households,No vehicle available,1 worker,0.0,0.0
+1262,"Less than $15,000",4-or-more-person household,Nonfamily households,No vehicle available,2 workers,0.0,0.0
+1263,"Less than $15,000",4-or-more-person household,Nonfamily households,No vehicle available,3 or more workers,0.0,0.0
+1264,"Less than $15,000",4-or-more-person household,Nonfamily households,1 vehicle available,No workers,0.0,0.0
+1265,"Less than $15,000",4-or-more-person household,Nonfamily households,1 vehicle available,1 worker,0.0,0.0
+1266,"Less than $15,000",4-or-more-person household,Nonfamily households,1 vehicle available,2 workers,0.0,0.0
+1267,"Less than $15,000",4-or-more-person household,Nonfamily households,1 vehicle available,3 or more workers,0.0,0.0
+1268,"Less than $15,000",4-or-more-person household,Nonfamily households,2 vehicles available,No workers,0.0,0.0
+1269,"Less than $15,000",4-or-more-person household,Nonfamily households,2 vehicles available,1 worker,0.0,0.0
+1270,"Less than $15,000",4-or-more-person household,Nonfamily households,2 vehicles available,2 workers,0.0,0.0
+1271,"Less than $15,000",4-or-more-person household,Nonfamily households,2 vehicles available,3 or more workers,0.0,0.0
+1272,"Less than $15,000",4-or-more-person household,Nonfamily households,3 vehicles available,No workers,0.0,0.0
+1273,"Less than $15,000",4-or-more-person household,Nonfamily households,3 vehicles available,1 worker,0.0,0.0
+1274,"Less than $15,000",4-or-more-person household,Nonfamily households,3 vehicles available,2 workers,0.0,0.0
+1275,"Less than $15,000",4-or-more-person household,Nonfamily households,3 vehicles available,3 or more workers,0.0,0.0
+1276,"Less than $15,000",4-or-more-person household,Nonfamily households,4 or more vehicles available,No workers,0.0,0.0
+1277,"Less than $15,000",4-or-more-person household,Nonfamily households,4 or more vehicles available,1 worker,0.0,0.0
+1278,"Less than $15,000",4-or-more-person household,Nonfamily households,4 or more vehicles available,2 workers,0.0,0.0
+1279,"Less than $15,000",4-or-more-person household,Nonfamily households,4 or more vehicles available,3 or more workers,0.0,0.0

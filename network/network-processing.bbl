@@ -1,0 +1,62 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global/}
+    \entry{karduni2016protocol}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=c17ea6ad17fc32bb8b090cedb640f58e}{%
+           family={Karduni},
+           familyi={K\bibinitperiod},
+           given={Alireza},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=4972a1145e2f2fbf37a363a8e518e710}{%
+           family={Kermanshah},
+           familyi={K\bibinitperiod},
+           given={Amirhassan},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=f4ef0fe5f4d7d7c623eaa233ada49f8a}{%
+           family={Derrible},
+           familyi={D\bibinitperiod},
+           given={Sybil},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{9eae8ce467275d182dfabf0006e7cf98}
+      \strng{fullhash}{c47b4342a318ca7c0ba8442e12692cf7}
+      \strng{authornamehash}{9eae8ce467275d182dfabf0006e7cf98}
+      \strng{authorfullhash}{c47b4342a318ca7c0ba8442e12692cf7}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific data}
+      \field{title}{A protocol to convert spatial polyline data to network formats and applications to world urban road networks}
+      \field{volume}{3}
+      \field{year}{2016}
+      \field{pages}{160046}
+      \range{pages}{1}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

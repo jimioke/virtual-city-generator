@@ -1,0 +1,144 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global/}
+    \entry{hoff2002latent}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=cc873c9caa29e095edbcd7ce899be8a7}{%
+           family={Hoff},
+           familyi={H\bibinitperiod},
+           given={Peter\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{uniquename=0,hash=0451cbcfdf7af3838441abe600b2a495}{%
+           family={Raftery},
+           familyi={R\bibinitperiod},
+           given={Adrian\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{uniquename=0,hash=072cbb79eed48e657d7dae2de236eb00}{%
+           family={Handcock},
+           familyi={H\bibinitperiod},
+           given={Mark\bibnamedelima S},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{0b653912b7512fa1f511f5f3c47ec1a9}
+      \strng{fullhash}{7ba705c6b689b0d2b55c5211e54c6cc8}
+      \strng{authornamehash}{0b653912b7512fa1f511f5f3c47ec1a9}
+      \strng{authorfullhash}{7ba705c6b689b0d2b55c5211e54c6cc8}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the american Statistical association}
+      \field{number}{460}
+      \field{title}{Latent space approaches to social network analysis}
+      \field{volume}{97}
+      \field{year}{2002}
+      \field{pages}{1090\bibrangedash 1098}
+      \range{pages}{9}
+    \endentry
+    \entry{weber2009interactive}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=50102e50b97af5666d51ad22521ceb57}{%
+           family={Weber},
+           familyi={W\bibinitperiod},
+           given={Basil},
+           giveni={B\bibinitperiod}}}%
+        {{uniquename=0,hash=f9c718bfbf4134b53342f6aa37902cf6}{%
+           family={M\x{fffd}\x{fffd}ller},
+           familyi={M\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+        {{uniquename=0,hash=3aeeab76494ab92e6e09421085e90833}{%
+           family={Wonka},
+           familyi={W\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{uniquename=0,hash=89835485884945e38712de8162277435}{%
+           family={Gross},
+           familyi={G\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Publishing Ltd}%
+      }
+      \strng{namehash}{0a2c3067c3414b336e64ad91592d9197}
+      \strng{fullhash}{9753742f9767b0a33da4beb02d497dde}
+      \strng{authornamehash}{0a2c3067c3414b336e64ad91592d9197}
+      \strng{authorfullhash}{9753742f9767b0a33da4beb02d497dde}
+      \field{sortinit}{W}
+      \field{sortinithash}{6d25b3eefe5aa2147d1f339686808918}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1467-8659}
+      \field{journaltitle}{Computer Graphics Forum}
+      \field{number}{2}
+      \field{title}{Interactive Geometric Simulation of 4D Cities}
+      \field{volume}{28}
+      \field{year}{2009}
+      \field{pages}{481\bibrangedash 492}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1111/j.1467-8659.2009.01387.x
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1111/j.1467-8659.2009.01387.x
+      \endverb
+      \keyw{Computer Graphics [I.3.5]: Computational Geometry and Object Modeling\x{fffd}\x{fffd}\x{fffd}Computer Graphics [I.3.7]: Three-Dimensional Graphics and Realism\x{fffd}\x{fffd}\x{fffd}Simulation and Modeling [I.6.3]: Applications}
+    \endentry
+    \entry{zhou2015generating}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=e294cabf3673d814d1f4a5ce619a127a}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Elaine},
+           giveni={E\bibinitperiod}}}%
+        {{uniquename=0,hash=4ae82d4eb656066e31d3e6849bf7eb9e}{%
+           family={McGlaughlin},
+           familyi={M\bibinitperiod},
+           given={Alec},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=8739a96edc0395dd4ce77c9cf0fcb3fd}{%
+           family={Turan},
+           familyi={T\bibinitperiod},
+           given={Deger},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{83dbf364e6f57e5f00c7a2c61be8a66b}
+      \strng{fullhash}{1d58edcd6e67e70e4682930505697091}
+      \strng{authornamehash}{83dbf364e6f57e5f00c7a2c61be8a66b}
+      \strng{authorfullhash}{1d58edcd6e67e70e4682930505697091}
+      \field{sortinit}{Z}
+      \field{sortinithash}{35589aa085e881766b72503e53fd4c97}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Generating Synthetic Road Networks from Various Reduced Dimension Representations}
+      \field{year}{2015}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

@@ -1,0 +1,218 @@
+\documentclass[11pt,twoside]{article}
+\usepackage{etex}
+\newcommand{\num}{6{} }
+
+\raggedbottom
+
+%geometry (sets margin) and other useful packages
+\usepackage{geometry}
+\geometry{top=1in, left=1in,right=1in,bottom=1in}
+ \usepackage{graphicx,booktabs,calc}
+
+%=== GRAPHICS PATH ===========
+%\graphicspath{{./140408-Images/}}
+% Marginpar width
+%Marginpar width
+\newcommand{\pts}[1]{\marginpar{ \small\hspace{0pt} \textit{[#1]} } } 
+\setlength{\marginparwidth}{.5in}
+%\reversemarginpar
+%\setlength{\marginparsep}{.02in}
+
+%% Fonts
+% \usepackage{fourier}
+% \usepackage[T1]{pbsi}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+%\usepackage{minted}
+
+\usepackage{rotating}
+%% Cite Title
+\usepackage[style=authoryear,natbib,maxcitenames=2,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{bib/references.bib}
+
+%%% Counters
+\usepackage{chngcntr,mathtools}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+
+\numberwithin{equation}{section}
+
+%% Captions
+\usepackage{caption}
+\captionsetup{
+  labelsep=quad,
+  justification=raggedright,
+  labelfont=sc
+}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+\usepackage{bm}
+\usepackage[mathscr]{eucal}
+\usepackage{colortbl}
+\usepackage{color}
+
+
+\usepackage{epstopdf,subfigure,hyperref,enumerate,polynom,polynomial}
+\usepackage{multirow,minitoc,fancybox,array,multicol}
+
+\definecolor{slblue}{rgb}{0,.3,.62}%
+%\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+%\fancyheadoffset{30pt}
+%\fancyfootoffset{30pt}
+\fancyhead[LO,RE]{\small  \it \nouppercase{\leftmark}}
+\fancyhead[RO,LE]{\small Page \thepage} 
+\fancyfoot[RO,LE]{\small }% PR \num S-2015} 
+\fancyfoot[LO,RE]{\small }%\scshape MODL} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{0.1pt} 
+\renewcommand{\footrulewidth}{0pt}
+%\setlength\voffset{-0.25in}
+%\setlength\textheight{648pt}
+
+
+\usepackage{paralist}
+
+
+%%% FORMAT PYTHON CODE
+\usepackage{listings}
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{8} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{8}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+
+% % Python style for highlighting
+% \newcommand\pythonstyle{\lstset{
+% language=Python,
+% basicstyle=\footnotesize\ttm,
+% otherkeywords={self},             % Add keywords here
+% keywordstyle=\footnotesize\ttb\color{deepblue},
+% emph={MyClass,__init__},          % Custom highlighting
+% emphstyle=\footnotesize\ttb\color{deepred},    % Custom highlighting style
+% stringstyle=\color{deepgreen},
+% frame=tb,                         % Any extra options here
+% showstringspaces=false            % 
+% }}
+
+% % Python environment
+% \lstnewenvironment{python}[1][]
+% {
+% \pythonstyle
+% \lstset{#1}
+% }
+% {}
+
+% % Python for external files
+% \newcommand\pythonexternal[2][]{{
+% \pythonstyle
+% \lstinputlisting[#1]{#2}}}
+
+% % Python for inline
+% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+\newcommand{\osn}{\oldstylenums}
+\newcommand{\dg}{^{\circ}}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\pt}{\phantom}
+\newcommand{\tf}{\therefore}
+\newcommand{\?}{\stackrel{?}{=}}
+\newcommand{\fr}{\frac}
+\newcommand{\dfr}{\dfrac}
+\newcommand{\ul}{\underline}
+\newcommand{\tn}{\tabularnewline}
+\newcommand{\nl}{\newline}
+\newcommand\relph[1]{\mathrel{\phantom{#1}}}
+\newcommand{\cm}{\checkmark}
+\newcommand{\ol}{\overline}
+\newcommand{\rd}{\color{red}}
+\newcommand{\bl}{\color{blue}}
+\newcommand{\pl}{\color{purple}}
+\newcommand{\og}{\color{orange!90!black}}
+\newcommand{\gr}{\color{green!40!black}}
+\newcommand{\nin}{\noindent}
+\newcommand{\la}{\lambda}
+\renewcommand{\th}{\theta}
+\newcommand{\al}{\alpha}
+\newcommand{\G}{\Gamma}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1pt] (char) {\small #1};}}
+
+\newcommand{\bc}{\begin{compactenum}[\quad--]}
+\newcommand{\ec}{\end{compactenum}}
+
+\newcommand{\p}{\partial}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pdd}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Virtual city generation}
+%\author{Jimi Oke}
+\date{\small\today}
+\maketitle
+
+\thispagestyle{empty}
+
+\tableofcontents
+\section{Introduction} 
+
+\subsection{OSM download}
+Currently we use MapZen to download the metro area network.
+We still have to isolate only relevant polygons however.
+
+\subsection{GIS2FE}
+We use this tool to convert \texttt{...\_osm\_line.shp} files to a network.
+This tool was developed by \cite{karduni2016protocol,}.
+
+
+\section{Public transit}
+
+\subsection{Bus network}
+The bus network is specified according to three tables:
+\texttt{pt\_bus\_stops}, \texttt{pt\_bus\_routes} and\\ \texttt{pt\_bus\_dispatch\_freq}.
+Details are as follows:
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{l l l l}\toprule
+    Table & column & data type & description \\
+    \multirow{3}{*}{\texttt{pt\_bus\_stops}} & \texttt{route\_id} & string & identify bus line \\
+          & \texttt{stop\_code} & string & identify bus stop \\
+          & \texttt{sequence\_no} & integer & list index\\ \midrule
+    \multirow{3}{*}{\texttt{pt\_bus\_routes}} & \texttt{route\_id} & string & identify bus line \\
+          & \texttt{section\_id} & integer & identify road segment \\
+          & \texttt{sequence\_no} & integer & list index\\ \midrule
+    \multirow{4}{*}{\texttt{pt\_bus\_dispatch\_freq}} & \texttt{frequency\_id} & string & \\
+          & \texttt{route\_id} & string & \\
+          & \texttt{start\_time} & string & format HH:MM:SS \\
+          & \texttt{end\_time} & string & format HH:MM:SS\\
+          & \texttt{headway\_sec} & integer & length of to dispatch next bus (seconds) \\ \bottomrule
+  \end{tabular}
+  \caption{Data required for bus network in SimMobility}
+  \label{tab:bus}
+\end{table}
+
+\printbibliography
+
+\end{document}

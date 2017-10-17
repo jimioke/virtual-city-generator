@@ -1,0 +1,432 @@
+\documentclass[11pt,twoside]{article}
+\usepackage{etex}
+\newcommand{\num}{6{} }
+
+\raggedbottom
+
+%geometry (sets margin) and other useful packages
+\usepackage{geometry}
+\geometry{top=1in, left=1in,right=1in,bottom=1in}
+ \usepackage{graphicx,booktabs,calc}
+
+%=== GRAPHICS PATH ===========
+%\graphicspath{{./140408-Images/}}
+% Marginpar width
+%Marginpar width
+\newcommand{\pts}[1]{\marginpar{ \small\hspace{0pt} \textit{[#1]} } } 
+\setlength{\marginparwidth}{.5in}
+%\reversemarginpar
+%\setlength{\marginparsep}{.02in}
+
+%% Fonts
+% \usepackage{fourier}
+% \usepackage[T1]{pbsi}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+
+\usepackage{rotating}
+%% Cite Title
+\usepackage[style=authoryear,backend=biber,natbib,maxcitenames=2,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{bib/references.bib}
+
+%%% Counters
+\usepackage{chngcntr,mathtools}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+
+\numberwithin{equation}{section}
+
+%% Captions
+\usepackage{caption}
+\captionsetup{
+  labelsep=quad,
+  justification=raggedright,
+  labelfont=sc
+}
+
+%AMS-TeX packages
+\usepackage{amssymb,amsmath,amsthm} 
+\usepackage{bm}
+\usepackage[mathscr]{eucal}
+\usepackage{colortbl}
+\usepackage{color}
+
+
+\usepackage{epstopdf,subfigure,hyperref,enumerate,polynom,polynomial}
+\usepackage{multirow,minitoc,fancybox,array,multicol}
+
+\definecolor{slblue}{rgb}{0,.3,.62}
+\hypersetup{
+    colorlinks,%
+    citecolor=blue,%
+    filecolor=blue,%
+    linkcolor=blue,
+    urlcolor=slblue
+}
+
+%%%TIKZ
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shadows,automata}
+\usetikzlibrary{patterns}
+%\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{decorations.text}
+% For Sagnac Picture
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing%
+}
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{question}{\@startsection 
+	{section}
+	{1}
+	{-.2em}
+	{-3.5ex plus -1ex minus -.2ex}
+    	{1.3ex plus .2ex}
+    	{\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+	\large\bf\noindent{Question }
+	}
+	}
+	%{\vspace{1ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}}
+	%\begin{center}\large\bf \ldots\ldots\ldots\end{center}}
+\makeatother
+
+%
+%Fancy-header package to modify header/page numbering 
+%
+%\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+%\fancyheadoffset{30pt}
+%\fancyfootoffset{30pt}
+\fancyhead[LO,RE]{\small  \it \nouppercase{\leftmark}}
+\fancyhead[RO,LE]{\small Page \thepage} 
+\fancyfoot[RO,LE]{\small }% PR \num S-2015} 
+\fancyfoot[LO,RE]{\small }%\scshape MODL} 
+\cfoot{} 
+\renewcommand{\headrulewidth}{0.1pt} 
+\renewcommand{\footrulewidth}{0pt}
+%\setlength\voffset{-0.25in}
+%\setlength\textheight{648pt}
+
+
+\usepackage{paralist}
+
+
+%%% FORMAT PYTHON CODE
+\usepackage{listings}
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{8} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{8}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+
+% % Python style for highlighting
+% \newcommand\pythonstyle{\lstset{
+% language=Python,
+% basicstyle=\footnotesize\ttm,
+% otherkeywords={self},             % Add keywords here
+% keywordstyle=\footnotesize\ttb\color{deepblue},
+% emph={MyClass,__init__},          % Custom highlighting
+% emphstyle=\footnotesize\ttb\color{deepred},    % Custom highlighting style
+% stringstyle=\color{deepgreen},
+% frame=tb,                         % Any extra options here
+% showstringspaces=false            % 
+% }}
+
+% % Python environment
+% \lstnewenvironment{python}[1][]
+% {
+% \pythonstyle
+% \lstset{#1}
+% }
+% {}
+
+% % Python for external files
+% \newcommand\pythonexternal[2][]{{
+% \pythonstyle
+% \lstinputlisting[#1]{#2}}}
+
+% % Python for inline
+% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+\newcommand{\osn}{\oldstylenums}
+\newcommand{\dg}{^{\circ}}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\pt}{\phantom}
+\newcommand{\tf}{\therefore}
+\newcommand{\?}{\stackrel{?}{=}}
+\newcommand{\fr}{\frac}
+\newcommand{\dfr}{\dfrac}
+\newcommand{\ul}{\underline}
+\newcommand{\tn}{\tabularnewline}
+\newcommand{\nl}{\newline}
+\newcommand\relph[1]{\mathrel{\phantom{#1}}}
+\newcommand{\cm}{\checkmark}
+\newcommand{\ol}{\overline}
+\newcommand{\rd}{\color{red}}
+\newcommand{\bl}{\color{blue}}
+\newcommand{\pl}{\color{purple}}
+\newcommand{\og}{\color{orange!90!black}}
+\newcommand{\gr}{\color{green!40!black}}
+\newcommand{\nin}{\noindent}
+\newcommand{\la}{\lambda}
+\renewcommand{\th}{\theta}
+\newcommand{\al}{\alpha}
+\newcommand{\G}{\Gamma}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1pt] (char) {\small #1};}}
+
+\newcommand{\bc}{\begin{compactenum}[\quad--]}
+\newcommand{\ec}{\end{compactenum}}
+
+\newcommand{\p}{\partial}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pdd}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Memo: City Typologization }
+%\author{Jimi Oke}
+\date{\small\today}
+\maketitle
+
+\thispagestyle{empty}
+
+\tableofcontents
+\section{Objective}
+Our objective in collecting urban data and subsequently classifying cities is to
+enumerate typologies with distinct mobility, energy and emissions
+footprints. Furthermore, these typologies should readily produce canonical or
+representative cities to facilitate scenario analyses and also provide bases for
+simulating mobility outcomes where real data is infeasible to access.
+
+The indicators of interest will be broadly related to the following areas:
+economy, environment, geography and health. While some have been standardized,
+there will be many that are not. An initial step will therefore be to properly
+curate data from the disparate sources (global, regional, national and private).
+
+Relatively few efforts exist on urban typologization in the peer-reviewed
+literature. Many of the extant works are geared toward socioeconomics, but we
+note that the work done by \citet{priester2013diversity} is one of the most
+relevant for mobility.  Yet, based on the current and historic body of work,
+clear pathways to proceed are presented. The proposed steps in developing these
+typologies are:
+\begin{compactitem}
+\item dimensionality reduction to obtain and describe principal factors 
+\item hierarchical clustering (metric learning, fitness, validation)
+\item typology nomenclature and characterization, archetype selection
+\end{compactitem}
+
+
+
+
+\section{Relevant work in city typologization}
+\citet{harris1943functional} empirically classify US cities (metropolitan areas)
+based on certain functions, namely: manufacturing, diversification,
+transportation, tourism, wholesale, retail, education and mining. Some of the
+criteria for classifying where obvious (i.e.\ employment figures were used for
+the manufacturing, diversification, wholesale and retail). However, membership
+rules were arbitrarily chosen to produce the best resolution. While no
+clustering or factor analytical methods were used, this work provides valuable
+insight into the earliest methods and reasoning behind city
+typologies. References in \citep{harris1943functional} also point to the variety
+of empirical urban functional classifications performed around that time on US
+cities.
+
+Using trip OD data (obtained from cellphones) on a number of cities in Spain,
+\citet{louail2015uncovering} show that work trip patterns (either form home or
+random spots) correlate with the population size of a city. They develop an ICDR
+(integrated-convergent-divergent-random) OD footprint to characterize urban
+mobility. Based on ICDR, they cluster cities hierarchically; four clusters are
+generated, with size being the shared attribute among cluster members. They also
+apply sensitivity testing to verify the stability of the clustering. An
+interesting feature of their work is the grid-partitioning and experiments on
+grid resolution effects. Related work in city classification has been done by
+\citet{louf2014typology}. However, they focus on typologization of street
+patterns, while also introducing a novel method for representing urban road
+networks, namely: ``fingerprints.'' Using a distance measure that takes into
+account block size and topology, they perform hiearchical clustering to obtain
+four groups of city types based on street patterns. \citet{louf2014typology} do
+not justify their choice of 4 clusters, two of which are singletons, while
+another comprises 78\% of the 131 cities considered. As a limited example of
+city typologization \citet{ma2013world} discuss deterritorialization (transfer
+of resource control from the state to the private sector) within the context of
+the USA, China and Japan, only considering three city-types: market-oriented,
+state-oriented and the dual-role types. Their Markov model gives results on
+evolutionary patterns in intercity network behavior (based on air traffic
+flows). %limited example
+
+
+
+\citet{bruce1971developing} motivate the use of factor analysis (PCA) for
+correlation studies to condense the number of indicators for
+clustering. Following on \citet{hadden1965american}, whose work determined 8
+factors for US cities, they classify 83 US cities based on 6 factors with the
+highest component loadings: median income, median age, household size,
+population, wholesale businesses, manufacturing jobs. Via Ward's method of
+hierarchical clustering, the authors determine 13 city types, which is much
+larger number than usually obtained from cluster
+analyses. \citet{bruce1971developing} argue for the empirical determination of
+typologies for usefulness.
+
+The ``300 Cities'' study conducted by \citet{martin2008300} is another relevant
+effort. Carried out to aid IRS policy interventions, cities were classified
+largely according to socioeconomic factors. Using 5\%-sample data from the
+Public Use Microdata Sample (PUMS), \cite{martin2008300} transformed each city
+into a 15-dimensional agent via a binning algorithm.\footnote{Ultimately, this
+  is enhanced by a city-matching method to incorporate the effects of
+  information diffusion.} The 15 variables could be classified into household
+and financial/demographic segments. \cite{martin2008300} employed the Concor
+grouping technique (in ORA/SAS) and determined 8 characteristic groups based on
+sociodemographic factors, two of which, for example, are: (i) low-density,
+highly-educated, new taxpayers, not married, moved recently; (ii) population
+over 1.25 million, highly educated kids, large social network. An objective of
+their work, which we also share, is the detection of a ``canonical city'' to
+represent each cluster to allow for an ``economy of effort.'' They also show,
+critically, that regional consideration are inadequate for making policy
+decisions.
+
+Similar to the ``300 Cities'' exploration \citep{martin2008300}, the ``City 600''
+project conducted by the McKinsey Global Institute \citep{dobb2011urban} attempts
+to track the economic power of established and emerging global cities. Data were
+gathered for 2007 and then projected to 2025 for this study. Only four main
+indicators are considered: population (by age group), GDP (including per
+capita), and number of households (in 4 income segments). Thus, no factor
+analysis is involved. Also, rather than cluster, \citet{dobb2011urban} simply
+rank cities and make comparisons without attempting to typologize.
+
+
+In a major effort, \citet{priester2013diversity} analyze 41 megacities on a
+global scale to determine future mobility characteristics. With up to 59
+indicators, they reduce this to 13 distinct factors via factor analysis. Some of
+these include: congestion, taxi traffic, public transit usage, parking charges,
+among others. We note that they do not consider climate, weather, or economic
+factors. The seven typologies that emerge are: paratransit, auto, non-motorized,
+hybrid, traffic-saturated, transit and the singleton, Manila. The transit cities
+are found the advanced economies of East Asia, while the paratransit types are
+in the emerging economies of Africa and South America. The authors go into great
+detail in describing the typologies. \citet{priester2013diversity} hold that
+even though this work is based on data collected in 1995\footnote{The UITP
+  Millenium Cities Database for Sustainable Transport (Kenworthy and
+  Laube). \citet{zegras2005sustainable} also performed a factor analysis of the
+  cities in this same dataset.}, the group definitions are bound to be stable
+over the coming years although membership might change.
+
+\section{Methods}
+\subsection{Dimensionality reduction}
+A variety of indicators exist for urban data across various dimensions, e.g.\
+social, economic, cultural, demographic, and so forth. One of the main
+challenges in identifying typologies based on these indicators is the
+dimensionality of the available data. Factor analysis has been established as an
+effective means of condensing this dimensionality, effectively reducing the
+indicators to fundamental factors that can be further described based on the
+nature of the correlations of the indicators to the factors
+determined.\footnote{Principal component analysis (PCA), introduced by
+  \citet{pearson1901lines}, is the predominant approach in factor analysis.}
+\citet{price1942factor} demonstrated its use in analyzing 93 cities based on 15
+initial variables from which four factors were deduced. \citet{martin1987factor}
+further exhibited its use in typologizing cooperate customer behavior based on
+numerous survey indicators.
+
+
+
+
+\subsection{Brief overview of hierarchical clustering}
+Hierarchical clustering has been shown to be effective at pattern recognition,
+particularly because it is unsupervised and thus requires to predefined
+assumptions on the nature of the data \citep{jain1999clustering,
+  jain2010data}. Given a separation metric between elements in a
+multidimensional set, hiearchical clustering proceeds by iteratively
+agglomerating groups based on various criteria (e.g.\ Ward's method, method of
+averages (UPGMA), single linkage, among others). A corresponding dendrogram can
+be generated to indicate the structure of the grouping.
+
+While the clustering method of choice tends to be empirically chosen, a fitness
+test specifically for this purpose has been proposed by
+\citet{merigot2010goodness}. In addition to selecting the clustering method, the
+other important question is number of relevant or useful clusters in the
+dataset. Various heuristics have been used in the past. In particular, the
+``elbow/knee'' criterion \citep{tibshirani2001estimating,salvador2004determining}
+which indicates the number of clusters beyond which no meaningful improvement in
+group compactness can be observed has been used. However,
+\citet{tibshirani2001estimating} introduced an effective means for determining
+the optimal cluster number called the ``gap test,'' which has been established,
+although another interesting has since been proposed \citep{sugar2003finding}.
+
+Another issue that must be resolved in hierarchical clustering is the choice of
+separation metric. The Euclidean distance is commonly used, but other
+candidates, such as the Manhattan distance, can be appropriate. A learning
+approach has also been introduced \citep{xing2003distance} to infer a metric
+best suited to the data being analyzed. Regardless of which metric is chosen,
+obtaining a dissimilarity matrix is straightforward if data are available in all
+the dimensions being considered. While preprocessing heuristics can be employed
+to fill missing data before clustering, the dynamic time warping approach
+\citep{bellman1959adaptive, sakoe1978dynamic, giorgino2009computing} offers a
+robust matching algorithm for alignment to produce the optimal dissimilarity
+matrix.\footnote{Factor analysis should eliminate the prospect of missing data,
+  since each element should have a score for each factor, assuming all (or some)
+  of the contributing indicators are available for that element to begin with.}
+
+\section{Significance of contribution}
+The novelty of our contribution will lie in the fact that we will include
+geographical, health and environmental indicators in our analyses. These have
+never before been considered in the extant urban typologization
+literature. Consequently, our typologies will feature a ``robust'' mobility
+pattern identification, which is not only limited to transit conditions, but
+also energy use, emissions and health factors. Notably, we will also make use of
+the latest data as much as possible, given that most recent work in this area by
+\citet{priester2013diversity} uses baseyear data from 1995. 
+
+\subsection{Questions}
+Temporal considerations are yet to be determined. However, trends could be
+included in the clustering procedure and these could be a factor in the
+groupings. But there are other interesting questions that arise. For instance,
+is there enough data to observe the evolution of clusters over two or three
+periods? 
+
+
+% \section{}
+% \subsection{Pump price of gasoline}
+% Currently, it appears there is no readily available source of data on gas prices
+% by city on a global scale. However, there are multiple sources on current
+% gasoline prices on a country basis from
+% \href{http://www.globalpetrolprices.com/gasoline_prices/}{Global Petrol
+%   Prices}. Prices for cities in these countries Further disaggregation for
+% US/Canadian cities is available from
+% \href{http://then.gasbuddy.com/GB_Price_List.aspx}{GasBuddy.com}.
+
+
+%\subsection{Modeshare}
+
+\printbibliography
+
+\end{document}

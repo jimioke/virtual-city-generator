@@ -1,0 +1,17 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'proposal.blg'
+[27] biber:303> INFO - === Thu Apr 27, 2017, 11:22:20
+[44] Biber.pm:359> INFO - Reading 'proposal.bcf'
+[110] Biber.pm:835> INFO - Found 3 citekeys in bib section 0
+[122] Biber.pm:3670> INFO - Processing section 0
+[132] Biber.pm:3840> INFO - Looking for bibtex format file 'bib/references.bib' for section 0
+[141] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[158] bibtex.pm:1292> INFO - Found BibTeX data source 'bib/references.bib'
+[189] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[190] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[190] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
+[190] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[193] bbl.pm:608> INFO - Writing 'proposal.bbl' with encoding 'ascii'
+[196] Utils.pm:164> WARN - The entry 'weber2009interactive' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[196] bbl.pm:712> INFO - Output to proposal.bbl
+[196] Biber.pm:109> INFO - WARNINGS: 1
