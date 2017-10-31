@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import geopandas as gpd
+from shapely.geometry import Point
+from fiona.crs import from_epsg
 
 # To create
 # Base-attributes.csv
@@ -118,5 +120,18 @@ def createShortenedBase(shortOnOneSide=0.15):
     base = pd.DataFrame(base_rows, columns=[ 'x', 'y', 'shapeid', 'ID',  'seq'])
     base.to_csv(outputFolder + 'Base-shortened.csv', index=False)
 
-createBaseAttr()
-createShortenedBase()
+def change_coordinate():
+    oldCoord = 'epsg:4326'
+    newCoord = 26986
+    points = pd.read_csv(inputFolder + 'Santiago-Nodes.csv')
+    geometry = [Point(xy) for xy in zip(points.x, points.y)]
+    gdf = gpd.GeoDataFrame(points, crs={'init': oldCoord}, geometry=geometry)
+    gdf['geometry'] = gdf['geometry'].to_crs(epsg=newCoord)
+    gdf.crs = from_epsg(newCoord)
+    gdf['x'] = gdf['geometry'].x
+    gdf['y'] = gdf['geometry'].y
+    gdf[['x', 'y', 'id']].to_csv(outputFolder + 'Base-diff-coord.csv', index=False)
+
+change_coordinate()
+# createBaseAttr()
+# createShortenedBase()
