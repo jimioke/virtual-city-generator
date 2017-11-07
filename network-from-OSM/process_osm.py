@@ -26,19 +26,20 @@ def getNodeTypes(G):
     mergingNodes = []
     divergingNodes = []
     intersectionNodes = []
+    trafficLiNodes = []
     uniNodes = []
 
-    for node in G.nodes_iter():
-        point = G[node]
+    for node, data in G.nodes(data=True):
         try:
-            point["trafficLid"] != 0:
-            intersectionNodes.append(node)
+            if data["trafficLid"] != 0:
+                trafficLiNodes.append(node)
         except:
             pass
         outEdges = G.out_degree(node)
         inEdges = G.in_degree(node)
         neighbors = set(list(G.predecessors(node)) + list(G.successors(node)))
         num_neighbors = len(neighbors)
+        d = G.degree(node)
 
         if node in neighbors:
             # self-loop
@@ -55,13 +56,13 @@ def getNodeTypes(G):
             divergingNodes.append(node)
         else:
             intersectionNodes.append(node)
-
     return {'source':sourceNodes,
             'sink':sinkNodes,
-            'uniNodes':uniNodes,
+            'uniNodes':uniNodes, # to be removed
             'merging': mergingNodes,
             'diverging': divergingNodes,
-            'intersection':intersectionNodes}
+            'intersection':intersectionNodes,
+            'trafficL':trafficLiNodes}
 
 # Modified OSMnx method. We use our node_type function instead of is_endpoint.
 def get_paths_to_simplify(G, uniNodesSet):
@@ -85,7 +86,7 @@ def get_paths_to_simplify(G, uniNodesSet):
 
     # first identify all the nodes that are endpoints
     start_time = time.time()
-    endpoints = set([node for node in G.nodes() if not node in uniNodesSet)])
+    endpoints = set([node for node in G.nodes() if not node in uniNodesSet])
     paths_to_simplify = []
 
     # for each endpoint node, look at each of its successor nodes
@@ -106,10 +107,9 @@ def get_paths_to_simplify(G, uniNodesSet):
                     # RuntimeError is what Python <3.5 will throw, Py3.5+ throws
                     # RecursionError but it is a subtype of RuntimeError so it
                     # still gets handled
-
     return paths_to_simplify
 
-def build_linkGraph(G):
+def build_linkGraph(G, uniNodesSet):
     """
 
     Create a link graph removing all nodes that are not intersections or dead-ends.
@@ -130,11 +130,10 @@ def build_linkGraph(G):
     all_edges_to_add = []
 
     # construct a list of all the paths that need to be simplified
-    paths = get_paths_to_simplify(G)
+    paths = get_paths_to_simplify(G, uniNodesSet)
 
     start_time = time.time()
-    LINK_ID = 1
-    linkToPath = {}
+    endsToPath = {}
     for path in paths:
         # path is a link that ends at intermediate nodes, e.g, intersection, source or sink node.
         # Collect intermediate edge attributes
@@ -178,15 +177,13 @@ def build_linkGraph(G):
         # construct the geometry and sum the lengths of the segments
         edge_attributes['geometry'] = LineString([Point((G.nodes[node]['x'], G.nodes[node]['y'])) for node in path])
         edge_attributes['length'] = sum(edge_attributes['length'])
-        edge_attributes['id'] = LINK_ID
         # print(edge_attributes)
         # add the nodes and edges to their lists for processing at the end
         all_nodes_to_remove.extend(path[1:-1])
         all_edges_to_add.append({'origin':path[0],
                                  'destination':path[-1],
                                  'attr_dict':edge_attributes})
-        linkToPath[LINK_ID] = path
-        LINK_ID += 1
+        endsToPath[(path[0], path[-1])] = path
 
     # for each edge to add in the list we assembled, create a new edge between
     # the origin and destination
@@ -199,78 +196,120 @@ def build_linkGraph(G):
 
     msg = 'Link graph (from {:,} to {:,} nodes and from {:,} to {:,} edges) in {:,.2f} seconds'
     print(msg.format(len(list(G.nodes())), len(list(linkGraph.nodes())), len(list(G.edges())), len(list(linkGraph.edges())), time.time()-start_time))
-    return linkGraph, linkToPath
+    return linkGraph, endsToPath
 
-def constructNodesLinks(G):
+def constructNodesLinks(G, tempnodeDict):
     # TODO(complete the pseudo code)
     nodes = []
     links = []
     intersectionRadius = {'incoming':{}, 'outgoing':{}} # linkId: shortening
-    for node in G.nodes_iter():
-        point = G[node]
-        node = Node(id, type, tLightId, x, y)
-        nodes.append(node)
-        links = node.neighbors [in_edges() and out_edges()]
-        maxRadius = max[i in for i in links]
-        for link in incoming_edges:
-            intersectionRadius['incoming'][link] = maxRadius
-        for link in incoming_edges:
-            intersectionRadius['outgoing'][link] = maxRadius
-
-    for edge in G.edge_iter():
-        link = Link(id, roadtype, category, upnode, dnnode, name)
+    link_id = 1
+    endsToLinkId = {}
+    for upnode, dnnode, data in G.edges(data=True):
+        # TODO: road_type, category?
+        link = Link(link_id, "EXPRESSWAY", "ROUNDABOUT", upnode, dnnode, data['name'])
+        endsToLinkId[(upnode, dnnode)] = link_id
+        link_id += 1
         links.append(link)
-     return node, link, intersectionRadius
+
+    for nodeId, data in G.nodes(data=True):
+        nodeType = 0
+        trafficLid = 0
+
+        # TODO: use a set or get id to type dic (efficiency)
+        if nodeId in tempnodeDict['intersection']:
+            nodeType = 2
+        elif nodeId in tempnodeDict['diverging'] or tempnodeDict['merging']:
+            nodeType = 3
+        elif nodeId in tempnodeDict['source'] or tempnodeDict['sink']:
+            nodeType = 1
+
+        try:
+            if data["trafficLid"] != 0:
+                trafficLiNodes.append(node)
+        except:
+            pass
+        node = Node(nodeId, nodeType, trafficLid, data['x'], data['y'])
+        nodes.append(node)
+
+        # turning path radius for intersections
+        if nodeType == 2:
+            # TODO: handle missing width and lanes
+            in_edges = [(endsToLinkId[(u,v)], data['width'], data['lanes']) for u,v,data in G.in_edges(nodeId, data=True)]
+            out_edges = [(endsToLinkId[(u,v)], data['width'], data['lanes']) for u,v,data in G.in_edges(nodeId, data=True)]
+            # links = node.neighbors [in_edges() and out_edges()]
+            maxRadius = max([ float(edge[1]) * float(edge[2]) for edge in in_edges + out_edges])
+            for linkId, _, _ in in_edges:
+                intersectionRadius['incoming'][linkId] = maxRadius
+            for linkId, _, _ in out_edges:
+                intersectionRadius['outgoing'][linkId] = maxRadius
+
+    return node, link, intersectionRadius, endsToLinkId
+    # return None, None, None
 
 # shortening and merging
- def constructSegments(linkToPath, intersectionRadius):
-     # TODO(complete the pseudo code)
-     segments = []
-     segToLink = {}
-     linkToSeg = {}
-     for link, path in linkToPath:
-         linkToSeg[link] = []
-         if link['length'] < intersectionRadius['incoming'][link] + intersectionRadius['outgoing'][link]:
-             print('too short link')
-             pass
+def constructSegments(linkToPath, intersectionRadius):
+    segments = []
+    segToLink = {}
+    linkToSeg = {}
 
-         all_edges = zip(path[:-1], path[1:])
-         SEGMENT_SEQ_NUM = 0
-         accumulated_segment_len = 0
-         current_segment_len = 0
-         current_index = 0
-         segment_nodes = []
+    # for link, path in linkToPath.items():
+    #     linkToSeg[link] = []
+    #     if link['length'] < intersectionRadius['incoming'][link] + intersectionRadius['outgoing'][link]:
+    #         print('too short link')
+    #         pass
+    #     all_edges = zip(path[:-1], path[1:])
+    #     SEGMENT_SEQ_NUM = 0
+    #     accumulated_segment_len = 0
+    #     current_segment_len = 0
+    #     current_index = 0
+    #     segment_nodes = []
+    #
+    #     # Merge edges and create segments
+    #     while current_index < len(all_edges):
+    #         u, v = all_edges[current_index]
+    #         edge = G.edges[u, v, 0]
+    #         segment_nodes.append(v)
+    #         current_segment_len += edge['length']
+    #         accumulated_segment_len += edge['length']
+    #         if current_segment_len >= SEGMENT_LOWER_BOUND:
+    #             # Check if a set of the rest nodes is too short for a segment.
+    #             if edge_attributes['length'] - accumulated_segment_len < SEGMENT_LOWER_BOUND:
+    #                 # Combine all nodes into a segment.
+    #                 create_segment(segment_nodes.append(all_edges[current_index+1:]))
+    #                 break
+    #             else:
+    #                 create_segment(segment_nodes, SEGMENT_ID, LINK_ID, SEGMENT_SEQ_NUM)
+    #                 segment_nodes = []
+    #                 current_segment_len = 0
+    #                 SEGMENT_ID += 1
+    #                 SEGMENT_SEQ_NUM = 0
+    #         current_index += 1
+            # segment = Segment(id, link, sequence, num_lanes, capacity, speedlimit, tag, category, position, length)
+            # segments.append(segment)
+            # segToLink[id] = link
+            # linkToSeg[link].append(segment)
+        # return segments, segToLink, linkToSeg
+    return None, None, None
 
-         # Merge edges and create segments
-         while current_index < len(all_edges):
-             u, v = all_edges[current_index]
-             edge = G.edges[u, v, 0]
-             segment_nodes.append(v)
-             current_segment_len += edge['length']
-             accumulated_segment_len += edge['length']
-             if current_segment_len >= SEGMENT_LOWER_BOUND:
-                 # Check if a set of the rest nodes is too short for a segment.
-                 if edge_attributes['length'] - accumulated_segment_len < SEGMENT_LOWER_BOUND:
-                     # Combine all nodes into a segment.
-                     create_segment(segment_nodes.append(all_edges[current_index+1:]))
-                     break
-                 else:
-                     create_segment(segment_nodes, SEGMENT_ID, LINK_ID, SEGMENT_SEQ_NUM)
-                     segment_nodes = []
-                     current_segment_len = 0
-                     SEGMENT_ID += 1
-                     SEGMENT_SEQ_NUM = 0
-             current_index += 1
-             segment = Segment(id, link, sequence, num_lanes, capacity, speedlimit, tag, category, position, length)
-             segments.append(segment)
-             segToLink[id] = link
-             linkToSeg[link].append(segment)
-     return segments, segToLink, linkToSeg
+def getLinkToPath(endsToLinkId, endsToPath):
+    linkToPath = {}
+    for ends, linkId in endsToLinkId.items():
+        # has multiple nodes
+        if ends in endsToPath:
+            linkToPath[linkId] = endsToPath[ends]
+        # else:
+        #     linkToPath[ends] = 'singleton'
+    return linkToPath
 
 tempnodeDict = getNodeTypes(G)
-linkGraph, linkToPath = build_linkGraph(G, set(tempnodeDict['uniNodes']))
-nodes, links, intersectionRadius = constructNodesLinks(linkGraph)
+linkGraph, endsToPath = build_linkGraph(G, set(tempnodeDict['uniNodes']))
+nodes, links, intersectionRadius, endsToLinkId = constructNodesLinks(linkGraph, tempnodeDict)
+linkToPath = getLinkToPath(endsToLinkId, endsToPath)
+
 segments, segToLink, linkToSeg = constructSegments(linkToPath, intersectionRadius)
 
-print(linkGraph.edges(data=True))
-ox.plot_graph(G)
+
+
+# print(linkGraph.edges(data=True))
+# ox.plot_graph(G)

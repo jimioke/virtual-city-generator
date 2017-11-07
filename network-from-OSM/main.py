@@ -3,6 +3,7 @@ from processing import*
 from extraFunctions import*
 from collections import OrderedDict
 import process_osm as posm
+import query_osm as qr
 
 inputFolder = "metadata/"
 typeToWidthFname = os.path.join(inputFolder,"LinkCat_Roadtype_LaneWidth.csv")
@@ -12,9 +13,11 @@ def main():
     print "------------------ Query osm data ------------------"
     G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
     tempnodeDict = posm.getNodeTypes(G)
-    linkGraph = posm.build_linkGraph(G, set(tempnodeDict['uniNodes']))
-    nodes, links, intersectionRadius = posm.constructNodesLinks(linkGraph)
+    linkGraph, endsToPath = posm.build_linkGraph(G, set(tempnodeDict['uniNodes']))
+    nodes, links, intersectionRadius, endsToLinkId = posm.constructNodesLinks(linkGraph, tempnodeDict)
+    linkToPath = posm.getLinkToPath(endsToLinkId, endsToPath)
     segments, segToLink, linkToSeg = posm.constructSegments(linkToPath, intersectionRadius)
+
     # TODO: linktts, connSumo
 
     print "----------Mapped segments to links and viceversa-------------"
