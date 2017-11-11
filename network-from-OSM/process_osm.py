@@ -293,9 +293,8 @@ def distance(node1, coord, G):
     return great_circle((G.nodes[node1]['y'], G.nodes[node1]['x']), (coord[0], coord[1])).meters
 
 def constructNodesLinks(G, originalG, tempnodeDict):
-    # TODO(complete the pseudo code)
-    nodes = []
-    links = []
+    nodes = {}
+    links = {}
     link_id = 1
 
     for upnode, dnnode, data in G.edges(data=True):
@@ -303,8 +302,8 @@ def constructNodesLinks(G, originalG, tempnodeDict):
         position = []
         link = Link(link_id, "EXPRESSWAY", "ROUNDABOUT", upnode, dnnode, data['name'])
         G.edges[upnode, dnnode, 0]['id'] = link_id
+        links[link_id] = link
         link_id += 1
-        links.append(link)
 
     coordinates = nx.get_edge_attributes(G,'coordinates')
     max_node_id = max(originalG.nodes())
@@ -328,7 +327,7 @@ def constructNodesLinks(G, originalG, tempnodeDict):
         except:
             pass
         node = Node(nodeId, nodeType, trafficLid, data['x'], data['y'])
-        nodes.append(node)
+        nodes[nodeId] = node
 
         # turning path radius for intersections
         if nodeType == 2:
@@ -373,7 +372,7 @@ DEFAULT_SEGMENT_VALUES = {
 'numlanes' : 2,
 'capacity' : 100,
 'speedlimit':60,
-'category': 'A',
+'category': 1, #linkCat (metadata)--> A,B,C,D,E
 'tag':[],
 }
 
@@ -413,6 +412,7 @@ def constructSegments(linkGraph, originalG):
                 # combine all leftover coordinates if they are not enough for a segment.
                 segment_coords += coords[tail+1:]
                 toSegment[SEGMENT_ID] = (segment_coords, segment_attributes, segment_len, link_id, SEQ)
+                linkToSeg[link_id].append(SEGMENT_ID)
                 SEGMENT_ID += 1
                 SEQ += 1
                 break
@@ -420,6 +420,7 @@ def constructSegments(linkGraph, originalG):
                 # a new segment
                 segment_coords.append(coords[tail+1])
                 toSegment[SEGMENT_ID] = (segment_coords, segment_attributes, segment_len, link_id, SEQ)
+                linkToSeg[link_id].append(SEGMENT_ID)
                 segment_coords = [coords[tail+1]]
                 segment_attributes = {}
                 segment_len = 0
@@ -429,7 +430,7 @@ def constructSegments(linkGraph, originalG):
                 segment_coords.append(coords[tail+1])
             tail += 1
 
-    segments = []
+    segments = {}
     for segment_id in toSegment:
         coords, segment_attributes, length, link_id, seq = toSegment[segment_id]
         coords_data = [originalG.nodes[node] for node in coords]
@@ -448,14 +449,38 @@ def constructSegments(linkGraph, originalG):
                 attribute('category', linkToData[link_id], segment_attributes),
                 position_points,
                 length)
-        segments.append(seg)
+        segToLink[segment_id] = link_id
+        segments[segment_id] = seg
     return segments, segToLink, linkToSeg
+
+def setLinkSegmentAttr(segments, links, linkToSeg):
+    # Contructing Link Travel Time Table
+    linktts = {}
+    print(links)
+    print(linkToSeg)
+    for link_id in links:
+        links[link_id].segments = linkToSeg[link_id]
+        linkTime,linkLength = 0,0
+        for segid in links[link_id].segments:
+            segLength = segments[segid].length
+            segTime =  segLength/(segments[segid].speedlimit*(0.277778))
+            linkLength += segLength
+            linkTime += segTime
+        #length = getLength(pointList)
+        #traveltime = length/20.833    #75kmph in m/s
+        linktts[link_id] = LinkTT(link_id,mode="Car",starttime="00:00:00",endtime="23:59:59",traveltime=linkTime,length=linkLength)
+    return linktts
+
+# def createConnection():
+
+
 
 tempnodeDict = getNodeTypes(G)
 linkGraph = build_linkGraph(G, set(tempnodeDict['uniNodes']))
 mergeClusteringIntersection(linkGraph)
 nodes, links = constructNodesLinks(linkGraph, G, tempnodeDict)
 segments, segToLink, linkToSeg = constructSegments(linkGraph, G)
+linktts = setLinkSegmentAttr(segments, links, linkToSeg)
 
 # geoFromPathGraph(linkGraph, G)
 # ox.plot_graph(linkGraph)

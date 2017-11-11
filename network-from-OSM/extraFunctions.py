@@ -10,17 +10,17 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
     '''
     '''
     laneswithDwConn = []  # lanes with downstream connections
-    laneswithUpConn = []  # lanes with upstream connections    
-    
+    laneswithUpConn = []  # lanes with upstream connections
+
     for connid,conn in laneconnections.iteritems():
         fLane,tLane = conn.fromlane,conn.tolane
         laneswithDwConn.append(fLane)
-        laneswithUpConn.append(tLane)   
+        laneswithUpConn.append(tLane)
     laneswithDwConn,laneswithUpConn = set(laneswithDwConn),set(laneswithUpConn)
-    
+
     totLaneList = lanes.keys()
     terlaneswithoutDwConn, terlaneswithoutUpConn = set(),set()
-    
+
     #---Getting the terminal lanes ---lanes at the end and begining of links--- that are not connected to sink (source) node and no downstream (upstream) connection
     for linkid,link in links.iteritems():
         tnode,hnode = link.upnode,link.dnnode
@@ -31,7 +31,7 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
             laneid = str(int(segid)*100 + i)
             if laneid not in laneswithUpConn and tnode not in tempnodeDict['source']:
                 terlaneswithoutUpConn.add(laneid)
-        #---last segment        
+        #---last segment
         segid = link.segments[-1]
         segment = segments[segid]
         for i in xrange(segment.numlanes):
@@ -39,7 +39,7 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
             if laneid not in laneswithDwConn and hnode not in tempnodeDict['sink']:
                 terlaneswithoutDwConn.add(laneid)
 
-    
+
     #----Handling lanes without downstream connections
     unresolvedLanes = []
     connKeylist = laneconnections.keys()
@@ -48,6 +48,7 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
     for laneid1 in terlaneswithoutDwConn:
         resolved = False
         segid1 = laneid1[:-2]
+        segid1 = int(segid1)
         for i in xrange(segments[segid1].numlanes):
             laneid2 = str(int(segid1)*100 + i)
             if laneid1!=laneid2:
@@ -57,7 +58,7 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
                     tosegid = toLane[:-2]
                     linkid1,toLink = segToLink[segid1],segToLink[tosegid]
                     maxSpeed = min(segments[segid1].speedlimit,segments[tosegid].speedlimit)
-                    groupid = turninggroups[(linkid1,toLink)].id             
+                    groupid = turninggroups[(linkid1,toLink)].id
                     connection = LaneConnection(count,laneid1,toLane,segid1,tosegid,isturn=True,maxspeed=maxSpeed,groupid=groupid)
                     #---Constructing the connection polyline
                     firstpoint,secondpoint = lanes[laneid1].position[-1],lanes[toLane].position[0]
@@ -68,13 +69,13 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
                     break
         if not resolved:
             unresolvedLanes.append(laneid1)
-            pdb.set_trace()
-    
+            # pdb.set_trace()
+
     print "Before: ",len(terlaneswithoutDwConn)
     print "After: ",len(unresolvedLanes), unresolvedLanes
-    #laneswithoutDwConn = set(totLaneList) - laneswithDwConn 
+    #laneswithoutDwConn = set(totLaneList) - laneswithDwConn
     #laneswithoutUpConn = set(totLaneList) - laneswithUpConn
-    
+
     #-----Connecting to a lane from the list of downstream links
     #for laneid1 in unresolvedLanes:
         #resolved = False
@@ -90,7 +91,7 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
                 #turninggroup = TurningGroup(groupcount,node,linkid1,linkd2)
                 #turninggroups[(linkid1,linkid2)] = turninggroup
                 #print "@processAndAddConnections(): created new turninggroup"
-            #if (linkid1,linkid2) in turninggroups: 
+            #if (linkid1,linkid2) in turninggroups:
                 #groupid = turninggroups[(linkid1,linkid2)].id
             #else:
                 #print "groupid does not exist.."
@@ -102,14 +103,14 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
                 ##---Constructing the connection polyline
                 #firstpoint,secondpoint = lanes[laneid1].position[-1],lanes[laneid2].position[0]
                 #connection.position = [firstpoint,secondpoint]
-                #laneconnections[(laneid1,laneid2)] = connection                
+                #laneconnections[(laneid1,laneid2)] = connection
                 #count+=1
                 #resolved = True
 
 
 
-    
-    pdb.set_trace()
+
+    # pdb.set_trace()
     return laneconnections
 
 #===================================================================================================
@@ -117,19 +118,19 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
 def constructTurningPathsAll(nodes,links,segments,connections,lanes,conncount):
     '''
         Constructs turning paths such that every link is connected to all its downstream links.
-        Specifically, all the lanes in the last segment of a link are connected to all the lanes in the first segment of 
+        Specifically, all the lanes in the last segment of a link are connected to all the lanes in the first segment of
         every downstream link
     '''
-    
+
     #---Construct MultiDiGraph
     netG = nx.MultiDiGraph()
     for link_id,link in links.iteritems():
-        netG.add_edge(link.upnode,link.dnnode,id=link_id)        
+        netG.add_edge(link.upnode,link.dnnode,id=link_id)
 
 
     turningdict = {}
     turninggroups = {}
-    groupcount = 1  
+    groupcount = 1
     #---Looping over ajdacent links and then contructing connections between their lanes
     for edge1 in netG.edges_iter(data=True):
         hnode,fromLink = edge1[1],edge1[2]['id']
@@ -143,14 +144,14 @@ def constructTurningPathsAll(nodes,links,segments,connections,lanes,conncount):
                 if (fromLink,toLink) not in turningdict:
                     turningdict[(fromLink,toLink)] = {'id':groupcount}
                     turninggroup = TurningGroup(groupcount,hnode,fromLink,toLink)
-                    turninggroups[(fromLink,toLink)] = turninggroup 
-                    groupcount +=1  
+                    turninggroups[(fromLink,toLink)] = turninggroup
+                    groupcount +=1
 
-                toSeg = links[toLink].segments[0]  
+                toSeg = links[toLink].segments[0]
                 assert segments[toSeg].seq == 1 #making sure that it is the first segment
                 #pdb.set_trace()
                 for i2 in xrange(segments[toSeg].numlanes):
-                    toLane = str(int(toSeg)*100 + i2)                       
+                    toLane = str(int(toSeg)*100 + i2)
                     maxSpeed = min(segments[fromSeg].speedlimit,segments[toSeg].speedlimit)
                     groupid = turninggroups[(fromLink,toLink)].id
                     connection = LaneConnection(conncount,fromLane,toLane,fromSeg,toSeg,isturn=True,maxspeed=maxSpeed,groupid=groupid)
@@ -159,8 +160,6 @@ def constructTurningPathsAll(nodes,links,segments,connections,lanes,conncount):
                     secondpoint = lanes[toLane].position[0]
                     connection.position = [firstpoint,secondpoint]
                     connections[(fromLane,toLane)] = connection
-                    conncount += 1                    
-    
-    return connections,turninggroups,conncount               
-                    
-    
+                    conncount += 1
+
+    return connections,turninggroups,conncount

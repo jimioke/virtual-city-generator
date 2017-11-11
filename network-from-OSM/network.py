@@ -25,7 +25,7 @@ class Network:
             nodeList = self.nodes.keys()
             nodeList = sorted([int(item) for item in nodeList])
             for id in nodeList:
-                node = self.nodes[str(id)]
+                node = self.nodes[id]
                 writer.writerow(node.render())
 
         #---Writing segments
@@ -40,7 +40,7 @@ class Network:
                 segList = self.segments.keys()
                 segList = sorted([int(item) for item in segList])
                 for id in segList:
-                    segment = self.segments[str(id)]
+                    segment = self.segments[id]
                     writer1.writerow(segment.render())
                     for point in segment.position:
                         aList = [id,point['x'],point['y'],0,point['seq']]
@@ -54,7 +54,7 @@ class Network:
             segList = self.segments.keys()
             segList = sorted([int(item) for item in segList])
             for id in segList:
-                segment = self.segments[str(id)]
+                segment = self.segments[id]
                 writer1.writerow(segment.render2())
 
 
@@ -71,7 +71,7 @@ class Network:
                 linkList = self.links.keys()
                 linkList = sorted([int(item) for item in linkList])
                 for id in linkList:
-                    link = self.links[str(id)]
+                    link = self.links[id]
                     writer1.writerow(link.render())
                     count = 1
                     for segid in link.segments:
@@ -151,7 +151,7 @@ class Network:
             linkList = self.linktts.keys()
             linkList = sorted([int(item) for item in linkList])
             for id in linkList:
-                linktt = self.linktts[str(id)]
+                linktt = self.linktts[id]
                 writer.writerow(linktt.render())
 
         #---Writing default link TTs
@@ -162,7 +162,7 @@ class Network:
             linkList = self.linktts.keys()
             linkList = sorted([int(item) for item in linkList])
             for id in linkList:
-                linktt = self.linktts[str(id)]
+                linktt = self.linktts[id]
                 writer.writerow(linktt.render2())
 
 

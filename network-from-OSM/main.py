@@ -16,7 +16,9 @@ def main():
     posm.mergeClusteringIntersection(linkGraph)
     nodes, links = posm.constructNodesLinks(linkGraph, G, tempnodeDict)
     segments, segToLink, linkToSeg = posm.constructSegments(linkGraph, G)
+    linktts = posm.setLinkSegmentAttr(segments, links, linkToSeg)
 
+    connSumo = OrderedDict() # TODO: create lane connections
     # TODO: linktts, connSumo
 
     print "----------Mapped segments to links and viceversa-------------"
