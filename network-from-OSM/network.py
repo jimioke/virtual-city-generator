@@ -1,5 +1,6 @@
 import os,csv,pdb
 from operator import itemgetter
+import math
 
 class Network:
 
@@ -307,3 +308,23 @@ class Sensor:
 
 	def render(self):
 		return "{256 0x0001 6 %d 0.5\n\t{%d 1}\n\t}\n" % (self.segmentId,self.id)
+
+
+
+class Coord:
+    def __init__(self,x,y, id=None):
+        self.id = id
+        self.x = x
+        self.y = y
+    def __add__(self, other):
+        return Coord( self.x + other.x, self.y + other.y)
+    def __sub__(self, other):
+        return Coord( self.x - other.x, self.y - other.y)
+    def __str__(self):
+        return "x: " + str(self.x) + " y: " + str(self.y)
+    def __mul__(self, scalar):
+        return Coord(self.x*scalar, self.y*scalar)
+    def __rmul__(self, scalar):
+        return Coord(self.x*scalar, self.y*scalar)
+    def dist(self, other):
+        return math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)

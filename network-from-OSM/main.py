@@ -1,4 +1,3 @@
-from formatOSM import*
 from processing import*
 from extraFunctions import*
 from collections import OrderedDict
@@ -13,10 +12,10 @@ def main():
     print "------------------ Query osm data ------------------"
     G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
     tempnodeDict = posm.getNodeTypes(G)
-    linkGraph, endsToPath = posm.build_linkGraph(G, set(tempnodeDict['uniNodes']))
-    nodes, links, intersectionRadius, endsToLinkId = posm.constructNodesLinks(linkGraph, tempnodeDict)
-    linkToPath = posm.getLinkToPath(endsToLinkId, endsToPath)
-    segments, segToLink, linkToSeg = posm.constructSegments(linkToPath, intersectionRadius)
+    linkGraph = posm.build_linkGraph(G, set(tempnodeDict['uniNodes']))
+    posm.mergeClusteringIntersection(linkGraph)
+    nodes, links = posm.constructNodesLinks(linkGraph, G, tempnodeDict)
+    segments, segToLink, linkToSeg = posm.constructSegments(linkGraph, G)
 
     # TODO: linktts, connSumo
 
