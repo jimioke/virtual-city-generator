@@ -1,6 +1,12 @@
 import os,csv,pdb
 from operator import itemgetter
 import math
+import geopandas as gpd
+import pandas as pd
+import numpy as np
+from shapely.geometry import Point, LineString
+from collections import OrderedDict
+
 
 class Network:
 
@@ -164,6 +170,133 @@ class Network:
             for id in linkList:
                 linktt = self.linktts[id]
                 writer.writerow(linktt.render2())
+
+    def writeShapeFiles(self, foldername, write_nodes=True, write_segments=True,
+                        write_links=True, write_lanes=True, write_connections=True,
+                        write_turningpaths=True):
+        #---Writing Node
+        if write_nodes:
+            nodeFname = os.path.join(foldername,'nodes.shp')
+            node_data = OrderedDict()
+            for id, node in self.nodes.iteritems():
+                node_data[id]=[node.x, node.y, node.type]
+            df = pd.DataFrame.from_dict(node_data, orient='index')
+            df.columns = ['x', 'y', 'type']
+            df['geometry'] = df.apply(lambda row: Point(row.x,row.y),axis=1)
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= nodeFname)
+
+        #---Writing segments
+        if write_segments:
+            segmentFname = os.path.join(foldername,'segments.shp')
+            segment_data = OrderedDict()
+            for id, segment in self.segments.iteritems():
+                segment_data[id] = LineString([(point['x'], point['y']) for point in segment.position])
+            df = pd.DataFrame.from_dict(segment_data, orient='index')
+            df.columns = ['geometry'] #['id','link_id','sequence','num_lanes','capacity','max_speed','tags','link_category']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= segmentFname)
+
+            #---Writing segment coordinates (all coordinates)
+            segmentCoordFname = os.path.join(foldername,'segment_coordinates.shp')
+            coords = []
+            for id, segment in self.segments.iteritems():
+                coords += [ Point(point['x'], point['y']) for point in segment.position]
+            df = pd.DataFrame.from_dict(coords)
+            df.columns = ['geometry']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= segmentCoordFname)
+
+            #---Writing segments' end nodes
+            segmentEndsFname = os.path.join(foldername,'segment_end_nodes.shp')
+            node_ends = []
+            for id, segment in self.segments.iteritems():
+                node_ends.append(Point(segment.position[0]['x'], segment.position[0]['y']))
+                node_ends.append(Point(segment.position[-1]['x'], segment.position[-1]['y']))
+            df = pd.DataFrame.from_dict(node_ends)
+            df.columns = ['geometry']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= segmentEndsFname)
+
+        #---Writing links, connecting their segment points. (Segments can represent it)
+        if write_links:
+            linkFname = os.path.join(foldername,'links.shp')
+            link_data = OrderedDict()
+
+            for id, link in self.links.iteritems():
+                points = []
+                for seg_id in link.segments:
+                    points += [(point['x'], point['y']) for point in self.segments[seg_id].position]
+                link_data[id] = LineString(points)
+            df = pd.DataFrame.from_dict(link_data, orient='index')
+            df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= linkFname)
+
+            #---Writing links, connecting their end nodes.
+            linkEndsFname = os.path.join(foldername,'connected_link_ends.shp')
+            link_ends = OrderedDict()
+            for id, link in self.links.iteritems():
+                link_ends[id] = LineString([ (self.nodes[link.dnnode].x, self.nodes[link.dnnode].y),
+                                               (self.nodes[link.upnode].x, self.nodes[link.upnode].y)])
+            df = pd.DataFrame.from_dict(link_ends, orient='index')
+            df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= linkEndsFname)
+
+        # #---Writing lanes
+        if write_lanes:
+            laneFname = os.path.join(foldername,'lanes.shp')
+            lane_ends = OrderedDict()
+            for id, lane in self.lanes.iteritems():
+                lane_ends[id] = LineString([(point[0], point[1]) for point in lane.position])
+            df = pd.DataFrame.from_dict(lane_ends, orient='index')
+            df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
+            gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
+            gdf.to_file(driver = 'ESRI Shapefile', filename= laneFname)
+
+        # #---Writing connections
+        # #---lane connections first (not turnings)
+        # connFname = os.path.join(foldername,'connector.csv')
+        # with open(connFname,'wb') as ofile:
+        #     writer = csv.writer(ofile)
+        #     writer.writerow(["id","from_segment","to_segment","from_lane","to_lane","is_true_connector","tags"])
+        #     connList = [k for k,v in self.laneconnections.iteritems() if not v.isturn]
+        #     connList = sorted([item for item in connList],key=itemgetter(0))
+        #     for id in connList:
+        #         conn = self.laneconnections[id]
+        #         writer.writerow(conn.render())
+        #
+        # #---Writing turning connections
+        # turnFname1 = os.path.join(foldername,'turning-attributes.csv')
+        # turnFname2 = os.path.join(foldername,'turning-nodes.csv')
+        # with open(turnFname1,'wb') as ofile1:
+        #     with open(turnFname2,'wb') as ofile2:
+        #         writer1 = csv.writer(ofile1)
+        #         writer1.writerow(['id','from_lane','to_lane','group_id','max_speed','tags'])
+        #         writer2 = csv.writer(ofile2)
+        #         writer2.writerow(['id','x','y','z','seq_id'])
+        #         turnList = [k for k,v in self.laneconnections.iteritems() if v.isturn]
+        #         turnList = sorted([item for item in turnList],key=itemgetter(0))
+        #         for id in turnList:
+        #             turn = self.laneconnections[id]
+        #             writer1.writerow(turn.render())
+        #             count = 1
+        #             for point in turn.position:
+        #                 aList = [turn.id,point[0],point[1],0,count]
+        #                 writer2.writerow(aList)
+        #                 count += 1
+        #
+        # #---Writing turninggroups
+        # tgFname = os.path.join(foldername,'turninggroups.csv')
+        # with open(tgFname,'wb') as ofile:
+        #     writer = csv.writer(ofile)
+        #     writer.writerow(["id","nodeid","from_link","to_link","phases","rules","visibility","tags"])
+        #     tgList = [k for k in self.turninggroups]
+        #     tgList = sorted([item for item in tgList],key=itemgetter(0))
+        #     for id in tgList:
+        #         tg = self.turninggroups[id]
+        #         writer.writerow(tg.render())
 
 
 class Node:

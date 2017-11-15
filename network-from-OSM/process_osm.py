@@ -13,7 +13,7 @@ from geopy.distance import great_circle
 import query_osm as qr
 from file_paths import *
 
-SEGMENT_LOWER_BOUND = 20
+SEGMENT_LOWER_BOUND = 50
 # G = nx.read_gpickle(GRAPH_FILE)
 G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
 # ox.plot_graph(G)
@@ -300,7 +300,7 @@ def constructNodesLinks(G, originalG, tempnodeDict):
     for upnode, dnnode, data in G.edges(data=True):
         # TODO: road_type, category?
         position = []
-        link = Link(link_id, "EXPRESSWAY", "ROUNDABOUT", upnode, dnnode, data['name'])
+        link = Link(link_id, 1, 1, upnode, dnnode, data['name'])
         G.edges[upnode, dnnode, 0]['id'] = link_id
         links[link_id] = link
         link_id += 1
@@ -370,10 +370,10 @@ def mergeClusteringIntersection(G):
 
 DEFAULT_SEGMENT_VALUES = {
 'numlanes' : 2,
-'capacity' : 100,
+'capacity' : 1000,
 'speedlimit':60,
-'category': 1, #linkCat (metadata)--> A,B,C,D,E
-'tag':[],
+'category': 2, #linkCat (metadata)--> A,B,C,D,E
+'tag':"",
 }
 
 def attribute(att_string, sub_attribute, parent_attribute):
@@ -388,26 +388,28 @@ def constructSegments(linkGraph, originalG):
     linkToData = {}
     segToLink = {}
     toSegment = {}
-    SEGMENT_ID = 0
+    SEGMENT_ID = 1
 
     for u,v,linkData in linkGraph.edges(data=True):
         coords = linkData['coordinates']
         link_id = linkData['id']
         linkToData[link_id] = linkData
         linkToSeg[link_id] = []
-        total_len = sum([originalG.edges[coords[i], coords[i+1], 0]['length'] for i in range(len(coords)-1)])
+        total_len = sum([originalG.edges[coords[i], coords[i+1], 0]['length'] for i in range(len(coords)-1)]) # after shortened
+        # print("+++++++total_len",total_len, " ", linkData['length'] )
         tail = 0
         segment_len = 0
         acc_len = 0
         segment_coords = [coords[tail]]
         segment_attributes = {}
-        SEQ = 0
+        SEQ = 1
         while tail < len(coords)-1:
             data = originalG.edges[coords[tail], coords[tail+1], 0]
             for key in data:
                 segment_attributes[key] = data[key] # get whatever available
             segment_len += data['length']
-            acc_len += segment_len
+            # print("------inc len", data['length'])
+            acc_len += data['length']
             if total_len - acc_len < SEGMENT_LOWER_BOUND or tail == len(coords)-2:
                 # combine all leftover coordinates if they are not enough for a segment.
                 segment_coords += coords[tail+1:]
@@ -415,6 +417,7 @@ def constructSegments(linkGraph, originalG):
                 linkToSeg[link_id].append(SEGMENT_ID)
                 SEGMENT_ID += 1
                 SEQ += 1
+                # print("case1",segment_len )
                 break
             elif segment_len > SEGMENT_LOWER_BOUND:
                 # a new segment
@@ -423,10 +426,12 @@ def constructSegments(linkGraph, originalG):
                 linkToSeg[link_id].append(SEGMENT_ID)
                 segment_coords = [coords[tail+1]]
                 segment_attributes = {}
+                # print("case2",segment_len )
                 segment_len = 0
                 SEGMENT_ID += 1
                 SEQ += 1
             else:
+                # print("case3-coord",segment_len )
                 segment_coords.append(coords[tail+1])
             tail += 1
 
@@ -475,12 +480,14 @@ def setLinkSegmentAttr(segments, links, linkToSeg):
 
 
 
-tempnodeDict = getNodeTypes(G)
-linkGraph = build_linkGraph(G, set(tempnodeDict['uniNodes']))
-mergeClusteringIntersection(linkGraph)
-nodes, links = constructNodesLinks(linkGraph, G, tempnodeDict)
-segments, segToLink, linkToSeg = constructSegments(linkGraph, G)
-linktts = setLinkSegmentAttr(segments, links, linkToSeg)
+# tempnodeDict = getNodeTypes(G)
+# linkGraph = build_linkGraph(G, set(tempnodeDict['uniNodes']))
+# mergeClusteringIntersection(linkGraph)
+# nodes, links = constructNodesLinks(linkGraph, G, tempnodeDict)
+# segments, segToLink, linkToSeg = constructSegments(linkGraph, G)
+# linktts = setLinkSegmentAttr(segments, links, linkToSeg)
+# print("segments")
+# print(segments)
 
 # geoFromPathGraph(linkGraph, G)
 # ox.plot_graph(linkGraph)

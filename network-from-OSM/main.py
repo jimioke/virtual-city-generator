@@ -21,6 +21,8 @@ def main():
     connSumo = OrderedDict() # TODO: create lane connections
     # TODO: linktts, connSumo
 
+    # connections,turninggroups,conncount = constructTurningPathsAll(nodes,links,segments,connections,lanes,conncount)
+
     print "----------Mapped segments to links and viceversa-------------"
     # segments,links,linktts = constructSegmentsLinks(baseAttributes,basePoly,segToLink,linkToSeg,typeToWidthFname,ffsFname)
     lanes = constructLanes(segments,typeToWidthFname)
@@ -35,7 +37,8 @@ def main():
     laneconnections = processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnections,turninggroups,segToLink)
 
     net = Network(nodes,links,segments,lanes,laneconnections,turninggroups,linktts)
-    net.write(foldername='Outputs/'+inputFolder.split('/')[1])
+    # net.write(foldername='Outputs/'+inputFolder.split('/')[1])
+    net.writeShapeFiles(foldername='Outputs/shapefiles'+inputFolder.split('/')[1])
 
     nodeLinks = set([item.upnode for k,item in links.iteritems()] + [item.dnnode for k,item in links.iteritems()])
     nodeNode = set(nodes.keys())

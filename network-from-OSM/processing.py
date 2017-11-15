@@ -450,8 +450,8 @@ def constructConnections(connSumo,nodes,links,segments,lanes,segToLink):
 
     print "Number of lane connections: " , count
 
-    #connections,turninggroups,count = constructTurningPathsAll(nodes,links,segments,connections,lanes,count)
-    connections,turninggroups,count = constructTurningPathsSumo(connSumo,segToLink,nodes,links,segments,connections,lanes,count)
+    connections,turninggroups,count = constructTurningPathsAll(nodes,links,segments,connections,lanes,count)
+    # connections,turninggroups,count = constructTurningPathsSumo(connSumo,segToLink,nodes,links,segments,connections,lanes,count)
 
 
     print "Number of lane connections + turning paths: ", count

@@ -132,14 +132,14 @@ def constructTurningPathsAll(nodes,links,segments,connections,lanes,conncount):
     turninggroups = {}
     groupcount = 1
     #---Looping over ajdacent links and then contructing connections between their lanes
-    for edge1 in netG.edges_iter(data=True):
+    for edge1 in netG.edges(data=True):
         hnode,fromLink = edge1[1],edge1[2]['id']
         fromSeg = links[fromLink].segments[-1]
         #pdb.set_trace()
         assert segments[fromSeg].seq == len(links[fromLink].segments) #making sure that it is the last segment
         for i1 in xrange(segments[fromSeg].numlanes):
             fromLane = str(int(fromSeg)*100 + i1)
-            for edge2 in netG.out_edges_iter(hnode,data=True):
+            for edge2 in netG.out_edges(hnode,data=True):
                 toLink = edge2[2]['id']
                 if (fromLink,toLink) not in turningdict:
                     turningdict[(fromLink,toLink)] = {'id':groupcount}
