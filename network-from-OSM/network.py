@@ -78,7 +78,10 @@ class Network:
                 linkList = sorted([int(item) for item in linkList])
                 for id in linkList:
                     link = self.links[id]
-                    writer1.writerow(link.render())
+                    try:
+                        writer1.writerow(link.render())
+                    except:
+                        print("-----unicode", link, link.render())
                     count = 1
                     for segid in link.segments:
                         for point in self.segments[segid].position:

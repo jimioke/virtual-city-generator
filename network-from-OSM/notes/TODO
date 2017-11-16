@@ -1,0 +1,19 @@
+Priority
+
+Prototype city candidates (bbox: north, south, east, west)
+1) St. Louis for sprawl (38.8370, 38.4692, -90.0247, -90.4635)
+2) Philadelphia  (40.1035,39.9009,-74.9870,-75.2503)
+3) One from China
+4) Innovative (Singapore/Berlin/London)
+
+
+1. Investigate generated network
+  Done in QGIS (dynavis is not working ...)
+
+2. Turning paths
+  try sumo
+  write a simple rules
+
+LONGER
+query APIs (bbox, polygon shape, name, etc.)
+clean up code

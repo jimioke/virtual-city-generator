@@ -13,9 +13,12 @@ from geopy.distance import great_circle
 import query_osm as qr
 from file_paths import *
 
-SEGMENT_LOWER_BOUND = 50
+SEGMENT_LOWER_BOUND = 20
+MERGING_DIST_THRESHOLD = 20
 # G = nx.read_gpickle(GRAPH_FILE)
-G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
+# G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
+# G = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978)
+# G = qr.graph_from_bbox(40.1035,39.9009,-74.9870,-75.2503) # Philadelphia
 # ox.plot_graph(G)
 
 # print(G.edges(data=True)[0:2])
@@ -65,13 +68,10 @@ def getNodeTypes(G):
             'intersection':intersectionNodes,
             'trafficL':trafficLiNodes}
 
-
-
-
 # Modified OSMnx method. We use our node_type function instead of is_endpoint.
 def get_paths_to_simplify(G, uniNodesSet):
     """
-    Create a list of all the paths to be simplified between endpoint nodes.
+    Create a list of all the paths to be simplified between uniNodesSet nodes.
 
     The path is ordered from the first endpoint, through the interstitial nodes,
     to the second endpoint.
@@ -79,9 +79,6 @@ def get_paths_to_simplify(G, uniNodesSet):
     Parameters
     ----------
     G : networkx multidigraph
-    strict : bool
-        if False, allow nodes to be end points even if they fail all other rules
-        but have edges with different OSM IDs
 
     Returns
     -------
@@ -104,24 +101,17 @@ def get_paths_to_simplify(G, uniNodesSet):
                     paths_to_simplify.append(path)
                 except RuntimeError:
                     print("RecursionError")
-                    # recursion errors occur if some connected component is a
-                    # self-contained ring in which all nodes are not end points
-                    # handle it by just ignoring that component and letting its
-                    # topology remain intact (this should be a rare occurrence)
-                    # RuntimeError is what Python <3.5 will throw, Py3.5+ throws
-                    # RecursionError but it is a subtype of RuntimeError so it
-                    # still gets handled
     return paths_to_simplify
 
 def build_linkGraph(G, uniNodesSet):
     """
 
-    Create a link graph removing all nodes that are not intersections or dead-ends.
-    Each edge (link) will have intersection or dead-end nodes.
+    Create a new link graph removing all nodes that are not intersections or
+    dead-ends. Each edge (link) will have intersection or dead-end nodes.
 
     Parameters
     ----------
-    G : graph
+    G : graph ( will not be modified)
 
     Returns
     -------
@@ -129,7 +119,6 @@ def build_linkGraph(G, uniNodesSet):
     """
 
     linkGraph = G.copy()
-    # linkGraph = nx.MultiDiGraph(name='linkGraoh', crs={'init':'epsg:4326'})
     all_nodes_to_remove = []
     all_edges_to_add = []
 
@@ -138,7 +127,6 @@ def build_linkGraph(G, uniNodesSet):
 
     start_time = time.time()
     for path in paths:
-        # Collect intermediate edge attributes
         edge_attributes = {}
         all_edges = zip(path[:-1], path[1:])
         for u, v in all_edges:
@@ -149,20 +137,11 @@ def build_linkGraph(G, uniNodesSet):
             if not G.number_of_edges(u=u, v=v) == 1:
                 # OSM data has multiple edges !!!
                 print('Multiple edges between "{}" and "{}" found when merging path ends: '.format(u, v))
-
-            # the only element in this list as long as above check is True
-            # (MultiGraphs use keys (the 0 here), indexed with ints from 0 and
-            # up)
             edge = G.edges[u, v, 0]
             for key in edge:
-                # print(key, edge)
                 if key in edge_attributes:
-                    # if this key already exists in the dict, append it to the
-                    # value list
                     edge_attributes[key].append(edge[key])
                 else:
-                    # if this key doesn't already exist, set the value to a list
-                    # containing the one value
                     edge_attributes[key] = [edge[key]]
 
         # Combine intermediate edge attributes and build segments.
@@ -176,13 +155,8 @@ def build_linkGraph(G, uniNodesSet):
                 # otherwise, if there are multiple values, keep one of each value
                 edge_attributes[key] = list(set(edge_attributes[key]))
 
-        # construct the geometry and sum the lengths of the segments
-        # edge_attributes['geometry'] = LineString([Point((G.nodes[node]['x'], G.nodes[node]['y'])) for node in path])
         edge_attributes['length'] = sum(edge_attributes['length'])
-        # print("++++++++++++++++++ length")
-        # print(edge_attributes['length'])
         edge_attributes['coordinates'] = path
-        # print(edge_attributes)
         # add the nodes and edges to their lists for processing at the end
         all_nodes_to_remove.extend(path[1:-1])
         all_edges_to_add.append({'origin':path[0],
@@ -191,15 +165,8 @@ def build_linkGraph(G, uniNodesSet):
 
     # finally remove all the interstitial nodes between the new edges
     linkGraph.remove_nodes_from(set(all_nodes_to_remove))
-    # for edge in linkGraph.edges():
-    #     endsToPath
-
-    # for each edge to add in the list we assembled, create a new edge between
-    # the origin and destination
     for edge in all_edges_to_add:
         linkGraph.add_edge(edge['origin'], edge['destination'], **edge['attr_dict'])
-        # Graph
-
     msg = 'Link graph (from {:,} to {:,} nodes and from {:,} to {:,} edges) in {:,.2f} seconds'
     # print(msg.format(len(list(G.nodes())), len(list(linkGraph.nodes())), len(list(G.edges())), len(list(linkGraph.edges())), time.time()-start_time))
     return linkGraph
@@ -227,7 +194,7 @@ def coordsLen(coordinates, G):
 
 
 def shortenFromTail(ends, G, originalG, size):
-    coordinates = G.edges[ends[0], ends[1], 0]['coordinates']
+    coordinates = G.edges[ends[0], ends[1], ends[2]]['coordinates']
     length = 0
     head = 1 # first node will be definitely get removed.
     while head < len(coordinates):
@@ -238,26 +205,27 @@ def shortenFromTail(ends, G, originalG, size):
         head += 1
 
     if head == len(coordinates):
-        msg = 'Cut {:,} is to long for the link size of {:,}'
-        print(msg.format(size, length))
-    # shorten from the TAIL node side
-    newx, newy = interCoord(coordinates[head-1], coordinates[head], size-length, originalG, fromTailSide=True)
-    originalG.max_node_id += 1
-    new_coordinates = [originalG.max_node_id] + coordinates[head:]
-    G.edges[ends[0], ends[1], 0]['coordinates'] = new_coordinates
+        msg = 'Cut {:,} is too long for the link between {:,} and {:,} nodes, size of {:,}'
+        # print(msg.format(size, ends[0], ends[1], length))
+    else:
+        # shorten from the TAIL node side
+        newx, newy = interCoord(coordinates[head-1], coordinates[head], size-length, originalG, fromTailSide=True)
+        originalG.max_node_id += 1
+        new_coordinates = [originalG.max_node_id] + coordinates[head:]
+        G.edges[ends[0], ends[1], 0]['coordinates'] = new_coordinates
 
-    # add node info to the original graph
-    originalG.add_node(originalG.max_node_id, x=newx, y=newy)
-    originalG.add_edge(originalG.max_node_id, coordinates[head], length=distanceNodes(originalG.max_node_id, coordinates[head], originalG))
+        # add node info to the original graph
+        originalG.add_node(originalG.max_node_id, x=newx, y=newy)
+        originalG.add_edge(originalG.max_node_id, coordinates[head], length=distanceNodes(originalG.max_node_id, coordinates[head], originalG))
 
-    # Validate
-    before_shorten = coordsLen(coordinates, originalG)
-    after_shorten = coordsLen(new_coordinates, originalG)
-    assert 0.1 > before_shorten - after_shorten - size
+        # Validate
+        before_shorten = coordsLen(coordinates, originalG)
+        after_shorten = coordsLen(new_coordinates, originalG)
+        assert 0.1 > before_shorten - after_shorten - size
 
 
 def shortenFromHead(ends, G, originalG, size):
-    coordinates = G.edges[ends[0], ends[1], 0]['coordinates']
+    coordinates = G.edges[ends[0], ends[1], ends[2]]['coordinates']
     length = 0
     tail = len(coordinates) - 2 # first node will be definitely get removed.
     while tail >= 0:
@@ -268,23 +236,23 @@ def shortenFromHead(ends, G, originalG, size):
         tail -= 1
 
     if tail < 0:
-        msg = 'Cut {:,} is to long for the link size of {:,}'
-        print(msg.format(size, length))
+        msg = 'Cut {:,} is too long for the link between {:,} and {:,} nodes, size of {:,}'
+        # print(msg.format(size, ends[0], ends[1], length))
+    else:
+        # shorten from the HEAD node side
+        newx, newy = interCoord(coordinates[tail], coordinates[tail+1], size-length, originalG, fromTailSide=False)
+        originalG.max_node_id += 1
+        new_coordinates = coordinates[:tail+1] +[originalG.max_node_id]
+        G.edges[ends[0], ends[1], 0]['coordinates'] = new_coordinates
 
-    # shorten from the HEAD node side
-    newx, newy = interCoord(coordinates[tail], coordinates[tail+1], size-length, originalG, fromTailSide=False)
-    originalG.max_node_id += 1
-    new_coordinates = coordinates[:tail+1] +[originalG.max_node_id]
-    G.edges[ends[0], ends[1], 0]['coordinates'] = new_coordinates
+        # add node info to the original graph
+        originalG.add_node(originalG.max_node_id, x=newx, y=newy)
+        originalG.add_edge(coordinates[tail], originalG.max_node_id, length=distanceNodes(originalG.max_node_id, coordinates[tail], originalG))
 
-    # add node info to the original graph
-    originalG.add_node(originalG.max_node_id, x=newx, y=newy)
-    originalG.add_edge(coordinates[tail], originalG.max_node_id, length=distanceNodes(originalG.max_node_id, coordinates[tail], originalG))
-
-    # Validate
-    before_shorten = coordsLen(coordinates, originalG)
-    after_shorten = coordsLen(new_coordinates, originalG)
-    assert 0.1 > before_shorten - after_shorten - size
+        # Validate
+        before_shorten = coordsLen(coordinates, originalG)
+        after_shorten = coordsLen(new_coordinates, originalG)
+        assert 0.1 > before_shorten - after_shorten - size
 
 def distanceNodes(node1, node2, G):
     return great_circle((G.nodes[node1]['y'], G.nodes[node1]['x']), (G.nodes[node2]['y'], G.nodes[node2]['x'])).meters
@@ -297,15 +265,16 @@ def constructNodesLinks(G, originalG, tempnodeDict):
     links = {}
     link_id = 1
 
-    for upnode, dnnode, data in G.edges(data=True):
+    for upnode, dnnode, key, data in G.edges(keys=True,data=True):
         # TODO: road_type, category?
-        position = []
-        link = Link(link_id, 1, 1, upnode, dnnode, data['name'])
-        G.edges[upnode, dnnode, 0]['id'] = link_id
+        link = Link(link_id, 1, 1, upnode, dnnode, attr(data, 'name'))
+        G.edges[upnode, dnnode, key]['id'] = link_id
         links[link_id] = link
         link_id += 1
 
     coordinates = nx.get_edge_attributes(G,'coordinates')
+    # for u,v,data in G.edges():
+
     max_node_id = max(originalG.nodes())
     originalG.max_node_id = max_node_id
 
@@ -331,11 +300,9 @@ def constructNodesLinks(G, originalG, tempnodeDict):
 
         # turning path radius for intersections
         if nodeType == 2:
-            # TODO: handle missing width and lanes
-            in_edges = [((u,v, 0), data['width'], data['lanes']) for u,v,data in G.in_edges(nodeId, data=True)]
-            out_edges = [((u,v, 0), data['width'], data['lanes']) for u,v,data in G.out_edges(nodeId, data=True)]
-            maxRadius = max([ float(edge[1]) * float(edge[2]) for edge in in_edges + out_edges])
-            # print(maxRadius)
+            in_edges = [((u,v, key), attr(data, 'width'), attr(data, 'lanes')) for u,v,key,data in G.in_edges(nodeId, keys=True, data=True)]
+            out_edges = [((u,v, key), attr(data, 'width'), attr(data, 'lanes')) for u,v,key,data in G.out_edges(nodeId, keys=True, data=True)]
+            maxRadius = max([ edge[1] * edge[2] for edge in in_edges + out_edges])
             for ends, _, _ in in_edges:
                  new_node = shortenFromHead(ends, G, originalG, maxRadius)
                  new_nodes.append(new_node)
@@ -343,6 +310,7 @@ def constructNodesLinks(G, originalG, tempnodeDict):
                 new_node = shortenFromTail(ends, G, originalG, maxRadius)
                 new_nodes.append(new_node)
     return nodes, links
+
 
 def geoFromPathGraph(G, originalG):
     pathGeo = {}
@@ -356,19 +324,28 @@ def mergeClusteringIntersection(G):
     num_nodes = len(list(G.nodes()))
     num_edges = len(list(G.edges()))
     coordinates = {}
-    for u,v,data in G.edges(data=True):
-        if data['length'] < SEGMENT_LOWER_BOUND:
-            to_merge.append((u,v))
-        elif not 'coordinates' in data:
-            coordinates[(u,v,0)] = [u,v]
-    for u, v in to_merge:
-        G = nx.contracted_nodes(G, u , v)
-    nx.set_edge_attributes(G, coordinates, name='coordinates')
+    gu, gv = None, None
+    for u,v,key,data in G.edges(keys=True, data=True):
+        if not 'coordinates' in data:
+            G.edges[u,v,key]['coordinates'] = [u,v]
+            gu, gv = u, v
+    #     if data['length'] < MERGING_DIST_THRESHOLD:
+    #         to_merge.append((u,v))
+    # for u, v in to_merge:
+    #     G = nx.contracted_nodes(G, u , v)
+    # nx.set_edge_attributes(G, coordinates, name='coordinates')
     # print(nx.get_edge_attributes(G, 'coordinates'))
+    # print('check----',G.edges[gu, gv, 0]['coordinates'])
     msg = 'Merged (from {:,} to {:,} nodes and from {:,} to {:,} edges)'
     # print(msg.format(num_nodes, len(list(G.nodes())), num_edges, len(list(G.edges()))))
 
-DEFAULT_SEGMENT_VALUES = {
+DEVAULT_OSM_VALUE = {
+'width':12,
+'lanes':2,
+'name':'',
+}
+
+DEFAULT_SEGMENT_ATTR = {
 'numlanes' : 2,
 'capacity' : 1000,
 'speedlimit':60,
@@ -376,12 +353,30 @@ DEFAULT_SEGMENT_VALUES = {
 'tag':"",
 }
 
-def attribute(att_string, sub_attribute, parent_attribute):
+DEFAULT_LINK_ATTR = {
+'type' : 2,
+'category' : 2,
+'name': '',
+'tags': '',
+}
+
+def attr(data, attr):
+    if attr in data:
+        if attr == 'width' or attr == 'lanes':
+            try:
+                return float(data[attr])
+            except:
+                return DEVAULT_OSM_VALUE[attr]
+        return data[attr]
+    else:
+        return DEVAULT_OSM_VALUE[attr]
+
+def attribute(att_string, sub_attribute, parent_attribute, default_attribute):
     if att_string in sub_attribute:
         return sub_attribute[att_string]
     elif att_string in parent_attribute:
         return parent_attribute[att_string]
-    return DEFAULT_SEGMENT_VALUES[att_string]
+    return default_attribute[att_string]
 
 def constructSegments(linkGraph, originalG):
     linkToSeg = {}
@@ -390,13 +385,12 @@ def constructSegments(linkGraph, originalG):
     toSegment = {}
     SEGMENT_ID = 1
 
-    for u,v,linkData in linkGraph.edges(data=True):
+    for u,v,key,linkData in linkGraph.edges(keys=True,data=True):
         coords = linkData['coordinates']
         link_id = linkData['id']
         linkToData[link_id] = linkData
         linkToSeg[link_id] = []
         total_len = sum([originalG.edges[coords[i], coords[i+1], 0]['length'] for i in range(len(coords)-1)]) # after shortened
-        # print("+++++++total_len",total_len, " ", linkData['length'] )
         tail = 0
         segment_len = 0
         acc_len = 0
@@ -408,7 +402,6 @@ def constructSegments(linkGraph, originalG):
             for key in data:
                 segment_attributes[key] = data[key] # get whatever available
             segment_len += data['length']
-            # print("------inc len", data['length'])
             acc_len += data['length']
             if total_len - acc_len < SEGMENT_LOWER_BOUND or tail == len(coords)-2:
                 # combine all leftover coordinates if they are not enough for a segment.
@@ -447,11 +440,11 @@ def constructSegments(linkGraph, originalG):
                 segment_id,
                 link_id,
                 seq,
-                attribute('numlanes', linkToData[link_id], segment_attributes),
-                attribute('capacity', linkToData[link_id], segment_attributes),
-                attribute('speedlimit', linkToData[link_id], segment_attributes),
-                attribute('tag', linkToData[link_id], segment_attributes),
-                attribute('category', linkToData[link_id], segment_attributes),
+                attribute('numlanes', linkToData[link_id], segment_attributes, DEFAULT_SEGMENT_ATTR),
+                attribute('capacity', linkToData[link_id], segment_attributes, DEFAULT_SEGMENT_ATTR),
+                attribute('speedlimit', linkToData[link_id], segment_attributes, DEFAULT_SEGMENT_ATTR),
+                attribute('tag', linkToData[link_id], segment_attributes, DEFAULT_SEGMENT_ATTR),
+                attribute('category', linkToData[link_id], segment_attributes, DEFAULT_SEGMENT_ATTR),
                 position_points,
                 length)
         segToLink[segment_id] = link_id
@@ -461,8 +454,6 @@ def constructSegments(linkGraph, originalG):
 def setLinkSegmentAttr(segments, links, linkToSeg):
     # Contructing Link Travel Time Table
     linktts = {}
-    print(links)
-    print(linkToSeg)
     for link_id in links:
         links[link_id].segments = linkToSeg[link_id]
         linkTime,linkLength = 0,0

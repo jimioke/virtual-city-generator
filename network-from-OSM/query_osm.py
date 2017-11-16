@@ -65,7 +65,7 @@ def graph_from_bbox(north, south, east, west, network_type='drive',
 
 # G = graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
 # G = graph_from_bbox(42.3645,42.3635,-71.1046,-71.1028) #44 nodes and 43 edges
-G = graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034) #29 nodes and 28 edges
+# G = graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034) #29 nodes and 28 edges
 
 # Investigate the graph
 # print(G.edges(data=True)[0:2])

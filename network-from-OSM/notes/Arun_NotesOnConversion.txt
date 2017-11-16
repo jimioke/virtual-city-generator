@@ -1,0 +1,43 @@
+Major steps in conversion:
+
+1. Create nodes
+2. Process the turning information
+3. Create polylines for turnings
+4.
+
+
+
+Other notes:
+1. How were the long segments handled? Some sectiosn from base have a length > 4km
+2. Do all segments in a link need to be of same category  ('A','B' etc.)?
+3. Information on lanes: canstop, capark, shoulder, hov. What do these variables mean for midterm?
+4. Difference between road_type and category in links
+5. Check sequence of segments in links
+6. DFS or BFS?
+7. Who wrote the Access database functions?
+8. Lane polylines: HOw to connect the offsets when the transfer is not smooth. Should this correction be made at the segment connections too
+9. Multiple points with same x,y in a polylane
+10. Add trueconnector Flag
+11. What do node types represent?
+12. Need to copy the nodes too; not just link when dealing with bi-directional links
+
+Things to do when intermediate nodes are removed:
+1. The section geometry should be extended
+    a. Add the node-point to both the sections
+    b. The lane-connections at the node-point
+2. The segments-to-link must take care of these nodes while exploration     
+
+
+Things to handle later:
+1. U-trns
+2. Run SUMO after the clean up of the nodes
+3. Th node in a connections should connect links such that the hnode and tnode are equal to the node
+4. Check the length of the link and freeflow TT calculation
+5. Some lanes (and segments) are no being displayed : eg 299101
+6. The list of lanes without downstream connections
+7. Some keys are int and some are strings. Connections are pair of ints and everythign else is string. Be consistent
+
+
+Notable assumptions
+1. U-turns are generally allowed
+2. 
