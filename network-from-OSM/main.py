@@ -33,7 +33,7 @@ def main():
 
     print "----------Mapped segments to links and viceversa-------------"
     # segments,links,linktts = constructSegmentsLinks(baseAttributes,basePoly,segToLink,linkToSeg,typeToWidthFname,ffsFname)
-    lanes = constructLanes(segments,typeToWidthFname)
+    lanes = constructLanes_new(segments,typeToWidthFname)
 
     print "----------Constructed segments,links,nodes, and lanes-------------"
     #---Processing the connections

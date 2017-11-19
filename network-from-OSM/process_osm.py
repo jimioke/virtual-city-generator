@@ -15,6 +15,7 @@ from file_paths import *
 
 SEGMENT_LOWER_BOUND = 20
 MERGING_DIST_THRESHOLD = 20
+LANE_WIDTH = 3.7 # meters
 # G = nx.read_gpickle(GRAPH_FILE)
 # G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
 # G = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978)
@@ -299,14 +300,14 @@ def constructNodesLinks(G, originalG, tempnodeDict):
         nodes[nodeId] = node
 
         # turning path radius for intersections
-        if nodeType == 2:
-            in_edges = [((u,v, key), attr(data, 'width'), attr(data, 'lanes')) for u,v,key,data in G.in_edges(nodeId, keys=True, data=True)]
-            out_edges = [((u,v, key), attr(data, 'width'), attr(data, 'lanes')) for u,v,key,data in G.out_edges(nodeId, keys=True, data=True)]
-            maxRadius = max([ edge[1] * edge[2] for edge in in_edges + out_edges])
-            for ends, _, _ in in_edges:
+        if nodeId: #in tempnodeDict['uniNodes']:
+            in_edges = [((u,v, key), attr(data, 'lanes')) for u,v,key,data in G.in_edges(nodeId, keys=True, data=True)]
+            out_edges = [((u,v, key), attr(data, 'lanes')) for u,v,key,data in G.out_edges(nodeId, keys=True, data=True)]
+            maxRadius = max([ edge[1] * LANE_WIDTH for edge in in_edges + out_edges]) # width * lanes
+            for ends, _ in in_edges:
                  new_node = shortenFromHead(ends, G, originalG, maxRadius)
                  new_nodes.append(new_node)
-            for ends, _, _ in out_edges:
+            for ends, _ in out_edges:
                 new_node = shortenFromTail(ends, G, originalG, maxRadius)
                 new_nodes.append(new_node)
     return nodes, links
@@ -340,8 +341,8 @@ def mergeClusteringIntersection(G):
     # print(msg.format(num_nodes, len(list(G.nodes())), num_edges, len(list(G.edges()))))
 
 DEVAULT_OSM_VALUE = {
-'width':12,
-'lanes':2,
+'width':6,
+'lanes':1,
 'name':'',
 }
 

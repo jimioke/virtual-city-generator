@@ -423,6 +423,54 @@ def constructLanes(segments,typeToWidthFname):
             lanes[laneid].position = lanePos
     return lanes
 
+def constructLanes_new(segments,typeToWidthFname):
+    '''
+    '''
+    catToWidth = {}
+    geo_scale = 0.000008
+    with open(typeToWidthFname,'rb') as ifile:
+        reader = csv.DictReader(ifile)
+        for row in reader:
+            catToWidth[int(row['CategoryID'])] = row
+
+    #---Contructing lanes attributes
+    lanes = {}
+    for segid,segment in segments.iteritems():
+        for i in xrange(segment.numlanes):
+            laneid = int(segid)*100 + i
+            width = catToWidth[segment.category]['LaneWidth']
+            lane = Lane(laneid,segid,width)
+            lanes[str(laneid)] = lane
+
+    #---Contructing lane polylines
+    for segid,segment in segments.iteritems():
+        segPos = segment.position
+        segPos = [(float(item['x']),float(item['y'])) for item in segPos]
+        width = float(catToWidth[segment.category]['LaneWidth'])*geo_scale
+        #---looping over the lanes from the slowest to fastest
+        for i in xrange(segment.numlanes):
+            laneid = str(int(segid)*100 + i)
+            if segment.numlanes==1:
+                lanePos = segPos
+            elif segment.numlanes==2:
+                lanePos = offsetPolyLine(segPos,(-0.5+i)*width)
+            elif segment.numlanes==3:
+                lanePos = offsetPolyLine(segPos,(-1+i)*width)
+            elif segment.numlanes==4:
+                lanePos = offsetPolyLine(segPos,(-1.5+i)*width)
+            elif segment.numlanes==5:
+                lanePos = offsetPolyLine(segPos,(-2.+i)*width)
+            elif segment.numlanes==6:
+                lanePos = offsetPolyLine(segPos,(-2.5+i)*width)
+            elif segment.numlanes==7:
+                lanePos = offsetPolyLine(segPos,(-3.+i)*width)
+            else:
+                print "+++ @constructLanes(): The following case is not defined: numLanes: ", segment.numlanes
+                pdb.set_trace()
+
+            lanes[laneid].position = lanePos
+    return lanes
+
 
 #==================================================================================================
 
@@ -514,8 +562,8 @@ def offsetPolyLine(polyLine,offset):
         print "+++ @offsetPolyLine(): polyline has only 1 point"
         pdb.set_trace()
 
-    if abs(offset)<10**-6:
-        return polyLine
+    # if abs(offset)<10**-6:
+    #     return polyLine
     lineList = []
     # off-set all the lines (pairs of points)
     for point1,point2 in zip(polyLine,polyLine[1:]):

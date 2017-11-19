@@ -227,9 +227,10 @@ class Network:
             link_data = OrderedDict()
 
             for id, link in self.links.iteritems():
-                points = []
+                points = [(self.nodes[link.upnode].x, self.nodes[link.upnode].y)]
                 for seg_id in link.segments:
                     points += [(point['x'], point['y']) for point in self.segments[seg_id].position]
+                points.append((self.nodes[link.dnnode].x, self.nodes[link.dnnode].y))
                 link_data[id] = LineString(points)
             df = pd.DataFrame.from_dict(link_data, orient='index')
             df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
