@@ -22,6 +22,8 @@ inputFolder = "metadata/"
 # outputFolder = "/Outputs/Dalian_default_turning_paths"
 # outputFolder = "/Outputs/smallBoston"
 outputFolder = "/Outputs/test"
+outputFolder = "/Outputs/Baltimore"
+
 # Output and temp dir
 outDir = os.getcwd() + outputFolder
 simmobility_dir = outDir + "/simmobility"
@@ -55,6 +57,8 @@ def main():
     # mainG = qr.graph_from_bbox(39.2003, 38.6405, 122.1844, 121.0927) # Dalian
     # mainG = qr.graph_from_bbox(-71.090201,42.358556,-71.077083,42.366463) # Boston small
     # mainG = qr.graph_from_bbox(42.3729, 42.3579, -71.0750, -71.1052)
+    # mainG = qr.graph_from_bbox(39.4362, 39.1492, -76.3770, -76.8810) # Baltimore
+
 
 
     # mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
