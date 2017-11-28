@@ -22,7 +22,8 @@ inputFolder = "metadata/"
 # outputFolder = "/Outputs/Dalian_default_turning_paths"
 # outputFolder = "/Outputs/smallBoston"
 outputFolder = "/Outputs/test"
-outputFolder = "/Outputs/Baltimore"
+# outputFolder = "/Outputs/test_clean"
+# outputFolder = "/Outputs/Baltimore"
 
 # Output and temp dir
 outDir = os.getcwd() + outputFolder
@@ -61,13 +62,13 @@ def main():
 
 
 
-    # mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
+    mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
     # mainG = qr.graph_from_bbox(42.3645,42.3635,-71.1046,-71.1028) #44 nodes and 43 edges
-    mainG = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
+    # mainG = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
 
     # mainG = qr.graph_from_place('Los Altos, CA, USA')
     roadnetwork = Network(mainG)
-    roadnetwork.process_segments_links_nodes()
+    roadnetwork.process_segments_links_nodes(clean_intersections=False)
     roadnetwork.lanes = posm.constructLanes(roadnetwork.segments, typeToWidthFname)
 
     roadnetwork.constructSegmentConnections()

@@ -31,9 +31,11 @@ class Network:
         self.numLinks = None
         self.numSegs = None
 
-    def process_segments_links_nodes(self):
+    def process_segments_links_nodes(self, clean_intersections=True):
         self.node_types = posm.getNodeTypes(self.osm_graph)
         self.link_graph = posm.build_linkGraph(self.osm_graph, self.node_types['uniNodes'])
+        if clean_intersections:
+            self.link_graph = posm.clean_intersections(self.link_graph, tolerance=15, dead_ends=False)
         self.nodes, self.links = posm.constructNodesLinks(self.link_graph, self.osm_graph, self.node_types)
         self.segments, segToLink, linkToSeg = posm.constructSegments(self.link_graph, self.osm_graph, SEGMENT_LOWER_BOUND=20)
         self.linktts = posm.setLinkSegmentAttr(self.segments, self.links, linkToSeg)

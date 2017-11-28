@@ -689,3 +689,44 @@ def offsetPolyLine(polyLine,offset):
             offsetPolyLine[i] = newp
 
     return offsetPolyLine
+
+
+def clean_intersections(G, tolerance=15, dead_ends=False):
+    """
+    Clean-up intersections comprising clusters of nodes by merging them and
+    returning their centroids.
+
+    Divided roads are represented by separate centerline edges. The intersection
+    of two divided roads thus creates 4 nodes, representing where each edge
+    intersects a perpendicular edge. These 4 nodes represent a single
+    intersection in the real world. This function cleans them up by buffering
+    their points to an arbitrary distance, merging overlapping buffers, and
+    taking their centroid. For best results, the tolerance argument should be
+    adjusted to approximately match street design standards in the specific
+    street network.
+
+    Parameters
+    ----------
+    G : networkx multidigraph
+    tolerance : float
+        nodes within this distance (in graph's geometry's units) will be
+        dissolved into a single intersection
+    dead_ends : bool
+        if False, discard dead-end nodes to return only street-intersection
+        points
+
+    Returns
+    ----------
+    G : modified and cleaned networkx multidigraph
+    """
+
+    if not dead_ends:
+        if 'streets_per_node' in G.graph:
+            streets_per_node = G.graph['streets_per_node']
+        else:
+            streets_per_node = ox.count_streets_per_node(G)
+
+        dead_end_nodes = [node for node, count in streets_per_node.items() if count <= 1]
+        # G = G.copy()
+        G.remove_nodes_from(dead_end_nodes)
+    return G
