@@ -21,9 +21,11 @@ inputFolder = "metadata/"
 # outputFolder = "/Outputs/Tehran_default_turning_paths"
 # outputFolder = "/Outputs/Dalian_default_turning_paths"
 # outputFolder = "/Outputs/smallBoston"
-outputFolder = "/Outputs/test"
+# outputFolder = "/Outputs/test"
 # outputFolder = "/Outputs/test_clean"
-# outputFolder = "/Outputs/Baltimore"
+# outputFolder = "/Outputs/Baltimore_NOT_clean"
+outputFolder = "/Outputs/Baltimore_pruned"
+
 
 # Output and temp dir
 outDir = os.getcwd() + outputFolder
@@ -58,11 +60,11 @@ def main():
     # mainG = qr.graph_from_bbox(39.2003, 38.6405, 122.1844, 121.0927) # Dalian
     # mainG = qr.graph_from_bbox(-71.090201,42.358556,-71.077083,42.366463) # Boston small
     # mainG = qr.graph_from_bbox(42.3729, 42.3579, -71.0750, -71.1052)
-    # mainG = qr.graph_from_bbox(39.4362, 39.1492, -76.3770, -76.8810) # Baltimore
+    mainG = qr.graph_from_bbox(39.4486, 39.1329, -76.2737, -76.9485) # Baltimore
 
 
 
-    mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
+    # mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
     # mainG = qr.graph_from_bbox(42.3645,42.3635,-71.1046,-71.1028) #44 nodes and 43 edges
     # mainG = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
 
@@ -74,7 +76,7 @@ def main():
     roadnetwork.constructSegmentConnections()
     roadnetwork.construct_default_turning_path()
 
-    roadnetwork.writeSumoShapefile(sumo_dir)
+    # roadnetwork.writeSumoShapefile(sumo_dir)
     # roadnetwork.construct_turning_paths_from_SUMO(sumo_dir)
 
     roadnetwork.write(foldername=simmobility_dir+inputFolder.split('/')[1])
