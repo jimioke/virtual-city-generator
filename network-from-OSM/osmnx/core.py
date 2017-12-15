@@ -285,6 +285,7 @@ def overpass_request(data, pause_duration=None, timeout=180, error_pause_duratio
     -------
     dict
     """
+    print("-------------------query from overpass-api ", data)
 
     # define the Overpass API URL, then construct a GET-style URL as a string to
     # hash to look up/save to cache
@@ -509,8 +510,12 @@ def get_osm_filter(network_type):
     # anything specifying motor=no. also filter out any non-service roads that
     # are tagged as providing parking, driveway, private, or emergency-access
     # services
-    filters['drive'] = ('["area"!~"yes"]["highway"!~"cycleway|footway|path|pedestrian|steps|track|'
-                        'proposed|construction|bridleway|abandoned|platform|raceway|service"]'
+    # filters['drive'] = ('["area"!~"yes"]["highway"!~"cycleway|footway|path|pedestrian|steps|track|'
+    #                     'proposed|construction|bridleway|abandoned|platform|raceway|service"]'
+    #                     '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
+    #                     '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
+
+    filters['drive'] = ('["area"!~"yes"]["highway"~"motorway|trunk|primary|secondary|tertiary"]'
                         '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
                         '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
 
@@ -1828,7 +1833,7 @@ def graph_from_file(filename, network_type='all_private', simplify=True,
     """
     # transmogrify file of OSM XML data into JSON
     response_jsons = [overpass_json_from_file(filename)]
-    
+
     # create graph using this response JSON
     G = create_graph(response_jsons, network_type=network_type,
                      retain_all=retain_all, name=name)
@@ -1836,6 +1841,6 @@ def graph_from_file(filename, network_type='all_private', simplify=True,
     # simplify the graph topology as the last step.
     if simplify:
         G = simplify_graph(G)
-    
+
     log('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
     return G

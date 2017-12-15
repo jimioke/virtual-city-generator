@@ -17,3 +17,7 @@ Prototype city candidates (bbox: north, south, east, west)
 LONGER
 query APIs (bbox, polygon shape, name, etc.)
 clean up code
+
+
+
+Road width --> infer number of lanes and 1vs2 ways. 
