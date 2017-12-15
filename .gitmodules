@@ -7,3 +7,6 @@
 [submodule "network/bib"]
 	path = network/bib
 	url = https://github.com/jimioke/references.git
+[submodule "bib"]
+	path = bib
+	url = https://github.com/jimioke/references.git

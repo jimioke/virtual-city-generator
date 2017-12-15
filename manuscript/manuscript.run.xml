@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>manuscript.bcf</file>
@@ -80,7 +80,7 @@
       <file>manuscript.bcf</file>
     </requires>
     <requires type="editable">
-      <file>bib/references.bib</file>
+      <file>../bib/references.bib</file>
     </requires>
   </external>
 </requests>

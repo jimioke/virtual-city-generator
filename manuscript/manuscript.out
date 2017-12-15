@@ -1,13 +1,13 @@
-\BOOKMARK [1][-]{section.1}{Goal}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Questions:}{section.1}% 2
-\BOOKMARK [1][-]{section.2}{Prior Work}{}% 3
-\BOOKMARK [1][-]{section.3}{Data}{}% 4
-\BOOKMARK [1][-]{section.4}{Network processing}{}% 5
-\BOOKMARK [2][-]{subsection.4.1}{OSM download}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.2}{GIS2FE}{section.4}% 7
-\BOOKMARK [1][-]{section.5}{Iterative Proportional Fitting}{}% 8
-\BOOKMARK [1][-]{section.6}{Proposed method}{}% 9
-\BOOKMARK [2][-]{subsection.6.1}{Data processing and IPF}{section.6}% 10
-\BOOKMARK [2][-]{subsection.6.2}{Two approaches to spatial assignment of households}{section.6}% 11
-\BOOKMARK [3][-]{subsubsection.6.2.1}{K-means clustering}{subsection.6.2}% 12
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Zonal disaggregation and random sampling}{subsection.6.2}% 13
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Background}{}% 2
+\BOOKMARK [1][-]{section.3}{Data}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Network processing}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{Method}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Supply}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Demand}{section.4}% 7
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Zonal disaggregation and random sampling}{subsection.4.2}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Summary of framework}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 10
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 11
+\BOOKMARK [1][-]{section.7}{References}{}% 12
+\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 13
