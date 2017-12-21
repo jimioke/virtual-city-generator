@@ -248,6 +248,16 @@ What is also important for us is the simplicity and novelty of methodology. We w
 \end{table}
 
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{l l l l l }
+    City/Typology & Microdata & Aggregate data & Land use & Transit \\
+  \end{tabular}
+  \caption{Data availability for candidate cities}
+  \label{tab:avail}
+\end{table}
+
+
 \begin{enumerate}[Step 1:]
 \item Network: modify OSM network file, make it legal input to SimMobility
   \begin{enumerate}[1.]
@@ -295,6 +305,47 @@ The address of each household is assumed to be the centroid of each cell, which 
 The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
 This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
 The populations themselves can first be generated using a simple IPF/U routine.
+
+
+\subsection{Estimation of origin-destination matrices}
+There are three key
+
+\begin{table}[h!]\small
+  \centering
+  \begin{tabular}{l l l } \toprule
+    \textbf{Parameters}            & \textbf{Description}  & \textbf{Notes} \\ \midrule
+    \texttt{distance}     & Zone-zone distance (km) & \\
+    \texttt{car\_cost\_erp} & Road pricing cost (monetary units) &  \\
+    \texttt{car\_ivt}     & Car in-vehicle time  (hours) & \\
+    \texttt{pub\_ivt}     & Public transit in-vehicle time (hours) & \\
+    \texttt{pub\_walkt}   & Public transit access-egress walking time (hours) & \\
+    \texttt{pub\_wtt}     & Public transit waiting time (hours) & \\
+    \texttt{pub\_cost}    & Public transit cost between zones (monetary units) & \\
+    \texttt{avg\_transfer}& Average number of public transit transfers between zones & \\
+    \texttt{pub\_out}     & Public transit out-of-vehicle travel time (hours) & Sum  \texttt{pub\_walkt} and  \texttt{pub\_wtt} \\ \bottomrule
+  \end{tabular}
+  \caption{Operating cost parameters (Skim matrix elements) in SimMobility}
+  \label{tab:opcosts}
+\end{table}
+
+\subsubsection{Initial estimates}
+\begin{enumerate}
+\item The zone-zone distance can be readily estimated by averaging the shortest-path distances for all unique OD pairings within a pair of zones. Given $P_{n_O n_D}$ as the shortest path for a given node-node OD pair, $n_On_D$, between two zones $O$ and $D$, then we can write
+  \begin{equation}
+    d_{OD} = \frac{\sum_{n_On_D \in V(O) \times V(D)}|| P_{n_On_D}||}{|V(O) \times V(D)|}
+  \end{equation}
+\item The road pricing cost can be zero for now, but these will be relevant for congestion pricing scenarios. Thus,
+  \begin{equation}
+    C^{rp}_{OD} = 0
+  \end{equation}
+\item Car in-vehicle time $CIVT$ can be computed using free-flow speeds $FFS_e$ along each edge $e$ of the shortest-path ODs for each zone pair to travel times, which are then averaged to obtain the final estimate:
+  \begin{align}
+    CIVT(P) &= \sum_{e \in P} \fr{||e||}{FFS_e}\\
+    CIVT_{OD} &= \frac{\sum_{n_On_D \in V(O) \times V(D)} CIVT(P_{n_On_D})}{|V(O) \times V(D)|}
+  \end{align}
+\item Public transit in-vehicle time $PIVT$ is estimated using the procedure outlined in (iii) applied to the public transit graph
+\item  Public transit access-egress 
+\end{enumerate}
 
 
 \subsection{Summary of framework}
