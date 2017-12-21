@@ -308,7 +308,8 @@ The populations themselves can first be generated using a simple IPF/U routine.
 
 
 \subsection{Estimation of origin-destination matrices}
-There are three key
+There are three key inputs at the zonal level required for running SimMobility preday: zonal attribute data, skim matrices, and zone-zone travel time data.
+
 
 \begin{table}[h!]\small
   \centering
@@ -344,7 +345,13 @@ There are three key
     CIVT_{OD} &= \frac{\sum_{n_On_D \in V(O) \times V(D)} CIVT(P_{n_On_D})}{|V(O) \times V(D)|}
   \end{align}
 \item Public transit in-vehicle time $PIVT$ is estimated using the procedure outlined in (iii) applied to the public transit graph
-\item  Public transit access-egress 
+\item Public transit access-egress times are obtained by averaging the shortest edges connecting each road node to a public transit node in zone $O$ and adding this to the corresponding value for zone $D$. We assume a walking speed of 5 km/h, and dividing the sum obtained by this value produces an estimate of the walking time for each zone $OD$ pair.
+
+\item To estimate the public transit waiting time, we consider the median headway of the train/bus route on the first edge of all the shortest paths connecting public transit nodes in each zone-zone pairing. If there is a transfer on a given path, then the headway of the train/bus on the edge incident on the transfer point is added to the headway for the beginning of that path.
+
+\item The public transit cost between zone $OD$s is taken as the average fare scaled by the relative average length of the shortest paths between the nodes in a given pair of zones.
+
+\item We can compute the average number of transfers for each zone $OD$ by summing the number of transfers for the shortest paths in all node-node pairs between zones and dividing by the number of node-node pairings.
 \end{enumerate}
 
 
