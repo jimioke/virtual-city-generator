@@ -258,21 +258,27 @@ What is also important for us is the simplicity and novelty of methodology. We w
 \end{table}
 
 
-\begin{enumerate}[Step 1:]
-\item Network: modify OSM network file, make it legal input to SimMobility
-  \begin{enumerate}[1.]
-  \item links has to be unidirectional
-  \item shorten the links and add turning points
-  \item maintain the attributes of each object in the network
-  \end{enumerate}
-\item Population Synthesis
-  \begin{enumerate}[1.]
-  \item Data collection: sample data, aggregate data for zones in each city
-  \item Data processing: categorize sample data and get joint distribution, formatting aggregate data
-  \item Apply IPF algorithm and use the weights result to draw synthetic population
-  \item Assign households in each county to locations based on land use information
-  \end{enumerate} 
-\end{enumerate}
+% \begin{enumerate}[Step 1:]
+% \item Network: modify OSM network file, make it legal input to SimMobility
+%   \begin{enumerate}[1.]
+%   \item links has to be unidirectional
+%   \item shorten the links and add turning points
+%   \item maintain the attributes of each object in the network
+%   \end{enumerate}
+% \item Population Synthesis
+%   \begin{enumerate}[1.]
+%   \item Data collection: sample data, aggregate data for zones in each city
+%   \item Data processing: categorize sample data and get joint distribution, formatting aggregate data
+%   \item Apply IPF algorithm and use the weights result to draw synthetic population
+%   \item Assign households in each county to locations based on land use information
+%   \end{enumerate} 
+% \end{enumerate}
+
+In summary, the following are steps involving in generating a synthetic population and preparing it for mesoscopic simulation.
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
 
 \subsection{Supply}
 
@@ -306,8 +312,52 @@ The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
 This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
 The populations themselves can first be generated using a simple IPF/U routine.
 
+\subsection{Geolocation and spatial assignment}
 
-\subsection{Estimation of origin-destination matrices}
+\subsubsection{Households}
+\begin{itemize}
+  \item Aggregate land use categories into these: low residential ($L$), high residential ($H$), commercial ($C$), industrial ($I$), education ($E$), open land ($O$)
+  \item Assign weights for households as follows:
+    \begin{equation}
+     HH (w_L, w_H, w_C, w_I, w_E, w_O) = (8, 10, 4, 1, 0, 0)
+    \end{equation}
+  \item Grid the map and assign weights to the cell $w_c^{HH}$ given its  prevailing land use category
+  \item Normalize cell weights $p_{c(SAL)}^{HH}$ in each second administrative level ($SAL$)
+    \begin{equation}
+      p_{c(SAL)}^{HH} = \fr{w_c^{HH}}{\sum_{c \in SAL} w_c^{HH}}
+    \end{equation}
+  \item Number of households in each cell given by:
+    \begin{equation}
+     N_{HH}^{c(SAL)} = p_c^{SAL}\cdot N_{HH}^{SAL}
+    \end{equation}
+    where $ N_{HH}^{SAL}$ is the number of households in each $SAL$.
+  \item Randomly sample to locate households in cell centroids for all $SAL$
+  \end{itemize}
+
+
+\subsubsection{Firms and education zones}
+\begin{itemize}
+  \item We obtain numbers of firms and schools in each $SAL$
+  \item Assign weights as follows:
+    \begin{align}
+      WORK (w_L, w_H, w_C, w_I, w_E, w_O) &= (1, 2, 10, 5, 3, 1)\\
+      EDU (w_L, w_H, w_C, w_I, w_E, w_O) &= (0, 0, 0, 0, 1, 0)
+    \end{align}
+  \item Assign weights to cells for work and education: $w_c^{WORK}$,  $w_c^{EDU}$
+    
+  \item Find $p_{c(SAL)}^{WORK}$ and $p_{c(SAL)}^{EDU}$ as before
+  \item Find  $N_{WORK}^{c(SAL)}$ and $ N_{EDU}^{c(SAL)}$ as before
+  \item The final outputs here are the numbers of workplaces/schools in each TAZ:
+    \begin{align}
+      N_{WORK}^{TAZ(SAL)} &= \sum_{c(SAL) \in TAZ(SAL)} N_{WORK}^{c(SAL)} \\
+      N_{EDU}^{TAZ(SAL)} &= \sum_{c(SAL) \in TAZ(SAL)} N_{EDU}^{c(SAL)}  
+    \end{align}
+  \end{itemize}
+
+
+
+\subsection{Zonal-level  estimation}
+\subsubsection{Estimation of origin-destination matrices}
 There are three key inputs at the zonal level required for running SimMobility preday: zonal attribute data, skim matrices, and zone-zone travel time data.
 
 
