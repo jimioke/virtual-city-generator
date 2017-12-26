@@ -1,19 +1,18 @@
 [0] Config.pm:354> INFO - This is Biber 2.7
 [0] Config.pm:357> INFO - Logfile is 'manuscript.blg'
-[30] biber:303> INFO - === Fri Dec 15, 2017, 10:35:52
-[48] Biber.pm:359> INFO - Reading 'manuscript.bcf'
-[123] Biber.pm:835> INFO - Found 8 citekeys in bib section 0
-[136] Biber.pm:3670> INFO - Processing section 0
-[148] Biber.pm:3840> INFO - Looking for bibtex format file '../bib/references.bib' for section 0
-[159] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
-[184] bibtex.pm:1292> INFO - Found BibTeX data source '../bib/references.bib'
-[251] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[251] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[251] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
+[29] biber:303> INFO - === Tue Dec 26, 2017, 17:11:08
+[49] Biber.pm:359> INFO - Reading 'manuscript.bcf'
+[124] Biber.pm:835> INFO - Found 8 citekeys in bib section 0
+[139] Biber.pm:3670> INFO - Processing section 0
+[151] Biber.pm:3840> INFO - Looking for bibtex format file '../bib/references.bib' for section 0
+[163] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[189] bibtex.pm:1292> INFO - Found BibTeX data source '../bib/references.bib'
+[252] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[252] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[252] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
 [252] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
-[261] bbl.pm:608> INFO - Writing 'manuscript.bbl' with encoding 'ascii'
-[264] Utils.pm:164> WARN - The entry 'farooq2013simulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[265] Utils.pm:164> WARN - The entry 'fielbaum2016parametric' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[267] Utils.pm:164> WARN - The entry 'moekel2003microsimulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[267] bbl.pm:712> INFO - Output to manuscript.bbl
-[267] Biber.pm:109> INFO - WARNINGS: 3
+[260] bbl.pm:608> INFO - Writing 'manuscript.bbl' with encoding 'ascii'
+[263] Utils.pm:164> WARN - The entry 'farooq2013simulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[265] Utils.pm:164> WARN - The entry 'moekel2003microsimulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[266] bbl.pm:712> INFO - Output to manuscript.bbl
+[266] Biber.pm:109> INFO - WARNINGS: 2

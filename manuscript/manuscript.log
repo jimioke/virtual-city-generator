@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  25 DEC 2017 22:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  26 DEC 2017 17:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1100,21 +1100,18 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 280.
  [3] [4]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 385.
+(Font)              <10> on input line 386.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 385.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 387.
+(Font)              <7> on input line 386.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 388.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (9.51283pt too wide) in paragraph at lines 385--397
+Overfull \hbox (9.51283pt too wide) in paragraph at lines 386--398
  [][] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5] [6] [7] [8]
 Package minitoc Info: I0009
@@ -1128,26 +1125,31 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the manuscript.log file.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 493.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 494.
 [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 493.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 494.
  (./manuscript.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 493.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 493.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 494.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 494.
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 7D0C263B5A1C9BA6A1CCD2FD4A1578D6;1343.
+(rerunfilecheck)             Checksum: C6D226FF5EA65DE915CAEDB6869782A6;1243.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'manuscript.run.xml'.
 \openout1 = `manuscript.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19453 strings out of 493013
- 309956 string characters out of 6133328
- 793986 words of memory out of 5000000
- 22382 multiletter control sequences out of 15000+600000
+ 19459 strings out of 493013
+ 310050 string characters out of 6133328
+ 794056 words of memory out of 5000000
+ 22388 multiletter control sequences out of 15000+600000
  114398 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,12n,46p,2121b,1194s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,12n,46p,2121b,1269s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
 texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
 16/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2016/texmf-dist/
@@ -1168,10 +1170,10 @@ nts/type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/lm/lmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/
 lmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
 
-Output written on manuscript.pdf (9 pages, 335480 bytes).
+Output written on manuscript.pdf (9 pages, 335118 bytes).
 PDF statistics:
  288 PDF objects out of 1000 (max. 8388607)
  257 compressed objects within 3 object streams
  76 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

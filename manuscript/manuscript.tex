@@ -285,14 +285,8 @@ In summary, the following are steps involving in generating a synthetic populati
 \subsection{Demand}
 
 
-Although applying IPF to population synthesis is prevailing and the idea is straightforward, the algorithm itself is time consuming and expansive once the combinations of demographics gets large.
-Suppose we have 2 gender categories, 7 age groups, 5 income groups, 5 levels of education, 9 types of occupation, 2 kinds of car ownership, and 5 household types.
 
-
-
-
-
-\subsubsection{Zonal disaggregation and random sampling}
+\subsection{Geolocation and spatial assignment}
 \textcite{moekel2003microsimulation} present an intuitive approach to assigning households to zones, which we propose to implement.
 First, they obtain land-use data, which they use to disaggregate zonal characteristics (e.g.\ household location or firm location) into raster cells.
 The size of these cells are chosen based on computational tractability and desired resolution.
@@ -303,9 +297,7 @@ The weights are then normalized by zone, and households are randomly selected to
 The address of each household is assumed to be the centroid of each cell, which each associated with its parent zone.
 The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
 This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
-The populations themselves can first be generated using a simple IPF/U routine.
-
-\subsection{Geolocation and spatial assignment}
+Our implementation is outlined in the following subsections.
 
 \subsubsection{Households}
 \begin{itemize}
@@ -362,6 +354,15 @@ The method is here is an entropy maximization model (analogous to the gravity mo
       % &  \sum_{i=1}^K\sum_{j=1} c_{ij}x_{ij} = C \\
        & x_{ij} \ge 0, \quad i =1,2,\dots,K,\; j  =1,2,\dots,L
 \end{align}
+
+The reader is referred to \citet{fang1995linearly} for a more formal background of this problem.
+A fuzzy extension that accounts for uncertainty in cost estimates has also been proposed by \citet{li2011entropy}.
+For now, however, we use the simple gravity approach outlined above.
+A quadratic cost constraint may also be introduced later:
+\begin{equation}
+   \sum_{i=1}^K\sum_{j=1} d_{ij}x_{ij}^2 = D \\
+\end{equation}
+
 
 We also solve a static traffic assignment problem in order to find congested zone-zone travel times.
 The input network is a graph in which the nodes are TAZes and the edges are generalized between each zone.

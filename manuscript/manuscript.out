@@ -5,16 +5,15 @@
 \BOOKMARK [1][-]{section.4}{Method}{}% 5
 \BOOKMARK [2][-]{subsection.4.1}{Supply}{section.4}% 6
 \BOOKMARK [2][-]{subsection.4.2}{Demand}{section.4}% 7
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Zonal disaggregation and random sampling}{subsection.4.2}% 8
-\BOOKMARK [2][-]{subsection.4.3}{Geolocation and spatial assignment}{section.4}% 9
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Households}{subsection.4.3}% 10
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Firms and education zones}{subsection.4.3}% 11
-\BOOKMARK [2][-]{subsection.4.4}{Trip generation and population assigment}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.5}{Zonal-level estimation}{section.4}% 13
-\BOOKMARK [3][-]{subsubsection.4.5.1}{Estimation of origin-destination matrices}{subsection.4.5}% 14
-\BOOKMARK [3][-]{subsubsection.4.5.2}{Initial estimates}{subsection.4.5}% 15
-\BOOKMARK [2][-]{subsection.4.6}{Summary of framework}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 17
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 18
-\BOOKMARK [1][-]{section.7}{References}{}% 19
-\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Geolocation and spatial assignment}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Households}{subsection.4.3}% 9
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Firms and education zones}{subsection.4.3}% 10
+\BOOKMARK [2][-]{subsection.4.4}{Trip generation and population assigment}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Zonal-level estimation}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Estimation of origin-destination matrices}{subsection.4.5}% 13
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Initial estimates}{subsection.4.5}% 14
+\BOOKMARK [2][-]{subsection.4.6}{Summary of framework}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 16
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 17
+\BOOKMARK [1][-]{section.7}{References}{}% 18
+\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 19

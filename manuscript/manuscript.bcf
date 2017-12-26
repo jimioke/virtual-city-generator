@@ -2153,8 +2153,10 @@
     <bcf:citekey order="7">farooq2013simulation</bcf:citekey>
     <bcf:citekey order="8">moekel2003microsimulation</bcf:citekey>
     <bcf:citekey order="9">moekel2003microsimulation</bcf:citekey>
-    <bcf:citekey order="10">beckman1996creating</bcf:citekey>
-    <bcf:citekey order="11">beckman1996creating</bcf:citekey>
+    <bcf:citekey order="10">fang1995linearly</bcf:citekey>
+    <bcf:citekey order="11">li2011entropy</bcf:citekey>
+    <bcf:citekey order="12">beckman1996creating</bcf:citekey>
+    <bcf:citekey order="13">beckman1996creating</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nyt/global/" type="entry" sortscheme="nyt" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
