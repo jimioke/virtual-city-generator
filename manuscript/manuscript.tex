@@ -354,6 +354,15 @@ The result is an OD matrix of trips from TAZ to TAZ.
 From this, we then randomly assign each individual to a zone for work or education.
 The method is here is an entropy maximization model (analogous to the gravity model).
 
+\begin{align}
+  \max & - \sum_{i=1}^K\sum_{j=1}^L x_{ij} \ln x_{ij}\\
+  \text{s.t.} & \sum_{j=1}^{L}x_{ij} = O_i, \quad i = 1,2, \dots,K\\
+       & \sum_{i=1}^{K}x_{ij} = D_j, \quad i = 1,2, \dots,L\\
+       &  \sum_{i=1}^K\sum_{j=1} c_{ij}x_{ij} = C \\
+      % &  \sum_{i=1}^K\sum_{j=1} c_{ij}x_{ij} = C \\
+       & x_{ij} \ge 0, \quad i =1,2,\dots,K,\; j  =1,2,\dots,L
+\end{align}
+
 We also solve a static traffic assignment problem in order to find congested zone-zone travel times.
 The input network is a graph in which the nodes are TAZes and the edges are generalized between each zone.
 An average link capacity is obtained from the limiting capacity of the union of shortest paths between the zones.
@@ -364,7 +373,7 @@ The congested travel time estimates for each TAZ OD is given by
   \label{eq:tt}
   tt^{OD} = tt_0^{OD}\lt(1 + \lt( \fr{f_{OD}}{Cap_{OD}}\rt)^2\rt)
 \end{equation}
-where $tt_0^{OD}$ is the free-flow travel time for a given OD.
+where $tt_0^{OD}$ is the free-flow travel time for a given OD. 
 
 \subsection{Zonal-level  estimation}
 \subsubsection{Estimation of origin-destination matrices}
