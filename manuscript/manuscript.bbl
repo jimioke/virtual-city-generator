@@ -281,6 +281,39 @@
       \field{pages}{14\bibrangedash 31}
       \range{pages}{18}
     \endentry
+    \entry{mtoi2014calibration}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=31c00554651861be43b669b644ee8e7d}{%
+           family={Mtoi},
+           familyi={M\bibinitperiod},
+           given={Enock\bibnamedelima T},
+           giveni={E\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{uniquename=0,hash=0f867b86fcc82a86d42ddd67fd69a8d7}{%
+           family={Moses},
+           familyi={M\bibinitperiod},
+           given={Ren},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Scientific Research Publishing}%
+      }
+      \strng{namehash}{efd445f4e9dd6466cad444d820e7ddcc}
+      \strng{fullhash}{efd445f4e9dd6466cad444d820e7ddcc}
+      \strng{authornamehash}{efd445f4e9dd6466cad444d820e7ddcc}
+      \strng{authorfullhash}{efd445f4e9dd6466cad444d820e7ddcc}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Transportation Technologies}
+      \field{number}{02}
+      \field{title}{Calibration and evaluation of link congestion functions: applying intrinsic sensitivity of link speed as a practical consideration to heterogeneous facility types within urban network}
+      \field{volume}{4}
+      \field{year}{2014}
+      \field{pages}{141}
+      \range{pages}{1}
+    \endentry
     \entry{sun2015bayesian}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,hash=3b600865594bcf4059598900b5eeb5d1}{%

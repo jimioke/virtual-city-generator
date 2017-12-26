@@ -344,7 +344,9 @@ Our implementation is outlined in the following subsections.
 In this step, we estimate the number of home-based work trips and home-based education trips between zones in order to have a starting point from which to assign individuals to usual work and education zones.
 The result is an OD matrix of trips from TAZ to TAZ.
 From this, we then randomly assign each individual to a zone for work or education.
-The method is here is an entropy maximization model (analogous to the gravity model).
+
+\subsubsection{Trip distribution}
+The method for trip distribution is an entropy maximization model (analogous to the gravity model when there are no quadratic costs).
 
 \begin{align}
   \max & - \sum_{i=1}^K\sum_{j=1}^L x_{ij} \ln x_{ij}\\
@@ -364,17 +366,37 @@ A quadratic cost constraint may also be introduced later:
 \end{equation}
 
 
+
+\subsubsection{Route assignment}
 We also solve a static traffic assignment problem in order to find congested zone-zone travel times.
 The input network is a graph in which the nodes are TAZes and the edges are generalized between each zone.
 An average link capacity is obtained from the limiting capacity of the union of shortest paths between the zones.
+The problem is a user-optimum (Wardorp) equilibrium, formulated as follows:
 
+\begin{align}
+  \min & \sum_{e_{OD} \in E} \int_{0}^{f_{OD}}tt^{OD}(x) dx \\ \notag
+  \text{s.t.} & \\
+  f_{OD} &= \sum_{i}\sum_{j}\sum_{r}\alpha_{ij}^{e_{OD}r}x_{ij}^{r}\\
+  \sum_r x_{ij}^{r} &= x_{ij} \\
+  f_{OD} &\ge 0 \\
+  x_{ij}^{r}& \ge 0 \\
+  \alpha_{ij}^{e_{OD}r} &=
+                          \begin{cases}
+                            1 & e_{OD} \in r \\
+                            0 & \text{otherwise}
+                          \end{cases}
+\end{align}
 
+The solution to this problem provides the equilbrium OD flows between the TAZes.
+We can therefore compute congestion travel times.
 The congested travel time estimates for each TAZ OD is given by
 \begin{equation}
   \label{eq:tt}
-  tt^{OD} = tt_0^{OD}\lt(1 + \lt( \fr{f_{OD}}{Cap_{OD}}\rt)^2\rt)
+  tt^{OD}(f_{OD}) = tt_0^{OD}\lt(1 + 0.15\lt( \fr{f_{OD}}{Cap_{OD}}\rt)^4\rt)
 \end{equation}
 where $tt_0^{OD}$ is the free-flow travel time for a given OD. 
+This is the standard Bureau of Public Roads congestion function \citep{mtoi2014calibration}, which we consider sufficient for the purposes of estimating congested travel times.
+
 
 \subsection{Zonal-level  estimation}
 \subsubsection{Estimation of origin-destination matrices}

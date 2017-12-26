@@ -9,11 +9,13 @@
 \BOOKMARK [3][-]{subsubsection.4.3.1}{Households}{subsection.4.3}% 9
 \BOOKMARK [3][-]{subsubsection.4.3.2}{Firms and education zones}{subsection.4.3}% 10
 \BOOKMARK [2][-]{subsection.4.4}{Trip generation and population assigment}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.5}{Zonal-level estimation}{section.4}% 12
-\BOOKMARK [3][-]{subsubsection.4.5.1}{Estimation of origin-destination matrices}{subsection.4.5}% 13
-\BOOKMARK [3][-]{subsubsection.4.5.2}{Initial estimates}{subsection.4.5}% 14
-\BOOKMARK [2][-]{subsection.4.6}{Summary of framework}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 16
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 17
-\BOOKMARK [1][-]{section.7}{References}{}% 18
-\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 19
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Trip distribution}{subsection.4.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Route assignment}{subsection.4.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Zonal-level estimation}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Estimation of origin-destination matrices}{subsection.4.5}% 15
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Initial estimates}{subsection.4.5}% 16
+\BOOKMARK [2][-]{subsection.4.6}{Summary of framework}{section.4}% 17
+\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 18
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 19
+\BOOKMARK [1][-]{section.7}{References}{}% 20
+\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 21
