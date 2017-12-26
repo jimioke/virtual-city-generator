@@ -80,6 +80,29 @@
 
 \usepackage{paralist}
 
+%%%TIKZ
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pgfgantt}
+\pgfplotsset{compat=newest}
+
+\usetikzlibrary{arrows,shapes,positioning,shapes.geometric}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shadows,automata}
+\usetikzlibrary{patterns}
+\usetikzlibrary{trees,mindmap,backgrounds}
+%\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{decorations.text}
+% For Sagnac Picture
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing%
+}
+\tikzset{no shadows/.style={general shadow/.style=}}
+%
+%\usepackage{paralist}
+
 
 %%% FORMAT PYTHON CODE
 \usepackage{listings}
@@ -285,7 +308,14 @@ In summary, the following are steps involving in generating a synthetic populati
 \subsection{Demand}
 
 
-
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
+    \node {Cell} ;
+  \end{tikzpicture}
+  \caption{Prototype city generation framework}
+  \label{fig:framework}
+\end{figure}
 \subsection{Geolocation and spatial assignment}
 \textcite{moekel2003microsimulation} present an intuitive approach to assigning households to zones, which we propose to implement.
 First, they obtain land-use data, which they use to disaggregate zonal characteristics (e.g.\ household location or firm location) into raster cells.
