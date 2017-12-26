@@ -287,15 +287,8 @@ In summary, the following are steps involving in generating a synthetic populati
 
 Although applying IPF to population synthesis is prevailing and the idea is straightforward, the algorithm itself is time consuming and expansive once the combinations of demographics gets large.
 Suppose we have 2 gender categories, 7 age groups, 5 income groups, 5 levels of education, 9 types of occupation, 2 kinds of car ownership, and 5 household types.
-These alone give rise to $31\,500$ types of individuals, not to mention describing individuals with more demographics.
-Another issue with published methods is that the time we spend to generate population for one zone has to be multiplied by the number of zones in a city in order to get the whole population for the city, which means the time for a complete process is hundreds of that for a single zone if the zone is in the sense of census tract.
-Since what we want is something less time consuming, a new methodology has to be developed.
 
-Considering the accessibility of the two sources of data that the synthesizer needs, one can always get sampled survey data in a city level but not necessarily census data for zones in a city.
-Given the global scope of our problem, there are cities whose zones are even not defined properly.
-Thus, we will face the problem of defining the zones of a city by our own in case of the data is in shortage.
-In developing the zones in a city, we will borrow the idea of zones from \textcite{fielbaum2016parametric}, where a city is divided into one CBD and subcenters along with their peripheral.
-It has to be admitted that in this way, we will not have aggregate census data for zones. This is a problem we will address later. 
+
 
 
 
@@ -355,6 +348,23 @@ The populations themselves can first be generated using a simple IPF/U routine.
   \end{itemize}
 
 
+\subsection{Trip generation and population assigment}
+In this step, we estimate the number of home-based work trips and home-based education trips between zones in order to have a starting point from which to assign individuals to usual work and education zones.
+The result is an OD matrix of trips from TAZ to TAZ.
+From this, we then randomly assign each individual to a zone for work or education.
+The method is here is an entropy maximization model (analogous to the gravity model).
+
+We also solve a static traffic assignment problem in order to find congested zone-zone travel times.
+The input network is a graph in which the nodes are TAZes and the edges are generalized between each zone.
+An average link capacity is obtained from the limiting capacity of the union of shortest paths between the zones.
+
+
+The congested travel time estimates for each TAZ OD is given by
+\begin{equation}
+  \label{eq:tt}
+  tt^{OD} = tt_0^{OD}\lt(1 + \lt( \fr{f_{OD}}{Cap_{OD}}\rt)^2\rt)
+\end{equation}
+where $tt_0^{OD}$ is the free-flow travel time for a given OD.
 
 \subsection{Zonal-level  estimation}
 \subsubsection{Estimation of origin-destination matrices}
@@ -404,6 +414,8 @@ There are three key inputs at the zonal level required for running SimMobility p
 \item We can compute the average number of transfers for each zone $OD$ by summing the number of transfers for the shortest paths in all node-node pairs between zones and dividing by the number of node-node pairings.
 \end{enumerate}
 
+
+We assume morning peak period as 7-9am and evening peak period as 5-7 pm.
 
 \subsection{Summary of framework}
 In our first exploration, we have used 5 attributes to describe a households and they are household type, household size, household income in the last 12 months, number of vehicles and number of workers in the household. We not only find one dimensional marginal distribution for those variables but also two dimensional marginal distributions for household type $\times$ household size, number of workers $\times$ household size as well as number of vehicles $\times$ number of workers in the household. Across the process of data retrieving and processing, we find the categories each variable can have is largely depends on the availability and format of aggregate data.
