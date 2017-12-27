@@ -215,8 +215,7 @@ It has been pointed out that, since the task of getting full conditionals won't 
 Thus, if one wants to implement MCMC, the sample data of the entire population is fundamental.
 Furthermore, the derivation of conditional distribution is not trivial especially when the number of attributes gets large.
 
-The population synthesis method that %\cite{petrik2016measuring}
-used adapted ideas from probabilistic graphical models (PGM).
+The population synthesis method that \citet{petrik2016measuring} used adapted ideas from probabilistic graphical models (PGM).
 In their graphical model, there are 7 socio-demographic attributes, which are Age, Gender, Employment, Income, Car ownership, Purpose of trip, and Who pay for the trip, to represent a person.
 Once the dependencies between variables are specified, we need to calculate or estimate conditional probability of one node given its parents.
 The flexibility of this method is that those conditional probabilities can be derived from different sources like census data or surveys on individuals. Nevertheless, compared to the high dependency of IPF on the quality of sample data, Bayesian method gives synthetic population more heterogeneity.
@@ -231,17 +230,23 @@ And this point should be taken into consideration when choosing the population s
 Most paper in population synthesis used Public Use Microdata Sample (PUMS) data, which is available both in individual level and household level.
 It includes multiple socio-economic parameters of a household or an individual in the region.
 The sample rate of this dataset is about 1\% to 10\% of the total population in the region. 
-PUMS data is very complete in US cities and can be easily downloaded from government census website \footnote{https://www.census.gov/programs-surveys/acs/data/pums.html}, but the same data for cities in developing countries can be relatively outdated and harder to find. The sample data is used as seeds to initialize the contingency table in IPF methods. Another important part of data is called aggregate data \footnote{https://factfinder.census.gov}. They give marginal distribution for variables of our interests. It's worth noticing that the marginal distributions for subsets with more than 2 variables can be rarely found. An ideal format for aggregate data is that we have the marginal distributions in the level of geographical zone cause IPF is carried out separately in each zone. So when downloading the aggregate data, one should first choose a geographic type in corresponding to the zones in the virtual city, then specify the variables or tables you want.
+PUMS data is very complete in US cities and can be easily downloaded from government census website \footnote{https://www.census.gov/programs-surveys/acs/data/pums.html}, but the same data for cities in developing countries can be relatively outdated and harder to find.
+The sample data is used as seeds to initialize the contingency table in IPF methods.
+Another important part of data is called aggregate data \footnote{https://factfinder.census.gov}.
+They give marginal distribution for variables of our interests.
+It's worth noticing that the marginal distributions for subsets with more than 2 variables can be rarely found.
+An ideal format for aggregate data is that we have the marginal distributions in the level of geographical zone cause IPF is carried out separately in each zone.
+So when downloading the aggregate data, one should first choose a geographic type in corresponding to the zones in the virtual city, then specify the variables or tables you want.
 
 The choice of algorithm should be based both on the data we have and the appearance of the final result we want.
-What is also important for us is the simplicity and novelty of methodology. We will start from a conventional IPF method using data from Houston city, then according to the execution time and the accuracy of the result we will make further extension to IPF method.
+What is also important for us is the simplicity and novelty of methodology.
+We will start from a conventional IPF method using data from Houston city, then according to the execution time and the accuracy of the result we will make further extension to IPF method.
 
 
 \subsection{Network processing}
 
+
 \section{Method}
-
-
 \begin{table}[h!]
   \centering
   \begin{tabular}{l l l}
@@ -310,10 +315,38 @@ In summary, the following are steps involving in generating a synthetic populati
 
 \begin{figure}[h!]
   \centering
-  \begin{tikzpicture}
-    \node {Cell} ;
+  \begin{tikzpicture}[>=latex]
+    \tikzset{tier/.style= {draw, rectangle, rounded corners, text width=25ex, align=center} }
+    \tikzset{source/.style= {fill=gray!50!, rectangle,text width=15ex,font={\small}} }
+    \tikzset{loca/.style= {draw,dotted, rectangle,text width=18ex,font={\small}} }
+    \tikzset{head/.style= {draw=none,text width=18ex,font={\footnotesize\it}},align=center }
+      
+    \node[tier] (cell) at (0,0) {{\bf CELL}\\{\footnotesize via Rasterization}} ;
+    \node[tier] (taz) [above= of cell] {{\bf TAZ}\\{\footnotesize Traffic Analysis Zone} } ;
+    \node[tier] (sal) [above= of taz] {{\bf SAL} \\{\footnotesize Second Administrative Level}} ;
+    \node[tier] (utp) [above= of sal] {{\bf UTP} \\{\footnotesize Urban Typology Prototype}} ;
+
+    \node[head] (tier) [above= .5cm of utp] {Tier};
+    \node[head] (source) [right= 1cm of tier] {Source};
+    \node[head] (location) [right= 1cm of source] {Agent Location Resolution};
+    
+    \path[draw, ->] (utp) -- (sal);
+    \path[draw, ->] (sal) -- (taz);
+    \path[draw, ->] (taz) -- (cell);
+
+    
+    \node[source] (utp-source) [right= of utp] {Data};
+    \node[source] (sal-source) [right= of sal] {Data};
+    \node[source] (taz-source) [right= of taz] {Data/Generated};
+    \node[source] (cell-source)[right= of cell]{Generated};
+
+    \node[] (utp-location) [right= of utp-source] {};
+    \node[] (sal-location) [right= of sal-source] {};
+    \node[loca] (taz-location) [right= of taz-source] {Work (WORK), Education (EDU)};
+    \node[loca] (cell-location)[right= of cell-source]{Household (HH)};
   \end{tikzpicture}
-  \caption{Prototype city generation framework}
+  \caption{The four tiers of the prototype city development framework. The UTP represents the urban typology, and is given by the metro area of the candidate city chosen for the supply.
+  The Second Administrative Levels are the highest-level regions into which the UTP is subdivided. TAZ's are obtained for the UTP given the candidate road network. Where unavailable, these are generated as Thiessen polygons. CELLs are obtained by gridding over the SALs (or TAZs). The corresponding land use weight at the CELL level is used to determine the  {\it number} and {\it location} of the households therein; as well as the {\it numbers} of WORK and EDU points in each TAZ.}
   \label{fig:framework}
 \end{figure}
 \subsection{Geolocation and spatial assignment}
@@ -328,6 +361,7 @@ The address of each household is assumed to be the centroid of each cell, which 
 The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
 This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
 Our implementation is outlined in the following subsections.
+
 
 \subsubsection{Households}
 \begin{itemize}
@@ -479,6 +513,21 @@ There are three key inputs at the zonal level required for running SimMobility p
 
 We assume morning peak period as 7-9am and evening peak period as 5-7 pm.
 
+
+\subsection{Calibration and validation}
+Initially tune parameters. 
+  
+\subsubsection{Trip structure}
+Aggregate modeshares for the typology
+  
+\subsubsection{Activity structure}
+Consider cities near supply-demand interaction centroid:
+\begin{itemize}
+\item Supply-demand interaction defined by factors, namely: congestion/highway domination and inefficiency
+\item If travel surveys are available: validate against activity shares
+\end{itemize}
+
+
 \subsection{Summary of framework}
 In our first exploration, we have used 5 attributes to describe a households and they are household type, household size, household income in the last 12 months, number of vehicles and number of workers in the household. We not only find one dimensional marginal distribution for those variables but also two dimensional marginal distributions for household type $\times$ household size, number of workers $\times$ household size as well as number of vehicles $\times$ number of workers in the household. Across the process of data retrieving and processing, we find the categories each variable can have is largely depends on the availability and format of aggregate data.
 
@@ -486,6 +535,7 @@ In our first exploration, we have used 5 attributes to describe a households and
 
 
 \section{Results and discussion}
+
 
 
 

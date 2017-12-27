@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  26 DEC 2017 18:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  27 DEC 2017 17:48
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1675,37 +1675,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--210
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 212.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 234.
+(Font)              <9> on input line 233.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 234.
+(Font)              <5> on input line 233.
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 303.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 308.
 
  (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 303.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 308.
+
+Overfull \hbox (0.90758pt too wide) in paragraph at lines 340--340
+ [][][][]\T1/lmr/m/n/10 Data/Generated 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3] [4] [5]
+[3] [4] [5] [6]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 438.
+(Font)              <10> on input line 472.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 438.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 440.
+(Font)              <7> on input line 472.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 474.
 
  (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (9.51283pt too wide) in paragraph at lines 438--450
+Overfull \hbox (9.51283pt too wide) in paragraph at lines 472--484
  [][] 
  []
 
-[6] [7] [8]
+[7] [8] [9]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the manuscript.maf file.
@@ -1717,24 +1721,24 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the manuscript.log file.
 
-[9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 546.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 546.
+[10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 596.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 596.
  (./manuscript.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 546.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 546.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 596.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 596.
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: C351BC40732C563BFBC2A18003717E31;1396.
+(rerunfilecheck)             Checksum: 523287304047152F8C4451A44EE8740F;1624.
 Package logreq Info: Writing requests to 'manuscript.run.xml'.
 \openout1 = `manuscript.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43231 strings out of 493013
- 981137 string characters out of 6133328
- 1574000 words of memory out of 5000000
- 45693 multiletter control sequences out of 15000+600000
- 114398 words of font info for 100 fonts, out of 8000000 for 9000
+ 43360 strings out of 493013
+ 983615 string characters out of 6133328
+ 1575676 words of memory out of 5000000
+ 45816 multiletter control sequences out of 15000+600000
+ 118661 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,17n,120p,2121b,1320s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -1754,13 +1758,13 @@ usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2016/t
 exmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/lm/lmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/
-lmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-
-Output written on manuscript.pdf (9 pages, 341508 bytes).
+public/lm/lmri9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/l
+msy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on manuscript.pdf (10 pages, 361302 bytes).
 PDF statistics:
- 334 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 86 named destinations out of 1000 (max. 500000)
- 277 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 361 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 91 named destinations out of 1000 (max. 500000)
+ 301 words of extra memory for PDF output out of 10000 (max. 10000000)
 

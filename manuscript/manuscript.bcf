@@ -2151,13 +2151,14 @@
     <bcf:citekey order="5">ye2009methodology</bcf:citekey>
     <bcf:citekey order="6">ye2009methodology</bcf:citekey>
     <bcf:citekey order="7">farooq2013simulation</bcf:citekey>
-    <bcf:citekey order="8">moekel2003microsimulation</bcf:citekey>
+    <bcf:citekey order="8">petrik2016measuring</bcf:citekey>
     <bcf:citekey order="9">moekel2003microsimulation</bcf:citekey>
-    <bcf:citekey order="10">fang1995linearly</bcf:citekey>
-    <bcf:citekey order="11">li2011entropy</bcf:citekey>
-    <bcf:citekey order="12">mtoi2014calibration</bcf:citekey>
-    <bcf:citekey order="13">beckman1996creating</bcf:citekey>
+    <bcf:citekey order="10">moekel2003microsimulation</bcf:citekey>
+    <bcf:citekey order="11">fang1995linearly</bcf:citekey>
+    <bcf:citekey order="12">li2011entropy</bcf:citekey>
+    <bcf:citekey order="13">mtoi2014calibration</bcf:citekey>
     <bcf:citekey order="14">beckman1996creating</bcf:citekey>
+    <bcf:citekey order="15">beckman1996creating</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nyt/global/" type="entry" sortscheme="nyt" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

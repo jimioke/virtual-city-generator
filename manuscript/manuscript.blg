@@ -1,18 +1,18 @@
 [0] Config.pm:354> INFO - This is Biber 2.7
 [0] Config.pm:357> INFO - Logfile is 'manuscript.blg'
-[27] biber:303> INFO - === Tue Dec 26, 2017, 18:08:03
-[44] Biber.pm:359> INFO - Reading 'manuscript.bcf'
-[119] Biber.pm:835> INFO - Found 9 citekeys in bib section 0
-[132] Biber.pm:3670> INFO - Processing section 0
-[143] Biber.pm:3840> INFO - Looking for bibtex format file '../bib/references.bib' for section 0
-[155] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
-[182] bibtex.pm:1292> INFO - Found BibTeX data source '../bib/references.bib'
-[250] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[250] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[250] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
-[250] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
-[260] bbl.pm:608> INFO - Writing 'manuscript.bbl' with encoding 'ascii'
-[263] Utils.pm:164> WARN - The entry 'farooq2013simulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[265] Utils.pm:164> WARN - The entry 'moekel2003microsimulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[267] bbl.pm:712> INFO - Output to manuscript.bbl
-[267] Biber.pm:109> INFO - WARNINGS: 2
+[28] biber:303> INFO - === Wed Dec 27, 2017, 15:11:19
+[46] Biber.pm:359> INFO - Reading 'manuscript.bcf'
+[114] Biber.pm:835> INFO - Found 10 citekeys in bib section 0
+[126] Biber.pm:3670> INFO - Processing section 0
+[137] Biber.pm:3840> INFO - Looking for bibtex format file '../bib/references.bib' for section 0
+[149] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[172] bibtex.pm:1292> INFO - Found BibTeX data source '../bib/references.bib'
+[235] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[235] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[236] Biber.pm:3499> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
+[236] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[245] bbl.pm:608> INFO - Writing 'manuscript.bbl' with encoding 'ascii'
+[248] Utils.pm:164> WARN - The entry 'farooq2013simulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[250] Utils.pm:164> WARN - The entry 'moekel2003microsimulation' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[251] bbl.pm:712> INFO - Output to manuscript.bbl
+[251] Biber.pm:109> INFO - WARNINGS: 2

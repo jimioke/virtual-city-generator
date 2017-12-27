@@ -314,6 +314,49 @@
       \field{pages}{141}
       \range{pages}{1}
     \endentry
+    \entry{petrik2016measuring}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=4ad4105e441f2c6b45dec1ed7a4d65b0}{%
+           family={Petrik},
+           familyi={P\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+        {{uniquename=0,hash=82f5f2d47a6a6b509c15a8a06fd2beea}{%
+           family={Moura},
+           familyi={M\bibinitperiod},
+           given={Filipe},
+           giveni={F\bibinitperiod}}}%
+        {{uniquename=0,hash=d01b60ffe20071a471ec4a2744179656}{%
+           family={Abreu\bibnamedelimb e\bibnamedelima Silva},
+           familyi={A\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Joao},
+           giveni={J\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{e3a5d4d479e471bfba74a5eea4afc50d}
+      \strng{fullhash}{7215de784833dce239487cfaf76e6741}
+      \strng{authornamehash}{e3a5d4d479e471bfba74a5eea4afc50d}
+      \strng{authorfullhash}{7215de784833dce239487cfaf76e6741}
+      \field{sortinit}{P}
+      \field{sortinithash}{24100cef455d7974167575052c29146e}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transportation Planning and Technology}
+      \field{number}{2}
+      \field{title}{Measuring uncertainty in discrete choice travel demand forecasting models}
+      \field{volume}{39}
+      \field{year}{2016}
+      \field{pages}{218\bibrangedash 237}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1080/03081060.2015.1127542
+      \endverb
+      \verb{eprint}
+      \verb http://dx.doi.org/10.1080/03081060.2015.1127542
+      \endverb
+    \endentry
     \entry{sun2015bayesian}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,hash=3b600865594bcf4059598900b5eeb5d1}{%
