@@ -19,6 +19,73 @@
 
 \refsection{0}
   \sortlist[entry]{nyt/global/}
+    \entry{adnan2016simmobility}{inproceedings}{}
+      \name{author}{10}{}{%
+        {{uniquename=0,hash=c0279004272b887bf96dd912b1b6c663}{%
+           family={Adnan},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=521889893f6bda2b1fa1bc60b25da8a8}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={Francisco\bibnamedelima C},
+           giveni={F\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=0,hash=0124f58ecf226cfa04113dbea3c9162e}{%
+           family={Lima\bibnamedelima Azevedo},
+           familyi={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Carlos\bibnamedelima Miguel},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=4c537b63dd516f4e2697d7770d724125}{%
+           family={Basak},
+           familyi={B\bibinitperiod},
+           given={Kakali},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=b35d17e3c0603ab9cc34c9dd8e418473}{%
+           family={Lovric},
+           familyi={L\bibinitperiod},
+           given={Milan},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=85c9dd41777ba7b39a5081328b592a14}{%
+           family={Raveau},
+           familyi={R\bibinitperiod},
+           given={Sebasti\'{a}n},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=017c8fdccfa4d7fe6b3cf42ea7acad7a}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{uniquename=0,hash=12f4a503ad9388dc847d56f43e7ed844}{%
+           family={Ferreira},
+           familyi={F\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{uniquename=0,hash=9216216576e916a5fe1a462cca747872}{%
+           family={Zegras},
+           familyi={Z\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{uniquename=0,hash=681527d6d41402ce37b1bcde343cedaf}{%
+           family={Ben-Akiva},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Moshe\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{989b8b4e5d6d22b25446d4e12bf73922}
+      \strng{fullhash}{d70f423478403cdff46ae55c7f3b09c5}
+      \strng{authornamehash}{989b8b4e5d6d22b25446d4e12bf73922}
+      \strng{authorfullhash}{d70f423478403cdff46ae55c7f3b09c5}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Transportation Research Board 95th Annual Meeting}
+      \field{number}{16-2691}
+      \field{title}{SimMobility: A Multi-scale Integrated Agent-Based Simulation Platform}
+      \field{year}{2016}
+    \endentry
     \entry{beckman1996creating}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,hash=331f7d9a13d54e2af26a6068209b0384}{%

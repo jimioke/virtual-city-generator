@@ -195,12 +195,23 @@
 
 
 \section{Introduction}
-Household assignment and spatial allocation are two big issues we need to solve when facing the problem of population synthesis.
-Specifically, the first one addresses the problem of how to match individuals to the household where they belong, while the spatial allocation distributes households in geographical space.
-It is necessary because the ultimate goal of our work is to do transportation simulation, which can only be achieved by knowing the location of each agent. \\
+We describe in detail an automated pipeline for generating urban typology prototypes.
+These prototypes are simulation-ready environments that represent outcomes for the urban typologies discovered from global data collected in the first phase of the Mobility of the Future project.
+The organization of this document is as follows: First, a brief background and motivation is provided in Section 2. Subsequently, we describe our data sources and organization.
+In Section 4, the overall framework and submethods are described, with relationships clearly defined.
+Results are then presented and discussed in Section 5.
+Finally, we conclude with a summary and layout steps for further work.
 
+The contribution of this work lies in its highly generalized approach and its reliance only on open data.
+There are several examples in the extant literation on the synthesis and generation of cities for agent-based mobility simulation.
+However, these are mostly city-specific.
+
+Here, we combine existing methods in creating a pipeline that produces prototypes that represent the heterogeneity of urban structure and outcomes.
+The outputs from our approach serve as inputs in our state-of-the-art integrated urban laboratory---SimMobility \citep{adnan2016simmobility}, which we will use to evaluate future scenarios across these prototypes.
 
 \section{Background}
+{\it Too population-synthesis-heavy!! Needs REVISION; some material might need to go to the appendix}\\
+
 There has been lots of literature on population synthesis.
 The methods used varies from Iterative Proportional Fitting (IPF), MCMC-based sampling \cite{farooq2013simulation}, to Bayesian network approach \cite{sun2015bayesian}. The original work in this field is presented in \cite{beckman1996creating}. It used a method called Iterative Proportional Fitting (IPF) to synthesize population based on data from two sources. What they do is iteratively fitting the cells of a multi-way contingency table expanded by attributes that characterize a household/individual so that it satisfies the constraints of marginal distribution of demographics and also preserves the correlation structure carried by sample data of the whole population. Here the marginals of demographics comes from census data in the level of census tract or block group while the correlation structure need to be derived from survey data of target population. In case of the absence of disaggregated sample data, IPF can still give a solution by iteratively adjust the cells in accordance only with the marginal constraints. However, lots of different joint distributions can share the same marginals and IPF may converge to anyone of them. This is certainly a downside of traditional IPF, and is also the reason why we need the correlation structure of sample data to make the solution captures the true population distribution. After the fitting of the table, a desired number of synthetic population is sampled according to individual or household weights in the table. And this is where the sensitivity of IPF to the quality of data and the sample size stems from. In this method, spatial allocation is solved concurrently with the population synthesis, since it generates the population for each zone and then adds up to the whole population. On contrary to this, one can also synthesize the total population first and then allocate them to different zones. However, this includes implementing a detailed matching method between households and zones, like what's developed in \cite{ge2014virtual}, which is also very time-consuming. 
 
@@ -225,8 +236,20 @@ This is because the distribution of a node is uniquely defined by its parent nod
 And this point should be taken into consideration when choosing the population synthesis method. 
 
 
+\textcite{moekel2003microsimulation} present an intuitive approach to assigning households to zones, which we propose to implement.
+First, they obtain land-use data, which they use to disaggregate zonal characteristics (e.g.\ household location or firm location) into raster cells.
+The size of these cells are chosen based on computational tractability and desired resolution.
+Weights are then assigned to the cells based on the corresponding land-use category.
+For the household example, \textcite{moekel2003microsimulation} aggregate land-use attributes into the following: high-density housing, low-density housing, industry and open space;
+to which weights of 10, 5, 1 and 1 are assigned, respectively.
+The weights are then normalized by zone, and households are randomly selected to populate each cell to fit each proportion.
+The address of each household is assumed to be the centroid of each cell, which each associated with its parent zone.
+The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
+This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
+
 
 \section{Data}
+{\it NEEDS REVISION!}\\
 Most paper in population synthesis used Public Use Microdata Sample (PUMS) data, which is available both in individual level and household level.
 It includes multiple socio-economic parameters of a household or an individual in the region.
 The sample rate of this dataset is about 1\% to 10\% of the total population in the region. 
@@ -242,22 +265,11 @@ The choice of algorithm should be based both on the data we have and the appeara
 What is also important for us is the simplicity and novelty of methodology.
 We will start from a conventional IPF method using data from Houston city, then according to the execution time and the accuracy of the result we will make further extension to IPF method.
 
-
-\subsection{Network processing}
-
-
-\section{Method}
+\subsection{Urban typologies}
 \begin{table}[h!]
   \centering
-  \begin{tabular}{l l l}
-    &&
-  \end{tabular}
-  \caption{List of symbols for variables and parameters}
-  \label{tab:symbols}
-\end{table}
-
-\begin{table}[h!]
-  \centering
+  \caption{Prototype city descriptions and candidates}
+  \label{tab:proto}
   \begin{tabular}{l l l}\toprule
     \bf SN &\bf Name &\bf Supply candidate \\\midrule
     1 & Auto Sprawl & Baltimore \\
@@ -271,47 +283,19 @@ We will start from a conventional IPF method using data from Houston city, then 
     9 & BRT-{\it STAR}s & Sao Paulo  \\
     10 & Metro-Bike Giants & Dalian \\ \bottomrule
   \end{tabular}
-  \caption{Prototype city descriptions and candidates}
-  \label{tab:proto}
 \end{table}
-
 
 \begin{table}[h!]
   \centering
+  \caption{Data availability for candidate cities}
+  \label{tab:avail}
   \begin{tabular}{l l l l l }
     City/Typology & Microdata & Aggregate data & Land use & Transit \\
   \end{tabular}
-  \caption{Data availability for candidate cities}
-  \label{tab:avail}
 \end{table}
 
 
-% \begin{enumerate}[Step 1:]
-% \item Network: modify OSM network file, make it legal input to SimMobility
-%   \begin{enumerate}[1.]
-%   \item links has to be unidirectional
-%   \item shorten the links and add turning points
-%   \item maintain the attributes of each object in the network
-%   \end{enumerate}
-% \item Population Synthesis
-%   \begin{enumerate}[1.]
-%   \item Data collection: sample data, aggregate data for zones in each city
-%   \item Data processing: categorize sample data and get joint distribution, formatting aggregate data
-%   \item Apply IPF algorithm and use the weights result to draw synthetic population
-%   \item Assign households in each county to locations based on land use information
-%   \end{enumerate} 
-% \end{enumerate}
-
-In summary, the following are steps involving in generating a synthetic population and preparing it for mesoscopic simulation.
-\begin{itemize}
-\item 
-\item 
-\end{itemize}
-
-\subsection{Supply}
-
-\subsection{Demand}
-
+\section{Method}
 
 \begin{figure}[h!]
   \centering
@@ -349,17 +333,58 @@ In summary, the following are steps involving in generating a synthetic populati
   The Second Administrative Levels are the highest-level regions into which the UTP is subdivided. TAZ's are obtained for the UTP given the candidate road network. Where unavailable, these are generated as Thiessen polygons. CELLs are obtained by gridding over the SALs (or TAZs). The corresponding land use weight at the CELL level is used to determine the  {\it number} and {\it location} of the households therein; as well as the {\it numbers} of WORK and EDU points in each TAZ.}
   \label{fig:framework}
 \end{figure}
+
+
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{l l l}
+    &&
+  \end{tabular}
+  \caption{List of symbols for variables and parameters}
+  \label{tab:symbols}
+\end{table}
+
+
+
+
+
+% \begin{enumerate}[Step 1:]
+% \item Network: modify OSM network file, make it legal input to SimMobility
+%   \begin{enumerate}[1.]
+%   \item links has to be unidirectional
+%   \item shorten the links and add turning points
+%   \item maintain the attributes of each object in the network
+%   \end{enumerate}
+% \item Population Synthesis
+%   \begin{enumerate}[1.]
+%   \item Data collection: sample data, aggregate data for zones in each city
+%   \item Data processing: categorize sample data and get joint distribution, formatting aggregate data
+%   \item Apply IPF algorithm and use the weights result to draw synthetic population
+%   \item Assign households in each county to locations based on land use information
+%   \end{enumerate} 
+% \end{enumerate}
+
+In summary, the following are steps involving in generating a synthetic population and preparing it for mesoscopic simulation.
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
+
+\subsection{Supply}
+The supply pipeline can be summarized in the following steps:
+\begin{itemize}
+\item Obtain candidate city for urban typology based on that closest to centroid of supply factors
+\item Process road network from supply candidate and generate SimMobility inputs
+\item Generate public transit graph from GTFS and other sources
+\item Process land-use data polygons
+\end{itemize}
+
+\subsection{Demand}
+
+
+
 \subsection{Geolocation and spatial assignment}
-\textcite{moekel2003microsimulation} present an intuitive approach to assigning households to zones, which we propose to implement.
-First, they obtain land-use data, which they use to disaggregate zonal characteristics (e.g.\ household location or firm location) into raster cells.
-The size of these cells are chosen based on computational tractability and desired resolution.
-Weights are then assigned to the cells based on the corresponding land-use category.
-For the household example, \textcite{moekel2003microsimulation} aggregate land-use attributes into the following: high-density housing, low-density housing, industry and open space;
-to which weights of 10, 5, 1 and 1 are assigned, respectively.
-The weights are then normalized by zone, and households are randomly selected to populate each cell to fit each proportion.
-The address of each household is assumed to be the centroid of each cell, which each associated with its parent zone.
-The rasterization is performed by a so-called ``point-in-polygon'' algorithm.
-This approach presents a fast way for household assignment, assuming prior zonal assignment is available.
 Our implementation is outlined in the following subsections.
 
 
