@@ -12,13 +12,12 @@
 \BOOKMARK [2][-]{subsection.4.4}{Trip generation and population assigment}{section.4}% 12
 \BOOKMARK [3][-]{subsubsection.4.4.1}{Trip distribution}{subsection.4.4}% 13
 \BOOKMARK [3][-]{subsubsection.4.4.2}{Route assignment}{subsection.4.4}% 14
-\BOOKMARK [2][-]{subsection.4.5}{Zonal-level estimation}{section.4}% 15
-\BOOKMARK [3][-]{subsubsection.4.5.1}{Estimation of origin-destination matrices}{subsection.4.5}% 16
-\BOOKMARK [3][-]{subsubsection.4.5.2}{Initial estimates}{subsection.4.5}% 17
-\BOOKMARK [2][-]{subsection.4.6}{Calibration and validation}{section.4}% 18
-\BOOKMARK [3][-]{subsubsection.4.6.1}{Trip structure}{subsection.4.6}% 19
-\BOOKMARK [3][-]{subsubsection.4.6.2}{Activity structure}{subsection.4.6}% 20
-\BOOKMARK [2][-]{subsection.4.7}{Summary of framework}{section.4}% 21
-\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 22
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 23
-\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 24
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Estimation of origin-destination matrices}{subsection.4.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.4.4}{Initial estimates}{subsection.4.4}% 16
+\BOOKMARK [2][-]{subsection.4.5}{Calibration and validation}{section.4}% 17
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Trip structure}{subsection.4.5}% 18
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Activity structure}{subsection.4.5}% 19
+\BOOKMARK [2][-]{subsection.4.6}{Summary of framework}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{Results and discussion}{}% 21
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 22
+\BOOKMARK [1][-]{appendix.A}{Further notes on hierarchical iterative proportional fitting}{}% 23

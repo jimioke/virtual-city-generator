@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  27 DEC 2017 19:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  28 DEC 2017 13:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1484,7 +1484,11 @@ File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 \@quotelevel=\count393
 \@quotereset=\count394
 
-(./manuscript.aux)
+(./manuscript.aux
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+)
 \openout1 = `manuscript.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 201.
@@ -1709,46 +1713,48 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5] [6] [7]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 552.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 552.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 554.
 
- (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 591.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 591.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 593.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (9.51283pt too wide) in paragraph at lines 552--564
+Overfull \hbox (9.51283pt too wide) in paragraph at lines 591--603
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8] [9]
+[8] [9] [10]
 
-Package xcolor Warning: Incompatible color definition on input line 624.
-
-
-Package xcolor Warning: Incompatible color definition on input line 624.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
 
-Package xcolor Warning: Incompatible color definition on input line 624.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
 
-Package xcolor Warning: Incompatible color definition on input line 624.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
 
-Package xcolor Warning: Incompatible color definition on input line 624.
-
-[10]
-
-Package xcolor Warning: Incompatible color definition on input line 624.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
 
-Package xcolor Warning: Incompatible color definition on input line 624.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
-[11]
+
+Package xcolor Warning: Incompatible color definition on input line 663.
+
+
+Package xcolor Warning: Incompatible color definition on input line 663.
+
+[11] [12]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the manuscript.maf file.
@@ -1760,27 +1766,27 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the manuscript.log file.
 
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 676.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 676.
+[13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 715.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 715.
  (./manuscript.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 676.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 676.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 715.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 715.
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 8C8DEFF88FE18B72C0690D2D9A01BF77;1645.
+(rerunfilecheck)             Checksum: 089C5A57DAA981EB97AD92D51E367579;1573.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'manuscript.run.xml'.
 \openout1 = `manuscript.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43455 strings out of 493013
- 985285 string characters out of 6133328
- 1577781 words of memory out of 5000000
- 45906 multiletter control sequences out of 15000+600000
+ 43493 strings out of 493013
+ 985793 string characters out of 6133328
+ 1577875 words of memory out of 5000000
+ 45943 multiletter control sequences out of 15000+600000
  118661 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,17n,120p,2121b,1320s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1805,10 +1811,10 @@ public/lm/lmri9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/l
 msy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/
 texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on manuscript.pdf (12 pages, 381332 bytes).
+Output written on manuscript.pdf (13 pages, 384417 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 301 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 293 words of extra memory for PDF output out of 10000 (max. 10000000)
 

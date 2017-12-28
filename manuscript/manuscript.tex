@@ -542,7 +542,46 @@ where $tt_0^{OD}$ is the free-flow travel time for a given OD.
 This is the standard Bureau of Public Roads congestion function \citep{mtoi2014calibration}, which we consider sufficient for the purposes of estimating congested travel times.
 
 
-\subsection{Zonal-level  estimation}
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[>=latex]
+    \tikzset{pro/.style= {fill=gray!50!, rectangle, text width=30ex, align=center} }
+    \tikzset{res/.style= {draw, rectangle, rounded corners,text width=22ex,font={\small}, align=center} }
+    \tikzset{exp/.style= {draw=none, rectangle,text width=18ex,font={\scriptsize}} }
+    %\tikzset{head/.style= {draw=none,text width=18ex,font={\footnotesize\it}},align=center }
+      
+    \node[res] (ff) at (0,0) {network freeflow parameters} ;
+    \node[pro] (trip) [below= of ff] {{\bf Trip Distribution}\\{\footnotesize static traffic assignment} } ;
+    \node[res] (tt) [below= of trip] {congested travel times} ;
+    \node[res] (est) [below= of tt] {peak \& off-peak network cost estimates} ;
+
+    % \node[pro] (pre) [below= 2cm of est] {run Pre-Day} ;
+    \node[pro] (calib) [below = of est] {{\bf Calibration \& Validation}\\{\footnotesize day-to-day learning}};
+    \node[res] (fin) [below = of calib] {final {\bf PreDay} and {\bf WithinDay} parameters};
+    
+    \path[draw, ->] (ff) --(trip);
+    \path[draw, ->] (trip) -- (tt);
+    \path[draw, ->] (tt) -- (est);
+    \path[draw, ->] (est) to (calib);
+    %path[draw, ->] (pre) to [out=270,in=0]   (calib);
+    \path[draw, ->] (calib) to  (fin);
+    % \path[draw, ->] (lochi) to [out=270,in=0]   (assig);
+    % \path[draw, <-] (locwe) to [out=270,in=180] (assig);
+
+    
+    % \node[exp,align=center] (exp-assig) [above=.25cm of assig] {Entropy Maximization Model};
+    % \node[exp,align=center] (exp-landu) [below=.25cm of landu] {rasterization \& weighting};
+    %\node[exp] (taz-source) [right= of synhi] {Hierarchical Iterative Proportional Fitting};
+    %\node[exp] (cell-source)[left= of synhi]{Generated};
+
+  \end{tikzpicture}
+  \caption{Demand piece of the prototype city generation framework}
+  \label{fig:framework}
+\end{figure}
+
+
+
+
 \subsubsection{Estimation of origin-destination matrices}
 There are three key inputs at the zonal level required for running SimMobility preday: zonal attribute data, skim matrices, and zone-zone travel time data.
 
