@@ -57,7 +57,18 @@
 \usepackage{epstopdf,subfigure,hyperref,enumerate,polynom,polynomial}
 \usepackage{multirow,minitoc,fancybox,array,multicol}
 
+
+
 \definecolor{slblue}{rgb}{0,.3,.62}%
+
+\hypersetup{
+    colorlinks,%
+    citecolor=blue,%
+    filecolor=blue,%
+    linkcolor=blue,
+    urlcolor=slblue
+}
+
 %\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
 \renewcommand{\sectionmark}[1]{ \markright{#1}{} }
 
@@ -193,6 +204,9 @@
 \author{}
 \maketitle
 
+\tableofcontents
+
+\newpage
 
 \section{Introduction}
 We describe in detail an automated pipeline for generating urban typology prototypes.
@@ -331,7 +345,7 @@ We will start from a conventional IPF method using data from Houston city, then 
   \end{tikzpicture}
   \caption{The four tiers of the prototype city development framework. The UTP represents the urban typology, and is given by the metro area of the candidate city chosen for the supply.
   The Second Administrative Levels are the highest-level regions into which the UTP is subdivided. TAZ's are obtained for the UTP given the candidate road network. Where unavailable, these are generated as Thiessen polygons. CELLs are obtained by gridding over the SALs (or TAZs). The corresponding land use weight at the CELL level is used to determine the  {\it number} and {\it location} of the households therein; as well as the {\it numbers} of WORK and EDU points in each TAZ.}
-  \label{fig:framework}
+  \label{fig:tiers}
 \end{figure}
 
 
@@ -365,12 +379,6 @@ We will start from a conventional IPF method using data from Houston city, then 
 %   \end{enumerate} 
 % \end{enumerate}
 
-In summary, the following are steps involving in generating a synthetic population and preparing it for mesoscopic simulation.
-\begin{itemize}
-\item 
-\item 
-\end{itemize}
-
 \subsection{Supply}
 The supply pipeline can be summarized in the following steps:
 \begin{itemize}
@@ -381,6 +389,53 @@ The supply pipeline can be summarized in the following steps:
 \end{itemize}
 
 \subsection{Demand}
+
+\subsubsection{Synthesis}
+In summary, the following are steps involving in generating a synthetic population and preparing it for mesoscopic simulation.
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[>=latex]
+    \tikzset{data/.style= {fill=gray!50!, rectangle, text width=25ex, align=center} }
+    \tikzset{res/.style= {draw, rectangle, rounded corners,text width=18ex,font={\small}, align=center} }
+    \tikzset{exp/.style= {draw=none, rectangle,text width=18ex,font={\scriptsize}} }
+    %\tikzset{head/.style= {draw=none,text width=18ex,font={\footnotesize\it}},align=center }
+      
+    \node[data] (aggr) at (0,0) {{\bf Aggregates (SAL)}\\{\footnotesize HH|IND|WORK|EDU}} ;
+    \node[data] (samp) [right= 3cm of aggr] {{\bf Samples (SAL)}\\{\footnotesize HH|IND} } ;
+    \node[res] (synhi) [below= 2cm of samp] {{\bf Synthetic Population} \\{\footnotesize HH|IND}} ;
+    \node[res] (synwe) [below= 2cm of aggr] {{\bf Synthetic Population} \\{\footnotesize WORK|EDU}} ;
+
+    \node[data, text width=15ex] (landu) [below right= of synwe] {LAND\\ USE};
+    \node[res] (locwe) [below left= of landu] {{\bf TAZ Locations}\\{\footnotesize WORK|EDU}};
+    \node[res] (lochi) [below right= of landu] {{\bf CELL Locations}\\{\footnotesize HH}};
+
+    \node[res] (assig) [below right= of locwe] {{\bf Assignment}\\{\footnotesize IND$\to$WORK|EDU}};
+    
+    \path[draw, ->] (aggr) to [out=0,in=180] (synhi);
+    \path[draw, ->] (samp) -- node[exp, right]{Hierarchical Iterative Proportional Fitting} (synhi);
+    \path[draw, ->] (aggr) -- node[exp, left,align=right]{Iterative Proportional Fitting} (synwe);
+    \path[draw, ->] (synwe) to [out=270,in=180]   (landu);
+    \path[draw, ->] (synhi) to [out=270,in=0]   (landu);
+    \path[draw, ->] (landu) to [out=195,in=0]   (locwe);
+    \path[draw, ->] (landu) to [out=-15,in=180]   (lochi);
+    \path[draw, ->] (lochi) to [out=270,in=0]   (assig);
+    \path[draw, <-] (locwe) to [out=270,in=180] (assig);
+
+    
+    \node[exp,align=center] (exp-assig) [above=.25cm of assig] {Entropy Maximization Model};
+    \node[exp,align=center] (exp-landu) [below=.25cm of landu] {rasterization \& weighting};
+    %\node[exp] (taz-source) [right= of synhi] {Hierarchical Iterative Proportional Fitting};
+    %\node[exp] (cell-source)[left= of synhi]{Generated};
+
+  \end{tikzpicture}
+  \caption{Demand-Supply Interaction piece of the prototype city generation framework}
+  \label{fig:framework}
+\end{figure}
 
 
 
@@ -565,7 +620,7 @@ In our first exploration, we have used 5 attributes to describe a households and
 
 
 \section{Conclusion}
-\section{References}
+%\section{References}
 \printbibliography
 
 \appendix

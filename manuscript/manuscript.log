@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  27 DEC 2017 18:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.20)  27 DEC 2017 19:15
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -839,6 +839,8 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \colbreak@box=\box58
 \mc@col@check@num=\count342
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 70.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2016/09/06 3.8 Extensive control of page headers and footers
 \fancy@headwidth=\skip87
@@ -1467,7 +1469,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-LaTeX Font Info:    Try loading font information for T1+txtt on input line 110.
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 121.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/txfonts/t1txtt.fd
@@ -1485,21 +1487,21 @@ File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 (./manuscript.aux)
 \openout1 = `manuscript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 190.
-LaTeX Font Info:    ... okay on input line 190.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 190.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 201.
+LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 201.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1560,15 +1562,15 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'manuscript.bbl' found.
  (./manuscript.bbl)
-Package biblatex Info: Reference section=0 on input line 190.
-Package biblatex Info: Reference segment=0 on input line 190.
+Package biblatex Info: Reference section=0 on input line 201.
+Package biblatex Info: Reference segment=0 on input line 201.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box98
-Package hyperref Info: Link coloring OFF on input line 190.
+Package hyperref Info: Link coloring ON on input line 201.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1578,9 +1580,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count401
 )
-LaTeX Info: Redefining \ref on input line 190.
-LaTeX Info: Redefining \pageref on input line 190.
-LaTeX Info: Redefining \nameref on input line 190.
+LaTeX Info: Redefining \ref on input line 201.
+LaTeX Info: Redefining \pageref on input line 201.
+LaTeX Info: Redefining \nameref on input line 201.
 
 (./manuscript.out) (./manuscript.out)
 \@outlinefile=\write8
@@ -1621,72 +1623,71 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.14}).
 
 \c@lstlisting=\count408
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 195.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 206.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 195.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 206.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 195
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 206
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 195
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 206
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 195.
+(Font)              <12> on input line 206.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 195.
+(Font)              <8> on input line 206.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 195.
-LaTeX Font Info:    Try loading font information for U+msa on input line 195.
+(Font)              <6> on input line 206.
+LaTeX Font Info:    Try loading font information for U+msa on input line 206.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 195.
+LaTeX Font Info:    Try loading font information for U+msb on input line 206.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+(./manuscript.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 9.
+)
+\tf@toc=\write9
+\openout9 = `manuscript.toc'.
 
- []
-
-[1
+ [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 218--221
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 223.
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--235
+
+ []
+
 [2]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 256.
+(Font)              <9> on input line 270.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 256.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (0.90758pt too wide) in paragraph at lines 324--324
+(Font)              <5> on input line 270.
+ [3]
+Overfull \hbox (0.90758pt too wide) in paragraph at lines 338--338
  [][][][]\T1/lmr/m/n/10 Data/Generated 
  []
 
@@ -1696,29 +1697,58 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 371.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 385.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 371.
- [3] [4] [5]
-[6]
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 385.
+ [4]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5] [6] [7]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 497.
+(Font)              <10> on input line 552.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 497.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 499.
+(Font)              <7> on input line 552.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 554.
 
  (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (9.51283pt too wide) in paragraph at lines 497--509
+Overfull \hbox (9.51283pt too wide) in paragraph at lines 552--564
  [][] 
  []
 
-[7] [8] [9] [10]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] [9]
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+[10]
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 624.
+
+[11]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the manuscript.maf file.
@@ -1730,14 +1760,14 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the manuscript.log file.
 
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 621.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 621.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 676.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 676.
  (./manuscript.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 621.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 621.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 676.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 676.
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: FB0FB15393F1E6A79309DE233213E76C;1622.
+(rerunfilecheck)             Checksum: 8C8DEFF88FE18B72C0690D2D9A01BF77;1645.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -1747,10 +1777,10 @@ Package logreq Info: Writing requests to 'manuscript.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43366 strings out of 493013
- 983762 string characters out of 6133328
- 1577742 words of memory out of 5000000
- 45820 multiletter control sequences out of 15000+600000
+ 43455 strings out of 493013
+ 985285 string characters out of 6133328
+ 1577781 words of memory out of 5000000
+ 45906 multiletter control sequences out of 15000+600000
  118661 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,17n,120p,2121b,1320s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1773,11 +1803,12 @@ exmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/lm/lmri9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/l
 msy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on manuscript.pdf (11 pages, 365282 bytes).
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on manuscript.pdf (12 pages, 381332 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 316 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 348 compressed objects within 4 object streams
+ 96 named destinations out of 1000 (max. 500000)
  301 words of extra memory for PDF output out of 10000 (max. 10000000)
 
