@@ -201,7 +201,8 @@
 \begin{document}
 
 \title{A generalized framework for urban typology prototype generation for agent-based simulations in SimMobility}
-\author{}
+\author{Jimi Oke \and Iveel Tsogsuren \and Youssef Medhat \and Carlos Lima Azevedo \and Chris Zegras \and Joseph Ferreria \and Moshe Ben-Akiva}
+
 \maketitle
 
 \tableofcontents
@@ -414,7 +415,7 @@ In summary, the following are steps involving in generating a synthetic populati
     \node[res] (locwe) [below left= of landu] {{\bf TAZ Locations}\\{\footnotesize WORK|EDU}};
     \node[res] (lochi) [below right= of landu] {{\bf CELL Locations}\\{\footnotesize HH}};
 
-    \node[res] (assig) [below right= of locwe] {{\bf Assignment}\\{\footnotesize IND$\to$WORK|EDU}};
+    \node[res] (assig) [below =4cm of landu] {{\bf Assignment}\\{\footnotesize IND$\to$WORK|EDU}};
     
     \path[draw, ->] (aggr) to [out=0,in=180] (synhi);
     \path[draw, ->] (samp) -- node[exp, right]{Hierarchical Iterative Proportional Fitting} (synhi);
