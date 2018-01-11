@@ -1,0 +1,9 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+HD01_VD01,Estimate; Aggregate travel time to work (in minutes):
+HD02_VD01,Margin of Error; Aggregate travel time to work (in minutes):
+HD01_VD02,Estimate; Aggregate travel time to work (in minutes): - Male
+HD02_VD02,Margin of Error; Aggregate travel time to work (in minutes): - Male
+HD01_VD03,Estimate; Aggregate travel time to work (in minutes): - Female
+HD02_VD03,Margin of Error; Aggregate travel time to work (in minutes): - Female

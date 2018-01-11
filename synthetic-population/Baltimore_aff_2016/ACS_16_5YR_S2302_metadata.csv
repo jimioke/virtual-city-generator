@@ -1,0 +1,243 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+HC01_EST_VC01,Total; Estimate; Families
+HC01_MOE_VC01,Total; Margin of Error; Families
+HC02_EST_VC01,Percent; Estimate; Families
+HC02_MOE_VC01,Percent; Margin of Error; Families
+HC03_EST_VC01,Families with own children under 18 years; Estimate; Families
+HC03_MOE_VC01,Families with own children under 18 years; Margin of Error; Families
+HC04_EST_VC01,Percent Families with own children under 18 years; Estimate; Families
+HC04_MOE_VC01,Percent Families with own children under 18 years; Margin of Error; Families
+HC01_EST_VC03,Total; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC01_MOE_VC03,Total; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC02_EST_VC03,Percent; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC02_MOE_VC03,Percent; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC03_EST_VC03,Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC03_MOE_VC03,Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC04_EST_VC03,Percent Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC04_MOE_VC03,Percent Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families
+HC01_EST_VC04,Total; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC01_MOE_VC04,Total; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC02_EST_VC04,Percent; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC02_MOE_VC04,Percent; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC03_EST_VC04,Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC03_MOE_VC04,Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC04_EST_VC04,Percent Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC04_MOE_VC04,Percent Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife in labor force
+HC01_EST_VC05,"Total; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC01_MOE_VC05,"Total; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC02_EST_VC05,"Percent; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC02_MOE_VC05,"Percent; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC03_EST_VC05,"Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC03_MOE_VC05,"Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC04_EST_VC05,"Percent Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC04_MOE_VC05,"Percent Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Husband in labor force, wife not in labor force"
+HC01_EST_VC06,"Total; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC01_MOE_VC06,"Total; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC02_EST_VC06,"Percent; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC02_MOE_VC06,"Percent; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC03_EST_VC06,"Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC03_MOE_VC06,"Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC04_EST_VC06,"Percent Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC04_MOE_VC06,"Percent Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Wife in labor force, husband not in labor force"
+HC01_EST_VC07,Total; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC01_MOE_VC07,Total; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC02_EST_VC07,Percent; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC02_MOE_VC07,Percent; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC03_EST_VC07,Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC03_MOE_VC07,Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC04_EST_VC07,Percent Families with own children under 18 years; Estimate; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC04_MOE_VC07,Percent Families with own children under 18 years; Margin of Error; EMPLOYMENT STATUS CHARACTERISTICS - Married-couple families - Both husband and wife not in labor force
+HC01_EST_VC09,Total; Estimate; Other families
+HC01_MOE_VC09,Total; Margin of Error; Other families
+HC02_EST_VC09,Percent; Estimate; Other families
+HC02_MOE_VC09,Percent; Margin of Error; Other families
+HC03_EST_VC09,Families with own children under 18 years; Estimate; Other families
+HC03_MOE_VC09,Families with own children under 18 years; Margin of Error; Other families
+HC04_EST_VC09,Percent Families with own children under 18 years; Estimate; Other families
+HC04_MOE_VC09,Percent Families with own children under 18 years; Margin of Error; Other families
+HC01_EST_VC10,"Total; Estimate; Other families - Female householder, no husband present"
+HC01_MOE_VC10,"Total; Margin of Error; Other families - Female householder, no husband present"
+HC02_EST_VC10,"Percent; Estimate; Other families - Female householder, no husband present"
+HC02_MOE_VC10,"Percent; Margin of Error; Other families - Female householder, no husband present"
+HC03_EST_VC10,"Families with own children under 18 years; Estimate; Other families - Female householder, no husband present"
+HC03_MOE_VC10,"Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present"
+HC04_EST_VC10,"Percent Families with own children under 18 years; Estimate; Other families - Female householder, no husband present"
+HC04_MOE_VC10,"Percent Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present"
+HC01_EST_VC11,"Total; Estimate; Other families - Female householder, no husband present - In labor force"
+HC01_MOE_VC11,"Total; Margin of Error; Other families - Female householder, no husband present - In labor force"
+HC02_EST_VC11,"Percent; Estimate; Other families - Female householder, no husband present - In labor force"
+HC02_MOE_VC11,"Percent; Margin of Error; Other families - Female householder, no husband present - In labor force"
+HC03_EST_VC11,"Families with own children under 18 years; Estimate; Other families - Female householder, no husband present - In labor force"
+HC03_MOE_VC11,"Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present - In labor force"
+HC04_EST_VC11,"Percent Families with own children under 18 years; Estimate; Other families - Female householder, no husband present - In labor force"
+HC04_MOE_VC11,"Percent Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present - In labor force"
+HC01_EST_VC12,"Total; Estimate; Other families - Female householder, no husband present - Not in labor force"
+HC01_MOE_VC12,"Total; Margin of Error; Other families - Female householder, no husband present - Not in labor force"
+HC02_EST_VC12,"Percent; Estimate; Other families - Female householder, no husband present - Not in labor force"
+HC02_MOE_VC12,"Percent; Margin of Error; Other families - Female householder, no husband present - Not in labor force"
+HC03_EST_VC12,"Families with own children under 18 years; Estimate; Other families - Female householder, no husband present - Not in labor force"
+HC03_MOE_VC12,"Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present - Not in labor force"
+HC04_EST_VC12,"Percent Families with own children under 18 years; Estimate; Other families - Female householder, no husband present - Not in labor force"
+HC04_MOE_VC12,"Percent Families with own children under 18 years; Margin of Error; Other families - Female householder, no husband present - Not in labor force"
+HC01_EST_VC13,"Total; Estimate; Other families - Male householder, no wife present"
+HC01_MOE_VC13,"Total; Margin of Error; Other families - Male householder, no wife present"
+HC02_EST_VC13,"Percent; Estimate; Other families - Male householder, no wife present"
+HC02_MOE_VC13,"Percent; Margin of Error; Other families - Male householder, no wife present"
+HC03_EST_VC13,"Families with own children under 18 years; Estimate; Other families - Male householder, no wife present"
+HC03_MOE_VC13,"Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present"
+HC04_EST_VC13,"Percent Families with own children under 18 years; Estimate; Other families - Male householder, no wife present"
+HC04_MOE_VC13,"Percent Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present"
+HC01_EST_VC14,"Total; Estimate; Other families - Male householder, no wife present - In labor force"
+HC01_MOE_VC14,"Total; Margin of Error; Other families - Male householder, no wife present - In labor force"
+HC02_EST_VC14,"Percent; Estimate; Other families - Male householder, no wife present - In labor force"
+HC02_MOE_VC14,"Percent; Margin of Error; Other families - Male householder, no wife present - In labor force"
+HC03_EST_VC14,"Families with own children under 18 years; Estimate; Other families - Male householder, no wife present - In labor force"
+HC03_MOE_VC14,"Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present - In labor force"
+HC04_EST_VC14,"Percent Families with own children under 18 years; Estimate; Other families - Male householder, no wife present - In labor force"
+HC04_MOE_VC14,"Percent Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present - In labor force"
+HC01_EST_VC15,"Total; Estimate; Other families - Male householder, no wife present - Not in labor force"
+HC01_MOE_VC15,"Total; Margin of Error; Other families - Male householder, no wife present - Not in labor force"
+HC02_EST_VC15,"Percent; Estimate; Other families - Male householder, no wife present - Not in labor force"
+HC02_MOE_VC15,"Percent; Margin of Error; Other families - Male householder, no wife present - Not in labor force"
+HC03_EST_VC15,"Families with own children under 18 years; Estimate; Other families - Male householder, no wife present - Not in labor force"
+HC03_MOE_VC15,"Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present - Not in labor force"
+HC04_EST_VC15,"Percent Families with own children under 18 years; Estimate; Other families - Male householder, no wife present - Not in labor force"
+HC04_MOE_VC15,"Percent Families with own children under 18 years; Margin of Error; Other families - Male householder, no wife present - Not in labor force"
+HC01_EST_VC18,Total; Estimate; WORK STATUS CHARACTERISTICS - Families
+HC01_MOE_VC18,Total; Margin of Error; WORK STATUS CHARACTERISTICS - Families
+HC02_EST_VC18,Percent; Estimate; WORK STATUS CHARACTERISTICS - Families
+HC02_MOE_VC18,Percent; Margin of Error; WORK STATUS CHARACTERISTICS - Families
+HC03_EST_VC18,Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families
+HC03_MOE_VC18,Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families
+HC04_EST_VC18,Percent Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families
+HC04_MOE_VC18,Percent Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families
+HC01_EST_VC19,Total; Estimate; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC01_MOE_VC19,Total; Margin of Error; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC02_EST_VC19,Percent; Estimate; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC02_MOE_VC19,Percent; Margin of Error; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC03_EST_VC19,Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC03_MOE_VC19,Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC04_EST_VC19,Percent Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC04_MOE_VC19,Percent Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - No workers in the past 12 months
+HC01_EST_VC20,Total; Estimate; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC01_MOE_VC20,Total; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC02_EST_VC20,Percent; Estimate; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC02_MOE_VC20,Percent; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC03_EST_VC20,Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC03_MOE_VC20,Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC04_EST_VC20,Percent Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC04_MOE_VC20,Percent Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 1 worker in the past 12 months
+HC01_EST_VC21,Total; Estimate; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC01_MOE_VC21,Total; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC02_EST_VC21,Percent; Estimate; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC02_MOE_VC21,Percent; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC03_EST_VC21,Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC03_MOE_VC21,Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC04_EST_VC21,Percent Families with own children under 18 years; Estimate; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC04_MOE_VC21,Percent Families with own children under 18 years; Margin of Error; WORK STATUS CHARACTERISTICS - Families - 2 or more workers in the past 12 months
+HC01_EST_VC23,Total; Estimate; Married-couple families
+HC01_MOE_VC23,Total; Margin of Error; Married-couple families
+HC02_EST_VC23,Percent; Estimate; Married-couple families
+HC02_MOE_VC23,Percent; Margin of Error; Married-couple families
+HC03_EST_VC23,Families with own children under 18 years; Estimate; Married-couple families
+HC03_MOE_VC23,Families with own children under 18 years; Margin of Error; Married-couple families
+HC04_EST_VC23,Percent Families with own children under 18 years; Estimate; Married-couple families
+HC04_MOE_VC23,Percent Families with own children under 18 years; Margin of Error; Married-couple families
+HC01_EST_VC24,"Total; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC01_MOE_VC24,"Total; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC02_EST_VC24,"Percent; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC02_MOE_VC24,"Percent; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC03_EST_VC24,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC03_MOE_VC24,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC04_EST_VC24,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC04_MOE_VC24,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months:"
+HC01_EST_VC25,"Total; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_MOE_VC25,"Total; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_EST_VC25,"Percent; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_MOE_VC25,"Percent; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_EST_VC25,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_MOE_VC25,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_EST_VC25,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_MOE_VC25,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_EST_VC26,"Total; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_MOE_VC26,"Total; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_EST_VC26,"Percent; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_MOE_VC26,"Percent; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_EST_VC26,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_MOE_VC26,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_EST_VC26,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_MOE_VC26,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_EST_VC27,"Total; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC01_MOE_VC27,"Total; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC02_EST_VC27,"Percent; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC02_MOE_VC27,"Percent; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC03_EST_VC27,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC03_MOE_VC27,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC04_EST_VC27,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC04_MOE_VC27,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC01_EST_VC28,"Total; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC01_MOE_VC28,"Total; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC02_EST_VC28,"Percent; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC02_MOE_VC28,"Percent; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC03_EST_VC28,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC03_MOE_VC28,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC04_EST_VC28,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC04_MOE_VC28,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months:"
+HC01_EST_VC29,"Total; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_MOE_VC29,"Total; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_EST_VC29,"Percent; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_MOE_VC29,"Percent; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_EST_VC29,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_MOE_VC29,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_EST_VC29,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_MOE_VC29,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_EST_VC30,"Total; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_MOE_VC30,"Total; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_EST_VC30,"Percent; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_MOE_VC30,"Percent; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_EST_VC30,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_MOE_VC30,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_EST_VC30,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_MOE_VC30,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_EST_VC31,"Total; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC01_MOE_VC31,"Total; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC02_EST_VC31,"Percent; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC02_MOE_VC31,"Percent; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC03_EST_VC31,"Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC03_MOE_VC31,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC04_EST_VC31,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC04_MOE_VC31,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder worked less than full-time, year-round in the past 12 months: - Spouse did not work in the past 12 months"
+HC01_EST_VC32,Total; Estimate; Married-couple families - Householder did not work in the past 12 months:
+HC01_MOE_VC32,Total; Margin of Error; Married-couple families - Householder did not work in the past 12 months:
+HC02_EST_VC32,Percent; Estimate; Married-couple families - Householder did not work in the past 12 months:
+HC02_MOE_VC32,Percent; Margin of Error; Married-couple families - Householder did not work in the past 12 months:
+HC03_EST_VC32,Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months:
+HC03_MOE_VC32,Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months:
+HC04_EST_VC32,Percent Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months:
+HC04_MOE_VC32,Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months:
+HC01_EST_VC33,"Total; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_MOE_VC33,"Total; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_EST_VC33,"Percent; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC02_MOE_VC33,"Percent; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_EST_VC33,"Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC03_MOE_VC33,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_EST_VC33,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC04_MOE_VC33,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked full-time, year-round in the past 12 months"
+HC01_EST_VC34,"Total; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_MOE_VC34,"Total; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_EST_VC34,"Percent; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC02_MOE_VC34,"Percent; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_EST_VC34,"Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC03_MOE_VC34,"Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_EST_VC34,"Percent Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC04_MOE_VC34,"Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse worked less than full-time, year-round in the past 12 months"
+HC01_EST_VC35,Total; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC01_MOE_VC35,Total; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC02_EST_VC35,Percent; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC02_MOE_VC35,Percent; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC03_EST_VC35,Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC03_MOE_VC35,Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC04_EST_VC35,Percent Families with own children under 18 years; Estimate; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months
+HC04_MOE_VC35,Percent Families with own children under 18 years; Margin of Error; Married-couple families - Householder did not work in the past 12 months: - Spouse did not work in the past 12 months

@@ -1,0 +1,69 @@
+IPUMS county code generation
+
+county_codes=[]
+code = 10
+while code <= 450:
+    code +=20
+    string_code = '00' + str(code)
+    county_codes.append(string_code[-4:])
+county_codes.append('5100')  
+print(county_codes)
+
+
+MD,24,001,Allegany County,H1
+MD,24,003,Anne Arundel County,H1
+MD,24,005,Baltimore County,H1
+MD,24,009,Calvert County,H1
+MD,24,011,Caroline County,H1
+MD,24,013,Carroll County,H1
+MD,24,015,Cecil County,H1
+MD,24,017,Charles County,H1
+MD,24,019,Dorchester County,H1
+MD,24,021,Frederick County,H1
+MD,24,023,Garrett County,H1
+MD,24,025,Harford County,H1
+MD,24,027,Howard County,H1
+MD,24,029,Kent County,H1
+MD,24,031,Montgomery County,H1
+MD,24,033,Prince George's County,H1
+MD,24,035,Queen Anne's County,H1
+MD,24,037,St. Mary's County,H1
+MD,24,039,Somerset County,H1
+MD,24,041,Talbot County,H1
+MD,24,043,Washington County,H1
+MD,24,045,Wicomico County,H1
+MD,24,047,Worcester County,H1
+MD,24,510,Baltimore city,C7
+
+
+
+IPUMS county codes
+0010 Allegany
+0030 Anne Arundel
+0050Baltimore0070Calvert0090Caroline0110Carroll0130Cecil0150Charles0170Dorchester0190Frederick0210Garrett0230Harford0250Howard0270Kent0290Montgomery0310Prince Georges0330Queen Annes0350Somerset0370St Marys0390Talbot0410Washington0430Wicomico0450Worcester5100Baltimore City
+County codes
+
+24 001 Allegany MD
+22 087 St. Bernard LA 24 003 Anne Arundel MD
+22 089 St. Charles LA 24 005 Baltimore MD
+22 091 St. Helena LA 24 009 Calvert MD
+22 093 St. James LA 24 011 Caroline MD
+22 095 St. John the Baptist LA 24 013 Carroll MD
+22 097 St. Landry LA 24 015 Cecil MD
+22 099 St. Martin LA 24 017 Charles MD
+22 101 St. Mary LA 24 019 Dorchester MD
+22 103 St. Tammany LA 24 021 Frederick MD
+22 105 Tangipahoa LA 24 023 Garrett MD
+22 107 Tensas LA 24 025 Harford MD
+22 109 Terrebonne LA 24 027 Howard MD
+22 111 Union LA 24 029 Kent MD
+22 113 Vermilion LA 24 031 Montgomery MD
+22 115 Vernon LA 24 033 Prince George's MD
+22 117 Washington LA 24 035 Queen Anne's MD
+24 037 St. Mary's MD 26 035 Clare MI
+24 039 Somerset MD 26 037 Clinton MI
+24 041 Talbot MD 26 039 Crawford MI
+24 043 Washington MD 26 041 Delta MI
+24 045 Wicomico MD 26 043 Dickinson MI
+24 047 Worcester MD 26 045 Eaton MI
+24 510 Baltimore MD

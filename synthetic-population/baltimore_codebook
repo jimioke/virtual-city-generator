@@ -1,0 +1,828 @@
+Description: Revision of (Baltimore-income)
+Samples selected:
+      2015 ACS
+            Note:
+            Density of the full data file:  1.0%
+            Density of your extract: 1.0%
+
+      2016 ACS
+            Note:
+            Density of the full data file:  1.0%
+            Density of your extract: 1.0%
+
+File Type:                    rectangular
+Case Selection:               Yes
+  Variable               Columns        Len    2015    2016
+  YEAR               H   1-4            4      X       X
+  DATANUM            H   5-6            2      X       X
+  SERIAL             H   7-14           8      X       X
+  HHWT               H  15-24          10      X       X
+  COUNTY             H  25-28           4      X       X
+  MET2013            H  29-33           5      X       X
+  CITYPOP            H  34-38           5      X       X
+  PUMA               H  39-43           5      X       X
+  CPUMA0010          H  44-47           4      X       X
+  GQ                 H  48              1      X       X
+  OWNERSHP           H  49              1      X       X
+  OWNERSHPD          H  50-51           2      X       X
+  HHINCOME           H  52-58           7      X       X
+  VEHICLES           H  59              1      X       X
+  PERNUM             P  60-63           4      X       X
+  PERWT              P  64-73          10      X       X
+  FAMSIZE            P  74-75           2      X       X
+  RELATE             P  76-77           2      X       X
+  RELATED            P  78-81           4      X       X
+  SEX                P  82              1      X       X
+  AGE                P  83-85           3      X       X
+  SCHOOL             P  86              1      X       X
+  EDUC               P  87-88           2      X       X
+  EDUCD              P  89-91           3      X       X
+  EMPSTAT            P  92              1      X       X
+  EMPSTATD           P  93-94           2      X       X
+  LABFORCE           P  95              1      X       X
+  OCC                P  96-99           4      X       X
+  INCTOT             P 100-106          7      X       X
+  INCWAGE            P 107-112          6      X       X
+  INCEARN            P 113-119          7      X       X
+  TRANWORK           P 120-121          2      X       X
+  TRANTIME           P 122-124          3      X       X
+  DEPARTS            P 125-128          4      X       X
+  ARRIVES            P 129-132          4      X       X
+
+Variable Availability Key:
+All Years X - available in this sample
+All Years . - not available in this sample
+
+Case Selections:
+H MET2013      12580 Baltimore-Columbia-Towson, MD
+
+ YEAR		Census year
+1850		1850
+1860		1860
+1870		1870
+1880		1880
+1900		1900
+1910		1910
+1920		1920
+1930		1930
+1940		1940
+1950		1950
+1960		1960
+1970		1970
+1980		1980
+1990		1990
+2000		2000
+2001		2001
+2002		2002
+2003		2003
+2004		2004
+2005		2005
+2006		2006
+2007		2007
+2008		2008
+2009		2009
+2010		2010
+2011		2011
+2012		2012
+2013		2013
+2014		2014
+2015		2015
+2016		2016
+
+ MET2013		Metropolitan area, 2013 OMB delineations
+00000		Not in identifiable area
+10420		Akron, OH
+10580		Albany-Schenectady-Troy, NY
+10740		Albuquerque, NM
+10780		Alexandria, LA
+10900		Allentown-Bethlehem-Easton, PA-NJ
+11020		Altoona, PA
+11100		Amarillo, TX
+11260		Anchorage, AK
+11460		Ann Arbor, MI
+11500		Anniston-Oxford-Jacksonville, AL
+11700		Asheville, NC
+12020		Athens-Clarke County, GA
+12060		Atlanta-Sandy Springs-Roswell, GA
+12100		Atlantic City-Hammonton, NJ
+12220		Auburn-Opelika, AL
+12260		Augusta-Richmond County, GA-SC
+12420		Austin-Round Rock, TX
+12540		Bakersfield, CA
+12580		Baltimore-Columbia-Towson, MD
+12620		Bangor, ME
+12700		Barnstable Town, MA
+12940		Baton Rouge, LA
+12980		Battle Creek, MI
+13140		Beaumont-Port Arthur, TX
+13380		Bellingham, WA
+13460		Bend-Redmond, OR
+13740		Billings, MT
+13780		Binghamton, NY
+13820		Birmingham-Hoover, AL
+13900		Bismarck, ND
+13980		Blacksburg-Christiansburg-Radford, VA
+14010		Bloomington, IL
+14020		Bloomington, IN
+14260		Boise City, ID
+14460		Boston-Cambridge-Newton, MA-NH
+14740		Bremerton-Silverdale, WA
+14860		Bridgeport-Stamford-Norwalk, CT
+15180		Brownsville-Harlingen, TX
+15380		Buffalo-Cheektowaga-Niagara Falls, NY
+15500		Burlington, NC
+15540		Burlington-South Burlington, VT
+15940		Canton-Massillon, OH
+15980		Cape Coral-Fort Myers, FL
+16580		Champaign-Urbana, IL
+16620		Charleston, WV
+16700		Charleston-North Charleston, SC
+16740		Charlotte-Concord-Gastonia, NC-SC
+16820		Charlottesville, VA
+16860		Chattanooga, TN-GA
+16980		Chicago-Naperville-Elgin, IL-IN-WI
+17020		Chico, CA
+17140		Cincinnati, OH-KY-IN
+17300		Clarksville, TN-KY
+17460		Cleveland-Elyria, OH
+17660		Coeur d'Alene, ID
+17780		College Station-Bryan, TX
+17820		Colorado Springs, CO
+17860		Columbia, MO
+17900		Columbia, SC
+18140		Columbus, OH
+18580		Corpus Christi, TX
+19100		Dallas-Fort Worth-Arlington, TX
+19300		Daphne-Fairhope-Foley, AL
+19340		Davenport-Moline-Rock Island, IA-IL
+19380		Dayton, OH
+19460		Decatur, AL
+19500		Decatur, IL
+19660		Deltona-Daytona Beach-Ormond Beach, FL
+19740		Denver-Aurora-Lakewood, CO
+19780		Des Moines-West Des Moines, IA
+19820		Detroit-Warren-Dearborn, MI
+20100		Dover, DE
+20500		Durham-Chapel Hill, NC
+20700		East Stroudsburg, PA
+20740		Eau Claire, WI
+20940		El Centro, CA
+21060		Elizabethtown-Fort Knox, KY
+21140		Elkhart-Goshen, IN
+21340		El Paso, TX
+21500		Erie, PA
+21660		Eugene, OR
+21780		Evansville, IN-KY
+22140		Farmington, NM
+22180		Fayetteville, NC
+22220		Fayetteville-Springdale-Rogers, AR-MO
+22380		Flagstaff, AZ
+22420		Flint, MI
+22500		Florence, SC
+22520		Florence-Muscle Shoals, AL
+22660		Fort Collins, CO
+23060		Fort Wayne, IN
+23420		Fresno, CA
+23460		Gadsden, AL
+23540		Gainesville, FL
+23580		Gainesville, GA
+24020		Glens Falls, NY
+24140		Goldsboro, NC
+24300		Grand Junction, CO
+24340		Grand Rapids-Wyoming, MI
+24540		Greeley, CO
+24660		Greensboro-High Point, NC
+24780		Greenville, NC
+24860		Greenville-Anderson-Mauldin, SC
+25060		Gulfport-Biloxi-Pascagoula, MS
+25220		Hammond, LA
+25260		Hanford-Corcoran, CA
+25420		Harrisburg-Carlisle, PA
+25500		Harrisonburg, VA
+25540		Hartford-West Hartford-East Hartford, CT
+25620		Hattiesburg, MS
+25860		Hickory-Lenoir-Morganton, NC
+25940		Hilton Head Island-Bluffton-Beaufort, SC
+26140		Homosassa Springs, FL
+26380		Houma-Thibodaux, LA
+26420		Houston-The Woodlands-Sugar Land, TX
+26620		Huntsville, AL
+26900		Indianapolis-Carmel-Anderson, IN
+26980		Iowa City, IA
+27060		Ithaca, NY
+27100		Jackson, MI
+27140		Jackson, MS
+27180		Jackson, TN
+27260		Jacksonville, FL
+27340		Jacksonville, NC
+27500		Janesville-Beloit, WI
+27620		Jefferson City, MO
+27780		Johnstown, PA
+27900		Joplin, MO
+28020		Kalamazoo-Portage, MI
+28100		Kankakee, IL
+28140		Kansas City, MO-KS
+28420		Kennewick-Richland, WA
+28660		Killeen-Temple, TX
+28700		Kingsport-Bristol-Bristol, TN-VA
+28940		Knoxville, TN
+29100		La Crosse-Onalaska, WI-MN
+29180		Lafayette, LA
+29200		Lafayette-West Lafayette, IN
+29340		Lake Charles, LA
+29420		Lake Havasu City-Kingman, AZ
+29460		Lakeland-Winter Haven, FL
+29540		Lancaster, PA
+29620		Lansing-East Lansing, MI
+29700		Laredo, TX
+29740		Las Cruces, NM
+29820		Las Vegas-Henderson-Paradise, NV
+29940		Lawrence, KS
+30140		Lebanon, PA
+30340		Lewiston-Auburn, ME
+30620		Lima, OH
+30700		Lincoln, NE
+30780		Little Rock-North Little Rock-Conway, AR
+31080		Los Angeles-Long Beach-Anaheim, CA
+31140		Louisville/Jefferson County, KY-IN
+31180		Lubbock, TX
+31340		Lynchburg, VA
+31460		Madera, CA
+31700		Manchester-Nashua, NH
+31900		Mansfield, OH
+32420		Mayagüez, PR
+32580		McAllen-Edinburg-Mission, TX
+32780		Medford, OR
+32820		Memphis, TN-MS-AR
+32900		Merced, CA
+33100		Miami-Fort Lauderdale-West Palm Beach, FL
+33140		Michigan City-La Porte, IN
+33260		Midland, TX
+33340		Milwaukee-Waukesha-West Allis, WI
+33460		Minneapolis-St. Paul-Bloomington, MN-WI
+33660		Mobile, AL
+33700		Modesto, CA
+33740		Monroe, LA
+33780		Monroe, MI
+33860		Montgomery, AL
+34060		Morgantown, WV
+34620		Muncie, IN
+34740		Muskegon, MI
+34820		Myrtle Beach-Conway-North Myrtle Beach, SC-NC
+34900		Napa, CA
+34940		Naples-Immokalee-Marco Island, FL
+34980		Nashville-Davidson--Murfreesboro--Franklin, TN
+35300		New Haven-Milford, CT
+35380		New Orleans-Metairie, LA
+35620		New York-Newark-Jersey City, NY-NJ-PA
+35660		Niles-Benton Harbor, MI
+35840		North Port-Sarasota-Bradenton, FL
+35980		Norwich-New London, CT
+36100		Ocala, FL
+36140		Ocean City, NJ
+36220		Odessa, TX
+36260		Ogden-Clearfield, UT
+36420		Oklahoma City, OK
+36500		Olympia-Tumwater, WA
+36540		Omaha-Council Bluffs, NE-IA
+36740		Orlando-Kissimmee-Sanford, FL
+36780		Oshkosh-Neenah, WI
+36980		Owensboro, KY
+37100		Oxnard-Thousand Oaks-Ventura, CA
+37340		Palm Bay-Melbourne-Titusville, FL
+37460		Panama City, FL
+37620		Parkersburg-Vienna, WV
+37860		Pensacola-Ferry Pass-Brent, FL
+37900		Peoria, IL
+37980		Philadelphia-Camden-Wilmington, PA-NJ-DE-MD
+38060		Phoenix-Mesa-Scottsdale, AZ
+38300		Pittsburgh, PA
+38340		Pittsfield, MA
+38660		Ponce, PR
+38860		Portland-South Portland, ME
+38900		Portland-Vancouver-Hillsboro, OR-WA
+38940		Port St. Lucie, FL
+39140		Prescott, AZ
+39300		Providence-Warwick, RI-MA
+39340		Provo-Orem, UT
+39380		Pueblo, CO
+39460		Punta Gorda, FL
+39540		Racine, WI
+39580		Raleigh, NC
+39740		Reading, PA
+39820		Redding, CA
+39900		Reno, NV
+40060		Richmond, VA
+40140		Riverside-San Bernardino-Ontario, CA
+40220		Roanoke, VA
+40380		Rochester, NY
+40420		Rockford, IL
+40580		Rocky Mount, NC
+40900		Sacramento--Roseville--Arden-Arcade, CA
+40980		Saginaw, MI
+41060		St. Cloud, MN
+41100		St. George, UT
+41140		St. Joseph, MO-KS
+41180		St. Louis, MO-IL
+41500		Salinas, CA
+41540		Salisbury, MD-DE
+41620		Salt Lake City, UT
+41660		San Angelo, TX
+41700		San Antonio-New Braunfels, TX
+41740		San Diego-Carlsbad, CA
+41860		San Francisco-Oakland-Hayward, CA
+41900		San Germán, PR
+41940		San Jose-Sunnyvale-Santa Clara, CA
+41980		San Juan-Carolina-Caguas, PR
+42020		San Luis Obispo-Paso Robles-Arroyo Grande, CA
+42100		Santa Cruz-Watsonville, CA
+42140		Santa Fe, NM
+42200		Santa Maria-Santa Barbara, CA
+42220		Santa Rosa, CA
+42540		Scranton--Wilkes-Barre--Hazleton, PA
+42660		Seattle-Tacoma-Bellevue, WA
+42680		Sebastian-Vero Beach, FL
+43100		Sheboygan, WI
+43340		Shreveport-Bossier City, LA
+43900		Spartanburg, SC
+44060		Spokane-Spokane Valley, WA
+44100		Springfield, IL
+44140		Springfield, MA
+44180		Springfield, MO
+44220		Springfield, OH
+44300		State College, PA
+44700		Stockton-Lodi, CA
+44940		Sumter, SC
+45060		Syracuse, NY
+45220		Tallahassee, FL
+45300		Tampa-St. Petersburg-Clearwater, FL
+45460		Terre Haute, IN
+45780		Toledo, OH
+45820		Topeka, KS
+45940		Trenton, NJ
+46060		Tucson, AZ
+46220		Tuscaloosa, AL
+46340		Tyler, TX
+46520		Urban Honolulu, HI
+46540		Utica-Rome, NY
+46660		Valdosta, GA
+46700		Vallejo-Fairfield, CA
+47220		Vineland-Bridgeton, NJ
+47260		Virginia Beach-Norfolk-Newport News, VA-NC
+47300		Visalia-Porterville, CA
+47380		Waco, TX
+47900		Washington-Arlington-Alexandria, DC-VA-MD-WV
+48140		Wausau, WI
+48300		Wenatchee, WA
+48620		Wichita, KS
+48660		Wichita Falls, TX
+48700		Williamsport, PA
+48900		Wilmington, NC
+49180		Winston-Salem, NC
+49340		Worcester, MA-CT
+49420		Yakima, WA
+49620		York-Hanover, PA
+49660		Youngstown-Warren-Boardman, OH-PA
+49700		Yuba City, CA
+49740		Yuma, AZ
+
+ GQ		Group quarters status
+0		Vacant unit
+		Households:
+1		Households under 1970 definition
+2		Additional households under 1990 definition
+		Group Quarters:
+3		Group quarters--Institutions
+4		Other group quarters
+5		Additional households under 2000 definition
+6		Fragment
+
+ OWNERSHP		Ownership of dwelling (tenure) [general version]
+0		N/A
+1		Owned or being bought (loan)
+2		Rented
+
+ OWNERSHPD		Ownership of dwelling (tenure) [detailed version]
+00		N/A
+10		Owned or being bought
+11		Check mark (owns?)
+12		Owned free and clear
+13		Owned with mortgage or loan
+20		Rented
+21		No cash rent
+22		With cash rent
+
+ VEHICLES		Vehicles available
+0		N/A
+1		1 available
+2		2
+3		3
+4		4
+5		5
+6		6 (6+, 2000, ACS and PRCS)
+7		7+
+9		No vehicles available
+
+ FAMSIZE		Number of own family members in household
+01		1 family member present
+02		2 family members present
+03		3
+04		4
+05		5
+06		6
+07		7
+08		8
+09		9
+10		10
+11		11
+12		12
+13		13
+14		14
+15		15
+16		16
+17		17
+18		18
+19		19
+20		20
+21		21
+22		22
+23		23
+24		24
+25		25
+26		26
+27		27
+28		28
+29		29
+
+ RELATE		Relationship to household head [general version]
+		RELATIVES
+01		Head/Householder
+02		Spouse
+03		Child
+04		Child-in-law
+05		Parent
+06		Parent-in-Law
+07		Sibling
+08		Sibling-in-Law
+09		Grandchild
+10		Other relatives
+		NON-RELATIVES
+11		Partner, friend, visitor
+12		Other non-relatives
+13		Institutional inmates
+
+ RELATED		Relationship to household head [detailed version]
+		RELATIVES
+0101		Head/Householder
+0201		Spouse
+0202		2nd/3rd Wife (Polygamous)
+0301		Child
+0302		Adopted Child
+0303		Stepchild
+0304		Adopted, n.s.
+0401		Child-in-law
+0402		Step Child-in-law
+0501		Parent
+0502		Stepparent
+0601		Parent-in-Law
+0602		Stepparent-in-law
+0701		Sibling
+0702		Step/Half/Adopted Sibling
+0801		Sibling-in-Law
+0802		Step/Half Sibling-in-law
+0901		Grandchild
+0902		Adopted Grandchild
+0903		Step Grandchild
+0904		Grandchild-in-law
+1000		Other Relatives:
+1001		Other Relatives
+1011		Grandparent
+1012		Step Grandparent
+1013		Grandparent-in-law
+1021		Aunt or Uncle
+1022		Aunt,Uncle-in-law
+1031		Nephew, Niece
+1032		Neph/Niece-in-law
+1033		Step/Adopted Nephew/Niece
+1034		Grand Niece/Nephew
+1041		Cousin
+1042		Cousin-in-law
+1051		Great Grandchild
+1061		Other relatives, nec
+		NON-RELATIVES
+1100		Partner, Friend, Visitor
+1110		Partner/friend
+1111		Friend
+1112		Partner
+1113		Partner/roommate
+1114		Unmarried Partner
+1115		Housemate/Roomate
+1120		Relative of partner
+1130		Concubine/Mistress
+1131		Visitor
+1132		Companion and family of companion
+1139		Allocated partner/friend/visitor
+		Pre-1940 system:
+1200		Other non-relatives
+1201		Roomers/boarders/lodgers
+1202		Boarders
+1203		Lodgers
+1204		Roomer
+1205		Tenant
+1206		Foster child
+1210		Employees:
+1211		Servant
+1212		Housekeeper
+1213		Maid
+1214		Cook
+1215		Nurse
+1216		Other probable domestic employee
+1217		Other employee
+1219		Relative of employee
+1221		Military
+1222		Students
+1223		Members of religious orders
+1230		Other non-relatives
+1239		Allocated other non-relative
+		1940-2000 System:
+		Household members:
+1240		Roomers/boarders/lodgers and foster children
+1241		Roomers/boarders/lodgers
+1242		Foster children
+1250		Employees
+1251		Domestic employees
+1252		Non-domestic employees
+1253		Relative of employee
+1260		Other non-relatives (1990 includes employees)
+		Group quarters members:
+1270		Non-inmate 1990
+1281		Head of group quarters
+1282		Employees of group quarters
+1283		Relative of head, staff, or employee group quarters
+1284		Other non-inmate 1940-1959
+1291		Military
+1292		College dormitories
+1293		Residents of rooming houses
+1294		Other non-inmate 1980 (includes employees and non-inmates in
+1295		Other non-inmates 1960-1970 (includes employees)
+1296		Non-inmates in institutions
+1301		Institutional inmates
+9996		Unclassifiable
+9997		Unknown
+9998		Illegible
+9999		Missing
+
+ SEX		Sex
+1		Male
+2		Female
+
+ AGE		Age
+000		Less than 1 year old
+001		1
+002		2
+003		3
+004		4
+005		5
+006		6
+007		7
+008		8
+009		9
+010		10
+011		11
+012		12
+013		13
+014		14
+015		15
+016		16
+017		17
+018		18
+019		19
+020		20
+021		21
+022		22
+023		23
+024		24
+025		25
+026		26
+027		27
+028		28
+029		29
+030		30
+031		31
+032		32
+033		33
+034		34
+035		35
+036		36
+037		37
+038		38
+039		39
+040		40
+041		41
+042		42
+043		43
+044		44
+045		45
+046		46
+047		47
+048		48
+049		49
+050		50
+051		51
+052		52
+053		53
+054		54
+055		55
+056		56
+057		57
+058		58
+059		59
+060		60
+061		61
+062		62
+063		63
+064		64
+065		65
+066		66
+067		67
+068		68
+069		69
+070		70
+071		71
+072		72
+073		73
+074		74
+075		75
+076		76
+077		77
+078		78
+079		79
+080		80
+081		81
+082		82
+083		83
+084		84
+085		85
+086		86
+087		87
+088		88
+089		89
+090		90 (90+ in 1980 and 1990)
+091		91
+092		92
+093		93
+094		94
+095		95
+096		96
+097		97
+098		98
+099		99
+100		100 (100+ in 1960-1970)
+101		101
+102		102
+103		103
+104		104
+105		105
+106		106
+107		107
+108		108
+109		109
+110		110
+111		111
+112		112 (112+ in the 1980 internal data)
+113		113
+114		114
+115		115 (115+ in the 1990 internal data)
+116		116
+117		117
+118		118
+119		119
+120		120
+121		121
+122		122
+123		123
+124		124
+125		125
+126		126
+129		129
+130		130
+135		135
+
+ SCHOOL		School attendance
+0		N/A
+1		No, not in school
+2		Yes, in school
+9		Missing
+
+ EDUC		Educational attainment [general version]
+00		N/A or no schooling
+01		Nursery school to grade 4
+02		Grade 5, 6, 7, or 8
+03		Grade 9
+04		Grade 10
+05		Grade 11
+06		Grade 12
+07		1 year of college
+08		2 years of college
+09		3 years of college
+10		4 years of college
+11		5+ years of college
+
+ EDUCD		Educational attainment [detailed version]
+000		N/A or no schooling
+001		N/A
+002		No schooling completed
+010		Nursery school to grade 4
+011		Nursery school, preschool
+012		Kindergarten
+013		Grade 1, 2, 3, or 4
+014		Grade 1
+015		Grade 2
+016		Grade 3
+017		Grade 4
+020		Grade 5, 6, 7, or 8
+021		Grade 5 or 6
+022		Grade 5
+023		Grade 6
+024		Grade 7 or 8
+025		Grade 7
+026		Grade 8
+030		Grade 9
+040		Grade 10
+050		Grade 11
+060		Grade 12
+061		12th grade, no diploma
+062		High school graduate or GED
+063		Regular high school diploma
+064		GED or alternative credential
+065		Some college, but less than 1 year
+070		1 year of college
+071		1 or more years of college credit, no degree
+080		2 years of college
+081		Associate's degree, type not specified
+082		Associate's degree, occupational program
+083		Associate's degree, academic program
+090		3 years of college
+100		4 years of college
+101		Bachelor's degree
+110		5+ years of college
+111		6 years of college (6+ in 1960-1970)
+112		7 years of college
+113		8+ years of college
+114		Master's degree
+115		Professional degree beyond a bachelor's degree
+116		Doctoral degree
+999		Missing
+
+ EMPSTAT		Employment status [general version]
+0		N/A
+1		Employed
+2		Unemployed
+3		Not in labor force
+
+ EMPSTATD		Employment status [detailed version]
+00		N/A
+		In Labor Force
+		Employed
+10		At work
+11		At work, public emerg
+12		Has job, not working
+13		Armed forces
+14		Armed forces--at work
+15		Armed forces--not at work but with job
+20		Unemployed
+21		Unemp, exper worker
+22		Unemp, new worker
+30		Not in Labor Force
+31		NILF, housework
+32		NILF, unable to work
+33		NILF, school
+34		NILF, other
+
+ LABFORCE		Labor force status
+0		N/A
+1		No, not in the labor force
+2		Yes, in the labor force
+
+ TRANWORK		Means of transportation to work
+00		N/A
+		Private motorized vehicle:
+10		Auto, truck, or van
+11		Auto
+12		Driver
+13		Passenger
+14		Truck
+15		Van
+20		Motorcycle
+		Public transport:
+30		Bus or streetcar
+31		Bus or trolley bus
+32		Streetcar or trolley car
+33		Subway or elevated
+34		Railroad
+35		Taxicab
+36		Ferryboat
+40		Bicycle
+50		Walked only
+60		Other
+70		Worked at home

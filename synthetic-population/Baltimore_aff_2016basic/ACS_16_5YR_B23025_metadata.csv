@@ -1,0 +1,17 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+HD01_VD01,Estimate; Total:
+HD02_VD01,Margin of Error; Total:
+HD01_VD02,Estimate; In labor force:
+HD02_VD02,Margin of Error; In labor force:
+HD01_VD03,Estimate; In labor force: - Civilian labor force:
+HD02_VD03,Margin of Error; In labor force: - Civilian labor force:
+HD01_VD04,Estimate; In labor force: - Civilian labor force: - Employed
+HD02_VD04,Margin of Error; In labor force: - Civilian labor force: - Employed
+HD01_VD05,Estimate; In labor force: - Civilian labor force: - Unemployed
+HD02_VD05,Margin of Error; In labor force: - Civilian labor force: - Unemployed
+HD01_VD06,Estimate; In labor force: - Armed Forces
+HD02_VD06,Margin of Error; In labor force: - Armed Forces
+HD01_VD07,Estimate; Not in labor force
+HD02_VD07,Margin of Error; Not in labor force
