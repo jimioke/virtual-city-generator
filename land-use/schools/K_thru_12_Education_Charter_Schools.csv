@@ -1,0 +1,49 @@
+﻿X,Y,OBJECTID,county,school_nam,address,city,state,zip,type,grades
+-76.589850269196305,39.287998623062258,1,Baltimore City,Wolfe Street Academy #023,245 South Wolfe Street,Baltimore,MD,21231,Charter,Grades: PK - 5
+-76.600217000051586,39.318841999277659,2,Baltimore City,Monarch Academy Public Charter School #381,2525 Kirk Avenue,Baltimore,MD,21218,Charter,Grades: K - 8
+-76.630401848868772,39.299712137674504,3,Baltimore City,Furman Templeton Preparatory Academy #125,1200 North Pennsylvania Avenue,Baltimore,MD,21217,Charter,Grades: PK - 5
+-76.576293179694318,39.285853371239313,4,Baltimore City,Hampstead Hill Academy #047,500 South Linwood Avenue,Baltimore,MD,21224,Charter,Grades: PK - 8
+-76.663131650038665,39.304482161719314,5,Baltimore City,Rosemont Elementary/Middle School #063,2777 Presstman Street,Baltimore,MD,21216,Charter,Grades: PK - 8
+-76.597287707097792,39.290106747452185,6,Baltimore City,City Springs Elementary/Middle School #008,100 South Caroline Street,Baltimore,MD,21231,Charter,Grades: PK - 8
+-76.596208721745427,39.18759543772353,7,Anne Arundel,Monarch Academy,6730 Baymeadow Drive,Glen Burnie,MD,21061,Charter,Grades: K - 8
+-76.734714480172158,39.167983864067047,8,Anne Arundel,Chesapeake Science Point Public Charter School,7321 Parkway South Drive,Hanover,MD,21076,Charter,Grades: 6 - 12
+-76.88609135478697,38.829228755865905,9,Prince George's,Imagine Foundations at Morningside Public Charter School,6900 Ames Street,Morningside,MD,20746,Charter,Grades: K - 5
+-77.414022838134656,39.419627191739778,10,Frederick,Monocacy Valley Montessori School,217 Dill Avenue,Frederick,MD,21701,Charter,Grades: PK - 8
+-76.638477281963134,39.281715762318974,11,Baltimore City,Southwest Baltimore Charter School #328,1300 Herkimer Street,Baltimore,MD,21223,Charter,Grades: K - 8
+-76.707661198859611,39.28412712460554,12,Baltimore City,Green Street Academy #377,201 North Bend Road,Baltimore,MD,21229,Charter,Grades: 6 - 12
+-76.664314963033206,39.317902849476802,13,Baltimore City,ConneXions: A Community Based Arts School #325,2801 North Dukeland Street,Baltimore,MD,21216,Charter,Grades: 6 - 12
+-76.662319431986333,39.297438741182503,14,Baltimore City,City Neighbors Hamilton School #346,5609 Sefton Avenue,Baltimore,MD,21214,Charter,Grades: K - 8
+-76.658036376102743,39.345603102800538,15,Baltimore City,K.I.P.P. Harmony Academy #347,4701 Greenspring Avenue,Baltimore,MD,21209,Charter,Grades: K - 8
+-76.662319431986333,39.297438741182503,16,Baltimore City,City Neighbors High School #376,5609 Sefton Avenue,Baltimore,MD,21214,Charter,Grades: 9 - 12
+-76.600116174940723,39.293968234521913,17,Baltimore City,Inner Harbor East Academy #329,200 North Central Avenue,Baltimore,MD,21202,Charter,Grades: PK - 8
+-76.610524036957912,39.357576678655441,18,Baltimore City,Tunbridge Public Charter School #373,5504 York Road,Baltimore,MD,21212,Charter,Grades: PK - 8
+-76.591831375994673,39.3455959612903,19,Baltimore City,Northwood Appold Community Academy #330,4417 Loch Raven Boulevard,Baltimore,MD,21218,Charter,Grades: K - 5
+-76.572359823577798,39.324328110871591,20,Baltimore City,Afya Public Charter School #337,2800 Brendan Avenue,Baltimore,MD,21213,Charter,Grades: 6 - 8
+-76.548778830875676,39.33608510765167,21,Baltimore City,Baltimore International Academy #335,4410 Frankford Avenue,Baltimore,MD,21206,Charter,Grades: K - 8
+-76.618033811697657,39.295167118011157,22,Baltimore City,Baltimore Leadership School for Young Women #348,128 West Franklin Street,Baltimore,MD,21201,Charter,Grades: 6 - 12
+-76.612503811554703,39.308345114903652,23,Baltimore City,Baltimore Montessori Public Charter School #336,1600 Guilford Avenue,Baltimore,MD,21202,Charter,Grades: PK - 5
+-76.612503811554703,39.308345114903652,24,Baltimore City,Baltimore Montessori Public Charter Middle School #383,1600 Guilford Avenue,Baltimore,MD,21202,Charter,Grades: 6 - 8
+-76.534447833773271,39.348901104158749,25,Baltimore City,City Neighbors Charter School #326,4301 Raspe Avenue,Baltimore,MD,21206,Charter,Grades: K - 8
+-76.659319797352538,39.308472117212347,26,Baltimore City,Coppin Academy High School,2500 West North Avenue,Baltimore,MD,21216,Charter,Grades: 9 - 12
+-76.5968116529978,39.281896879910093,27,Baltimore City,The Crossroads School #323,802 South Caroline Street,Baltimore,MD,21231,Charter,Grades: 6 - 8
+-76.659193797854144,39.297624119167253,28,Baltimore City,Empowerment Academy #262,851 Braddish Avenue,Baltimore,MD,21216,Charter,Grades: PK - 8
+-76.572420824575474,39.324267110876995,29,Baltimore City,The Green School #332,2851 Kentucky Avenue,Baltimore,MD,21213,Charter,Grades: K - 5
+-76.636468803498062,39.330952111137435,30,Baltimore City,Independence School Local I #333,1250 West 36th Street,Baltimore,MD,21211,Charter,Grades: 9 - 12
+-76.664314963033206,39.317902849476802,31,Baltimore City,Maryland Academy of Technology and Health Sciences #331,2801 North Dukeland Street,Baltimore,MD,21216,Charter,Grades: 6 - 12
+-76.622652808751411,39.308384115943653,32,Baltimore City,Midtown Academy #321,1398 Mount Royal Avenue,Baltimore,MD,21217,Charter,Grades: K - 8
+-76.57883882374982,39.292821117742037,33,Baltimore City,Patterson Park Public Charter School #327,27 North Lakewood Avenue,Baltimore,MD,21224,Charter,Grades: PK - 8
+-76.646721803146789,39.295942118348599,34,Baltimore City,Roots and Branches School #379,1807 Harlem Avenue,Baltimore,MD,21217,Charter,Grades: K - 5
+-76.824240000177511,39.08585499967289,35,Anne Arundel,Monarch Global Academy Public Charter School,430 Brock Bridge Road,Laurel,MD,20724,Charter,Grades: K - 8
+-77.414704999896799,39.378177999928745,36,Frederick,Carroll Creek Montessori Public Charter School,7215 Corporate Court,Frederick,MD,21703,Charter,Grades: PK - 3
+-77.372482000433678,39.436550000338393,37,Frederick,Frederick Classical Charter School,"8445 Spires Way, Suite CC",Frederick,MD,21701,Charter,Grades: K - 6
+-76.869086140457398,38.921522001135891,38,Prince George's,EXCEL Academy Public Charter School,7910 Scott Road,Landover,MD,20785,Charter,Grades: K - 8
+-76.902790000161247,39.090040000299155,39,Prince George's,Chesapeake Math & IT Public Charter - North,6100 Frost Place,Laurel,MD,20707,Charter,Grades: 6 - 10
+-76.900466362151789,38.845357613231378,40,Prince George's,Chesapeake Math & IT Public Charter - South,6201 Surrey Square Lane,Forestville,MD,20747,Charter,Grades: 6 - 7
+-76.954066315380828,38.98292498895745,41,Prince George's,College Park Academy,7501 Adelphi Road,Hyattsville,MD,20783,Charter,Grades: 6 - 7
+-76.888102318890432,38.797854404513686,42,Prince George's,Imagine Andrews Public Charter School,4701 San Antonio Boulevard,Andrews Air Force Base,MD,20762,Charter,Grades: K - 6
+-76.760607228867457,38.873958233144336,43,Prince George's,Imagine - Foundations at Leeland Public Charter School,14111 Oak Grove Road,Upper Marlboro,MD,20774,Charter,Grades: K - 8
+-76.950305908312714,38.830038286587687,44,Prince George's,Imagine Lincoln Public Charter School,4207 Norcross Street,Temple Hills,MD,20748,Charter,Grades: K - 8
+-76.870670610515077,38.980592616840447,45,Prince George's,Turning Point Academy Public Charter School,7800 Good Luck Road,Lanham,MD,20706,Charter,Grades: K - 8
+-76.492990180965904,38.242874750966934,46,St. Mary's,Chesapeake Public Charter School,20945 Great Mills Road,Lexington Park,MD,20653,Charter,Grades: K - 8
+-76.901437602670669,39.093936037368067,47,Prince George's,Chesapeake Math & IT Public Charter - Elementary,6151 Chevy Chase Drive,Laurel,MD,20706,Charter,Grades: K - 5
+-76.665143000417714,39.333946999951415,48,Baltimore City,Creative City Public Charter School,2810 Shirley Avenue,Baltimore,MD,21215,Charter,Grades: K - 5
