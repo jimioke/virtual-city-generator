@@ -10,7 +10,7 @@ import pandas as pd
 import csv
 import re
 
-folder = 'Baltimore_affs/ACS_15_5YR_'
+folder = 'Processing_data/totals/Baltimore_affs/ACS_15_5YR_'
 end = '_with_ann.csv'
 
 sex_age = folder + 'B01001' + end
@@ -118,7 +118,7 @@ age_column = [' - Under 5 years', ' - 5 to 9 years', ' - 10 to 14 years', ' - 15
 ' - 80 to 84 years', ' - 85 years and over']
 
 vehicle_column = [' - No vehicle available', ' - 1 vehicle available', ' - 2 vehicles available', ' - 3 vehicles available', ' - 4 or more vehicles available']
-vehicle_column = ['Estimate; Total:' + t for t in  vehicle_columns]
+vehicle_column = ['Estimate; Total:' + t for t in  vehicle_column]
 gender_column = [' Male', ' Female']
 
 df_gender, df_age = compute_marginals(sex_age)

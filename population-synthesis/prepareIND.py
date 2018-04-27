@@ -5,9 +5,11 @@ import numpy as np
 import math
 
 # inputFile = 'baltimore_ind_samples.csv'
-inputFile = 'baltimore_samples_dec30.csv'
-sampleFile = 'RS2.dat'
-indFile = 'IND2.dat'
+inputFile = 'Population_data/baltimore_samples_dec30.csv'
+outputFolder = 'Processing_data/samples/'
+sampleAttFile = outputFolder + 'samples_with_all_attributes.csv'
+sampleFile = outputFolder + 'RS.dat'
+indFile = outputFolder + 'IND.dat'
 df = pd.read_csv(inputFile)
 
 county_codes = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 5100]
@@ -119,18 +121,17 @@ df_samples['APER'] = df_samples['hhid'].map(lambda hhid: counts[hhid])
 df_samples = df_samples.reindex(columns=['hhid', 'indid', 'APER', 'gender', 'age', 'educ', 'vehicles'])
 df_samples = df_samples.sort_values(['hhid'])
 df_samples.to_csv(sampleFile, index=False, sep=' ')
-df_samples.to_csv('samples2.csv', index=False)
 
 ############## add other necessary attributes ##################
 df_samples['school'] = df['SCHOOL']
 df_samples['employment'] = df['EMPSTAT']
 df_samples['income_earn'] = df['INCEARN']
-df_samples.to_csv('samples_with_all_attributes.csv', index=False)
+df_samples.to_csv(sampleAttFile, index=False)
 
 print('num of samples: ', len(df_samples.index))
 ################## Write individuals' vars #####################
 df_ind = pd.DataFrame()
 df_ind = df_samples.educ.value_counts()
-df_ind.rename('educ N') #TODO: fix header to educ Ns
+df_ind.rename('N', inplace=True)
 # print(type(df_ind.educ.value_counts()))
-df_ind.to_csv(indFile, sep=' ', header=True)
+df_ind.to_csv(indFile, index_label='educ', sep=' ',  header=True)
