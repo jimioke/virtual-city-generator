@@ -14,8 +14,8 @@
   output:
     weights for each county
 
-6. Generate population for each county
-  generate_pop.py
+6. Generate weighted population for each county
+  generate_pop_all_attributes.py
 
 Check some statistics:
   statistics_original.py for original cities

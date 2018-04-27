@@ -20,13 +20,13 @@ code_county = {
 }
 
 
-samples = pd.read_csv('samples_with_all_attributes.csv') # 52366, total weight: 187477.126042
-total_population = pd.read_csv('Baltimore_affs/ACS_15_5YR_B01003_with_ann.csv')
-population_weights = '4-nonzero-point-weights/point_weights_'
-outFolder = 'Autosprawl_syn_population/'
+samples = pd.read_csv('Processing_data/samples/samples_with_all_attributes.csv') # 52366, total weight: 187477.126042
+total_population = pd.read_csv('Population_data/Baltimore_affs/ACS_15_5YR_B01003_with_ann.csv')
+population_weights = 'Processing_data/multilevel_sample_weights/'
+outFolder = 'Weighted_population/'
 
 def create_county_population(current_county, samples, total_population):
-    weights = pd.read_csv('Weights_multilevel_dec30/' + current_county + '_multilevel_weights.csv')
+    weights = pd.read_csv(population_weights + current_county + '_multilevel_weights.csv')
     population_row = total_population.loc[total_population['GEO.id2'] == current_county]
     total = int(population_row.HD01_VD01.item())
     print('_____________County: ', current_county, 'total population: ', total)

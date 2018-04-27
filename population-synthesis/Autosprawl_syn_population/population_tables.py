@@ -1,3 +1,7 @@
+################################################################################
+# Description: Create population and household tables
+################################################################################
+
 import pandas as pd
 import geopandas as gpd
 import baltimore_landuse_code
@@ -30,7 +34,7 @@ code_county = {
     24025: '25' #24025
 }
 
-def prepare(inFolder='../Baltimore_syn_population/', outFile=outFolder+'pre_individual.csv'):
+def prepare(inFolder='../Weighted_population/', outFile=outFolder+'pre_individual.csv'):
     HHID  = 1
     INDID = 1
     frames = []
@@ -64,7 +68,7 @@ def prepare(inFolder='../Baltimore_syn_population/', outFile=outFolder+'pre_indi
         frames.append(df)
     MetroPopulation = pd.concat(frames)
     MetroPopulation.to_csv(outFile, index=False)
-# prepare()
+prepare()
 
 def test_individual(inFile='to_db/pre_individual.csv',outFile=outFolder+'individual.csv'):
     population = pd.read_csv(inFile)
@@ -173,7 +177,6 @@ def format_individual(inFile='to_db/pre_individual.csv',outFile=outFolder+'indiv
     # print('income id', population.income_id.value_counts())
     population.to_csv('to_db/individual_with_income.csv', index=False)
 format_individual()
-# format_individual()
 
 def format_household(inFile='to_db/pre_individual.csv',outFile=outFolder+'household.csv'):
     population = pd.read_csv(inFile) # 2769819 individual, hhid 1741649 'vehicles':'vehicle_category_id',
@@ -251,7 +254,7 @@ def format_household(inFile='to_db/pre_individual.csv',outFile=outFolder+'househ
     households.to_csv(outFile, index=False)
     # print(households.head())
     # print(households.columns)
-# format_household()
+format_household()
 
 def stats(inFile='to_db/pre_individual.csv', outFile='to_db/population_at_grid_point.csv'):
     individuals = pd.read_csv(inFile)
@@ -271,4 +274,4 @@ def stats(inFile='to_db/pre_individual.csv', outFile='to_db/population_at_grid_p
 
     at_point = at_point[['sla_address_id','resident_workers','residential_students','total_population']]
     at_point.to_csv(outFile, index=False)
-# stats()
+stats()

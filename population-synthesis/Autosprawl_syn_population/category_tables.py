@@ -104,8 +104,8 @@ def vehicles(outFile='to_db/vehicle_ownership_option_id.csv'):
     df.columns = ['id', 'description']
     df.to_csv(outFile, index=False)
 
-# age_category()
-# gender()
-# education()
-# employment_status()
+age_category()
+gender()
+education()
+employment_status()
 vehicles()
