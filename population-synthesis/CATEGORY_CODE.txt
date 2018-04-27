@@ -1,0 +1,87 @@
+Synthetic population
+
+County codes:
+'24003': 'AnneArundel'
+'24510': 'BaltimoreCity'
+'24005': 'BaltimoreCounty'
+'24013': 'Carroll'
+'24027' : 'Howard'
+'24035' : 'QueenAnne'
+'24025' : 'Harford'
+
+Each county population with the following CATEGORICAL attributes are listed in the corresponding county file.
+
+hhid
+household id (unique)
+
+indid
+individual id (unique)
+
+APER (number of household members)
+
+gender
+0: ' Male',
+1: ' Female'
+
+age
+0,"(0, 4)"
+1,"(5, 9)"
+2,"(10, 14)"
+3,"(15, 17)"
+4,"(18, 19)"
+5,"(20, 20)"
+6,"(21, 21)"
+7,"(22, 24)"
+8,"(25, 29)"
+9,"(30, 34)"
+10,"(35, 39)"
+11,"(40, 44)"
+12,"(45, 49)"
+13,"(50, 54)"
+14,"(55, 59)"
+15,"(60, 61)"
+16,"(62, 64)"
+17,"(65, 66)"
+18,"(67, 69)"
+19,"(70, 74)"
+20,"(75, 79)"
+21,"(80, 84)"
+22,"(85, inf)"
+
+educ (education level)
+# 00		N/A or no schooling
+# 01		Nursery school to grade 4
+# 02		Grade 5, 6, 7, or 8
+# 03		Grade 9
+# 04		Grade 10
+# 05		Grade 11
+# 06		Grade 12
+# 07		1 year of college
+# 08		2 years of college
+# 09		3 years of college
+# 10		4 years of college
+# 11		5+ years of college
+
+
+vehicles (number of vehicles in household)
+
+' - No vehicle available'
+' - 1 vehicle available'
+' - 2 vehicles available'
+' - 3 vehicles available'
+' - 4 or more vehicles available'
+
+income
+Individuals' annual income
+
+school (Individual's school attendance)
+0		N/A
+1		No, not in school
+2		Yes, in school
+9		Missing
+
+employment (Individual's employment state)
+0		N/A
+1		Employed
+2		Unemployed
+3		Not in labor force
