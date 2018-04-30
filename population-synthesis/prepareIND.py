@@ -13,6 +13,8 @@ indFile = outputFolder + 'IND.dat'
 df = pd.read_csv(inputFile)
 
 county_codes = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 5100]
+# county_codes = [24003, 24510, 24005, 24013, 24027, 24035, 24025]
+
 df = df[df['COUNTY'].map(lambda county: county in county_codes)]
 
 

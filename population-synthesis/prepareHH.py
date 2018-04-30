@@ -22,7 +22,7 @@ hhsize_vehicles = folder + 'B08201' + end
 hhtypes = folder + 'B09019' + end
 
 # Sex, age, education, size, vehicles
-outputFolder = 'Outputs/'
+outputFolder = 'Processing_data/totals/'
 gender_marg = outputFolder + 'GENDER.csv'
 age_marg = outputFolder + 'AGE.csv'
 edu_marg = outputFolder + 'EDU.dat'

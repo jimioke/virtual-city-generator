@@ -1,0 +1,14 @@
+samples <- read.table("samples/RS.dat", header=TRUE)
+ind <- read.table("samples/IND.dat", header=TRUE)
+
+age <- read.table("age.dat", header=TRUE)
+gender <- read.table("gender.dat", header=TRUE)
+vehicles <- read.table("vehicle.dat", header=TRUE)
+
+fit_problem <- fitting_problem(ref_sample = samples,
+            field_names = special_field_names(groupId = "hhid", individualId = "indid", count = "N"),
+            group_controls = list(age, gender, vehicles),
+            individual_controls = list(ind))
+
+result <- ml_fit_ipu(fit_problem)
+result["weights"]
