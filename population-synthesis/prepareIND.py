@@ -1,3 +1,8 @@
+################################################################################
+# Description: Format micro sample data in two formats:
+#   1. samples' attributes are categories (for Multi-level IPU)
+#   2. samples with all attributes to be scaled (synthesied based on its weight)
+################################################################################
 import pandas as pd
 import csv
 import re
@@ -7,25 +12,18 @@ import math
 # inputFile = 'baltimore_ind_samples.csv'
 inputFile = 'Population_data/baltimore_samples_dec30.csv'
 outputFolder = 'Processing_data/samples/'
+# for generating population with all attributes
 sampleAttFile = outputFolder + 'samples_with_all_attributes.csv'
-sampleFile = outputFolder + 'RS.dat'
-indFile = outputFolder + 'IND.dat'
+multilevelSampleFile = outputFolder + 'samples.dat'
 df = pd.read_csv(inputFile)
 
-county_codes = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 5100]
-# county_codes = [24003, 24510, 24005, 24013, 24027, 24035, 24025]
-
-df = df[df['COUNTY'].map(lambda county: county in county_codes)]
-
-
-# YEAR,DATANUM,SERIAL,HHWT,COUNTY,MET2013,CITYPOP,PUMA,CPUMA0010,GQ,OWNERSHP,OWNERSHPD,HHINCOME,PERNUM,PERWT,FAMSIZE,SEX,AGE,EDUC,EDUCD,EMPSTAT,EMPSTATD,LABFORCE,OCC,TRANWORK
+# Sample header: YEAR,DATANUM,SERIAL,HHWT,COUNTY,MET2013,CITYPOP,PUMA,CPUMA0010,GQ,OWNERSHP,OWNERSHPD,HHINCOME,PERNUM,PERWT,FAMSIZE,SEX,AGE,EDUC,EDUCD,EMPSTAT,EMPSTATD,LABFORCE,OCC,TRANWORK
 
 # IPUMS (category checks)
 # familysize 1->29
 # sex (male-1, female 2)
 # age (0-135)
 # educ (0-11)
-
 
 # ACS (category)
 # age
@@ -86,17 +84,16 @@ print(df['EDUC'].unique())  #df['SEX'].map(lambda gender: gender - 1)
 # 10		4 years of college
 # 11		5+ years of college
 
-################## family_id #####################
+################## household_id ##########################
 df_samples['hhid'] = df['YEAR']*10**10 + df['DATANUM']*10*8 + df['SERIAL']
 
-################## ind_id ########################
+################## individual_id ########################
 df_samples['indid'] = df_samples['hhid'] * 100 + df['PERNUM']
 
-
 ################## people per household #####################
-######################## Check each household has the right number of individuals (APER)
+# Check each household has the right number of individuals (APER)
 # print(type(samples['hhid'].value_counts()))
-# df_samples['APER'] =  df['FAMSIZE'] # not matching sometimes!!
+# df_samples['APER'] =  df['FAMSIZE'] # not matching to counts sometimes!!
 counts = df_samples['hhid'].value_counts()
 df_samples['APER'] = df_samples['hhid'].map(lambda hhid: counts[hhid])
 
@@ -119,15 +116,18 @@ df_samples['APER'] = df_samples['hhid'].map(lambda hhid: counts[hhid])
 # YEAR, DATANUM, and SERIAL provides a unique identifier for every household in the IPUMS;
 # YEAR, DATANUM, SERIAL, and PERNUM uniquely identifies every person in the database.
 
-######## Write  RS samples  ###,
-df_samples = df_samples.reindex(columns=['hhid', 'indid', 'APER', 'gender', 'age', 'educ', 'vehicles'])
-df_samples = df_samples.sort_values(['hhid'])
-df_samples.to_csv(sampleFile, index=False, sep=' ')
+######## Houshold income ######
+df_samples['hh_income'] = df['HHINCOME']
+df['TRANWORK']
 
-############## add other necessary attributes ##################
+
+######## Write  RS samples  ###,
 df_samples['school'] = df['SCHOOL']
 df_samples['employment'] = df['EMPSTAT']
 df_samples['income_earn'] = df['INCEARN']
+
+df_samples = df_samples.sort_values(['hhid'])
+df_samples[['hhid', 'indid', 'APER', 'gender', 'age', 'educ', 'vehicles']].to_csv(multilevelSampleFile, index=False, sep=' ')
 df_samples.to_csv(sampleAttFile, index=False)
 
 print('num of samples: ', len(df_samples.index))

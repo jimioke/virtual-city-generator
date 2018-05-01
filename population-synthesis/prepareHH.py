@@ -10,7 +10,7 @@ import pandas as pd
 import csv
 import re
 
-folder = 'Processing_data/totals/Baltimore_affs/ACS_15_5YR_'
+folder = 'Population_data/Baltimore_affs/ACS_15_5YR_'
 end = '_with_ann.csv'
 
 sex_age = folder + 'B01001' + end
@@ -20,6 +20,7 @@ unweighted_sample_housing = folder + 'B00001' + end
 total_population = folder + 'B01003' + end
 hhsize_vehicles = folder + 'B08201' + end
 hhtypes = folder + 'B09019' + end
+hhincome  = folder + 'S1901_with_ann_transposed.csv'
 
 # Sex, age, education, size, vehicles
 outputFolder = 'Processing_data/totals/'
@@ -111,26 +112,51 @@ def compute_marginals_using_columns(marginal2dFile, columns):
         df_totals[column] = df.filter(regex='^.*' + column + '.*$')
     return df_totals
 
-############################ WRITE 1D marginals for each county ################
-age_column = [' - Under 5 years', ' - 5 to 9 years', ' - 10 to 14 years', ' - 15 to 17 years', ' - 18 and 19 years', ' - 20 years', ' - 21 years',
-' - 22 to 24 years', ' - 25 to 29 years', ' - 30 to 34 years', ' - 35 to 39 years', ' - 40 to 44 years', ' - 45 to 49 years', ' - 50 to 54 years',
-' - 55 to 59 years', ' - 60 and 61 years', ' - 62 to 64 years', ' - 65 and 66 years', ' - 67 to 69 years', ' - 70 to 74 years', ' - 75 to 79 years',
-' - 80 to 84 years', ' - 85 years and over']
+def income_totals(hhincomeFile=hhincome):
+    # step 1 clean
+    counties = ['24003', '24005', '24013', '24025', '24027', '24035', '24510']
+    df = pd.read_csv(hhincomeFile)
+    #
+    df['income_type'] = df.apply(lambda r: r['GEO.id2'][:8], axis=1)
+    df = df[df.income_type == 'HC01_EST']
+    df['hhincome'] = df.apply(lambda r: int(r['GEO.id2'].split('_')[-1][-2:]), axis=1)
+    df = df.replace('(X)', 0)
+    df.index = df.hhincome
+    print(df.columns)
+    df = df[counties]
+    print(df)
+    df.to_csv('Population_data/Baltimore_affs/ACS_15_5YR_S1901_cleaned.csv')
+    # step 2
+    # df = pd.read_csv('Population_data/Baltimore_affs/ACS_16_5YR_S1901_cleaned2.csv')
+    # for c in df.columns:
+    #     df2 = df[c]
+    #     df2 = df2.rename('N')
+    #     df2.to_csv('Processing_data/totals/' + c + '_hhincome.dat', index_label='hhincome', sep=' ',  header=True)
 
-vehicle_column = [' - No vehicle available', ' - 1 vehicle available', ' - 2 vehicles available', ' - 3 vehicles available', ' - 4 or more vehicles available']
-vehicle_column = ['Estimate; Total:' + t for t in  vehicle_column]
-gender_column = [' Male', ' Female']
+income_totals()
 
-df_gender, df_age = compute_marginals(sex_age)
-category_gender = code_category(df_gender, gender_column)
-writeCountyFiles(df_gender, 'gender', outputFolder)
 
-category_age = code_category(df_age, age_column)
-writeCountyFiles(df_age, 'age', outputFolder)
+def totals():
+    ############################ WRITE 1D marginals for each county ################
+    age_column = [' - Under 5 years', ' - 5 to 9 years', ' - 10 to 14 years', ' - 15 to 17 years', ' - 18 and 19 years', ' - 20 years', ' - 21 years',
+    ' - 22 to 24 years', ' - 25 to 29 years', ' - 30 to 34 years', ' - 35 to 39 years', ' - 40 to 44 years', ' - 45 to 49 years', ' - 50 to 54 years',
+    ' - 55 to 59 years', ' - 60 and 61 years', ' - 62 to 64 years', ' - 65 and 66 years', ' - 67 to 69 years', ' - 70 to 74 years', ' - 75 to 79 years',
+    ' - 80 to 84 years', ' - 85 years and over']
 
-df_vehicles = compute_marginals_using_columns(hhsize_vehicles, vehicle_column)
-categore_vehicle = code_category(df_vehicles, df_vehicles.columns)
-writeCountyFiles(df_vehicles, 'vehicles', outputFolder)
+    vehicle_column = [' - No vehicle available', ' - 1 vehicle available', ' - 2 vehicles available', ' - 3 vehicles available', ' - 4 or more vehicles available']
+    vehicle_column = ['Estimate; Total:' + t for t in  vehicle_column]
+    gender_column = [' Male', ' Female']
+
+    df_gender, df_age = compute_marginals(sex_age)
+    category_gender = code_category(df_gender, gender_column)
+    writeCountyFiles(df_gender, 'gender', outputFolder)
+
+    category_age = code_category(df_age, age_column)
+    writeCountyFiles(df_age, 'age', outputFolder)
+
+    df_vehicles = compute_marginals_using_columns(hhsize_vehicles, vehicle_column)
+    categore_vehicle = code_category(df_vehicles, df_vehicles.columns)
+    writeCountyFiles(df_vehicles, 'vehicles', outputFolder)
 
 # print('\n\nhhsize', category_hhsize)
 # print('\n\nvehicles', categore_vehicle.values())
