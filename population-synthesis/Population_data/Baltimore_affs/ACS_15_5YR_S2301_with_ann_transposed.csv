@@ -1,0 +1,45 @@
+Value Label,,value
+999 Missing,less than high school,999
+010 Nursery school to grade 4,less than high school,10
+"011 Nursery school, preschool",less than high school,11
+012 Kindergarten,less than high school,12
+"013 Grade 1, 2, 3, or 4",less than high school,13
+014 Grade 1,less than high school,14
+015 Grade 2,less than high school,15
+016 Grade 3,less than high school,16
+017 Grade 4,less than high school,17
+"020 Grade 5, 6, 7, or 8",less than high school,20
+021 Grade 5 or 6,less than high school,21
+022 Grade 5,less than high school,22
+023 Grade 6,less than high school,23
+024 Grade 7 or 8,less than high school,24
+025 Grade 7,less than high school,25
+026 Grade 8,less than high school,26
+030 Grade 9,less than high school,30
+040 Grade 10,less than high school,40
+050 Grade 11,less than high school,50
+060 Grade 12,less than high school,60
+"061 12th grade, no diploma",less than high school,61
+062 High school graduate or GED,high school,62
+063 Regular high school diploma,high school,63
+064 GED or alternative credential,high school,64
+"065 Some college, but less than 1 year",high school,65
+070 1 year of college,high school,70
+"071 1 or more years of college credit, no degree",high school,71
+080 2 years of college,high school,80
+"081 Associate's degree, type not specified",some college or associate,81
+"082 Associate's degree, occupational program",some college or associate,82
+"083 Associate's degree, academic program",some college or associate,83
+090 3 years of college,high school,90
+100 4 years of college,high school,100
+101 Bachelor's degree,Bachelor's degree,101
+110 5+ years of college,Bachelor's degree,
+111 6 years of college (6+ in 19601970),Bachelor's degree,
+112 7 years of college,Bachelor's degree,
+113 8+ years of college,Bachelor's degree,
+114 Master's degree,Bachelor's degree,
+115 Professional degree beyond a bachelor's degree,Bachelor's degree,
+116 Doctoral degree,Bachelor's degree,
+001 N/A,less than high school,1
+002 No schooling completed,less than high school,2
+000 N/A or no schooling,less than high school,0

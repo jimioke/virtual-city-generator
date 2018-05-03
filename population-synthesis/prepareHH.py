@@ -21,6 +21,7 @@ total_population = folder + 'B01003' + end
 hhsize_vehicles = folder + 'B08201' + end
 hhtypes = folder + 'B09019' + end
 hhincome  = folder + 'S1901_with_ann_transposed.csv'
+labor_edu = folder + 'S2301_with_ann_transposed.csv'
 
 # Sex, age, education, size, vehicles
 outputFolder = 'Processing_data/totals/'
@@ -28,6 +29,7 @@ gender_marg = outputFolder + 'GENDER.csv'
 age_marg = outputFolder + 'AGE.csv'
 edu_marg = outputFolder + 'EDU.dat'
 veh_marg = outputFolder + 'VEHICLES.dat'
+counties = ['24003', '24005', '24013', '24025', '24027', '24035', '24510']
 
 # sex_education = folder + 'ACS_15_5YR_B15002_SEX_BY_EDUCATIONAL.csv'
 # hhtype_size = folder + 'ACS_15_5YR_B11016_HOUSEHOLD TYPE BY HOUSEHOLD SIZE.csv'
@@ -114,26 +116,54 @@ def compute_marginals_using_columns(marginal2dFile, columns):
 
 def income_totals(hhincomeFile=hhincome):
     # step 1 clean
-    counties = ['24003', '24005', '24013', '24025', '24027', '24035', '24510']
-    df = pd.read_csv(hhincomeFile)
-    #
-    df['income_type'] = df.apply(lambda r: r['GEO.id2'][:8], axis=1)
-    df = df[df.income_type == 'HC01_EST']
-    df['hhincome'] = df.apply(lambda r: int(r['GEO.id2'].split('_')[-1][-2:]), axis=1)
-    df = df.replace('(X)', 0)
-    df.index = df.hhincome
-    print(df.columns)
-    df = df[counties]
-    print(df)
-    df.to_csv('Population_data/Baltimore_affs/ACS_15_5YR_S1901_cleaned.csv')
-    # step 2
-    # df = pd.read_csv('Population_data/Baltimore_affs/ACS_16_5YR_S1901_cleaned2.csv')
-    # for c in df.columns:
-    #     df2 = df[c]
-    #     df2 = df2.rename('N')
-    #     df2.to_csv('Processing_data/totals/' + c + '_hhincome.dat', index_label='hhincome', sep=' ',  header=True)
+    # df = pd.read_csv(hhincomeFile)
+    # #
+    # df['income_type'] = df.apply(lambda r: r['GEO.id2'][:8], axis=1)
+    # df = df[df.income_type == 'HC01_EST']
+    # df['hhincome'] = df.apply(lambda r: int(r['GEO.id2'].split('_')[-1][-2:]), axis=1)
+    # df = df.replace('(X)', 0)
+    # df.index = df.hhincome
+    # print(df.columns)
+    # df = df[counties]
+    # print(df)
+    # df.to_csv('Population_data/Baltimore_affs/ACS_15_5YR_S1901_cleaned.csv')
+    # step 2 scale and integerize in excel.
+    df = pd.read_csv(folder + 'S1901_cleaned_int.csv')
+    for c in df.columns:
+        df2 = df[c]
+        df2 = df2.rename('N')
+        df2.to_csv('Processing_data/totals/' + c + '_hhincome.dat', index_label='hhincome', sep=' ',  header=True)
 
-income_totals()
+# income_totals()
+# def employment_totals():
+    # step 1 clean
+    # counties = ['24003', '24005', '24013', '24025', '24027', '24035', '24510']
+    # df = pd.read_csv(hhincomeFile)
+    # #
+    # df['income_type'] = df.apply(lambda r: r['GEO.id2'][:8], axis=1)
+    # df = df[df.income_type == 'HC01_EST']
+    # df['hhincome'] = df.apply(lambda r: int(r['GEO.id2'].split('_')[-1][-2:]), axis=1)
+    # df = df.replace('(X)', 0)
+    # df.index = df.hhincome
+    # print(df.columns)
+    # df = df[counties]
+    # print(df)
+    # df.to_csv('Population_data/Baltimore_affs/ACS_15_5YR_S1901_cleaned.csv')
+    # step 2 scale and integerize in excel.
+
+def school_totals():
+    labor_edu = folder + 'S2301_with_ann_transposed.csv'
+    df = pd.read_csv(labor_edu)
+    df['type'] = df.apply(lambda r: r['GEO.id2'][:8], axis=1)
+    df = df[df['type'] == 'HC03_EST']
+    df['work_edu'] = df.apply(lambda r: int(r['GEO.id2'].split('_')[-1][-2:]), axis=1)
+    df.index = df.work_edu
+    df = df[counties + ['Id2']]
+    df.to_csv('Population_data/Baltimore_affs/ACS_15_5YR_S2301_cleaned.csv')
+
+school_totals()
+
+
 
 
 def totals():

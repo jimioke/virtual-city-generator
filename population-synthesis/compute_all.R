@@ -20,8 +20,8 @@ for (county in all_counties){
   fit_problem <- fitting_problem(ref_sample = samples,
                   field_names = special_field_names(groupId = "hhid", individualId = "indid",
                                                     count = "N"),
-                  group_controls = list(age, gender, vehicles),
-                  individual_controls = list(ind))
+                  group_controls = list(hh_income, vehicles),
+                  individual_controls = list(age, gender, work_edu))
 
   result <- ml_fit_ipu(fit_problem)
   outputFile = str_c('multilevel_sample_weights/', county, '_multilevel_weights.csv')
@@ -29,4 +29,3 @@ for (county in all_counties){
   #print(result["weights"])
   write.csv(result["weights"], outputFile, append=False, sep = " ")
 }
-

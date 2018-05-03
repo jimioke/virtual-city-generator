@@ -84,6 +84,43 @@ print(df['EDUC'].unique())  #df['SEX'].map(lambda gender: gender - 1)
 # 10		4 years of college
 # 11		5+ years of college
 
+################## people per household #####################
+df_samples['EDUC'] = df['EDUC']
+df_samples['employment'] = df['EMPSTAT']
+
+def edu_employment(edu, employment, age):
+    if age < 25 or age > 64:
+        return 1
+    if employment == 1:
+        return 2
+    if edu < 6 :
+        return 3
+    elif edu < 
+
+
+df_samples['edu_employment'] = df.apply(lambda row: edu_employment(row.EDUC, row.employment, row.age), axis=1)
+print(df['EDUC'].unique())  #df['SEX'].map(lambda gender: gender - 1)
+# 00		N/A or no schooling
+# 01		Nursery school to grade 4
+# 02		Grade 5, 6, 7, or 8
+# 03		Grade 9
+# 04		Grade 10
+# 05		Grade 11
+# 06		Grade 12
+# 07		1 year of college
+# 08		2 years of college
+# 09		3 years of college
+# 10		4 years of college
+# 11		5+ years of college
+
+# 1	Not working class (age <25, >64)
+# 2	Unemployed (25-64)
+# 3	Employed, Less than high school gradtuate
+# 4	Employed, High school graduate
+# 5	Employed , Some college or associate degree
+# 6	Employed , Bachelor’s degree
+
+
 ################## household_id ##########################
 df_samples['hhid'] = df['YEAR']*10**10 + df['DATANUM']*10*8 + df['SERIAL']
 

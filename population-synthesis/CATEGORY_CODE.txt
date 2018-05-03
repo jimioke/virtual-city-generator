@@ -85,3 +85,18 @@ employment (Individual's employment state)
 1		Employed
 2		Unemployed
 3		Not in labor force
+
+
+EDUCD
+999: 'Missing',
+010:
+011:
+012
+
+6,
+10,
+1,
+0,
+2,
+7,
+8, 11,  4,  5,  3 
