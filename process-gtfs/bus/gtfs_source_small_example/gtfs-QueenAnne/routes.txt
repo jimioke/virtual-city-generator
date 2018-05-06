@@ -1,0 +1,4 @@
+route_id,route_short_name,route_long_name,route_desc,route_url,route_color,route_text_color,route_type
+1,Route 1,Kent Island & Grasonville to Easton,,,991B1E,FFFFFF,3
+2,Route 2,Centreville to Stevensville,,,991B1E,FFFFFF,3
+3,Route 3,Centreville to Annapolis,,,991B1E,FFFFFF,3

@@ -1,0 +1,26 @@
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,stop_url,location_type,parent_station,stop_timezone,wheelchair_boarding
+22,,Stevensville Park & Ride,,38.97736,-76.321187,,0,,,1
+9,,Kent Towne Dollar Tree (Chester),,38.974355,-76.279146,,0,,,1
+13,,Grasonville Senior Center,,38.958456,-76.201786,,0,,,1
+4,,Chesapeake College,,38.95233,-76.082532,,0,,,1
+7,,Country School Easton,,38.776714,-76.061654,,0,,,1
+3,,Auto Zone Easton,,38.772889,-76.062062,,0,,,1
+20,,Saints Peter & Paul Elementary School,,38.769089,-76.061562,,0,,,1
+24,,Walmart Easton,,38.772868,-76.055024,,0,,,1
+17,,Kramer Center Centreville,,39.046898,-76.066048,,0,,,1
+25,,ACME Centreville,,39.039689,-76.056321,,0,,,1
+26,,Tilghman Terrace,,39.042,-76.062503,,0,,,1
+1,,ACME Kent Island,now closed; near El Jefe,38.975656,-76.297835,,0,,,1
+18,,Percy Thomas Center,,38.99109,-76.312905,,0,,,1
+23,,Terrapin Grove Apts,,38.991494,-76.313995,,0,,,1
+16,,Kmart Stevensville,,38.97736,-76.317644,,0,,,1
+12,,Food Lion Stevensville,,38.975761,-76.312712,,0,,,1
+11,,Food Lion Centreville,,39.031638,-76.074518,,0,,,1
+19,,Queenstown Premium Outlets,,38.98359,-76.160434,,0,,,1
+10,,Easton Memorial Hospital,,38.768892,-76.076372,,0,,,1
+8,,DaVita Dialysis Idlewild Ave,,38.763999,-76.069551,,0,,,1
+14,,Harbor View Apts,,38.974161,-76.295393,,0,,,1
+5,,Chesterwye Center,,38.95472,-76.190213,,0,,,1
+6,,Church Circle Annapolis,,38.978518,-76.492215,,0,,,1
+21,,Sajak Pavilion Annapolis,,38.989747,-76.536557,,0,,,1
+2,,Annapolis Mall (JCP Entrance),,38.988275,-76.543942,,0,,,1
