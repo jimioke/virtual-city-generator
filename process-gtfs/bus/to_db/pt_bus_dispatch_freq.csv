@@ -1,0 +1,4 @@
+frequency_id,line_id,start_time,end_time,headway_sec
+0,BL_1_1,09:42:00,11:13:00,300
+2,BL_2_1,07:35:00,07:46:00,300
+1,BL_3_1,10:02:00,10:18:00,300
