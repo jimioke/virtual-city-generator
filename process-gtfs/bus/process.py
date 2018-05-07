@@ -13,16 +13,15 @@ LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 
 # PREPARE SIMMOBILITY
-# simFolder = 'Auto_sprawl_drive_main/simmobility/'
-# gtfsFolder = 'clean-gtfs/Merged/' # 'clean-gtfs/Merged/'
-# processFolder = 'process_big/'
-# processFolder = 'process_big/'
-# oldprocessFolder= 'processing_old/SharedBigger/'
+simFolder = 'Auto_sprawl_drive_main/simmobility/'
+gtfsFolder = 'clean-gtfs/MergedBus/'
+processFolder = 'process_big/'
+
 
 # Small example
-simFolder = 'Baltimore_small/simmobility/'
-gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
-processFolder = 'process_small_example/'
+# simFolder = 'Baltimore_small/simmobility/'
+# gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
+# processFolder = 'process_small_example/'
 
 
 # Step 1: Convert segments into graph with end vertices.
@@ -180,22 +179,22 @@ def segmentizeTrips():
 
 
 # Step 1: Convert segments into graph with end vertices.
-# getSegment()
+getSegment()
 # # Step 2: Find segments which are in buffered bus routes.
-# findCandidateSegments()
+findCandidateSegments()
 # # Step 3: Find a start point for each segment.
-# getSegment_startEndPoint()
+getSegment_startEndPoint()
 # # Step 4: Find the nearest segment end for each bus stop. (QGIS NNjoin tool)
 #     # input files: busStops and segmentStartPoint (prefex S)
 #     # output: stop_to_segmentEnd
 #     # all in processFolder.
 # # Step 5: Find a representive segment start for each stop.
-stop_to_Segment()
+# stop_to_Segment()
 # Step 6: Find a unique trips which we will construct.
-mainUniqueBusRoutes()
+# mainUniqueBusRoutes()
 # Step 7: Find connected subsequent bus stops
-getConnectedConsequentStops()
+# getConnectedConsequentStops()
 # Step 8: Construct connected trips
-processConnectedStops()
+# processConnectedStops()
 # Step 9: Express trips in segments as SimMobility requires.
-segmentizeTrips()
+# segmentizeTrips()

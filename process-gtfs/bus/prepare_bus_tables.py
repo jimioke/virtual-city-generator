@@ -12,20 +12,20 @@ LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 
 # PREPARE SIMMOBILITY
-simFolder = 'Auto_sprawl_drive_main/simmobility/'
-gtfsFolder = 'clean-gtfs/Merged/' # 'clean-gtfs/Merged/'
-processFolder = 'process_big/'
-sharedFolder = 'process_big/'
-oldSharedFolder= 'processing_old/SharedBigger/'
+# simFolder = 'Auto_sprawl_drive_main/simmobility/'
+# gtfsFolder = 'clean-gtfs/Merged/' # 'clean-gtfs/Merged/'
+# processFolder = 'process_big/'
+# processFolder = 'process_big/'
+# oldprocessFolder= 'processing_old/SharedBigger/'
 
 # Small example
-# simFolder = 'Baltimore_small_pathset/simmobility/'
-# gtfsFolder = 'clean-gtfs/small-test/' # 'clean-gtfs/Merged/'
-# processFolder = 'processing/small-test/'
-# sharedFolder = 'processing/Shared/'
+simFolder = 'Baltimore_small/simmobility/'
+gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
+processFolder = 'process_small_example/'
 
-databaseFolder = 'to_db_pruned_bus_tables/'
+databaseFolder = 'to_db/'
 
+# SimMobility table headers
 bus_stops_cols = ['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']
 pt_bus_stops_cols = ['route_id', 'stop_code', 'sequence_no']
 pt_bus_routes_cols = ['route_id', 'sequence_no', 'section_id']
@@ -45,8 +45,9 @@ def getSubtripMetrics():
     # print("paths ----------------")
     print(connectedTrips.len_stops.sum())
     # print(connectedTrips.len_path_in_seg.value_counts())
-# getSubtripMetrics()
 
+
+# Prune out bus stop sequences so that bus 
 def pruneShortTrips(connectedTrips=None):
     connectedTrips = pd.read_pickle(sharedFolder + 'subtrips_wSegments.pkl')
     connectedTrips['len_stops'] = connectedTrips.apply(lambda row: len(row.stops), axis=1)
@@ -325,7 +326,7 @@ def prepareFrequencyTables(headway=300):
 
 # pruneShortTrips()
 
-# createBusRouteTables()
-# complete_bus_stops()
-# preparePreFreqTable()
+createBusRouteTables()
+complete_bus_stops()
+preparePreFreqTable()
 prepareFrequencyTables()
