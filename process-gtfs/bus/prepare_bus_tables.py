@@ -31,20 +31,6 @@ frequence_cols = ['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_
 journey_cols = ['service_id', 'trip_id', 'stop_id', 'stop_sequence', 'arrival_time', 'departure_time', 'dwelling_time']
 
 
-def getSubtripMetrics():
-    connectedTrips = pd.read_pickle(processFolder + 'subtrips_wSegments.pkl')
-    connectedTrips['len_stops'] = connectedTrips.apply(lambda row: len(row.stops), axis=1)
-    connectedTrips['len_uniq_stops'] = connectedTrips.apply(lambda row: len(set(row.stops)), axis=1)
-    print('Number of the same segment consequent stops')
-    print(len(connectedTrips[connectedTrips.len_stops != connectedTrips.len_uniq_stops]))
-    connectedTrips['len_path_in_seg'] = connectedTrips.apply(lambda row: len(row.path_segments), axis=1)
-    print("stops ---------------")
-    print(connectedTrips.len_stops.value_counts())
-    # print("paths ----------------")
-    print(connectedTrips.len_stops.sum())
-    # print(connectedTrips.len_path_in_seg.value_counts())
-
-
 # Prune out bus stop sequences so that bus
 def pruneShortTrips(connectedTrips=None):
     connectedTrips = pd.read_pickle(processFolder + 'subtrips_wSegments.pkl')
@@ -100,6 +86,15 @@ def createBusRouteTables():
     bus_stops_df.to_csv(databaseFolder + 'pre_bus_stops.csv', index=False)
     connectedTrips.to_pickle(processFolder + 'unique_subtrips_wSegments.pkl')
 
+
+def getRouteSegment():
+    pt_bus_routes = pd.read_csv(databaseFolder + 'pt_bus_routes.csv')
+    segments = gpd.read_file(processFolder + 'candidateShapeSegments/candidateShapeSegments.shp')
+    print(segments.columns)
+    pt_bus_routes = pt_bus_routes.merge(segments, left_on='section_id', right_on='id')
+    route_segments = gpd.GeoDataFrame(pt_bus_routes, crs=BALTIMORE_CRS, geometry=pt_bus_routes['geometry'])
+    route_segments.to_file(processFolder + 'routeSegmentGeo')
+# getRouteSegment()
 
 def get_stops_xy():
     busStopGeo = gpd.read_file(processFolder + 'BusStops/BusStops.shp')
@@ -320,7 +315,7 @@ def prepareFrequencyTables(headway=300):
 
 
 # pruneShortTrips()
-createBusRouteTables()
-complete_bus_stops()
-preparePreFreqTable()
-prepareFrequencyTables()
+# createBusRouteTables()
+# complete_bus_stops()
+# preparePreFreqTable()
+# prepareFrequencyTables()
