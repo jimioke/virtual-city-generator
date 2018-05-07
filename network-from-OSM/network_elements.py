@@ -1,5 +1,7 @@
+from shapely.geometry import Point, LineString
+
 class Node:
-    def __init__(self,id,type,tLightId,x,y,z=0):
+    def __init__(self,id,type,tLightId,x,y,z=0, osmid=-1):
         self.id = id
         self.type = type
         self.trafficLightId = tLightId
@@ -7,15 +9,24 @@ class Node:
         self.y = y
         self.z = z
         self.tag = None
+        self.osmid = osmid
 
     def render(self):
-        aList = [self.id,self.x,self.y,self.z,self.trafficLightId,self.tag,self.type]
+        aList = [self.id,self.x,self.y,self.z,self.trafficLightId,self.tag,self.type,self.osmid]
         return aList
+
+    def render2(self):
+        aList = [self.id, self.type, self.trafficLightId, self.z, self.tag]
+        return aList
+
+    def geo_render(self):
+        geo = Point(self.x, self.y)
+        return [geo] + self.render2()
 
 
 class Link:
 
-    def __init__(self,id,roadtype,category,upnode,dnnode,name,numlanes,speedlimit,segments = None):
+    def __init__(self,id,roadtype,category,upnode,dnnode,name,numlanes,speedlimit,osm_tag='',oneway='',osmid=-1, segments = None):
         self.id = id
         self.type = roadtype
         self.category = category
@@ -27,10 +38,13 @@ class Link:
         self.segments = segments
         self.numlanes = numlanes
         self.speedlimit = speedlimit
+        self.osm_tag = osm_tag
+        self.oneway = oneway
+        self.osmid = osmid
         self.tags = None
 
     def render(self):
-        aList = [self.id,self.type,self.category,self.upnode,self.dnnode,self.name,self.tags]
+        aList = [self.id,self.type,self.category,self.upnode,self.dnnode,self.name,self.tags,self.osmid]
         return aList
 
 class LinkTT:
@@ -75,6 +89,10 @@ class Segment:
         #aList = ",".join(aList)
         return aList
 
+    def geo_render(self):
+        geo = LineString([(point['x'], point['y']) for point in self.position])
+        return [geo] + self.render2()
+
 
 class Lane:
 
@@ -95,6 +113,15 @@ class Lane:
     def render(self):
         aList = [self.id,self.width,self.vehiclemode,self.buslane,self.canstop,self.canpark,self.hov,self.hasshoulder,self.segid,self.tags]
         return aList
+
+    def render2(self):
+        aList = [self.id, self.segid]
+        # self.width,self.vehiclemode,self.buslane,self.canstop,self.canpark,self.hov,self.hasshoulder,self.segid,self.tags]
+        return aList
+
+    def geo_render(self):
+        geo = LineString([(point[0], point[1]) for point in self.position])
+        return [geo] + self.render2()
 
 class Connector: # Connection between two segments.
     def __init__(self,id,fromlane,tolane,fromsegment,tosegment,istrueconn=None, tags=None):

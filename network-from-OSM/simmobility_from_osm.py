@@ -1,90 +1,90 @@
+################################################################################
+# Module: simplify.py
+# Description: Query OpenStreetMap and prepare SimMobility road network files.
+# Written by: Iveel Tsogsuren, Arun Akkinepally
+################################################################################
 from collections import OrderedDict
 import process_osm as posm
+import osmnx as ox
 import query_osm as qr
 import networkx as nx
 import os
 from network import*
 # from processing import*
 
+LAT_LONG_CRS = {'init': 'epsg:4326'}
+TEL_AVIV_CRS = {'init': 'epsg:2039'}
+
+# Get default SimMobility attribute values
 inputFolder = "metadata/"
-# outputFolder = "/Outputs/Philadelphia_sumo"
-
-# Ten prototype cities
-# outputFolder = "/Outputs/Charlotte_default_turning_paths"
-# outputFolder = "/Outputs/Madrid_default_turning_paths"
-# outputFolder = "/Outputs/Vancouver_default_turning_paths"
-# outputFolder = "/Outputs/Bandung_default_turning_paths"
-# outputFolder = "/Outputs/Lagos_default_turning_paths"
-# outputFolder = "/Outputs/Hiroshima_default_turning_paths"
-# outputFolder = "/Outputs/Isfahan_default_turning_paths"
-# outputFolder = "/Outputs/Mashhad_default_turning_paths"
-# outputFolder = "/Outputs/Tehran_default_turning_paths"
-# outputFolder = "/Outputs/Dalian_default_turning_paths"
-# outputFolder = "/Outputs/smallBoston"
-# outputFolder = "/Outputs/test"
-# outputFolder = "/Outputs/test_clean"
-# outputFolder = "/Outputs/Baltimore_NOT_clean"
-outputFolder = "/Outputs/Baltimore_pruned"
-
-
-# Output and temp dir
-outDir = os.getcwd() + outputFolder
-simmobility_dir = outDir + "/simmobility"
-shapefile_dir = outDir + "/shapefiles"
-sumo_dir = outDir + "/sumo"
-# outputFolder = "/Outputs/Singapore/"
 typeToWidthFname = os.path.join(inputFolder,"LinkCat_Roadtype_LaneWidth.csv")
 ffsFname = os.path.join(inputFolder,"HCM2000.csv")
 
-
-def main():
-    print "------------------ Query osm data to ouptutfolder: {}------------------".format(outputFolder)
-    # mainG = qr.graph_from_bbox(40.1035,39.9009,-74.9870,-75.2503) # Philadelphia
-    # mainG = qr.graph_from_bbox(40.0318,39.9387,-75.1231,-75.1966) # Philadelphia smaller
-    # mainG = qr.graph_from_bbox(31.2086,30.3237,104.6074,103.3088) # Chendu, China
-    # mainG = qr.graph_from_bbox(38.8370, 38.4692, -90.0247, -90.4635) # St. Louis
-    # mainG = qr.graph_from_bbox(1.4459, 1.2633, 104.0309, 103.6409) # Singapore
-    # G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
-    # nx.write_gpickle(G, 'Outputs/Philadelphia/Philadelphia_graph.gpickle')
-
-    # Ten prototype cities
-    # mainG = qr.graph_from_bbox(35.3779, 35.0514, -80.6039, -81.0022) # Charlotte
-    # mainG = qr.graph_from_bbox(40.5357, 40.3068, -3.5403, -3.8974) # Madrid
-    # mainG = qr.graph_from_bbox(49.3009, 49.2032, -123.0180, -123.2666) # Vancouver
-    # mainG = qr.graph_from_bbox(-6.8274, -7.0417, 107.7683, 107.4408) # Bandung
-    # mainG = qr.graph_from_bbox(6.5296, 6.3801, 3.4923, 3.2389) # lagos
-    # mainG = qr.graph_from_bbox(34.6274, 34.2731, 132.7354, 132.1092) # Hiroshima
-    # mainG = qr.graph_from_bbox(32.7988, 32.4959, 51.9283, 51.3824) # Isfahan
-    # mainG = qr.graph_from_bbox(36.5869, 36.0069, 60.1515, 59.0598) # Mashhad
-    # mainG = qr.graph_from_bbox(35.8445, 35.5523, 51.6206, 51.0748) # Tehran
-    # mainG = qr.graph_from_bbox(39.2003, 38.6405, 122.1844, 121.0927) # Dalian
-    # mainG = qr.graph_from_bbox(-71.090201,42.358556,-71.077083,42.366463) # Boston small
-    # mainG = qr.graph_from_bbox(42.3729, 42.3579, -71.0750, -71.1052)
-    mainG = qr.graph_from_bbox(39.4486, 39.1329, -76.2737, -76.9485) # Baltimore
+# Set this directory where you optionally pass boundary.shp file and get all outputs.
+directory = '/Outputs/Tel_Aviv'
+directory = '/Outputs/Tel_Aviv_drive_all'
+directory = '/Outputs/Tel_Aviv_drive_main'
+# boundary = os.getcwd() + '/Outputs/Tel_Aviv/Tel_Aviv_Metro_Area/buffer_wgs84.shp' # Can be either bounding box coordinates or
+directory = '/Outputs/Test'
+boundary = [42.3645,42.3635,-71.1046,-71.108]
 
 
+# Prepare subfolders for outputs
+outDir = os.getcwd() + directory
+simmobility_crs_projected = outDir + "/simmobility_crs_projected"  # For later use.
+simmobility_dir = outDir + "/simmobility_wgs84"
+shapefile_dir = outDir + "/shapefiles"
+sumo_dir = outDir + "/sumo"
+graph_pickle_file = outDir + '/osm_graph.pkl'
+for d in [outDir, simmobility_dir, simmobility_crs_projected, shapefile_dir, sumo_dir]:
+    if not os.path.exists(d):
+        print(d)
+        os.makedirs(d)
 
-    # mainG = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978) #380 nodes and 562 edges
-    # mainG = qr.graph_from_bbox(42.3645,42.3635,-71.1046,-71.1028) #44 nodes and 43 edges
-    # mainG = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
+def query_OSM(directory, boundary, graph_pickle_file, query='drive_main'):
+    """
+    Query OpenStreetMap and save it as a pickle file.
 
-    # mainG = qr.graph_from_place('Los Altos, CA, USA')
+    Parameters
+    ----------
+    directory : directory path where inputs and outputs should be
+    boundary : Boundary for road network which can be either polygon boundary file
+               or bounding box coordinates [north, south, west, east]
+    network_type : string
+        {'walk', 'bike', 'drive_all', 'drive_main', 'drive_main_links_included', 'drive_service', 'all', 'all_private', 'none'}
+        what type of street or other network to get
+    """
+    if type(boundary) == str: # boundary .shp file path
+        polygon = gpd.read_file(boundary)
+        polygon = polygon.get_value(0, 'geometry')
+        mainG = ox.graph_from_polygon(polygon, network_type=query,  simplify=False, retain_all=True, truncate_by_edge=False)
+    else: # bounding box []
+        mainG = qr.graph_from_bbox(*boundary)
+    nx.write_gpickle(mainG, graph_pickle_file)
+
+def main(graph_pickle_file=graph_pickle_file, simmobility_dir=simmobility_dir):
+    """
+    Create all SimMobility road network tables and their shapes given a OSM graph file.
+
+    Parameters
+    ----------
+    graph_pickle_file : file path of OSM graph in pickle format.
+    simmobility_dir : output directory
+    """
+    query_OSM(directory, boundary, graph_pickle_file)
+    # all SimMobility road network module files.
+    mainG = nx.read_gpickle(graph_pickle_file)
     roadnetwork = Network(mainG)
     roadnetwork.process_segments_links_nodes(clean_intersections=False)
     roadnetwork.lanes = posm.constructLanes(roadnetwork.segments, typeToWidthFname)
-
     roadnetwork.constructSegmentConnections()
     roadnetwork.construct_default_turning_path()
 
+    # Files for creating smart turnning path connections using SUMO. TODO: use SUMO.
     # roadnetwork.writeSumoShapefile(sumo_dir)
     # roadnetwork.construct_turning_paths_from_SUMO(sumo_dir)
 
-    roadnetwork.write(foldername=simmobility_dir+inputFolder.split('/')[1])
+    roadnetwork.write_wgs84(foldername=simmobility_dir+inputFolder.split('/')[1])
     roadnetwork.writeShapeFiles(foldername=shapefile_dir+inputFolder.split('/')[1])
 
-#---Making required directories
-# directory of script
-for d in [outDir, simmobility_dir,shapefile_dir, sumo_dir]:
-    if not os.path.exists(d):
-        os.makedirs(d)
 main()

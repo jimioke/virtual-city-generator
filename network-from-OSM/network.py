@@ -4,6 +4,7 @@ import math
 import geopandas as gpd
 import pandas as pd
 import numpy as np
+import networkx as nx
 from shapely.geometry import Point, LineString
 from collections import OrderedDict
 import process_osm as posm
@@ -31,13 +32,19 @@ class Network:
         self.numLinks = None
         self.numSegs = None
 
-    def process_segments_links_nodes(self, clean_intersections=True):
+    def process_segments_links_nodes(self, clean_intersections=False):
+        # Rename node IDs because OSM node IDs are too big numbers.
+        self.osm_graph = nx.convert_node_labels_to_integers(self.osm_graph,first_label=1)
+        # self.osm_graph = posm.add_edges_for_dead_ends(self.osm_graph)
+        # self.osm_graph = posm.add_edges_for_dead_ends(self.osm_graph)
         self.node_types = posm.getNodeTypes(self.osm_graph)
         self.link_graph = posm.build_linkGraph(self.osm_graph, self.node_types['uniNodes'])
+        self.link_graph = posm.fix_short_links(self.link_graph)
         if clean_intersections:
+            print("clean_intersections")
             self.link_graph = posm.clean_intersections(self.link_graph, tolerance=15, dead_ends=False)
         self.nodes, self.links = posm.constructNodesLinks(self.link_graph, self.osm_graph, self.node_types)
-        self.segments, segToLink, linkToSeg = posm.constructSegments(self.link_graph, self.osm_graph, SEGMENT_LOWER_BOUND=20)
+        self.segments, segToLink, linkToSeg = posm.constructSegments(self.link_graph, self.links, self.osm_graph, SEGMENT_LOWER_BOUND=20)
         self.linktts = posm.setLinkSegmentAttr(self.segments, self.links, linkToSeg)
 
         for seg, link in segToLink.iteritems():
@@ -184,12 +191,12 @@ class Network:
 
         print("------------------ {} lane connectors between segments ----------------- ".format(self.num_connections - num_connections_before))
 
-    def write(self,foldername):
+    def write_wgs84(self,foldername):
         #---Writing nodes
-        nodeFname = os.path.join(foldername,'node-nodes.csv')
+        nodeFname = os.path.join(foldername,'node.csv')
         with open(nodeFname,'wb') as ofile:
             writer = csv.writer(ofile)
-            writer.writerow(['id','x','y','z','traffic_light_id','tags','node_type'])
+            writer.writerow(['id','x','y','z','traffic_light_id','tags','node_type', 'osmid'])
             nodeList = self.nodes.keys()
             nodeList = sorted([int(item) for item in nodeList])
             for id in nodeList:
@@ -197,8 +204,8 @@ class Network:
                 writer.writerow(node.render())
 
         #---Writing segments
-        segFname1 = os.path.join(foldername,'segment-attributes.csv')
-        segFname2 = os.path.join(foldername,'segment-nodes.csv')
+        segFname1 = os.path.join(foldername,'segment.csv')
+        segFname2 = os.path.join(foldername,'segment_polyline.csv')
         with open(segFname1,'wb') as ofile1:
             with open(segFname2,'wb') as ofile2:
                 writer1 = csv.writer(ofile1)
@@ -215,7 +222,7 @@ class Network:
                         writer2.writerow(aList)
 
         #---Writing segments
-        segFname1 = os.path.join(foldername,'segment-attributes_more.csv')
+        segFname1 = os.path.join(foldername,'segment-attributes-more.csv')
         with open(segFname1,'wb') as ofile1:
             writer1 = csv.writer(ofile1)
             writer1.writerow(['id','link_id','sequence','num_lanes','capacity','max_speed','tags','link_category','length'])
@@ -226,12 +233,12 @@ class Network:
                 writer1.writerow(segment.render2())
 
         #---Writing links
-        linkFname1 = os.path.join(foldername,'link-attributes.csv')
-        linkFname2 = os.path.join(foldername,'link-nodes.csv')
+        linkFname1 = os.path.join(foldername,'link.csv')
+        linkFname2 = os.path.join(foldername,'link_polyline.csv')
         with open(linkFname1,'wb') as ofile1:
             with open(linkFname2,'wb') as ofile2:
                 writer1 = csv.writer(ofile1)
-                writer1.writerow(['id','road_type','category','from_node','to_node','road_name','tags'])
+                writer1.writerow(['id','road_type','category','from_node','to_node','road_name', 'tags', 'osmid'])
                 writer2 = csv.writer(ofile2)
                 writer2.writerow(['id','x','y','z','seq_id'])
                 linkList = self.links.keys()
@@ -250,8 +257,8 @@ class Network:
                             count += 1
 
         #---Writing lanes
-        laneFname1 = os.path.join(foldername,'lane-attributes.csv')
-        laneFname2 = os.path.join(foldername,'lane-nodes.csv')
+        laneFname1 = os.path.join(foldername,'lane.csv')
+        laneFname2 = os.path.join(foldername,'lane_polyline.csv')
         with open(laneFname1,'wb') as ofile1:
             with open(laneFname2,'wb') as ofile2:
                 writer1 = csv.writer(ofile1)
@@ -282,8 +289,8 @@ class Network:
                 writer.writerow(conn.render())
 
         #---Writing turning connections
-        turnFname1 = os.path.join(foldername,'turning-attributes.csv')
-        turnFname2 = os.path.join(foldername,'turning-nodes.csv')
+        turnFname1 = os.path.join(foldername,'turning_path.csv')
+        turnFname2 = os.path.join(foldername,'turning_path_polyline.csv')
         with open(turnFname1,'wb') as ofile1:
             with open(turnFname2,'wb') as ofile2:
                 writer1 = csv.writer(ofile1)
@@ -302,7 +309,7 @@ class Network:
                         count += 1
 
         #---Writing turninggroups
-        tgFname = os.path.join(foldername,'turninggroups.csv')
+        tgFname = os.path.join(foldername,'turning_group.csv')
         with open(tgFname,'wb') as ofile:
             writer = csv.writer(ofile)
             writer.writerow(["id","nodeid","from_link","to_link","phases","rules","visibility","tags"])
@@ -313,7 +320,7 @@ class Network:
                 writer.writerow(tg.render())
 
         #---Writing default link TTs
-        ttFname = os.path.join(foldername,'linkttsdefault.csv')
+        ttFname = os.path.join(foldername,'link_default_travel_time.csv')
         with open(ttFname,'wb') as ofile:
             writer = csv.writer(ofile)
             writer.writerow(["id","mode","starttime","endtime","traveltime"])
@@ -341,11 +348,13 @@ class Network:
         if write_nodes:
             nodeFname = os.path.join(foldername,'nodes.shp')
             node_data = OrderedDict()
+            # print('for shapefile===============', self.nodes)
             for id, node in self.nodes.iteritems():
-                node_data[id]=[node.x, node.y, node.type]
+                node_data[id] = node.geo_render()
+                # print(id, node_data[id])
             df = pd.DataFrame.from_dict(node_data, orient='index')
-            df.columns = ['x', 'y', 'type']
-            df['geometry'] = df.apply(lambda row: Point(row.x,row.y),axis=1)
+            # df.columns = ['geometry', 'id','link_id','sequence','num_lanes','capacity','max_speed','tags','link_category']
+            df.columns = ['geometry', 'nodeID', 'node_type', 'traffic_light_id','z', 'tags']
             gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
             gdf.to_file(driver = 'ESRI Shapefile', filename= nodeFname)
 
@@ -353,10 +362,10 @@ class Network:
         if write_segments:
             segmentFname = os.path.join(foldername,'segments.shp')
             segment_data = OrderedDict()
-            for id, segment in self.segments.iteritems():
-                segment_data[id] = LineString([(point['x'], point['y']) for point in segment.position])
+            for id, seg in self.segments.iteritems():
+                segment_data[id] = seg.geo_render()
             df = pd.DataFrame.from_dict(segment_data, orient='index')
-            df.columns = ['geometry'] #['id','link_id','sequence','num_lanes','capacity','max_speed','tags','link_category']
+            df.columns = ['geometry', 'segID','link_id','sequence','num_lanes','capacity','max_speed','tags','link_category','length']
             gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
             gdf.to_file(driver = 'ESRI Shapefile', filename= segmentFname)
 
@@ -391,9 +400,9 @@ class Network:
                 for seg_id in link.segments:
                     points += [(point['x'], point['y']) for point in self.segments[seg_id].position]
                 points.append((self.nodes[link.tonode].x, self.nodes[link.tonode].y))
-                link_data[id] = LineString(points)
+                link_data[id] = [LineString(points), link.id, link.type, link.category, link.fromnode, link.tonode, link.name, link.tags, link.osm_tag, link.oneway]
             df = pd.DataFrame.from_dict(link_data, orient='index')
-            df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
+            df.columns = ['geometry', 'linkID','road_type','category','from_node','to_node','road_name','tags', 'osm_tag', 'oneway']
             gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
             gdf.to_file(driver = 'ESRI Shapefile', filename= linkFname)
 
@@ -413,9 +422,9 @@ class Network:
             laneFname = os.path.join(foldername,'lanes.shp')
             lane_ends = OrderedDict()
             for id, lane in self.lanes.iteritems():
-                lane_ends[id] = LineString([(point[0], point[1]) for point in lane.position])
+                lane_ends[id] = lane.geo_render()
             df = pd.DataFrame.from_dict(lane_ends, orient='index')
-            df.columns = ['geometry'] #['id','road_type','category','from_node','to_node','road_name','tags']
+            df.columns = ['geometry', 'id', 'segid'] #['id','road_type','category','from_node','to_node','road_name','tags']
             gdf = gpd.GeoDataFrame(df, geometry = df.geometry)
             gdf.to_file(driver = 'ESRI Shapefile', filename= laneFname)
 

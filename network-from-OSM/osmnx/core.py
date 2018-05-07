@@ -285,7 +285,9 @@ def overpass_request(data, pause_duration=None, timeout=180, error_pause_duratio
     -------
     dict
     """
-    print("-------------------query from overpass-api ", data)
+    # print("-------------------query from overpass-api ", data)
+    print("-------------------query from overpass-api ")
+
 
     # define the Overpass API URL, then construct a GET-style URL as a string to
     # hash to look up/save to cache
@@ -497,7 +499,7 @@ def get_osm_filter(network_type):
     Parameters
     ----------
     network_type : string
-        {'walk', 'bike', 'drive', 'drive_service', 'all', 'all_private', 'none'}
+        {'walk', 'bike', 'drive_all', 'drive_main', 'drive_main_links_included', 'drive_service', 'all', 'all_private', 'none'}
         what type of street or other network to get
 
     Returns
@@ -510,12 +512,18 @@ def get_osm_filter(network_type):
     # anything specifying motor=no. also filter out any non-service roads that
     # are tagged as providing parking, driveway, private, or emergency-access
     # services
-    # filters['drive'] = ('["area"!~"yes"]["highway"!~"cycleway|footway|path|pedestrian|steps|track|'
-    #                     'proposed|construction|bridleway|abandoned|platform|raceway|service"]'
-    #                     '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
-    #                     '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
+    filters['drive_all'] = ('["area"!~"yes"]["highway"!~"cycleway|footway|path|pedestrian|steps|track|'
+                        'proposed|construction|bridleway|abandoned|platform|raceway|service"]'
+                        '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
+                        '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
 
-    filters['drive'] = ('["area"!~"yes"]["highway"~"motorway|trunk|primary|secondary|tertiary"]'
+    filters['drive_main'] = ('["area"!~"yes"]["highway"~"motorway|trunk|primary|secondary|tertiary"]'
+                        '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
+                        '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
+
+    # links are included
+    filters['drive_main_links_included'] = ('["area"!~"yes"]["highway"~"motorway|trunk|primary|secondary|tertiary|'
+                        'motorway_link|trunk_link|primary_link|secondary_link|tertiary_link"]'
                         '["motor_vehicle"!~"no"]["motorcar"!~"no"]["access"!~"private"]'
                         '["service"!~"parking|parking_aisle|driveway|private|emergency_access"]')
 

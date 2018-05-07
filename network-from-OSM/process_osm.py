@@ -2,6 +2,7 @@ import networkx as nx
 import osmnx as ox
 import time
 import numpy as np
+from itertools import chain
 from numpy.linalg import norm
 from network_elements import*
 from collections import defaultdict
@@ -11,27 +12,40 @@ from shapely.geometry import Polygon
 from shapely.geometry import MultiPolygon
 from shapely.ops import unary_union
 from geopy.distance import great_circle
+import csv,pdb,os,itertools,copy,math
 
 import query_osm as qr
-from file_paths import *
 
 SEGMENT_LOWER_BOUND = 20
 MERGING_DIST_THRESHOLD = 20
 LANE_WIDTH = 3.7 # meters
 
+DEFAULT_LINK_OSM_ATTR = {
+'width': None,
+'lanes': None,
+'name': None,
+'maxspeed': None,
+'highway': None,
+'oneway': None,
+'osmid': None
+}
+
 DEFAULT_LINK_ATTR = {
 'width':6,
 'lanes':1,
-'name':'',
+'name':'noname',
 'road_type':1,
 'category':1,
-'speedlimit': 60,
+'maxspeed': None,
+'highway': None,
+'oneway': None,
+'osmid':None
 }
 
 DEFAULT_SEGMENT_ATTR = {
 'lanes' : 1,
 'capacity' : 1000,
-'speedlimit': 60,
+'maxspeed': 60,
 'category': 2, #linkCat (metadata)--> A,B,C,D,E
 'tag':"",
 }
@@ -39,13 +53,6 @@ DEFAULT_SEGMENT_ATTR = {
 assert DEFAULT_LINK_ATTR['lanes'] == DEFAULT_SEGMENT_ATTR['lanes']
 
 # G = nx.read_gpickle(GRAPH_FILE)
-# G = qr.graph_from_bbox(42.3641,42.3635,-71.1046,-71.1034)
-# G = qr.graph_from_bbox(42.3671,42.3627,-71.1064,-71.0978)
-# G = qr.graph_from_bbox(40.1035,39.9009,-74.9870,-75.2503) # Philadelphia
-# ox.plot_graph(G)
-
-# print(G.edges(data=True)[0:2])
-# print(G.nodes(data=True)[0:2])
 
 def getNodeTypes(G):
     sourceNodes = set()
@@ -90,6 +97,63 @@ def getNodeTypes(G):
             'diverging': divergingNodes,
             'intersection':intersectionNodes,
             'trafficL':trafficLiNodes}
+
+def add_edges_for_dead_ends(G):
+    # TODO:
+    # How should we handle dead nodes and subgraphs that do not any outgoing edges?
+    # Currently we have dead end nodes, and we can solve this by adding outgoing links.
+    # However, there could be small loops which do not have any outgoing edges
+    # to the rest of the network. If we have bigger such sub-graphs, then
+    # it is a serious issue. It means that is is impossible to travel from one part
+    # to another part of the network.
+    pass
+    return G
+
+
+def fix_short_links(linkGraph):
+    print('link ++++++++++++++++++++++')
+    # for nodeId, data in linkGraph.nodes(data=True):
+    #     print(nodeId, data)
+    print("num links ", len(linkGraph.edges()))
+    print("num nodes ", len(linkGraph.nodes))
+    # print("nodes ", linkGraph.nodes)
+    removed_nodes = []
+    left_nodes = []
+
+    too_close_pairs = set()
+    for u,v,key,data in linkGraph.edges(keys=True, data=True):
+        # We cannot remove (contract) nodes in for loop.
+        if data['length'] < 1:
+            if u > v:
+                too_close_pairs.add((u,v))
+            else:
+                too_close_pairs.add((v,u))
+
+    representive  = {}
+    for u,v in too_close_pairs:
+        while u in representive:
+            u = representive[u]
+        while v in representive:
+            v = representive[v]
+        linkGraph = nx.contracted_nodes(linkGraph, u, v, self_loops=False)
+        representive[v] = u # v will be represented by v
+
+    print('after merge ++++++++++++++++++++++')
+    print("num links ", len(linkGraph.edges()))
+    print("removed nodes ", len(removed_nodes))
+    print("num nodes ", len(linkGraph.nodes))
+    try:
+        print("2-3163635428", linkGraph.nodes[3163635428])
+    except:
+        print("2-3163635428 not 2")
+    # for u,v,key,data in linkGraph.edges(keys=True, data=True):
+    # for nodeId, data in linkGraph.nodes(data=True):
+    #     print(nodeId, data)
+    #     print(data['length'])
+    # KeyError: 3163635428
+    # (2, {'osmid': -1, 'contraction': {3163635395: {'y': 39.4941045, 'x': -76.3163574, 'osmid': 3163635395, 'contraction': {3163635428: {'y': 39.4941064, 'x': -76.3163575, 'osmid': 3163635428}}}}})
+
+    return linkGraph
 
 # Modified OSMnx method. We use our node_type function instead of is_endpoint.
 def get_paths_to_simplify(G, uniNodesSet):
@@ -147,6 +211,7 @@ def build_linkGraph(G, uniNodesSet):
 
     # construct a list of all the paths that need to be simplified
     paths = get_paths_to_simplify(G, uniNodesSet)
+    # print('paths', paths)
 
     start_time = time.time()
     for path in paths:
@@ -175,7 +240,7 @@ def build_linkGraph(G, uniNodesSet):
                 try:
                     edge_attributes[key] = edge_attributes[key][0].encode('utf-8')
                 except:
-                    edge_attributes[key] = ""
+                    edge_attributes[key] = "noname"
             # try:
             #     name = data['name'].encode('utf-8')
             # except:
@@ -184,6 +249,10 @@ def build_linkGraph(G, uniNodesSet):
             #     lanes = int(data['lanes'])
             # except:
             #     lanes = DEFAULT_LINK_ATTR['lanes']
+            elif key=='maxspeed':
+                speeds = [int(s) for s in edge_attributes[key][0].split() if s.isdigit()]
+                if len(speeds) > 0:
+                    edge_attributes[key] = int(speeds[0])
             elif not key == 'length':
                 # keep one of each value in this attribute list,
                 # consolidate it to the single value (the zero-th)
@@ -206,9 +275,10 @@ def build_linkGraph(G, uniNodesSet):
     for u,v,key,data in linkGraph.edges(keys=True, data=True):
         if not 'coordinates' in data:
             linkGraph.edges[u,v,key]['coordinates'] = [u,v]
-        for attr in DEFAULT_LINK_ATTR:
+        for attr in DEFAULT_LINK_OSM_ATTR:
             if attr not in data:
                 linkGraph.edges[u,v,key][attr] = DEFAULT_LINK_ATTR[attr]
+        # print('u,v,key,data ', u,v,key, data)
 
     msg = '--------------  Link graph (from {:,} to {:,} nodes and from {:,} to {:,} edges) in {:,.2f} seconds'
     # print(msg.format(len(list(G.nodes())), len(list(linkGraph.nodes())), len(list(G.edges())), len(list(linkGraph.edges())), time.time()-start_time))
@@ -303,33 +373,95 @@ def distanceNodes(node1, node2, G):
 def distance(node1, coord, G):
     return great_circle((G.nodes[node1]['y'], G.nodes[node1]['x']), (coord[0], coord[1])).meters
 
+ROAD_CATEGORY = {
+"motorway":1, #EXPRESSWAY
+"trunk":1, #EXPRESSWAY
+"primary":2, #Urban
+"secondary":3, #Urban
+"tertiary": 4, #Access
+"motorway_link":6,
+"trunk_link": 6, #sliproad
+"primary_link":6,
+"secondary_link":6,
+"tertiary_link":6,
+}
+
+# mph --> km/hr
+# 65 mph is the maximum speed limit that can be established on any
+# highway;
+# 55 mph on highways that are not interstate highways or expressways;
+# 50 mph on undivided highways except as noted below;
+# 35 mph on divided highways in residential districts;
+# 30 mph on highways in business districts or on undivided highways
+# in residential districts;
+# 15 mph in alleys in Baltimore County.
+
+ROAD_CATEGORY_SPEED_LIMIT = {
+"motorway": 100, #EXPRESSWAY
+"trunk": 90, #EXPRESSWAY
+"primary": 80, #Urban
+"secondary": 70, #Urban
+"tertiary": 50, #Access
+"motorway_link": 100,
+"trunk_link": 90, #sliproad
+"primary_link": 80,
+"secondary_link": 70,
+"tertiary_link": 50,
+}
+
+# "highway"]["area"!~"yes"]["highway"~"motorway|trunk|primary|secondary|tertiary|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link"
 def constructNodesLinks(G, originalG, tempnodeDict):
     nodes = {}
     links = {}
     link_id = 1
 
     for fromnode, tonode, key, data in G.edges(keys=True,data=True):
-        # TODO: road_type, category?
-        try:
-            name = data['name'].encode('utf-8')
-        except:
-            name = DEFAULT_LINK_ATTR['name']
-        try:
-            lanes = int(data['lanes'])
-        except:
-            lanes = DEFAULT_LINK_ATTR['lanes']
+        for attr in ['name', 'oneway', 'highway']:
+            try:
+                data[attr] = data[attr].encode('utf-8')
+            except:
+                data[attr] = ''
 
+        try:
+            lcategory = ROAD_CATEGORY[data['highway']]
+        except:
+            lcategory = 1
+
+        try:
+            data['lanes'] = int(data['lanes'])
+        except:
+            data['lanes'] = 2
+
+        try:
+            data['osmid'] = int(data['osmid'])
+        except:
+            data['osmid'] = -1
+
+
+        try:
+            lspeedlimit = data['maxspeed']
+            if not isinstance(lspeedlimit,int):
+                speeds = [int(s) for s in lspeedlimit.split() if s.isdigit()]
+                if len(speeds) > 0:
+                    lspeedlimit = int(speeds[0])
+                else:
+                    lspeedlimit = 60
+        except:
+            lspeedlimit = 60
         link = Link(link_id,
-                    data['road_type'],
-                    data['category'],
+                    lcategory,
+                    lcategory,
                     fromnode,
                     tonode,
-                    name,
-                    lanes,
-                    int(data['speedlimit']))
+                    data['name'],
+                    data['lanes'],
+                    lspeedlimit,
+                    osm_tag=data['highway'],
+                    oneway=data['oneway'],
+                    osmid=data['osmid'])
         G.edges[fromnode, tonode, key]['id'] = link_id
-        G.edges[fromnode, tonode, key]['name'] = name
-        G.edges[fromnode, tonode, key]['lanes'] = lanes
+        G.edges[fromnode, tonode, key]['name'] = data['name']
+        G.edges[fromnode, tonode, key]['lanes'] = data['lanes']
         links[link_id] = link
         link_id += 1
 
@@ -340,7 +472,18 @@ def constructNodesLinks(G, originalG, tempnodeDict):
     originalG.max_node_id = max_node_id
 
     new_nodes = []
+    if 2 in G.nodes:
+        print("3-2", G.nodes[2])
+    print(len(G.nodes))
+    # to_remove = set()
+    # for nodeId in G.nodes():
+    #     if len(list(G.neighbors(nodeId))) == 0:
+    #         to_remove.add(nodeId)
+    # print('to_remove ', to_remove)
+    # G.remove_nodes_from(to_remove)
+
     for nodeId, data in G.nodes(data=True):
+        # print('node id, max node id-------: ', nodeId, originalG.max_node_id)
         nodeType = 0
         trafficLid = 0
         if nodeId in tempnodeDict['intersection']:
@@ -355,20 +498,40 @@ def constructNodesLinks(G, originalG, tempnodeDict):
                 trafficLiNodes.append(node)
         except:
             pass
-        node = Node(nodeId, nodeType, trafficLid, data['x'], data['y'])
+
+        try:
+            data["osmid"] = int(osmid['osmid'])
+        except:
+            data["osmid"] = -1
+
+        try:
+            node = Node(nodeId, nodeType, trafficLid, data['x'], data['y'], osmid=data["osmid"])
+        except:
+            print("what??????????")
+            # 37382561
+            # 3163635428
+            print(nodeId, nodeType, data)
+            node = Node(nodeId, nodeType, trafficLid, data['x'], data['y'], osmid=data["osmid"])
+            # (2, {'osmid': -1, 'contraction': {3163635395: {'y': 39.4941045, 'x': -76.3163574, 'osmid': 3163635395, 'contraction': {3163635428: {'y': 39.4941064, 'x': -76.3163575, 'osmid': 3163635428}}}}})
+            break
         nodes[nodeId] = node
 
         # turning path radius for intersections
+
         if nodeId: #in tempnodeDict['uniNodes']:
             in_edges = [((u,v, key), int(data['lanes'])) for u,v,key,data in G.in_edges(nodeId, keys=True, data=True)]
             out_edges = [((u,v, key), int(data['lanes'])) for u,v,key,data in G.out_edges(nodeId, keys=True, data=True)]
-            maxRadius = max([ edge[1] * LANE_WIDTH for edge in in_edges + out_edges]) # width * lanes
-            for ends, _ in in_edges:
-                 new_node = shortenFromHead(ends, G, originalG, maxRadius)
-                 new_nodes.append(new_node)
-            for ends, _ in out_edges:
-                new_node = shortenFromTail(ends, G, originalG, maxRadius)
-                new_nodes.append(new_node)
+            if len(in_edges) + len(out_edges) > 0:
+                # print('no neighbor', nodeId, G.nodes[nodeId])
+                maxRadius = max([ edge[1] * LANE_WIDTH for edge in in_edges + out_edges]) # width * lanes
+                for ends, _ in in_edges:
+                     new_node = shortenFromHead(ends, G, originalG, maxRadius)
+                     new_nodes.append(new_node)
+                for ends, _ in out_edges:
+                    new_node = shortenFromTail(ends, G, originalG, maxRadius)
+                    new_nodes.append(new_node)
+    print('nodes -----------------------------------------', len(nodes))
+    # print(nodes)
     return nodes, links
 
 
@@ -409,7 +572,7 @@ def attribute(att_string, sub_attribute, parent_attribute, default_attribute):
         return parent_attribute[att_string]
     return default_attribute[att_string]
 
-def constructSegments(linkGraph, originalG, SEGMENT_LOWER_BOUND=20):
+def constructSegments(linkGraph, linkDict, originalG, SEGMENT_LOWER_BOUND=20):
     linkToSeg = {}
     linkToData = {}
     segToLink = {}
@@ -472,16 +635,26 @@ def constructSegments(linkGraph, originalG, SEGMENT_LOWER_BOUND=20):
                     segment_attributes[attr] = linkToData[link_id][attr]
                 else:
                     segment_attributes[attr] = DEFAULT_SEGMENT_ATTR[attr]
+            if attr == 'maxspeed':
+                try:
+                    if not isinstance(segment_attributes['maxspeed'],int):
+                        speeds = [int(s) for s in segment_attributes['maxspeed'].split() if s.isdigit()]
+                        if len(speeds) > 0:
+                            segment_attributes[attr] = int(speeds[0])
+                        else:
+                            segment_attributes[attr] = DEFAULT_SEGMENT_ATTR[attr]
+                except:
+                    segment_attributes[attr] = DEFAULT_SEGMENT_ATTR[attr]
 
         seg = Segment(
                 segment_id,
                 link_id,
                 seq,
-                int(linkToData[link_id]['lanes']), # force to the same number of lanes for segments in the same link
+                linkDict[link_id].numlanes, # force to the same number of lanes for segments in the same link
                 int(segment_attributes['capacity']),
-                int(segment_attributes['speedlimit']),
+                linkDict[link_id].speedlimit,
                 segment_attributes['tag'],
-                segment_attributes['category'],
+                int(linkDict[link_id].category),
                 position_points,
                 length)
         segToLink[segment_id] = link_id
@@ -574,8 +747,6 @@ def processAndAddConnections(nodes,tempnodeDict,links,segments,lanes,laneconnect
     print "After: ",len(unresolvedLanes), unresolvedLanes
     return laneconnections
 
-
-import csv,pdb,os,itertools,copy,math
 
 def constructLanes(segments,typeToWidthFname):
     '''
