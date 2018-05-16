@@ -1,61 +1,44 @@
-################################################################################
-# Description: helper functions for creating SimMobility tables.
-# Written by: Iveel Tsogsuren
-################################################################################
 import pandas as pd
+from shapely.geometry import Point, LineString, MultiPoint, MultiLineString
 import geopandas as gpd
-import datetime
 from collections import defaultdict, namedtuple
-from shapely.geometry import Point, LineString, MultiPoint, MultiLineString, mapping, Polygon
-from shapely.ops import transform, split, nearest_points
-import fiona
+from shapely.ops import transform
 from functools import partial
 import pyproj
+from shapely.ops import split
 import numpy as np
+import datetime
+
+from shapely.geometry import mapping, Polygon
+import fiona
+from shapely.ops import nearest_points
 
 
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
-CURRENT_CRS = BALTIMORE_CRS
+PROJECTION = partial(
+    pyproj.transform,
+    pyproj.Proj(init='epsg:4326'),
+    pyproj.Proj(init='epsg:6487'))
 
 WEEKDAY_SERVICES = ['1']
 HEADWAY_SEC = 60
 
-DEFAULT_SPEED_LIMIT = 70
-ACCELERATE_RATE = 1.1
-DECELERATE_RATE = 1.1
-Route_type = namedtuple('Route_type', 'type_name type_int platform_length capacity')
-ROUTE_TYPE = {
-0: Route_type(type_name='LR', type_int=0, platform_length=56, capacity=105),
-1: Route_type(type_name='CR', type_int=1, platform_length=60, capacity=170),
-2: Route_type(type_name='HR', type_int=1, platform_length=142, capacity=1920),
-}
-
-# 0 - Tram, Light Rail, Streetcar - 900
-# 1 - Subway, Metro - 400
-# 2 - Rail - 100
-# 3 - Bus - 700
-# 4 - Ferry - 1000
-# 5 - Cable Car - ?
-# 6 - Gondola, Suspended cable car - 1300
-# 7 - Funicular - 1400
-
-def convertCoordinates(toCRS=CURRENT_CRS):
-    """ Convert train stops crs from xy to lat and long. """
+def convertCoordinates():
     inputFolder = 'Outputs/to_db/'
     stops = pd.read_csv(inputFolder + 'mrt_stop.csv')
     stops_cols = stops.columns
     coords = [Point(xy) for xy in zip(stops.x, stops.y)]
-    stops = gpd.GeoDataFrame(stops, crs=toCRS, geometry=coords)
+    stops = gpd.GeoDataFrame(stops, crs=BALTIMORE_CRS, geometry=coords)
     stops = stops.to_crs(LAT_LONG_CRS)
     stops['x'] = stops['geometry'].x
     stops['y'] = stops['geometry'].y
     stops = stops[stops_cols]
     stops.to_csv(inputFolder + 'mrt_stop_wgs84.csv', index=False)
 
+convertCoordinates()
 
-def get_gtfs(inFolder='Merged_clean/'):
-    """ Read GTFS files into panda dataFrames. """
+def get_gtfs2(inFolder='Merged_clean/'):
     route = pd.read_csv(inFolder + 'route.csv')
     shape = pd.read_csv(inFolder + 'shapes.csv')
     stops = pd.read_csv(inFolder + 'stops.csv')
@@ -74,24 +57,6 @@ def merge_two_dicts(x, y):
     return z
 
 def createLinesPlatformName(stoptime_df, stops_df, trip_df, route, shape, LineInfo):
-    """
-    Route and shape_id(s) are consistent in input files at this point.
-    Map trips to lines based on trip shapes.
-    Extend stoptime by line_id and shape_id
-    For each shape, find all trips and choose a representive trip.
-
-    Parameters
-    ----------
-    stoptime_df, stops_df, trip_df, route, shape : standard GTFS files in pandas dataFrames.
-    LineInfo : Specification for which an opposite pair of shapes each route has.
-
-    Returns
-    -------
-    stoptime_df : added extra columns line_id, direction, shape_id, etc.
-    trip : lines' only representive trips
-    linetime : only representive trips' stoptime
-    line_toStartTimes : line's start times of all trips
-    """
     # keep a representive trip (stop sequence) for each shape.
     # We will assume that other trips with the same line_id have the same stop sequences.
     trip = trip_df.copy()
@@ -110,6 +75,7 @@ def createLinesPlatformName(stoptime_df, stops_df, trip_df, route, shape, LineIn
     linetime = linetime.merge(stops_df, on='stop_id', how='left')
     linetime = linetime.merge(route[['route_id', 'route_type']], on='route_id', how='left')
     linetime = linetime[linetime.service_id.isin(WEEKDAY_SERVICES)]
+
 
     linetime.sort_values(by=['trip_id', 'stop_sequence'], inplace=True) # get a unique trip
     linetime['type'] = linetime.apply(lambda row: ROUTE_TYPE[row.route_type].type_name, axis=1)
@@ -130,29 +96,32 @@ def createLinesPlatformName(stoptime_df, stops_df, trip_df, route, shape, LineIn
     print('Number of trips in lines', len(linetime.trip_id.unique()))
     return trip, stoptime_df, linetime, line_toStartTimes
 
+DEFAULT_SPEED_LIMIT = 70
+ACCELERATE_RATE = 1.1
+DECELERATE_RATE = 1.1
+Route_type = namedtuple('Route_type', 'type_name type_int platform_length capacity')
+ROUTE_TYPE = {
+0: Route_type(type_name='LR', type_int=0, platform_length=56, capacity=105),
+1: Route_type(type_name='CR', type_int=1, platform_length=60, capacity=170),
+2: Route_type(type_name='HR', type_int=1, platform_length=142, capacity=1920),
+}
+
+# 0 - Tram, Light Rail, Streetcar - 900
+# 1 - Subway, Metro - 400
+# 2 - Rail - 100
+# 3 - Bus - 700
+# 4 - Ferry - 1000
+# 5 - Cable Car - ?
+# 6 - Gondola, Suspended cable car - 1300
+# 7 - Funicular - 1400
 
 def platform_stations(linetime, stops):
-    """
-    Construct train stations. Train platforms are allocated to the single train
-    station if they are at the same location.
-    Parameters
-    ----------
-    linetime : representive trips' stoptime
-    stops : a standard stops GTFS (cleaned such that oppostie directional two
-                                    stops are the same location)
-    Returns
-    -------
-    train_stop : SimMobility train_stop table (unique station_no). This table is
-                used for public transit graph generation and has a different
-                naming convention.
-    train_platform : SimMobility train_platform table (all platforms).
-    line_stoptime : added station_no column.
-    """
     # Find stations
+    # linetime[['stop_lon', 'stop_lat']].to_csv('Process2/line_stop.csv')
     coords_to_lines = defaultdict(list)
     coords_to_platforms = defaultdict(list)
-    # Find platforms (without direction) of lines which share the same stop coordinates.
-    # These platform share the same station.
+    # print(linetime.columns)
+    # one_wayline = linetime[linetime.]
     for indx, row in linetime.iterrows():
         # Check if there is already representive stop from line
         if row.generic_line not in coords_to_lines[(row.stop_lon, row.stop_lat)]:
@@ -162,6 +131,8 @@ def platform_stations(linetime, stops):
     coords_to_stationName = {}
     for coords, line_list in coords_to_platforms.items():
         coords_to_stationName[coords] = '/'.join(sorted(set(line_list)))
+    # print(coords_to_stationName.values())
+    # station line1/line2
     print('platform and station coords_to_platforms')
     print(coords_to_platforms)
     print('platform and station coords_to_stationName')
@@ -170,7 +141,7 @@ def platform_stations(linetime, stops):
     print(coords_to_lines)
 
     linetime['station_no'] = linetime.apply(lambda row: coords_to_stationName[(row.stop_lon, row.stop_lat)], axis=1)
-    # Create train_stop table (Be careful with absurd name convention)
+    # Create train_stop table
     train_stop = linetime.drop_duplicates(subset=['station_no'])
     train_stop.rename(columns={'stop_y':'y', 'stop_x':'x', 'station_no':'platform_name', 'stop_name':'station_name'}, inplace=True)
     train_stop['shape_id'] = train_stop.reset_index().index + 1
@@ -182,7 +153,6 @@ def platform_stations(linetime, stops):
     # Create train_platform table
     train_platform = linetime.copy()
     train_platform['pos_offset'] = 0
-    train_platform['name_len'] = train_platform.apply(lambda row: len(row.station_no), axis=1)
     train_platform.rename(columns={'type': 'string_type', 'type_int':'type'}, inplace=True)
     train_platform = train_platform[['platform_no', 'station_no', 'line_id', 'capacity', 'type', 'block_id', 'pos_offset', 'length']]
     print('Number of stations in platform table', len(train_platform.station_no.unique()))
@@ -190,7 +160,7 @@ def platform_stations(linetime, stops):
     # print(linetime)
     return train_stop, train_platform, linetime
 
-def convertSegment(simFolder=None, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS):
+def convertSegment(simFolder=None, fromCRS=LAT_LONG_CRS, toCRS=BALTIMORE_CRS):
     segment_points = pd.read_csv(simFolder + 'segment-nodes.csv')
     pointGeo = [Point(xy) for xy in zip(segment_points.x, segment_points.y)]
     segment_points = gpd.GeoDataFrame(segment_points, crs=fromCRS, geometry=pointGeo)
@@ -201,7 +171,7 @@ def convertSegment(simFolder=None, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS):
     segment_points = segment_points[['id', 'x', 'y', 'coords']]
     segment_points.to_csv(simFolder + 'segment-baltimore-crs.csv')
 
-def find_access_segment(train_stop, simFolder=None, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS):
+def find_access_segment(train_stop, simFolder=None, fromCRS=LAT_LONG_CRS, toCRS=BALTIMORE_CRS):
     segment_points = pd.read_csv(simFolder + 'segment-baltimore-crs.csv')
     segment_points['coords'] = segment_points.apply(lambda row: (row.x, row.y), axis=1)
     points = MultiPoint(segment_points.coords.tolist())
@@ -226,7 +196,7 @@ def constructSeqLine(df, idColumn='id', seqColumn='seq_id', x='x', y='y'):
         rows.append( (name, line) )
     return pd.DataFrame.from_records(rows, columns=[idColumn, 'geometry'])
 
-def addRouteGeo(stops_df, shapes_df, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS):
+def addRouteGeo(stops_df, shapes_df, fromCRS=LAT_LONG_CRS, toCRS=BALTIMORE_CRS):
     # print('stops ', stops.columns)
     # print('shapes ', shapes.columns)
     stopGeo = [Point(xy) for xy in zip(stops_df.stop_lon, stops_df.stop_lat)]
@@ -255,28 +225,6 @@ def write(a_shape, shape_type, toFile):
         })
 
 def createBlocks(stoptime, shape):
-    """
-    Project stops onto the corresponding shapes
-    Split shapes into blocks such that each stop is a middle or
-    end point (for two ends) of a block.
-    Index (ID) blocks and their polylines -> train_block, block_polyline
-    Express routes in stop sequence and block sequence -> train_route_platform, train_route
-    Express each stop sequence by a block sequence -> train_route
-    stoptime
-
-    Parameters
-    ----------
-    stoptime : representive trips' stoptimes
-    shape : a standard GTFS shape
-
-    Returns
-    -------
-    train_route_platform : route expressed in a stop (platform) sequence
-    train_route : route expressed in a block sequence
-    train_block : blocks
-    block_polyline : block polylines
-    stoptime : added by block_id based on stop_id
-    """
     stoptime, shape = addRouteGeo(stoptime, shape)
     stoptime.sort_values(by=['line_id', 'stop_sequence'], inplace=True)
     stoptime['x'] = stoptime.geometry.x
@@ -361,15 +309,16 @@ def createBlocks(stoptime, shape):
     print('Number of blocks ', len(train_block.block_id.unique()))
     print('Number of lines ', len(train_route.line_id.unique()))
     return train_route_platform, train_route, train_block, block_polyline, stoptime
+    # return None, None, None, None
 
 
 # if a train starts before midnight but ends after midnight, we drop this
-def overMidnight(row):
-    # if row.start
-    time_units = time.split(':')
-    if int(time_units[0]) >=24:
-        return True
-    return False
+# def overMidnight(row):
+#     # if row.start
+#     time_units = time.split(':')
+#     if int(time_units[0]) >=24:
+#         return True
+#     return False
 
 # if hour is larger than 24, convert it to the today's morning as 00:xx:xx
 def StartTime(time):
@@ -393,56 +342,89 @@ def EndTime(time):
     end_time = start_time + datetime.timedelta(minutes=1)
     return end_time.strftime("%H:%M:%S")
 
-def InSeconds(time):
-    time_units = time.split(':')
-    seconds = int(time_units[0])*3600 + int(time_units[1])*60 + int(time_units[2])
-    return seconds
+def dispatch_freq(line_stoptime, stoptime, line_toStartTimes):
+    # print(line_stoptime.columns)
+    # print(stoptime.columns)
+    # stoptime.rename(columns={'arrival_time':'original_arrival_time'}, inplace=True)
+    stoptime = pd.merge(stoptime[['arrival_time', 'shape_id', 'stop_sequence', 'trip_id']],
+                        line_stoptime[['shape_id', 'stop_sequence', 'station_no', 'type', 'stop_lon', 'stop_lat', 'line_id']],
+                        on=['shape_id', 'stop_sequence'], how='left')
+    # print(stoptime)
+    stoptime['start_time'] = stoptime.apply(lambda row: StartTime(row.arrival_time), axis=1)
+    stoptime['end_time'] = stoptime['start_time']
+    stoptime['headway_sec'] = HEADWAY_SEC
 
-def formatSecond(deltaSeconds):
-    totalSec = deltaSeconds %60
-    totalMin = (deltaSeconds // 60) % 60
-    totalHour = (deltaSeconds //3600) % 24
-    total_time = datetime.time(int(totalHour), int(totalMin), int(totalSec))
-    total_time =  total_time.strftime("%H:%M:%S")
-    return total_time
+    dispatch_start = stoptime.sort_values(by=['trip_id', 'stop_sequence']).drop_duplicates(subset=['trip_id'], keep='first')
+    dispatch_end = stoptime.sort_values(by=['trip_id', 'stop_sequence'], ascending=[True, False]).drop_duplicates(subset=['trip_id'], keep='first')
+    dispatch = pd.merge(dispatch_start[['trip_id', 'line_id', 'headway_sec', 'start_time']],
+                                   dispatch_end[['trip_id', 'end_time']], on='trip_id', how='left')
 
-def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
-    """
-    Find line dispatch time tables.
+    # Remove overnight trips
+    dispatch = dispatch[dispatch.start_time < dispatch.end_time]
+    valied_trips = dispatch.trip_id.unique()
 
-    Parameters
-    ----------
-    line_stoptime : lines' representive trips' stoptimes
-    stoptime : an original standard GTFS stoptime
-    line_toStartTimes :  line's start times of all trips
+    dispatch.rename(columns={'trip_id':'frequency_id'}, inplace=True)
+    dispatch = dispatch[['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_sec']]
+    # print('stoptime', stoptime.columns)
 
-    Returns
-    -------
-    dispatch : SimMobility dispatch_freq table which is head based. Thus,
-              start_time is time the first train starts a trip and
-              end_time is time the last train starts a trip
-    dispatch_detialed : Dispatch frequency table for generating a public tranist
-              graph. One trip for each lane must be speficied with all stop times.
-              It is used for computing travel times between stops.
-    """
+    dispatch_detialed = stoptime.rename(columns={'start_time':'arrival_time', 'arrival_time':'arrival_time_old', 'end_time':'departure_time',
+            'station_no':'stop_id','type':'C_type', 'stop_lon':'stop_long', 'service_id':'service_id_gtfs', 'line_id':'service_id'})
+    # Remove overnight trips
+    dispatch_detialed = dispatch_detialed[dispatch_detialed.trip_id.isin(valied_trips)]
+    dispatch_detialed['service'] =  dispatch_detialed['service_id']
+    # dispatch_detialed = dispatch_detialed[]
+    dispatch_detialed.sort_values(by=['service_id', 'trip_id', 'stop_sequence'], inplace=True)
+    print('number of frequencey ', len(dispatch.frequency_id.unique()))
+    print('number of lines ', len(dispatch.line_id.unique()))
+    return dispatch, dispatch_detialed
 
-    # SimMobility dispatch_freq table [frequency_id, line_id, start_time, end_time, headway_sec]
-    dispatch_freq = []
-    for line, startTimes in line_toStartTimes.items():
-        startTimeInSeconds = [InSeconds(t) for t in startTimes]
-        start_time = min(startTimeInSeconds)
-        end_time = max(startTimeInSeconds)
-        dispatch_freq.append((line, start_time, end_time, headway_sec))
-    dispatch_freq = pd.DataFrame.from_records(dispatch_freq, columns=['line_id', 'start_time', 'end_time', 'headway_sec'])
-    dispatch_freq['start_time'] = dispatch_freq.apply(lambda row: formatSecond(row.start_time), axis=1)
-    dispatch_freq['end_time'] = dispatch_freq.apply(lambda row: formatSecond(row.end_time), axis=1)
-    dispatch_freq['frequency_id'] = dispatch_freq.index
-    dispatch_freq = dispatch_freq[['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_sec']]
 
-    # Public transit generation dispatch table
-    # ['trip_id','arrival_time','departure_time','stop_id','stop_sequence','service','service_id','stop_lat','stop_long','C_type']
-    print('line_stoptime ', line_stoptime.columns)
-    return dispatch_freq, line_stoptime
+def dispatch_freq2(line_stoptime, line_toStartTimes):
+    pt_train_dispatch_freq = ['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_sec']
+    # train line id, trip id, station sequence numbers, station codes and arrival times at the stops
+    # trip_id,arrival_time,departure_time,stop_id,stop_sequence,service,service_id,stop_lat,stop_long,C_type
+    print(line_toStartTimes)
+    print('stoptime ', len(line_stoptime))
+    print('uni trip ', line_stoptime.trip_id.unique())
+    print('uni trip ', line_stoptime.shape_id.unique())
+    dispatches = []
+    dispatch_id = 1
+    line_stoptime.sort_values(by=['line_id', 'stop_sequence'], inplace=True)
+    delta_start = line_stoptime[line_stoptime.stop_sequence == 1].drop_duplicates(subset=['line_id'])
+    delta_start.index = delta_start.line_id
+    for line_id, line_stops in line_stoptime.groupby('line_id'):
+        starts = line_toStartTimes[line_id]
+        delta = delta_start.loc[line_id, 'arrival_time']
+        # print('delta ', delta)
+        for start in starts:
+            for indx, row in line_stops.iterrows():
+                # print(line_stops)
+                dispatch_start = addTime(start, row.arrival_time, delta)
+                dispatch = (line_id, dispatch_id, dispatch_start, row.station_no, row.stop_sequence, row.stop_lon, row.stop_lat, row.service_id, row.type)
+                dispatches.append(dispatch)
+            dispatch_id += 1
+    dispatch = pd.DataFrame.from_records(dispatches, columns=['line_id', 'frequency_id', 'arrival_time', 'station_no', 'stop_sequence', 'stop_lon', 'stop_lat', 'service_id', 'type'])
+    dispatch['start_time'] = dispatch.apply(lambda row: StartTime(row.arrival_time), axis=1)
+    # print(dispatch[['arrival_time', 'start_time']])
+    dispatch['end_time'] = dispatch.apply(lambda row: EndTime(row.start_time), axis=1)
+    dispatch['end_time_over_midnight'] = dispatch.apply(lambda row: overMidnight(row.end_time), axis=1)
+    dispatch_to_drop = dispatch[dispatch.end_time_over_midnight==True]
+    print('__________ to_drop freq ', len(dispatch_to_drop.frequency_id.unique()))
+    print('__________ to_drop line', len(dispatch_to_drop.line_id.unique()))
+    dispatch['headway_sec'] = HEADWAY_SEC
+
+    dispatch_freq_table = dispatch[['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_sec']]
+    dispatch_freq_table.drop_duplicates(subset=['frequency_id', 'line_id'], inplace=True)
+
+
+    dispatch_detialed = dispatch.rename(columns={'frequency_id':'trip_id', 'start_time':'arrival_time', 'arrival_time':'arrival_time_old', 'end_time':'departure_time',
+            'station_no':'stop_id','type':'C_type', 'stop_lon':'stop_long', 'service_id':'service_id_gtfs', 'line_id':'service_id'})
+    dispatch_detialed['service'] =  dispatch_detialed['service_id']
+    dispatch_detialed = dispatch_detialed[['trip_id','arrival_time','departure_time','stop_id','stop_sequence','service','service_id','stop_lat','stop_long','C_type']]
+    dispatch_detialed.sort_values(by=['service_id', 'trip_id', 'stop_sequence'], inplace=True)
+    print('number of frequencey ', len(dispatch.frequency_id.unique()))
+    print('number of lines ', len(dispatch.line_id.unique()))
+    return dispatch_freq_table, dispatch_detialed
 
 
 def transfer_time(platforms):
@@ -483,6 +465,7 @@ def create_uturn(pt_train_route, pt_train_platform):
     return train_uturn_platforms
 
 
+
 def mrt_line_properties(pt_train_route):
     # Step 19: create mrt_line_properties table
     mrt_line_properties = pd.DataFrame()
@@ -505,7 +488,6 @@ def mrt_line_properties(pt_train_route):
     mrt_line_properties['max_dwell_time'] = [120] *len(pd.unique(pt_train_route['line_id']))
     return mrt_line_properties
 
-
 def train_fleet(pt_train_route):
     # Step 25: create train_fleet table
     train_fleet = pd.DataFrame()
@@ -522,6 +504,15 @@ def deltaTime(start, end):
     sStart = int(sStart[0])*3600 + int(sStart[1])*60 + int(sStart[2])
     deltaSeconds = sStart - sEnd
     return deltaSeconds
+
+def formatSecond(deltaSeconds):
+    totalSec = deltaSeconds %60
+    totalMin = (deltaSeconds // 60) % 60
+    totalHour = (deltaSeconds //3600) % 24
+    total_time = datetime.time(int(totalHour), int(totalMin), int(totalSec))
+    total_time =  total_time.strftime("%H:%M:%S")
+    return total_time
+
 
 # Neighbor station travel times
 def transit_edge(weekday_train_seq): #TODO
