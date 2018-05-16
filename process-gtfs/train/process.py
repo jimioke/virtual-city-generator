@@ -1,3 +1,7 @@
+################################################################################
+# Description: create SimMobility tables.
+# Written by: Iveel Tsogsuren
+################################################################################
 import pandas as pd
 from shapely.geometry import Point, LineString
 import geopandas as gpd
@@ -49,7 +53,7 @@ LinePairs = {
 }
 
 # Expect each shape is a unique line (one direcion) and must pair up with other shape.
-route_df, shape, stops_df, stoptime_df, trip_df = get_gtfs2(inFolder='Outputs/clean_gtfs/')
+route_df, shape, stops_df, stoptime_df, trip_df = get_gtfs(inFolder='Outputs/clean_gtfs/')
 # trip, linetime, line_toStartTimes
 trip_wLine, stoptime_df, line_stoptime, line_toStartTimes = createLinesPlatformName(stoptime_df, stops_df, trip_df, route_df, shape, LinePairs)
 train_route_platform, train_route, train_block, train_block_polyline, line_stoptime = createBlocks(line_stoptime, shape)
@@ -95,3 +99,6 @@ train_route = pd.read_csv(outputFolder + 'train_route.csv')
 convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
 access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
 access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
+
+# We need train stops in lat and long for public transit graph generation.
+# convertCoordinates()
