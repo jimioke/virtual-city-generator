@@ -1,0 +1,11 @@
+line_id,min_dwell_time_normal,min_dwell_time_terminal,min_dwell_time_interchange,dwell_time_formula_first_coeff,dwell_time_formula_second_coeff,dwell_time_formula_third_coeff,dwell_time_formula_fourth_coeff,safe_operation_distance_meter,safe_operation_headway_sec,min_dis_behind_unscheduled_train,train_length,train_capacity,distance_arriving_at_platform,max_dwell_time
+A_2,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+F_2,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+F_1,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+B_1,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+B_2,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+C_2,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+A_1,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+C_1,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+D_2,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120
+D_1,20,60,50,12.22,2.27,1.82,0.00062,50,90,200,138,1600,0.001,120

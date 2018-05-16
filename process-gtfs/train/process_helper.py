@@ -387,18 +387,23 @@ def StartTime(time):
         correct_hours = str(hours)
     return ':'.join([correct_hours,minutes, seconds])
 
+
 def EndTime(time):
     # time = row["Start_Time"]
     start_time = datetime.datetime.strptime(time, "%H:%M:%S")
     end_time = start_time + datetime.timedelta(minutes=1)
     return end_time.strftime("%H:%M:%S")
 
+
 def InSeconds(time):
     time_units = time.split(':')
     seconds = int(time_units[0])*3600 + int(time_units[1])*60 + int(time_units[2])
     return seconds
 
+
 def formatSecond(deltaSeconds):
+    if deltaSeconds > 23*3600 + 59*60 + 59: #23:59:59
+        return '23:59:59'
     totalSec = deltaSeconds %60
     totalMin = (deltaSeconds // 60) % 60
     totalHour = (deltaSeconds //3600) % 24
@@ -425,7 +430,6 @@ def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
               graph. One trip for each lane must be speficied with all stop times.
               It is used for computing travel times between stops.
     """
-
     # SimMobility dispatch_freq table [frequency_id, line_id, start_time, end_time, headway_sec]
     dispatch_freq = []
     for line, startTimes in line_toStartTimes.items():
@@ -434,6 +438,7 @@ def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
         end_time = max(startTimeInSeconds)
         dispatch_freq.append((line, start_time, end_time, headway_sec))
     dispatch_freq = pd.DataFrame.from_records(dispatch_freq, columns=['line_id', 'start_time', 'end_time', 'headway_sec'])
+    print(dispatch_freq)
     dispatch_freq['start_time'] = dispatch_freq.apply(lambda row: formatSecond(row.start_time), axis=1)
     dispatch_freq['end_time'] = dispatch_freq.apply(lambda row: formatSecond(row.end_time), axis=1)
     dispatch_freq['frequency_id'] = dispatch_freq.index
@@ -441,8 +446,20 @@ def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
 
     # Public transit generation dispatch table
     # ['trip_id','arrival_time','departure_time','stop_id','stop_sequence','service','service_id','stop_lat','stop_long','C_type']
-    print('line_stoptime ', line_stoptime.columns)
-    return dispatch_freq, line_stoptime
+    print('line_stops------- ', line_stoptime.columns)
+    dispatch_detialed = line_stoptime[['trip_id', 'stop_sequence', 'arrival_time','line_id',
+                        'departure_time', 'station_no', 'type', 'stop_lon', 'stop_lat']]
+    print('Before rename ', dispatch_detialed.columns)
+    dispatch_detialed.rename(columns={'station_no':'stop_id', 'type':'C_type',
+                            'stop_lon':'stop_long', 'line_id': 'service_id'}, inplace=True)
+    # dispatch_detialed = line_stoptime.rename(columns={'start_time':'arrival_time', 'arrival_time':'arrival_time_old', 'end_time':'departure_time',
+    #         'station_no':'stop_id','type':'C_type', 'stop_lon':'stop_long', 'service_id':'service_id_gtfs', 'line_id':'service_id'})
+    print(dispatch_detialed.columns)
+    dispatch_detialed['service'] =  dispatch_detialed['service_id']
+    dispatch_detialed.sort_values(by=['service_id', 'trip_id', 'stop_sequence'], inplace=True)
+    print('number of frequencey ', len(dispatch_freq.frequency_id.unique()))
+    print('number of lines ', len(dispatch_detialed.service_id.unique()))
+    return dispatch_freq, dispatch_detialed
 
 
 def transfer_time(platforms):
@@ -537,11 +554,12 @@ def transit_edge(weekday_train_seq): #TODO
     # transit_df = pd.DataFrame.from_records(transit_df, columns=['from_stn', 'to_stn', 'travel_time'])
 
     # Step 23: create rail_transit_edge table
-    print(weekday_train_seq.head(3))
+    # print(weekday_train_seq.head(3))
     test = weekday_train_seq.copy()
     fro_stn = []
     to = []
     dur = []
+    print(weekday_train_seq.columns)
     for name, group in weekday_train_seq.groupby('trip_id'):
         fro_stn += group['stop_id'][0:len(group)-1].tolist()
         to += group['stop_id'][1:len(group)].tolist()

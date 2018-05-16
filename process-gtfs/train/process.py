@@ -60,31 +60,31 @@ train_route_platform, train_route, train_block, train_block_polyline, line_stopt
 train_stop, train_platform, line_stoptime = platform_stations(line_stoptime, stops_df)
 dispatch_freq_table, dispatch_detialed = dispatch_freq(line_stoptime, line_toStartTimes)
 #
-# transfer_time = transfer_time(train_platform)
-# opposite_lines = line_stoptime.drop_duplicates(subset=['line_id'])
-# opposite_lines = opposite_lines.rename(columns={'line_id':'line'})[['line', 'opp_line']]
-# train_uturn_platforms = create_uturn(train_route, train_platform)
-# mrt_line_properties = mrt_line_properties(train_route)
-# train_fleet = train_fleet(train_route)
-# train_transit_edge = transit_edge(dispatch_detialed)
-#
-# train_uturn_platforms.to_csv(outputFolder + 'train_uturn_platforms.csv', index=False)
-# mrt_line_properties.to_csv(outputFolder + 'mrt_line_properties.csv', index=False)
-# train_fleet.to_csv(outputFolder + 'train_fleet.csv', index=False)
-# train_transit_edge.to_csv(outputFolder + 'train_transit_edge.csv', index=False)
-#
-# line_stoptime.to_csv(outputFolder + 'line_stoptime.csv', index=False)
-# transfer_time.to_csv(outputFolder + 'pt_train_platform_transfer_time.csv', index=False)
-# train_stop.to_csv(outputFolder + 'mrt_stop.csv', index=False)
-# train_platform[train_platform_cols].to_csv(outputFolder + 'train_platform.csv', index=False)
-# train_block.to_csv(outputFolder + 'pt_train_block.csv', index=False)
-# train_block_polyline.to_csv(outputFolder + 'pt_train_block_polyline.csv', index=False)
-# train_route_platform[pt_train_route_platform_cols].to_csv(outputFolder + 'pt_train_route_platform.csv', index=False)
-# train_route[pt_train_route_cols].to_csv(outputFolder + 'pt_train_route.csv', index=False)
-# opposite_lines.to_csv(outputFolder + 'pt_opposite_lines.csv', index=False)
-# dispatch_freq_table.to_csv(outputFolder + 'pt_train_dispatch_freq.csv', index=False)
-# dispatch_detialed[dispatch_detialed_cols].to_csv(outputFolder + 'weekday_train_seq_31Mar18.csv', index=False)
-#
+transfer_time = transfer_time(train_platform)
+opposite_lines = line_stoptime.drop_duplicates(subset=['line_id'])
+opposite_lines = opposite_lines.rename(columns={'line_id':'line'})[['line', 'opp_line']]
+train_uturn_platforms = create_uturn(train_route, train_platform)
+mrt_line_properties = mrt_line_properties(train_route)
+train_fleet = train_fleet(train_route)
+train_transit_edge = transit_edge(dispatch_detialed)
+
+train_uturn_platforms.to_csv(outputFolder + 'train_uturn_platforms.csv', index=False)
+mrt_line_properties.to_csv(outputFolder + 'mrt_line_properties.csv', index=False)
+train_fleet.to_csv(outputFolder + 'train_fleet.csv', index=False)
+train_transit_edge.to_csv(outputFolder + 'train_transit_edge.csv', index=False)
+
+line_stoptime.to_csv(outputFolder + 'line_stoptime.csv', index=False)
+transfer_time.to_csv(outputFolder + 'pt_train_platform_transfer_time.csv', index=False)
+train_stop.to_csv(outputFolder + 'mrt_stop.csv', index=False)
+train_platform[train_platform_cols].to_csv(outputFolder + 'train_platform.csv', index=False)
+train_block.to_csv(outputFolder + 'pt_train_block.csv', index=False)
+train_block_polyline.to_csv(outputFolder + 'pt_train_block_polyline.csv', index=False)
+train_route_platform[pt_train_route_platform_cols].to_csv(outputFolder + 'pt_train_route_platform.csv', index=False)
+train_route[pt_train_route_cols].to_csv(outputFolder + 'pt_train_route.csv', index=False)
+opposite_lines.to_csv(outputFolder + 'pt_opposite_lines.csv', index=False)
+dispatch_freq_table.to_csv(outputFolder + 'pt_train_dispatch_freq.csv', index=False)
+dispatch_detialed[dispatch_detialed_cols].to_csv(outputFolder + 'weekday_train_seq_31Mar18.csv', index=False)
+
 #
 # # Use when we want use created tables.
 # # line_stoptime = pd.read_csv(outputFolder + 'line_stoptime.csv')
@@ -95,9 +95,11 @@ dispatch_freq_table, dispatch_detialed = dispatch_freq(line_stoptime, line_toSta
 # # train_route_platform = pd.read_csv(outputFolder + 'train_route_platform.csv')
 # # train_route = pd.read_csv(outputFolder + 'train_route.csv')
 #
-# convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
-# access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
-# access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
+
+print('Convert segments -------------------------------------')
+convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
+access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
+access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
 #
 # # We need train stops in lat and long for public transit graph generation.
-# # convertCoordinates()
+convertCoordinates()
