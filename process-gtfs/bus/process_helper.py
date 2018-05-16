@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 from shapely.ops import nearest_points
 
 
-LAT_LONG_CRS = {'init': 'epsg:4326'}
-BALTIMORE_CRS = {'init': 'epsg:6487'}
-
 def constructSeqLine(df, idColumn='id', seqColumn='seq_id', x='x', y='y'):
     df = df.sort_values([seqColumn])
     grouped = df.groupby(idColumn)
@@ -30,7 +27,8 @@ def readGTFS(gtfsFolder, trip='trip.csv', stoptime='stoptime.csv', shape='shape.
     return gtfs_trips_df, gtfs_stoptime_df, gtfs_shape_df, gtfs_stop_df
 
 def getRoadNetworkGeos(simFolder, fromCRS, toCRS):
-    segmentCoords = pd.read_csv(simFolder + 'segment-nodes.csv') #id,x,y,z,seq_id
+    # segmentCoords = pd.read_csv(simFolder + 'segment-nodes.csv') #id,x,y,z,seq_id
+    segmentCoords = pd.read_csv(simFolder + 'segment_polyline.csv')
     segmentGeo = constructSeqLine(segmentCoords)
     segmentGeo = gpd.GeoDataFrame(segmentGeo, crs=fromCRS)
     segmentGeo = segmentGeo.to_crs(toCRS)
@@ -45,13 +43,9 @@ def getBusRouteGeo(busStops, busShapes, fromCRS, toCRS):
     busGeo = busGeo.to_crs(toCRS)
     return busStopGeo, busGeo
 
-def getSegmentsWithEndNodes(simFolder, segmentGeo, base = 10000000):
-    segments = pd.read_csv(simFolder + 'segment-attributes_more.csv')
-    print("orig segments len ", len(segments))
-    segments.index = segments.id
-
-    # turningPaths = pd.read_csv(simFolder + 'turninggroups.csv') #id,nodeid,from_link,to_link,phases,rules,visibility,tags
-    turningPaths = pd.read_csv(simFolder + 'turning-attributes.csv')  #id,from_lane,to_lane,group_id,max_speed,tags
+def getSegmentsWithEndNodes(simFolder, candidateSegment, CRS, base = 10000000):
+    # turningPaths = pd.read_csv(simFolder + 'turning-attributes.csv')  #id,from_lane,to_lane,group_id,max_speed,tags
+    turningPaths = pd.read_csv(simFolder + 'turning_path.csv')
     turningPaths["from_segment"] = turningPaths["from_lane"] // 100
     turningPaths["to_segment"] = turningPaths["to_lane"] // 100
     connector = pd.read_csv(simFolder + 'connector.csv') #id,from_segment,to_segment,from_lane,to_lane,is_true_connector,tags
@@ -59,37 +53,48 @@ def getSegmentsWithEndNodes(simFolder, segmentGeo, base = 10000000):
     connectSegments = list(zip(turningPaths.from_segment, turningPaths.to_segment))
     connectSegments += list(zip(connector.from_segment, connector.to_segment))
 
-    segments = segments.sort_values(['id'])
-    segSequence = segments.groupby('link_id')['id'].apply(list).tolist()
-    for seq in segSequence:
-        if len(seq) > 1:
-            connectSegments += list(zip(seq[:-1],seq[1:]))
+    # Not necessary to include the following code since turning paths and connectors are enough.
+    # segments = segments.sort_values(['id'])
+    # segSequence = segments.groupby('link_id')['id'].apply(list).tolist()
+    # for seq in segSequence:
+    #     if len(seq) > 1:
+    #         connectSegments += list(zip(seq[:-1],seq[1:]))
 
     fromPoint = {} # seg --> node
     toPoint = {}
     NODE_ID = 1
+    candidateSegIDs = set(candidateSegment.id.tolist())
     # Create nodes between segments    fromPoint --> seg1 --> (toPoint) = (fromPoint) --> seg2
     for seg1, seg2 in  connectSegments:
-        if seg1 in toPoint and seg2 in fromPoint:
-            assert(toPoint[seg1] == fromPoint[seg2])
-        elif seg1 in toPoint:
-            fromPoint[seg2] = toPoint[seg1]
-        elif seg2 in fromPoint:
-            toPoint[seg1] = fromPoint[seg2]
-        else:
-            toPoint[seg1] = fromPoint[seg2] = NODE_ID
+        # We are interested in only candidate segments
+        if seg1 in candidateSegIDs and seg2 in candidateSegIDs:
+            if seg1 in toPoint and seg2 in fromPoint:
+                assert(toPoint[seg1] == fromPoint[seg2])
+            elif seg1 in toPoint:
+                fromPoint[seg2] = toPoint[seg1]
+            elif seg2 in fromPoint:
+                toPoint[seg1] = fromPoint[seg2]
+            else:
+                toPoint[seg1] = fromPoint[seg2] = NODE_ID
+                NODE_ID += 1
+    # Have to give nodes for dead ends
+    for seg in candidateSegIDs:
+        if seg not in toPoint: # seg --> toPoint --> None
+            toPoint[seg] = NODE_ID
+            NODE_ID += 1
+        if seg not in fromPoint: # None --> fromPoint --> seg
+            fromPoint[seg] = NODE_ID
             NODE_ID += 1
 
-    segments['from_node'] = segments.apply(lambda row: fromPoint[int(row.id)] if int(row.id) in fromPoint else row.link_id * base + row.sequence - 1, axis=1)
-    segments['to_node'] = segments.apply(lambda row: toPoint[int(row.id)] if int(row.id) in toPoint else row.link_id * base + row.sequence, axis=1)
-    segments['from_node'] = segments['from_node'].astype('int')
-    segments['to_node'] = segments['to_node'].astype('int')
-    segments['ends'] = segments.apply(lambda row: str(int(row.from_node)) + '_' + str(int(row.to_node)), axis=1)
-    print("from segments with nodes ----- ", len(segments), len(segments.ends.unique()))
-    # Segment geometry
-    segments = segments.merge(segmentGeo, on='id', how='left')
-    segments = gpd.GeoDataFrame(segments, crs=BALTIMORE_CRS, geometry=segments['geometry'])
-    return segments
+    print('MAX Node id ', NODE_ID)
+
+    candidateSegment['from_node'] = candidateSegment.apply(lambda row: fromPoint[int(row.id)] if int(row.id) in fromPoint else row.link_id * base + row.sequence - 1, axis=1)
+    candidateSegment['to_node'] = candidateSegment.apply(lambda row: toPoint[int(row.id)] if int(row.id) in toPoint else row.link_id * base + row.sequence, axis=1)
+    candidateSegment['from_node'] = candidateSegment['from_node'].astype('int')
+    candidateSegment['to_node'] = candidateSegment['to_node'].astype('int')
+    candidateSegment['ends'] = candidateSegment.apply(lambda row: str(int(row.from_node)) + '_' + str(int(row.to_node)), axis=1)
+    print("Number of segments and unique ends: ", len(candidateSegment), len(candidateSegment.ends.unique()))
+    return candidateSegment
 
 def  findRouteCandidateSegments(segmentsWithNodes, busShapes, processFolder, bufferSize=50):
     busShapes['geometry'] = busShapes['geometry'].buffer(distance=bufferSize)
@@ -99,13 +104,11 @@ def  findRouteCandidateSegments(segmentsWithNodes, busShapes, processFolder, buf
 
 def getUniqueBusRoutes(stoptime_df, trips_df):
     trips_df.drop_duplicates(subset=['shape_id'], inplace=True)
-    print(trips_df.columns)
     unique_trips = trips_df.trip_id.unique()
     stoptime_df = stoptime_df[stoptime_df.trip_id.isin(unique_trips)]
     stoptime_df.sort_values(by=['trip_id', 'stop_sequence'], inplace=True)
     trip_stops = stoptime_df.groupby('trip_id')['stop_id'].apply(list).to_frame()
     trip_stops = trip_stops.reset_index()
-    print(trip_stops.columns)
     trip_stops = trip_stops.merge(trips_df[['trip_id', 'shape_id']], on='trip_id', how='left')
     print('Unique trips ', len(unique_trips))
     return trip_stops
@@ -113,9 +116,7 @@ def getUniqueBusRoutes(stoptime_df, trips_df):
 def getShortestPath(trip_stops, shapeSegments, stopSegmentEnd):
     stopSegmentEnd.index = stopSegmentEnd.stop_id
     valid_stops = stopSegmentEnd[stopSegmentEnd['distance'] < 500].stop_id.tolist()
-    # print('valid_stops ', valid_stops)
 
-    # all_from_nodes = set(shapeSegments.from_node.tolist() + shapeSegments.to_node.tolist())
     stopConnectionSet = set()
     stopConnection_df = []
     num_no_connection = 0

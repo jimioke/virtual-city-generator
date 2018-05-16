@@ -10,18 +10,27 @@ import datetime
 
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
+TELAVIV_CRS = {'init': 'epsg:2039'}
 
-# PREPARE SIMMOBILITY
-# simFolder = 'Auto_sprawl_drive_main/simmobility/'
-# gtfsFolder = 'clean-gtfs/MergedBus/'
-# processFolder = 'process_big/'
-# databaseFolder = 'to_db_big/'
+# Baltimore
+simFolder = 'Auto_sprawl_drive_main/simmobility/'
+gtfsFolder = 'clean-gtfs/MergedBus/'
+processFolder = 'process_big/'
+databaseFolder = 'to_db_big/'
+CURRENT_CRS =  BALTIMORE_CRS
+
+# Tel Aviv
+# simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
+# gtfsFolder = 'gtfs_clean_israel/bus/'
+# processFolder = 'process_tel_aviv/'
+# databaseFolder = 'to_db_tel_aviv/'
+# CURRENT_CRS = TELAVIV_CRS
 
 # Small example
-simFolder = 'Baltimore_small/simmobility/'
-gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
-processFolder = 'process_small_example/'
-databaseFolder = 'to_db/'
+# simFolder = 'Baltimore_small/simmobility/'
+# gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
+# processFolder = 'process_small_example/'
+# databaseFolder = 'to_db/'
 
 # SimMobility table headers
 bus_stops_cols = ['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']
@@ -31,7 +40,7 @@ frequence_cols = ['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_
 journey_cols = ['service_id', 'trip_id', 'stop_id', 'stop_sequence', 'arrival_time', 'departure_time', 'dwelling_time']
 
 
-# Prune out bus stop sequences so that bus
+# Prune out bus stop sequences
 def pruneShortTrips(connectedTrips=None):
     connectedTrips = pd.read_pickle(processFolder + 'subtrips_wSegments.pkl')
     connectedTrips['len_stops'] = connectedTrips.apply(lambda row: len(row.stops), axis=1)
@@ -49,13 +58,13 @@ def pruneShortTrips(connectedTrips=None):
     print(connectedTrips.len_stops.sum())
     return connectedTrips
 
-# cleanSubtrips()
 
 # Create pt_bus_routes and pt_bus_stops and pre prepare bus_stops.
 def createBusRouteTables():
     # [['trip_id', 'shape_id', 'stop_segments', 'path_segments', 'stops']]
     # connectedTrips = pd.read_pickle(processFolder + 'subtrips_wSegments.pkl')
     connectedTrips = pruneShortTrips()
+    # connectedTrips.to_csv(processFolder + 'test_subtrips_wSegments.csv', index=False)
     connectedTrips['segment_seq'] = connectedTrips.apply(lambda row: '_'.join([str(s) for s in row.stop_segments]), axis=1)
     connectedTrips.drop_duplicates(subset=['segment_seq'], inplace=True)
     connectedTrips = connectedTrips.reset_index()
@@ -72,16 +81,31 @@ def createBusRouteTables():
         for i, i_stop in enumerate(trip.stops):
             i_segment = trip.stop_segments[i]
             bus_stops_df.append((i_stop, i_segment))
-            pt_bus_stops_df.append( (trip.route_id, i_stop, i))
+            pt_bus_stops_df.append( (trip.route_id, i_stop, i, trip.trip_id))
         for i, seg in enumerate(trip.path_segments):
             pt_bus_routes_df.append( (trip.route_id, i, seg))
 
-    pt_bus_stops_df = pd.DataFrame.from_records(pt_bus_stops_df, columns=['route_id', 'stop_code', 'sequence_no' ])
+    pt_bus_stops_df = pd.DataFrame.from_records(pt_bus_stops_df, columns=['route_id', 'stop_code', 'sequence_no', 'trip_id'])
     pt_bus_routes_df = pd.DataFrame.from_records(pt_bus_routes_df, columns=['route_id', 'sequence_no', 'section_id'])
     bus_stops_df = pd.DataFrame.from_records(bus_stops_df, columns=['id', 'section_id'])
     bus_stops_df['terminal'] = bus_stops_df.apply(lambda row: int(row.id in terminal_stops), axis=1)
 
-    pt_bus_stops_df.to_csv(databaseFolder + 'pt_bus_stops.csv', index=False)
+    # Unite the stops that are assigned to the same segment
+    bus_stops_df['id'] = bus_stops_df['id'].astype(int)
+    bus_stops_df['section_id'] = bus_stops_df['section_id'].astype(int)
+    pt_bus_stops_df['stop_code'] = pt_bus_stops_df['stop_code'].astype(int)
+    stop_to_RepStop = {}
+    segment_to_stop = {}
+    for index, row in bus_stops_df.iterrows():
+        if row.section_id not in segment_to_stop:
+            segment_to_stop[row.section_id] = row.id
+        stop_to_RepStop[row.id] = segment_to_stop[row.section_id]
+    stop_ids = set(stop_to_RepStop.values()) # Representive stops
+    bus_stops_df = bus_stops_df[bus_stops_df.id.isin(stop_ids)]
+    pt_bus_stops_df['stop_code'] = pt_bus_stops_df.apply(lambda row: stop_to_RepStop[row.stop_code], axis=1)
+
+    pt_bus_stops_df.to_csv(processFolder + 'pre_pt_bus_stops.csv')
+    pt_bus_stops_df[['route_id', 'stop_code', 'sequence_no']].to_csv(databaseFolder + 'pt_bus_stops.csv', index=False)
     pt_bus_routes_df.to_csv(databaseFolder + 'pt_bus_routes.csv', index=False)
     bus_stops_df.to_csv(databaseFolder + 'pre_bus_stops.csv', index=False)
     connectedTrips.to_pickle(processFolder + 'unique_subtrips_wSegments.pkl')
@@ -92,9 +116,9 @@ def getRouteSegment():
     segments = gpd.read_file(processFolder + 'candidateShapeSegments/candidateShapeSegments.shp')
     print(segments.columns)
     pt_bus_routes = pt_bus_routes.merge(segments, left_on='section_id', right_on='id')
-    route_segments = gpd.GeoDataFrame(pt_bus_routes, crs=BALTIMORE_CRS, geometry=pt_bus_routes['geometry'])
+    route_segments = gpd.GeoDataFrame(pt_bus_routes, crs=CURRENT_CRS, geometry=pt_bus_routes['geometry'])
     route_segments.to_file(processFolder + 'routeSegmentGeo')
-# getRouteSegment()
+
 
 def get_stops_xy():
     busStopGeo = gpd.read_file(processFolder + 'BusStops/BusStops.shp')
@@ -112,14 +136,17 @@ def getSegmentSinkNodes(simFolder):
     return segments[['id', 'to_node']]
 
 def complete_bus_stops():
-# ['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']
+    # ['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']
     segments = gpd.read_file(processFolder + 'SegmentGeo/SegmentGeo.shp')
     print('segments geo', segments.columns)
+    segments.id = segments.id.astype(int)
+
     segments.index = segments.id
     segments['half_length'] = segments.apply(lambda row: row.geometry.length/2, axis=1)
     segments['seg_middle_point'] = segments.apply(lambda row: row.geometry.interpolate(0.5, normalized=True), axis=1)
-    # print(segments.head(2))
     bus_stops_df = pd.read_csv(databaseFolder + 'pre_bus_stops.csv')
+    bus_stops_df.id = bus_stops_df.id.astype(int)
+    bus_stops_df.section_id = bus_stops_df.section_id.astype(int)
     bus_stops_df.drop_duplicates(subset=['id'], inplace=True)
     bus_stops_df.sort_values(by='id', inplace=True)
     bus_stops_df['stop_code'] = bus_stops_df['id']
@@ -140,85 +167,20 @@ def complete_bus_stops():
     bus_stops_df = bus_stops_df[['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']]
     bus_stops_df.to_csv(databaseFolder + 'bus_stop.csv', index=False)
 
-    print(bus_stops_df[bus_stops_df.section_offset != 0].head(3))
-    # bus_stops_df_duplicated = bus_stops_df[bus_stops_df.duplicated(['id'], keep=False)]
-    # bus_stops_df_duplicated.to_csv(databaseFolder + 'bus_stop_duplicated.csv', index=False)
-    # print(bus_stops_df_duplicated.head(10))
     print('Number of unique stops ', len(bus_stops_df.id.unique()))
     print('Number of stops ', len(bus_stops_df))
-    # Number of unique stops  3472
-    # Number of stops  3472
+
 
 def lat_long_stops():
     stops = pd.read_csv(databaseFolder + 'bus_stop.csv')
     coords = [Point(xy) for xy in zip(stops.x, stops.y)]
-    stops = gpd.GeoDataFrame(stops, crs=BALTIMORE_CRS, geometry=coords)
+    stops = gpd.GeoDataFrame(stops, crs=CURRENT_CRS, geometry=coords)
     stops = stops.to_crs(LAT_LONG_CRS)
     stops['x'] = stops['geometry'].x
     stops['y'] = stops['geometry'].y
     stops = stops[['x', 'y', 'z', 'id', 'code', 'section_id', 'name', 'status', 'terminal', 'length', 'section_offset', 'tags', 'reverse_section', 'terminal_node']]
     stops.to_csv(databaseFolder + 'bus_stop_wgs84.csv', index=False)
 
-# lat_long_stops()
-
-def sublist_index(large_l, small_l):
-    if len(large_l) < len(small_l):
-        return None
-    subset_index = []
-    index = 0
-    for i in small_l:
-        while index < len(large_l) and large_l[index] != i:
-            index += 1
-        if index >= len(large_l):
-            return None
-        subset_index.append(index)
-    return subset_index
-# Test sublist_index
-# print(sublist_index([0,1,2,3,4,5,6], [3,6]))
-# print(sublist_index([0,1,2,3,4,5,6], [3,6,7]))
-# print(sublist_index([0,1,2,3,4,5,6], [0, 3,6]))
-# print(sublist_index([0,1,2,3,4,5,6], [0, 3,4]))
-
-def preparePreFreqTable():
-    # [['trip_id', 'shape_id', 'stop_segments', 'path_segments', 'stops', route_id]]
-    subtrips = pd.read_pickle(processFolder + 'unique_subtrips_wSegments.pkl')
-    # ['route_id', 'stop_code', 'sequence_no' ]
-    trip_df = pd.read_csv(gtfsFolder  + 'trips.txt')
-    stoptime_df = pd.read_csv(gtfsFolder  + 'stop_times.txt')
-    stoptime_df = stoptime_df.merge(trip_df[['trip_id', 'shape_id']], on='trip_id', how='left')
-    stoptime_df = stoptime_df[stoptime_df.shape_id.isin(subtrips.shape_id.unique())]
-
-    frequency_df = [] # route, stops, stoptimes
-    for trip_id, trip_stoptime in stoptime_df.groupby('trip_id'):
-        trip_stops = trip_stoptime.stop_id.values
-        trip_stoptimes = trip_stoptime.arrival_time.values
-        trip_shape_id = trip_stoptime.shape_id.values[0]
-        routes_shape = subtrips[subtrips.shape_id == trip_shape_id]
-        for indx, route in routes_shape.iterrows():
-            # If this subtrip is in this stoptime
-            subset_index = sublist_index(trip_stops, route.stops)
-            if subset_index:
-                route_stoptimes = [trip_stoptimes[i] for i in subset_index]
-                frequency_df.append((route.route_id, trip_id, route.stops, route_stoptimes))
-
-    frequency_df = pd.DataFrame.from_records(frequency_df, columns=['route_id', 'trip_id', 'stops', 'stoptimes'])
-    freq_table = []
-
-    for indx, row in frequency_df.iterrows():
-        for i in range(len(row.stops)):
-            freq = (row.route_id, row.stops[i], row.stoptimes[i], i)
-            freq_table.append(freq)
-
-    freq_table = pd.DataFrame.from_records(freq_table, columns=['route_id', 'stop_id', 'arrival_time', 'stop_sequence'])
-    freq_table.to_csv(processFolder + 'frequency_time_table.csv')
-    print('Number of unique routes ', len(freq_table.route_id.unique()))
-    # Number of unique frequencies  409534
-    # Number of unique routes  425
-    # After cleaning
-    # Number of unique frequencies  369563
-    # Number of unique routes  627
-    # num of rows1  627
-    # num of rows2  626 626
 
 # if hour is larger than 24, convert it to the today's morning as 00:xx:xx
 def StartTime(time):
@@ -275,14 +237,41 @@ def timeFormat(seconds):
                 units[i] = str(u)
     return ':'.join(units)
 
+def preparePreFreqTable():
+    # pt_bus_stops_df = pd.DataFrame.from_records(pt_bus_stops_df, columns=['route_id', 'stop_code', 'sequence_no', 'shape_id' ])
+    pt_bus_stops_df = pd.read_csv(processFolder + 'pre_pt_bus_stops.csv')
+    trip_ids = pt_bus_stops_df.trip_id.unique()
+    stoptime_df = pd.read_csv(gtfsFolder  + 'stop_times.txt')
+    stoptime_df = stoptime_df[stoptime_df.trip_id.isin(trip_ids)]
+    stoptime_df.sort_values(by=['trip_id', 'stop_sequence'], inplace=True)
+    pt_bus_stops_df = pt_bus_stops_df.merge(stoptime_df[['stop_id', 'trip_id', 'arrival_time']], left_on=['trip_id', 'stop_code'], right_on=['trip_id','stop_id'], how='left')
+    print('All pt_bus_stops ', len(pt_bus_stops_df))
+    pt_bus_stops_df.dropna(subset=['arrival_time'], inplace=True)
+    print('Nan dropped All pt_bus_stops ', len(pt_bus_stops_df))
+    pt_bus_stops_df.sort_values(by=['trip_id','sequence_no'], inplace=True)
+    new_sequence = {}
+    for trip_id, stops in pt_bus_stops_df.groupby('trip_id'):
+        i = 0
+        for indx, stop in stops.iterrows():
+            new_sequence[(trip_id, stop.stop_id)] = i
+            i +=1
+    pt_bus_stops_df['sequence_no'] = pt_bus_stops_df.apply(lambda row: new_sequence[(row.trip_id, row.stop_id)], axis=1)
+
+    pt_bus_stops_df.drop_duplicates(subset=['route_id','stop_code','sequence_no'], inplace=True)
+    pt_bus_stops_df[['route_id', 'stop_code', 'sequence_no', 'arrival_time']].to_csv(processFolder + 'frequency_time_table.csv', index=False)
+    pt_bus_stops_df[pt_bus_stops_cols].to_csv(databaseFolder + 'pt_bus_stops.csv', index=False)
+
+
 def prepareFrequencyTables(headway=300):
     freq_table = pd.read_csv(processFolder + 'frequency_time_table.csv')
+    freq_table.rename(columns={'sequence_no':'stop_sequence', 'stop_code':'stop_id'}, inplace=True)
+    print('frequency_time_table ', freq_table.columns)
     freq_table['original_time'] = freq_table['arrival_time']
+    print('freq_table-----------')
     freq_table['arrival_in_sec'] = freq_table.apply(lambda row: InSeconds(row.arrival_time), axis=1)
-    freq_table['departure_in_sec'] = freq_table.apply(lambda row: InSeconds(row.arrival_time), axis=1) # for later
-
     freq_table['arrival_time'] = freq_table.apply(lambda row: timeFormat(row.arrival_in_sec), axis=1)
-    freq_table['departure_time'] = freq_table.apply(lambda row: timeFormat(row.arrival_in_sec), axis=1)
+    freq_table['departure_in_sec'] = freq_table['arrival_in_sec']
+    freq_table['departure_time'] = freq_table['arrival_time']
     freq_table['headway_sec'] = headway
     freq_table['dwelling_time'] = '00:00:00'
 
@@ -292,30 +281,33 @@ def prepareFrequencyTables(headway=300):
     freq_table['frequency_id'] = freq_table.apply(lambda row: FREQ_ID[row.route_id], axis=1)
 
     # SimMobility bus frequency table (trip start to end specific)
-    dispatch_table = freq_table.rename(columns={'route_id':'line_id', 'arrival_time':'start_time', 'departure_time':'end_time'})
-    dispatch_table.sort_values(by=['line_id', 'arrival_in_sec'], inplace=True) #'stop_sequence'
-    start_dispatch = dispatch_table.drop_duplicates(subset=['line_id'], keep='first')
-    end_dispatch = dispatch_table.drop_duplicates(subset=['line_id'], keep='last')
-    dispatch_table_final = start_dispatch[['frequency_id', 'line_id', 'start_time', 'headway_sec','arrival_in_sec', 'original_time']].merge(end_dispatch[['line_id', 'end_time', 'departure_in_sec', 'original_time']], on='line_id', how='left')
-    print('num of rows1 ', len(dispatch_table_final))
+    dispatch_table = freq_table.rename(columns={'arrival_time':'start_time', 'departure_time':'end_time'})
+    dispatch_table.sort_values(by=['route_id', 'arrival_in_sec'], inplace=True) #'stop_sequence'
+    start_dispatch = dispatch_table.drop_duplicates(subset=['route_id'], keep='first')
+    end_dispatch = dispatch_table.drop_duplicates(subset=['route_id'], keep='last')
+    dispatch_table_final = start_dispatch[['frequency_id', 'route_id', 'start_time', 'headway_sec', 'arrival_in_sec']].merge(end_dispatch[['route_id', 'end_time', 'departure_in_sec']], on='route_id', how='left')
+    print('num of rows dispatch_table_final ', len(dispatch_table_final))
+    print('num of unique route ids ', len(dispatch_table_final.route_id.unique()))
     dispatch_table_final = dispatch_table_final[dispatch_table_final.arrival_in_sec < dispatch_table_final.departure_in_sec]
-    print('num of rows2 ', len(dispatch_table_final), len(dispatch_table_final.line_id.unique()))
-    dispatch_table_final = dispatch_table_final[['frequency_id', 'line_id', 'start_time', 'end_time', 'headway_sec']]
+    dispatch_table_final = dispatch_table_final[dispatch_table_final.start_time != dispatch_table_final.end_time]
+    print('num of unique route ids (start<final)', len(dispatch_table_final.route_id.unique()))
+    dispatch_table_final = dispatch_table_final[['frequency_id', 'route_id', 'start_time', 'end_time', 'headway_sec']]
+    dispatch_table_final.sort_values(by=['frequency_id'], inplace=True)
     dispatch_table_final.to_csv(databaseFolder + 'pt_bus_dispatch_freq.csv', index=False)
 
     # Public transit graph frequency table (stop to stop specific)
     journey_table = freq_table.rename(columns={'route_id': 'service_id', 'frequency_id':'trip_id'})
     journey_table.drop_duplicates(subset=['service_id', 'stop_sequence'], keep='first', inplace=True)
-# ourney_table.service_id.unique()
     journey_table['departure_time'] = journey_table['arrival_time'] # convention for public transit graph generation intput.
-    # journey_table['trip_id'] = 0
     journey_table = journey_table[['service_id', 'trip_id', 'stop_id', 'stop_sequence', 'arrival_time', 'departure_time', 'dwelling_time']]
     journey_table.to_csv(databaseFolder + 'bus_journeytime_31Mar18.csv', index=False)
-    print('Number of servies ', len(journey_table.service_id.unique()))
+    print('Number of services ', len(journey_table.service_id.unique()))
 
-
+print('Preparing for ', simFolder)
 # pruneShortTrips()
 # createBusRouteTables()
 # complete_bus_stops()
 # preparePreFreqTable()
-# prepareFrequencyTables()
+prepareFrequencyTables()
+# lat_long_stops()
+# getRouteSegment()

@@ -1,4 +1,5 @@
 import pandas as pd
+import geopandas as gpd
 import os
 import pandas as pd, datetime
 
@@ -205,4 +206,107 @@ def mergedStats(outDir=gtfsOutputDir):
     all_trips.to_csv(busFolder + 'trips.txt', index=False)
     all_stops.to_csv(busFolder + 'stops.txt', index=False)
 
-mergedStats()
+# mergedStats()
+route_columns= ['route_id', 'route_type']
+trip_columns= ["route_id", 'service_id', "trip_id", "direction_id", "shape_id", "service_id"]
+shape_columns= ["shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence"]
+stoptime_columns= ["trip_id", "stop_id", "stop_sequence", "arrival_time"]
+stop_columns= ['stop_id', 'stop_name', 'stop_lat', 'stop_lon', 'parent_station']
+
+def clean_without_merge():
+    gtfsInputDir= 'gtfs_israel/'
+    gtfsOutputDir = 'gtfs_clean_israel/'
+    stops_in_boundary = gpd.read_file(gtfsInputDir + 'stops_in_area/stops_in_area.shp')
+    stops_in_boundary['stop_lon'] = stops_in_boundary.apply(lambda r: r.geometry.x, axis=1)
+    stops_in_boundary['stop_lat'] = stops_in_boundary.apply(lambda r: r.geometry.y, axis=1)
+    stops_in_boundary['parent_station'] =  ''
+    stop_times = pd.read_csv(gtfsInputDir + 'stop_times.txt')
+    trips = pd.read_csv(gtfsInputDir + 'trips.txt')
+    routes = pd.read_csv(gtfsInputDir + 'routes.txt')
+    shapes = pd.read_csv(gtfsInputDir + 'shapes.txt')
+    # Filter out columns
+    routes = routes[route_columns]
+    stop_times = stop_times[stoptime_columns]
+    trips = trips[trip_columns]
+    stops_in_boundary = stops_in_boundary[stop_columns]
+    shapes = shapes[shape_columns]
+
+    # Integerize ids
+    stop_times['stop_id'] = stop_times['stop_id'].astype(int)
+    stop_times['trip_id'] = stop_times['trip_id'].astype(int)
+    trips['trip_id'] = trips['trip_id'].astype(int)
+    trips['route_id'] = trips['route_id'].astype(int)
+    routes['route_id'] = routes['route_id'].astype(int)
+    shapes['shape_id'] = shapes['shape_id'].astype(int)
+    stops_in_boundary['stop_id'] = stops_in_boundary['stop_id'].astype(int)
+    print('Number of trips ', len(trips.trip_id.unique()))
+    print('Number of routes ', len(routes.route_id.unique()))
+
+    # Find trips which go through the area of interest.
+    stops = set(stops_in_boundary['stop_id'].tolist())
+    stop_times = stop_times[stop_times['stop_id'].isin(stops)]
+    trips_to_keep = set(stop_times['trip_id'].tolist())
+    filtered_trips = trips[trips['trip_id'].isin(trips_to_keep)]
+    routes_to_keep = filtered_trips['route_id'].unique()
+    filtered_routes = routes[routes['route_id'].isin(routes_to_keep)]
+
+
+    train_routes = filtered_routes[filtered_routes['route_type'] != 3]
+    bus_routes = filtered_routes[filtered_routes['route_type'] == 3]
+
+    bus_route_ids  = bus_routes['route_id'].unique()
+    train_route_ids  = train_routes['route_id'].unique()
+
+    bus_trips = filtered_trips[filtered_trips['route_id'].isin(bus_route_ids)]
+    train_trips = filtered_trips[filtered_trips['route_id'].isin(train_route_ids)]
+
+    bus_trip_ids = bus_trips['trip_id'].unique()
+    bus_shape_ids = bus_trips['shape_id'].unique()
+    train_trip_ids = train_trips['trip_id'].unique()
+    train_shape_ids = train_trips['shape_id'].unique()
+
+    # Filter out stoptimes, shapes
+    bus_stop_times = stop_times[stop_times['trip_id'].isin(bus_trip_ids)]
+    bus_shapes = shapes[shapes['shape_id'].isin(bus_shape_ids)]
+    train_stop_times = stop_times[stop_times['trip_id'].isin(train_trip_ids)]
+    train_shapes = shapes[shapes['shape_id'].isin(train_shape_ids)]
+
+    # Filter out stops
+    bus_stop_ids = bus_stop_times['stop_id'].unique()
+    train_stop_ids = train_stop_times['stop_id'].unique()
+    bus_stops = stops_in_boundary[stops_in_boundary['stop_id'].isin(bus_stop_ids)]
+    train_stops = stops_in_boundary[stops_in_boundary['stop_id'].isin(train_stop_ids)]
+
+
+    print('Number of filtered bus trips ', len(bus_trip_ids))
+    print('Number of filtered train trips ', len(train_trip_ids))
+    print('Number of filtered bus stops ', len(bus_stop_ids))
+    print('Number of filtered train stops ', len(train_stop_ids))
+
+    # Write train and bus gtfs files
+    bus_trips.to_csv(gtfsOutputDir + '/bus/trips.txt', index=False)
+    bus_routes.to_csv(gtfsOutputDir + '/bus/routes.txt', index=False)
+    bus_stop_times.to_csv(gtfsOutputDir + '/bus/stop_times.txt', index=False)
+    bus_stops.to_csv(gtfsOutputDir + '/bus/stops.txt', index=False)
+    bus_shapes.to_csv(gtfsOutputDir + '/bus/shapes.txt', index=False)
+
+    train_trips.to_csv(gtfsOutputDir + '/train/trips.txt')
+    train_routes.to_csv(gtfsOutputDir + '/train/routes.txt')
+    train_stop_times.to_csv(gtfsOutputDir + '/train/stop_times.txt', index=False)
+    train_stops.to_csv(gtfsOutputDir + '/train/stops.txt', index=False)
+    train_shapes.to_csv(gtfsOutputDir + '/train/shapes.txt', index=False)
+
+
+    # print(stops_in_boundary.columns)
+    # print(stops_in_boundary.head(2))
+
+# clean_without_merge()
+gtfsInputDir = 'gtfs_source_small_example/gtfs-QueenAnne/'
+gtfsInputDir = 'gtfs_israel/'
+def clean_missing_time(inFile='stop_times_full.txt'):
+    stoptime_df = pd.read_csv(gtfsInputDir + inFile)
+    print('original stop time ', len(stoptime_df))
+    stoptime_df = stoptime_df.dropna()
+    stoptime_df.to_csv(gtfsInputDir + 'stop_times.txt')
+    print('cleaned stop time ', len(stoptime_df))
+clean_missing_time()

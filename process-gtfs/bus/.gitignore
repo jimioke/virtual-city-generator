@@ -4,3 +4,9 @@ process_big
 clean-gtfs
 to_db_big
 to_db_for_check
+gtfs_israel
+gtfs_clean_israel
+gtfs_clean_israel_backup
+to_db_tel_aviv
+process_tel_aviv
+__pycache__

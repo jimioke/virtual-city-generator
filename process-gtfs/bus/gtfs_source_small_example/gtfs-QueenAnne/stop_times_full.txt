@@ -1,0 +1,236 @@
+trip_id,arrival_time,departure_time,stop_id,stop_sequence,timepoint
+Easton AM Overflow_T01,07:10:00,07:10:00,22,0,1
+Easton AM Overflow_T01,07:16:00,07:16:00,9,1,1
+Easton AM Overflow_T01,07:27:00,07:30:00,13,2,1
+Easton AM Overflow_T01,07:45:00,07:50:00,4,3,1
+Easton AM Overflow_T01,08:10:00,08:10:00,7,4,1
+Easton AM Overflow_T01,08:12:00,08:12:00,3,5,1
+Easton AM Overflow_T01,08:15:00,08:15:00,20,6,1
+Easton AM Overflow_T01,08:21:00,08:21:00,24,7,1
+Easton AM Overflow_T01,08:42:00,08:42:00,4,8,1
+Easton AM Overflow_T01,09:01:00,09:01:00,13,9,1
+Easton Shuttle_T01,06:45:00,06:45:00,17,0,1
+Easton Shuttle_T01,06:48:00,06:48:00,25,1,1
+Easton Shuttle_T01,06:50:00,06:50:00,26,2,1
+Easton Shuttle_T01,07:10:00,07:10:00,13,3,1
+Easton Shuttle_T01,07:22:00,07:22:00,9,4,1
+Easton Shuttle_T01,07:26:00,07:26:00,1,5,1
+Easton Shuttle_T01,07:33:00,07:33:00,18,6,1
+Easton Shuttle_T01,07:35:00,07:35:00,23,7,1
+Easton Shuttle_T01,07:40:00,07:40:00,16,8,1
+Easton Shuttle_T01,07:42:00,07:42:00,12,9,1
+Easton Shuttle_T01,07:46:00,07:46:00,9,10,1
+Easton Shuttle_T01,08:00:00,08:00:00,13,11,1
+Easton Shuttle_T01,08:15:00,08:15:00,4,12,1
+Easton Shuttle_T01,08:37:00,08:40:00,24,13,1
+Easton Shuttle_T01,09:00:00,09:00:00,4,14,1
+Easton Shuttle_T01,09:15:00,09:30:00,13,15,1
+Easton Shuttle_T01,09:45:00,09:50:00,4,16,1
+Easton Shuttle_T01,10:05:00,10:05:00,17,17,1
+Easton Shuttle 2_T01,10:40:00,10:40:00,17,0,1
+Easton Shuttle 2_T01,,,25,1,1
+Easton Shuttle 2_T01,,,26,2,1
+Easton Shuttle 2_T01,10:46:00,10:46:00,11,3,1
+Easton Shuttle 2_T01,10:57:00,10:57:00,19,4,1
+Easton Shuttle 2_T01,11:05:00,11:10:00,13,5,1
+Easton Shuttle 2_T01,11:22:00,11:22:00,9,6,1
+Easton Shuttle 2_T01,11:26:00,11:26:00,1,7,1
+Easton Shuttle 2_T01,11:33:00,11:33:00,18,8,1
+Easton Shuttle 2_T01,11:35:00,11:35:00,23,9,1
+Easton Shuttle 2_T01,11:40:00,11:40:00,16,10,1
+Easton Shuttle 2_T01,11:44:00,11:44:00,12,11,1
+Easton Shuttle 2_T01,11:51:00,11:51:00,9,12,1
+Easton Shuttle 2_T01,12:00:00,12:00:00,13,13,1
+Easton Shuttle 3_T01,12:00:00,12:00:00,13,0,1
+Easton Shuttle 3_T01,12:15:00,12:15:00,4,1,1
+Easton Shuttle 3_T01,12:45:00,12:45:00,20,2,1
+Easton Shuttle 3_T01,,,10,3,1
+Easton Shuttle 3_T01,,,8,4,1
+Easton Shuttle 3_T01,13:05:00,13:06:00,24,5,1
+Easton Shuttle 3_T01,13:30:00,13:30:00,4,6,1
+Easton Shuttle 3_T01,13:45:00,13:45:00,13,7,1
+Easton PM Overflow_T01,13:43:00,14:07:00,13,0,1
+Easton PM Overflow_T01,14:22:00,14:22:00,4,1,1
+Easton PM Overflow_T01,14:46:00,14:46:00,24,2,1
+Easton PM Overflow_T01,14:50:00,14:50:00,3,3,1
+Easton PM Overflow_T01,14:52:00,15:10:00,20,4,1
+Easton PM Overflow_T01,15:15:00,15:15:00,7,5,1
+Easton PM Overflow_T01,15:25:00,15:25:00,24,6,1
+Easton PM Overflow_T01,15:46:00,15:50:00,4,7,1
+Easton PM Overflow_T01,16:05:00,16:05:00,13,8,1
+Easton PM Overflow_T01,16:17:00,16:17:00,22,9,1
+Easton PM Overflow_T01,16:22:00,16:22:00,9,10,1
+County Ride 1A_T01,07:30:00,07:30:00,17,0,1
+County Ride 1A_T01,,,25,1,1
+County Ride 1A_T01,,,26,2,1
+County Ride 1A_T01,07:36:00,07:36:00,11,3,1
+County Ride 1A_T01,07:47:00,07:47:00,19,4,1
+County Ride 1A_T01,07:55:00,08:00:00,13,5,1
+County Ride 1A_T01,08:12:00,08:12:00,9,6,1
+County Ride 1A_T01,08:16:00,08:16:00,1,7,1
+County Ride 1A_T01,08:23:00,08:30:00,18,8,1
+County Ride 1A_T01,08:32:00,08:32:00,23,9,1
+County Ride 1A_T01,08:37:00,08:37:00,16,10,1
+County Ride 1A_T01,08:41:00,08:41:00,12,11,1
+County Ride 1A_T01,08:48:00,08:48:00,18,12,1
+County Ride 1A_T01,08:50:00,08:50:00,23,13,1
+County Ride 1A_T01,08:56:00,08:56:00,1,14,1
+County Ride 1A_T01,09:01:00,09:01:00,14,15,1
+County Ride 1A_T01,09:05:00,09:05:00,9,16,1
+County Ride 1A_T01,09:16:00,09:20:00,13,17,1
+County Ride 1A_T01,09:28:00,09:28:00,19,18,1
+County Ride 1A_T01,09:37:00,09:37:00,11,19,1
+County Ride 1A_T01,09:43:00,09:43:00,25,20,1
+County Ride 1A_T01,09:47:00,09:47:00,17,21,1
+County Ride 1B_T01,10:00:00,10:00:00,17,0,1
+County Ride 1B_T01,,,25,1,1
+County Ride 1B_T01,,,26,2,1
+County Ride 1B_T01,10:06:00,10:06:00,11,3,1
+County Ride 1B_T01,10:17:00,10:17:00,19,4,1
+County Ride 1B_T01,10:25:00,10:30:00,13,5,1
+County Ride 1B_T01,10:42:00,10:42:00,9,6,1
+County Ride 1B_T01,10:46:00,10:46:00,1,7,1
+County Ride 1B_T01,10:53:00,11:30:00,18,8,1
+County Ride 1B_T01,11:32:00,11:32:00,23,9,1
+County Ride 1B_T01,11:37:00,11:37:00,16,10,1
+County Ride 1B_T01,11:41:00,11:41:00,12,11,1
+County Ride 1B_T01,11:48:00,11:48:00,18,12,1
+County Ride 1B_T01,11:50:00,11:50:00,23,13,1
+County Ride 1B_T01,11:56:00,11:56:00,1,14,1
+County Ride 1B_T01,12:01:00,12:01:00,14,15,1
+County Ride 1B_T01,12:05:00,12:05:00,9,16,1
+County Ride 1B_T01,12:16:00,12:20:00,13,17,1
+County Ride 1B_T01,12:28:00,12:28:00,19,18,1
+County Ride 1B_T01,12:37:00,12:37:00,11,19,1
+County Ride 1B_T01,12:43:00,12:43:00,25,20,1
+County Ride 1B_T01,12:47:00,12:47:00,17,21,1
+County Ride 1C_T01,13:00:00,13:00:00,17,0,1
+County Ride 1C_T01,,,25,1,1
+County Ride 1C_T01,,,26,2,1
+County Ride 1C_T01,13:06:00,13:06:00,11,3,1
+County Ride 1C_T01,13:17:00,13:17:00,19,4,1
+County Ride 1C_T01,13:25:00,13:30:00,13,5,1
+County Ride 1C_T01,13:42:00,13:42:00,9,6,1
+County Ride 1C_T01,13:46:00,13:46:00,1,7,1
+County Ride 1C_T01,13:53:00,14:00:00,18,8,1
+County Ride 1C_T01,14:02:00,14:02:00,23,9,1
+County Ride 1C_T01,14:07:00,14:07:00,16,10,1
+County Ride 1C_T01,14:11:00,14:11:00,12,11,1
+County Ride 1C_T01,14:18:00,14:18:00,18,12,1
+County Ride 1C_T01,14:20:00,14:20:00,23,13,1
+County Ride 1C_T01,14:26:00,14:26:00,1,14,1
+County Ride 1C_T01,14:31:00,14:31:00,14,15,1
+County Ride 1C_T01,14:35:00,14:35:00,9,16,1
+County Ride 1C_T01,14:46:00,14:50:00,13,17,1
+County Ride 1C_T01,14:58:00,14:58:00,19,18,1
+County Ride 1C_T01,15:07:00,15:07:00,11,19,1
+County Ride 1C_T01,15:13:00,15:13:00,25,20,1
+County Ride 1C_T01,15:17:00,15:17:00,17,21,1
+County Ride 2B_T01,11:30:00,11:30:00,17,0,1
+County Ride 2B_T01,,,25,1,1
+County Ride 2B_T01,,,26,2,1
+County Ride 2B_T01,11:36:00,11:36:00,11,3,1
+County Ride 2B_T01,11:47:00,11:47:00,19,4,1
+County Ride 2B_T01,11:55:00,12:00:00,13,5,1
+County Ride 2B_T01,12:12:00,12:12:00,9,6,1
+County Ride 2B_T01,12:16:00,12:16:00,1,7,1
+County Ride 2B_T01,12:23:00,13:00:00,18,8,1
+County Ride 2B_T01,13:02:00,13:02:00,23,9,1
+County Ride 2B_T01,13:07:00,13:07:00,16,10,1
+County Ride 2B_T01,13:11:00,13:11:00,12,11,1
+County Ride 2B_T01,13:18:00,13:18:00,18,12,1
+County Ride 2B_T01,13:20:00,13:20:00,23,13,1
+County Ride 2B_T01,13:26:00,13:26:00,1,14,1
+County Ride 2B_T01,13:31:00,13:31:00,14,15,1
+County Ride 2B_T01,13:35:00,13:35:00,9,16,1
+County Ride 2B_T01,13:46:00,13:50:00,13,17,1
+County Ride 2B_T01,13:58:00,13:58:00,19,18,1
+County Ride 2B_T01,14:07:00,14:07:00,11,19,1
+County Ride 2B_T01,,,25,20,1
+County Ride 2B_T01,14:17:00,14:17:00,17,21,1
+County Ride 2C_T01,14:30:00,14:30:00,17,0,1
+County Ride 2C_T01,,,25,1,1
+County Ride 2C_T01,,,26,2,1
+County Ride 2C_T01,14:36:00,14:36:00,11,3,1
+County Ride 2C_T01,14:47:00,14:47:00,19,4,1
+County Ride 2C_T01,14:55:00,15:00:00,13,5,1
+County Ride 2C_T01,15:12:00,15:12:00,9,6,1
+County Ride 2C_T01,15:16:00,15:16:00,1,7,1
+County Ride 2C_T01,15:23:00,15:30:00,18,8,1
+County Ride 2C_T01,15:32:00,15:32:00,23,9,1
+County Ride 2C_T01,15:37:00,15:37:00,16,10,1
+County Ride 2C_T01,15:41:00,15:41:00,12,11,1
+County Ride 2C_T01,15:48:00,15:48:00,18,12,1
+County Ride 2C_T01,15:50:00,15:50:00,23,13,1
+County Ride 2C_T01,15:56:00,15:56:00,1,14,1
+County Ride 2C_T01,16:01:00,16:01:00,14,15,1
+County Ride 2C_T01,16:05:00,16:05:00,9,16,1
+County Ride 2C_T01,16:16:00,16:20:00,13,17,1
+County Ride 2C_T01,16:28:00,16:28:00,19,18,1
+County Ride 2C_T01,16:37:00,16:37:00,11,19,1
+County Ride 2C_T01,16:43:00,16:43:00,25,20,1
+County Ride 2C_T01,16:47:00,16:47:00,17,21,1
+County Ride 2A_T01,09:00:00,09:00:00,17,0,1
+County Ride 2A_T01,,,25,1,1
+County Ride 2A_T01,,,26,2,1
+County Ride 2A_T01,09:06:00,09:06:00,11,3,1
+County Ride 2A_T01,09:17:00,09:17:00,19,4,1
+County Ride 2A_T01,09:24:00,09:24:00,5,5,1
+County Ride 2A_T01,09:25:00,09:30:00,13,6,1
+County Ride 2A_T01,09:42:00,09:42:00,9,7,1
+County Ride 2A_T01,09:46:00,09:46:00,1,8,1
+County Ride 2A_T01,09:53:00,10:00:00,18,9,1
+County Ride 2A_T01,10:02:00,10:02:00,23,10,1
+County Ride 2A_T01,10:07:00,10:07:00,16,11,1
+County Ride 2A_T01,10:11:00,10:11:00,12,12,1
+County Ride 2A_T01,10:18:00,10:18:00,18,13,1
+County Ride 2A_T01,10:20:00,10:20:00,23,14,1
+County Ride 2A_T01,10:26:00,10:26:00,1,15,1
+County Ride 2A_T01,10:31:00,10:31:00,14,16,1
+County Ride 2A_T01,10:35:00,10:35:00,9,17,1
+County Ride 2A_T01,10:46:00,10:50:00,13,18,1
+County Ride 2A_T01,10:58:00,10:58:00,19,19,1
+County Ride 2A_T01,11:07:00,11:07:00,11,20,1
+County Ride 2A_T01,11:13:00,11:13:00,25,21,1
+County Ride 2A_T01,11:17:00,11:17:00,17,22,1
+Annapolis AM1_T01,06:15:00,06:15:00,17,0,1
+Annapolis AM1_T01,06:30:00,06:30:00,19,1,1
+Annapolis AM1_T01,06:45:00,06:45:00,22,2,1
+Annapolis AM1_T01,07:10:00,07:10:00,6,3,1
+Annapolis AM1_T01,07:55:00,07:55:00,22,4,1
+Annapolis AM1_T01,08:00:00,08:00:00,16,5,1
+Annapolis AM1_T01,08:05:00,08:05:00,9,6,1
+Annapolis AM1_T01,08:20:00,08:20:00,13,7,1
+Annapolis AM1_T01,08:28:00,08:28:00,19,8,1
+Annapolis AM1_T01,08:48:00,08:48:00,17,9,1
+Annapolis AM2_T01,09:00:00,09:00:00,17,0,1
+Annapolis AM2_T01,09:20:00,09:20:00,13,1,1
+Annapolis AM2_T01,09:35:00,09:35:00,18,2,1
+Annapolis AM2_T01,09:40:00,09:40:00,22,3,1
+Annapolis AM2_T01,10:05:00,10:05:00,21,4,1
+Annapolis AM2_T01,10:10:00,10:20:00,2,5,1
+Annapolis AM2_T01,10:45:00,10:45:00,22,6,1
+Annapolis AM2_T01,10:50:00,10:50:00,18,7,1
+Annapolis AM2_T01,11:05:00,11:05:00,9,8,1
+Annapolis AM2_T01,11:25:00,11:25:00,13,9,1
+Annapolis AM2_T01,11:33:00,11:33:00,19,10,1
+Annapolis AM2_T01,11:45:00,11:45:00,17,11,1
+Annapolis PM1_T01,12:40:00,12:40:00,17,0,1
+Annapolis PM1_T01,13:00:00,13:00:00,13,1,1
+Annapolis PM1_T01,13:15:00,13:15:00,18,2,1
+Annapolis PM1_T01,13:20:00,13:20:00,22,3,1
+Annapolis PM1_T01,13:45:00,13:55:00,21,4,1
+Annapolis PM1_T01,14:00:00,14:02:00,2,5,1
+Annapolis PM1_T01,14:25:00,14:25:00,22,6,1
+Annapolis PM1_T01,14:30:00,14:30:00,18,7,1
+Annapolis PM1_T01,14:55:00,14:55:00,13,8,1
+Annapolis PM1_T01,15:03:00,15:03:00,19,9,1
+Annapolis PM1_T01,15:15:00,15:15:00,17,10,1
+Annapolis PM2_T01,15:25:00,15:25:00,17,0,1
+Annapolis PM2_T01,15:55:00,15:55:00,22,1,1
+Annapolis PM2_T01,16:20:00,16:20:00,6,2,1
+Annapolis PM2_T01,16:45:00,16:45:00,22,3,1
+Annapolis PM2_T01,17:05:00,17:05:00,9,4,1
+Annapolis PM2_T01,17:25:00,17:25:00,13,5,1
+Annapolis PM2_T01,17:33:00,17:33:00,19,6,1
+Annapolis PM2_T01,17:45:00,17:45:00,17,7,1
