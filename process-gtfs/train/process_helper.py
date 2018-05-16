@@ -40,9 +40,8 @@ ROUTE_TYPE = {
 # 6 - Gondola, Suspended cable car - 1300
 # 7 - Funicular - 1400
 
-def convertCoordinates(toCRS=CURRENT_CRS):
+def convertCoordinates(inputFolder, toCRS=CURRENT_CRS):
     """ Convert train stops crs from xy to lat and long. """
-    inputFolder = 'Outputs/to_db/'
     stops = pd.read_csv(inputFolder + 'mrt_stop.csv')
     stops_cols = stops.columns
     coords = [Point(xy) for xy in zip(stops.x, stops.y)]
@@ -411,7 +410,7 @@ def formatSecond(deltaSeconds):
     total_time =  total_time.strftime("%H:%M:%S")
     return total_time
 
-def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
+def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=300):
     """
     Find line dispatch time tables.
 
@@ -436,6 +435,8 @@ def dispatch_freq(line_stoptime, line_toStartTimes, headway_sec=60):
         startTimeInSeconds = [InSeconds(t) for t in startTimes]
         start_time = min(startTimeInSeconds)
         end_time = max(startTimeInSeconds)
+        if start_time == end_time:
+            end_time += 2*3600
         dispatch_freq.append((line, start_time, end_time, headway_sec))
     dispatch_freq = pd.DataFrame.from_records(dispatch_freq, columns=['line_id', 'start_time', 'end_time', 'headway_sec'])
     print(dispatch_freq)

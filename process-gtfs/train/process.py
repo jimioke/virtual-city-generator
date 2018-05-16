@@ -71,11 +71,12 @@ train_transit_edge = transit_edge(dispatch_detialed)
 train_uturn_platforms.to_csv(outputFolder + 'train_uturn_platforms.csv', index=False)
 mrt_line_properties.to_csv(outputFolder + 'mrt_line_properties.csv', index=False)
 train_fleet.to_csv(outputFolder + 'train_fleet.csv', index=False)
-train_transit_edge.to_csv(outputFolder + 'train_transit_edge.csv', index=False)
+train_transit_edge.to_csv(outputFolder + 'rail_transit_edge.csv', index=False)
 
 line_stoptime.to_csv(outputFolder + 'line_stoptime.csv', index=False)
 transfer_time.to_csv(outputFolder + 'pt_train_platform_transfer_time.csv', index=False)
 train_stop.to_csv(outputFolder + 'mrt_stop.csv', index=False)
+train_stop.to_csv(outputFolder + 'train_stop.csv', index=False)
 train_platform[train_platform_cols].to_csv(outputFolder + 'train_platform.csv', index=False)
 train_block.to_csv(outputFolder + 'pt_train_block.csv', index=False)
 train_block_polyline.to_csv(outputFolder + 'pt_train_block_polyline.csv', index=False)
@@ -96,10 +97,10 @@ dispatch_detialed[dispatch_detialed_cols].to_csv(outputFolder + 'weekday_train_s
 # # train_route = pd.read_csv(outputFolder + 'train_route.csv')
 #
 
-print('Convert segments -------------------------------------')
-convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
-access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
-access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
-#
-# # We need train stops in lat and long for public transit graph generation.
-convertCoordinates()
+# print('Convert segments -------------------------------------')
+# convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
+# access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
+# access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
+# #
+# # # We need train stops in lat and long for public transit graph generation.
+convertCoordinates(outputFolder)
