@@ -14,7 +14,7 @@ library("data.table")
     #create a folder named after version
   vs<-"31Mar18"
 #  2) # ---------input folder dir
-  local_dir<-str_c("~/Desktop/public-transit-graph/correct-full-generation/", vs, "/")
+  local_dir<-str_c("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/", vs, "/")
 #  3)  #origin and destination nodes file---
   local_P_nodes_dir<-str_c(local_dir, "P_nodes","_", vs, ".csv")
 #  4) # Bus stop file
@@ -56,7 +56,7 @@ library("data.table")
 #==========================================================
 
 #-----prepare SimMobility network -- generate intermediat output 5.1-5.7
-source("~/Desktop/public-transit-graph/correct-full-generation/R files/Prepare_SimM_Network.R")
+source("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/R files/Prepare_SimM_Network.R")
 
 #----build simmobility network --- generate output 1-4
-source("~/Desktop/public-transit-graph/correct-full-generation/R files/Build_SimM_Network.R")
+source("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/R files/Build_SimM_Network.R")

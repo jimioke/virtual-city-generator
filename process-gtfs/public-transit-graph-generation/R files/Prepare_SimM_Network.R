@@ -1,9 +1,9 @@
 # Prepare network edges and vertexes
 
 #---load functions
-source("~/Desktop/public-transit-graph/correct-full-generation/R files/SimM_Access_Egress_legs.R")
-source("~/Desktop/public-transit-graph/correct-full-generation/R files/SimM_stopsTOwalk_legs.R")
-source("~/Desktop/public-transit-graph/correct-full-generation/R files/Generate_SimM_Route_Segment.R")
+source("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/R files/SimM_Access_Egress_legs.R")
+source("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/R files/SimM_stopsTOwalk_legs.R")
+source("~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation/R files/Generate_SimM_Route_Segment.R")
 
 # -----------------------generate BUS  route segment from raw data
 #INPUT1: use updated schedule and stop files from SimMobility

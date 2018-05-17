@@ -13,18 +13,18 @@ BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
 
 # Baltimore
-simFolder = 'Auto_sprawl_drive_main/simmobility/'
-gtfsFolder = 'clean-gtfs/MergedBus/'
-processFolder = 'process_big/'
-databaseFolder = 'to_db_big/'
-CURRENT_CRS =  BALTIMORE_CRS
+# simFolder = 'Auto_sprawl_drive_main/simmobility/'
+# gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
+# processFolder = 'process_baltimore/'
+# databaseFolder = 'to_db_baltimore/'
+# CURRENT_CRS =  BALTIMORE_CRS
 
 # Tel Aviv
-# simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
-# gtfsFolder = 'gtfs_clean_israel/bus/'
-# processFolder = 'process_tel_aviv/'
-# databaseFolder = 'to_db_tel_aviv/'
-# CURRENT_CRS = TELAVIV_CRS
+simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
+gtfsFolder = 'gtfs_clean_israel/bus/'
+processFolder = 'process_telaviv/'
+databaseFolder = 'to_db_telaviv/'
+CURRENT_CRS = TELAVIV_CRS
 
 # Small example
 # simFolder = 'Baltimore_small/simmobility/'
@@ -304,10 +304,10 @@ def prepareFrequencyTables(headway=300):
     print('Number of services ', len(journey_table.service_id.unique()))
 
 print('Preparing for ', simFolder)
-# pruneShortTrips()
-# createBusRouteTables()
-# complete_bus_stops()
-# preparePreFreqTable()
+# pruneShortTrips() Not necessary since createBusRouteTables calls it.
+createBusRouteTables()
+complete_bus_stops()
+preparePreFreqTable()
 prepareFrequencyTables()
-# lat_long_stops()
-# getRouteSegment()
+lat_long_stops()
+getRouteSegment()

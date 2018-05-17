@@ -17,7 +17,11 @@ It is some helper functions for creating public transit graph
   install.packages('oce', repos='http://cran.rstudio.com/', type='source')
 
 3. Run the R-script
-  setwd(".../public-transit-graph-generation/R files/")
+  Before that find all hard coded directory
+  ~/Desktop/virtual-city-generator/process-gtfs/public-transit-graph-generation
+  in your R\ files and change it to your current directory.
+
+  setwd("???/R files/")
   source("MainFile_SimM_Network.R")
 
 4. You can upload generated graph to pt_edge and pt_vertex tables using

@@ -16,14 +16,14 @@ TELAVIV_CRS = {'init': 'epsg:2039'}
 
 # Baltimore
 simFolder = 'Auto_sprawl_drive_main/simmobility/'
-gtfsFolder = 'clean-gtfs/MergedBus/'
-processFolder = 'process_big/'
+gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
+processFolder = 'process_baltimore/'
 CURRENT_CRS =  BALTIMORE_CRS
 
 # Tel Aviv
 # simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
 # gtfsFolder = 'gtfs_clean_israel/bus/'
-# processFolder = 'process_tel_aviv/'
+# processFolder = 'process_telaviv/'
 # CURRENT_CRS =  TELAVIV_CRS
 
 # # Small example

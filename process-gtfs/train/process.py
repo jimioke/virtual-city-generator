@@ -54,12 +54,11 @@ LinePairs = {
 
 # Expect each shape is a unique line (one direcion) and must pair up with other shape.
 route_df, shape, stops_df, stoptime_df, trip_df = get_gtfs(inFolder='Outputs/clean_gtfs/')
-# trip, linetime, line_toStartTimes
 trip_wLine, stoptime_df, line_stoptime, line_toStartTimes = createLinesPlatformName(stoptime_df, stops_df, trip_df, route_df, shape, LinePairs)
 train_route_platform, train_route, train_block, train_block_polyline, line_stoptime = createBlocks(line_stoptime, shape)
 train_stop, train_platform, line_stoptime = platform_stations(line_stoptime, stops_df)
 dispatch_freq_table, dispatch_detialed = dispatch_freq(line_stoptime, line_toStartTimes)
-#
+
 transfer_time = transfer_time(train_platform)
 opposite_lines = line_stoptime.drop_duplicates(subset=['line_id'])
 opposite_lines = opposite_lines.rename(columns={'line_id':'line'})[['line', 'opp_line']]
@@ -86,21 +85,11 @@ opposite_lines.to_csv(outputFolder + 'pt_opposite_lines.csv', index=False)
 dispatch_freq_table.to_csv(outputFolder + 'pt_train_dispatch_freq.csv', index=False)
 dispatch_detialed[dispatch_detialed_cols].to_csv(outputFolder + 'weekday_train_seq_31Mar18.csv', index=False)
 
-#
-# # Use when we want use created tables.
-# # line_stoptime = pd.read_csv(outputFolder + 'line_stoptime.csv')
-# # train_stop = pd.read_csv(outputFolder + 'pt_train_stop.csv')
-# # train_platform = pd.read_csv(outputFolder + 'pt_train_platform.csv')
-# # train_block = pd.read_csv(outputFolder + 'pt_train_block.csv')
-# # train_block_polyline = pd.read_csv(outputFolder + 'pt_train_block_polylines.csv')
-# # train_route_platform = pd.read_csv(outputFolder + 'train_route_platform.csv')
-# # train_route = pd.read_csv(outputFolder + 'train_route.csv')
-#
 
 # print('Convert segments -------------------------------------')
-# convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
-# access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
-# access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
+convertSegment(simFolder='Auto_sprawl_drive_main/SimMobility/')
+access_segment = find_access_segment(train_stop, simFolder='Auto_sprawl_drive_main/simmobility/')
+access_segment.to_csv(outputFolder + 'train_access_segment.csv', index=False)
 # #
-# # # We need train stops in lat and long for public transit graph generation.
+# We need train stops in lat and long for public transit graph generation.
 convertCoordinates(outputFolder)

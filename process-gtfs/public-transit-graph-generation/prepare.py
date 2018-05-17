@@ -59,7 +59,6 @@ def get_from_db():
     print("Done")
     conn.commit()
     conn.close()
-
 # get_from_db()
 
 def testFiles(inFolder='31Mar18/'):
