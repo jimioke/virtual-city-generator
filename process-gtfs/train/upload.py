@@ -5,7 +5,7 @@ FOLDER = 'Outputs/to_db_may15/'
 # tables = ['age_category','education','employment_sector','gender','income_category']
 tables = [
 'mrt_line_properties',
-# 'mrt_stop',
+# 'mrt_stop', #train_stop the same?
 'pt_opposite_lines',
 'pt_train_block_polyline',
 'pt_train_block',
@@ -17,19 +17,12 @@ tables = [
 'train_fleet',
 'train_platform',
 'train_uturn_platforms',
-# 'train_transit_edge',
 'train_stop',
 'mrt_stop_wgs84',
 'rail_transit_edge'
 ]
 
-# tables = [
-# # 'pt_train_route',
-# # 'pt_train_route_platform',
-# # 'train_platform',
-# 'mrt_stop_wgs84',
-# # 'rail_transit_edge'
-# ]
+
 filenames = [ FOLDER + f+'.csv' for f in tables]
 tables = ['supply.' + item for item in tables]
 
