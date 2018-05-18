@@ -7,16 +7,9 @@ import geopandas as gpd
 import pyproj
 
 
-LAT_LONG_PROJECTION = pyproj.Proj(init='EPSG:4326')
-BALTIMORE_PROJECTION = pyproj.Proj(init='EPSG:6487')
-
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
-
-project = partial(
-    pyproj.transform,
-    LAT_LONG_PROJECTION,
-    BALTIMORE_PROJECTION)
+CURRENT_CRS = BALTIMORE_CRS
 
 
 # Function using pyproj to convert state plane to lat/lon
@@ -67,7 +60,7 @@ def linksTravelTime():
     travelTime_df.to_csv(outFOLDER + 'link_travel_time.csv', index=False)
 # linksTravelTime()
 
-def project_x_y(inFOLDER, fileName, toCRS=BALTIMORE_CRS):
+def project_x_y(inFOLDER, fileName, toCRS=CURRENT_CRS):
     inSubFolder = inFOLDER + 'simmobility_wgs84/'
     outSubFolder = inFOLDER + 'simmobility_crs_projected/'
     df = pd.read_csv(inSubFolder + fileName)
