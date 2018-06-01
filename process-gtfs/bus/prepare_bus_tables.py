@@ -235,6 +235,7 @@ def EndTime(time):
 def InSeconds(time):
     time_units = time.split(':')
     seconds = int(time_units[0])*3600 + int(time_units[1])*60 + int(time_units[2])
+    seconds = seconds % (24 * 3600)
     return seconds
 
 
@@ -315,7 +316,7 @@ def findTravelTimeBetweenStops():
             if not stops in travelTime_btn_stops:
                 print("TRAVEL TIME NEED TO BE SET for ", stops)
                 #TODO: travelTime_btn_stops[stops] = DISTANCE / BUS_SPEED
-                travelTime_btn_stops[stops] = 5*3600
+                travelTime_btn_stops[stops] = 5 * 60 # 5 min default
     travelTime_btn_stops =  pd.DataFrame.from_records(list(travelTime_btn_stops.items()), columns=['stops', 'timeInSeconds'])
     travelTime_btn_stops.to_pickle(processFolder + 'travelTime_btn_stops.pkl')
 
