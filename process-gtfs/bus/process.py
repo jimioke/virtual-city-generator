@@ -12,7 +12,17 @@ from process_helper2 import *
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
+CURRENT_CRS =  BALTIMORE_CRS #TELAVIV_CRS
 
+# PREPARE SIMMOBILITY
+simFolder = 'Auto_sprawl_drive_main/simmobility/'
+gtfsFolder = 'clean-gtfs/MergedBus/'
+processFolder = 'process_big/'
+#
+#
+# simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
+# gtfsFolder = 'gtfs_clean_israel/bus/'
+# processFolder = 'process_tel_aviv/'
 
 # Baltimore
 simFolder = 'Auto_sprawl_drive_main/simmobility/'
@@ -20,11 +30,10 @@ gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
 processFolder = 'process_baltimore/'
 CURRENT_CRS =  BALTIMORE_CRS
 
-# Tel Aviv
-# simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
-# gtfsFolder = 'gtfs_clean_israel/bus/'
-# processFolder = 'process_telaviv/'
-# CURRENT_CRS =  TELAVIV_CRS
+# # Small example
+# simFolder = 'Baltimore_small/simmobility/'
+# gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
+# processFolder = 'process_small_example/'
 
 # # Small example
 # simFolder = 'Baltimore_small/simmobility/'
@@ -32,6 +41,17 @@ CURRENT_CRS =  BALTIMORE_CRS
 # processFolder = 'process_small_example/'
 # CURRENT_CRS =  BALTIMORE_CRS
 
+
+def findCandidateSegments(bufferSize=400):
+    gtfs_trips_df, gtfs_stoptime_df, gtfs_shape_df, gtfs_stop_df = readGTFS(gtfsFolder,
+        trip='trips.txt', stoptime='stop_times.txt', shape='shapes.txt', stop='stops.txt')
+    segmentGeo = getRoadNetworkGeos(simFolder, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS)
+    segmentGeo.to_file(processFolder + 'SegmentGeo')
+    busStops, busShapes = getBusRouteGeo(gtfs_stop_df, gtfs_shape_df, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS)
+    busStops.to_file(processFolder + 'busStops')
+    busShapes.to_file(processFolder + 'busShapes')
+    candidateShapeSegments = findRouteCandidateSegments(segmentGeo, busShapes, processFolder, bufferSize=bufferSize)
+    candidateShapeSegments.to_file(processFolder + 'candidateSegments')
 
 def findCandidateSegments(bufferSize=400):
     gtfs_trips_df, gtfs_stoptime_df, gtfs_shape_df, gtfs_stop_df = readGTFS(gtfsFolder,
@@ -58,6 +78,10 @@ def getSegment(simFolder=simFolder):
     # segmentsWithNodes_duplicated.to_file(processFolder + 'segmentsWithNodes_duplicated')
     segmentsWithNodes.drop_duplicates(subset=['ends'], inplace=True)
     segmentsWithNodes.to_file(processFolder + 'segmentsWithNodes')
+    # 'id', 'link_id', 'sequence', 'num_lanes', 'capacity', 'max_speed',
+    #    'tags', 'link_category', 'length', 'from_node', 'to_node', 'ends',
+    #    'geometry'
+# getSegment()
 
 
 # Step 3: Find a start point for each segment. For each bus stop, we find
@@ -93,7 +117,8 @@ def stop_to_Segment(maxDistance=400):
     stopSegment['str_end_nodes'] = stopSegment.apply(lambda row: str(int(row.from_node)) + '_' + str(int(row.to_node)), axis=1)
     stopSegment.to_csv(processFolder + 'cleaned_stop_segmentEnd.csv')
     print(stopSegment.columns)
-
+    # Index(['stop_id', 'segment_id', 'from_node', 'to_node', 'distance', 'str_end_nodes']
+# stop_to_Segment()
 
 # Step 6: Find a unique trips which we will construct.
 def mainUniqueBusRoutes():
@@ -111,8 +136,6 @@ def getConnectedConsequentStops():
     stopConnection_df = getShortestPath(trip_stops, candidateShapeSegments, stopSegmentEnd)
     stopConnection_df.to_pickle(processFolder + 'connectedStops.pkl')
 
-
-# Step 8: Construct connected trips
 def processConnectedStops():
     stopConnection = pd.read_pickle(processFolder + 'connectedStops.pkl')
     stopConnection.index = stopConnection.apply(lambda row: str(int(row.startStop)) + '_' + str(int(row.endStop)), axis=1)
@@ -134,19 +157,30 @@ def processConnectedStops():
                 if len(node_sequence) > 3: # length must be at least 3
                     stopSeg1 = (node_sequence[0], node_sequence[1])
                     stopSeg2 = (node_sequence[-2], node_sequence[-1])
-                    if len(path_stops) == 0:
+                    if s2 in stop_to_segment:
+                        assert(stop_to_segment[s2] == stopSeg2)
+                        # TODO: If assert fails, make it disconnected.
+                    stop_to_segment[s2] = stopSeg2
+                    if len(path_stops) == 0: # first
                         path_stops = [s1,s2]
                         path_segmentEnds += node_sequence
-                        stop_segmentEnds += [stopSeg1, stopSeg2]
+                        stop_segmentEnds += [stopSeg1, stopSeg2] # Very first segment might change
                     # check if (... from1 -->to) + (from2-->D); fact (from2-->to) exists
-                    elif path_segmentEnds[-2] == node_sequence[0]:
-                        path_stops.append(s2) # s1 already appended  (... A->B) + (A->C ...) ==> ... A --> C ...
-                        path_segmentEnds = path_segmentEnds[:-1] + node_sequence[1:]
-                        stop_segmentEnds.append(stopSeg2) # leave the very first node
-                    # Untwist # check if (... from1 -->to) + (from2-->D); fact (from2-->to) exists
-                    # TODO: check if to --> from2, then simply add to --> from2
                     else:
-                        disconnected=True
+                        if path_segmentEnds[-1] != node_sequence[0] or path_stops[-1] != s1:
+                            print('\n path_segmentEnds ', path_segmentEnds)
+                            print('\n path_stops ', path_stops)
+                            print('\n stops s1, s2', s1, s2)
+                            print('\n node_sequence btwn s1, s2', node_sequence)
+                            print('\n stop seg stopSeg1, stopSeg2', stopSeg1, stopSeg2)
+
+
+                        assert(path_segmentEnds[-1] == node_sequence[0])
+                        assert(path_stops[-1] == s1)
+                        path_stops.append(s2)
+                        path_segmentEnds += node_sequence[1:]
+                        # stop_segmentEnds[-1] = stopSeg1
+                        stop_segmentEnds.append(stopSeg2)
                 else:
                     disconnected=True
             else:
@@ -161,12 +195,17 @@ def processConnectedStops():
                 disconnected = False
 
     subtrips = pd.DataFrame.from_records(subtrips, columns=['trip_id', 'shape_id', 'stops', 'path_segmentEnds', 'stop_segmentEnds'])
+    for i, row in subtrips.iterrows():
+        if row.stops[0] in stop_to_segment:
+            first_stop_segEnds = stop_to_segment[row.stops[0]]
+            subtrips.loc[i, "stop_segmentEnds"] = [first_stop_segEnds] + row.stop_segmentEnds[1:]
+            subtrips.loc[i, "path_segmentEnds"] = [first_stop_segEnds[0]] + row.path_segmentEnds
+
     subtrips['number_stops'] = subtrips.apply(lambda row: len(row.stops), axis=1)
     print('Number of subtrips ', len(subtrips))
     print('Max number of stops ', subtrips.number_stops.max())
     print('Avg number of stops ', subtrips.number_stops.mean())
     subtrips.to_pickle(processFolder + 'subtrips_found.pkl')
-
 
 # Step 9: Express trips in segments as SimMobility requires.
 def segmentizeTrips():
@@ -179,7 +218,6 @@ def segmentizeTrips():
         ends_string = str(int(ends[0])) + '_' + str(int(ends[1]))
         return segmentsWithNodes.loc[ends_string, 'id']
     subtrips['path_segmentEnds'] = subtrips.apply(lambda row: list(zip(row.path_segmentEnds[:-1], row.path_segmentEnds[1:])), axis=1)
-    # print(subtrips['path_segmentEnds'])
     def segmentize(segmentEnds):
         segments = []
         for ends in segmentEnds:
@@ -210,6 +248,19 @@ getSegment()
 print('Step 3: Find a start point for each segment.')
 getSegment_startEndPoint()
 
+def test():
+    subtrips = pd.read_pickle(processFolder + 'subtrips_found.pkl')
+    print(subtrips.head(10))
+
+
+# print('Step 1: Find segments which are in buffered bus routes.')
+# findCandidateSegments()
+# #
+# print('Step 2: Convert segments into graph with end vertices.')
+# getSegment()
+#
+# print('Step 3: Find a start point for each segment.')
+# getSegment_startEndPoint()
 # # Step 4: Find the nearest segment end for each bus stop. (QGIS NNjoin tool)
 #     # input files: busStops and segmentStartPoint in processFolder ( add prefex 'S')
 #     # output: stop_to_segmentEnd
@@ -220,7 +271,7 @@ getSegment_startEndPoint()
 #
 # print('Step 6: Find a unique trips which we will construct.')
 # mainUniqueBusRoutes()
-#
+
 # print('Step 7: Find connected subsequent bus stops')
 # getConnectedConsequentStops()
 #
