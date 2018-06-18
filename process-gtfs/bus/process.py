@@ -12,7 +12,9 @@ from process_helper2 import *
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
-CURRENT_CRS =  BALTIMORE_CRS #TELAVIV_CRS
+SINGAPORE_CRS = {'init': 'epsg:3414'}
+
+CURRENT_CRS =  SINGAPORE_CRS #TELAVIV_CRS
 
 # PREPARE SIMMOBILITY
 simFolder = 'Auto_sprawl_drive_main/simmobility/'
@@ -28,7 +30,12 @@ processFolder = 'process_big/'
 simFolder = 'Auto_sprawl_drive_main/simmobility/'
 gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
 processFolder = 'process_baltimore/'
-CURRENT_CRS =  BALTIMORE_CRS
+
+#Singapore
+simFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/04-Innovative-Heavyweight-Singapore/Network/simmobility_wgs84/'
+gtfsFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/04-Innovative-Heavyweight-Singapore/GTFS/bus/'
+processFolder = 'process_innovative_heavyweight/'
+
 
 # # Small example
 # simFolder = 'Baltimore_small/simmobility/'
