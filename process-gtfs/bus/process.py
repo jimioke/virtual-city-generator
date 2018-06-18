@@ -5,7 +5,7 @@ from shapely.geometry import Point
 from shapely.geometry import MultiPoint
 import math
 from collections import defaultdict
-from process_helper2 import *
+from process_helper import *
 
 
 # Use consistent xy coordinate GTFS. Adjust right CRS conversions.
