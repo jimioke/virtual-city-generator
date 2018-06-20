@@ -13,6 +13,7 @@ BUS_SPEED = 10
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
+SINGAPORE_CRS = {'init':'epsg:3414'}
 
 
 # PREPARE SIMMOBILITY
@@ -20,7 +21,7 @@ simFolder = 'Auto_sprawl_drive_main/simmobility/'
 gtfsFolder = 'clean-gtfs/MergedBus/'
 processFolder = 'process_big/'
 databaseFolder = 'to_db_big/'
-CURRENT_CRS =  BALTIMORE_CRS
+CURRENT_CRS =  SINGAPORE_CRS
 
 # Tel Aviv
 # simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
@@ -28,6 +29,13 @@ CURRENT_CRS =  BALTIMORE_CRS
 # processFolder = 'process_tel_aviv/'
 # databaseFolder = 'to_db_tel_aviv/'
 # CURRENT_CRS = TELAVIV_CRS
+
+# Singapore
+simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
+gtfsFolder = 'innovative_heavyweight/bus/'
+processFolder = 'innovative_heavyweight/process_iveel/'
+databaseFolder = 'innovative_heavyweight/to_db/'
+CURRENT_CRS =  SINGAPORE_CRS
 
 # Small example
 # simFolder = 'Baltimore_small/simmobility/'
@@ -122,7 +130,7 @@ def createBusRouteTables():
 
 def getRouteSegment():
     pt_bus_routes = pd.read_csv(databaseFolder + 'pt_bus_routes.csv')
-    segments = gpd.read_file(processFolder + 'candidateShapeSegments/candidateShapeSegments.shp')
+    segments = gpd.read_file(processFolder + 'candidateSegments/candidateSegments.shp')
     print(segments.columns)
     pt_bus_routes = pt_bus_routes.merge(segments, left_on='section_id', right_on='id')
     route_segments = gpd.GeoDataFrame(pt_bus_routes, crs=CURRENT_CRS, geometry=pt_bus_routes['geometry'])
@@ -358,13 +366,12 @@ def prepareJourneyTime():
     journey_table = pt_bus_stops[['service_id', 'trip_id', 'stop_id', 'stop_sequence', 'arrival_time', 'departure_time', 'dwelling_time']]
     journey_table.to_csv(databaseFolder + 'bus_journeytime_31Mar18.csv', index=False)
 
-print('Preparing for ', simFolder)
-# pruneShortTrips()
+print('Preparing database tables for ', simFolder)
 # createBusRouteTables()
 # complete_bus_stops()
 # prepareBusDispatchFreq()
 # findTravelTimeBetweenStops()
 # prepareJourneyTime()
-
+#
 # lat_long_stops()
-# getRouteSegment()
+getRouteSegment() # for checking bus route coverage.
