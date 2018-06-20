@@ -8,3 +8,5 @@ gtfs_clean_israel
 process_telaviv
 to_db_telaviv
 __pycache__
+innovative_heavyweight/
+process_helper2.pyc

@@ -5,16 +5,15 @@ from shapely.geometry import Point
 from shapely.geometry import MultiPoint
 import math
 from collections import defaultdict
-from process_helper import *
+from process_helper2 import *
 
 
 # Use consistent xy coordinate GTFS. Adjust right CRS conversions.
 LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
-SINGAPORE_CRS = {'init': 'epsg:3414'}
-
-CURRENT_CRS =  SINGAPORE_CRS #TELAVIV_CRS
+SINGAPORE_CRS = {'init':'epsg:3414'}
+CURRENT_CRS =  BALTIMORE_CRS #TELAVIV_CRS
 
 # PREPARE SIMMOBILITY
 simFolder = 'Auto_sprawl_drive_main/simmobility/'
@@ -27,28 +26,25 @@ processFolder = 'process_big/'
 # processFolder = 'process_tel_aviv/'
 
 # Baltimore
-simFolder = 'Auto_sprawl_drive_main/simmobility/'
-gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
-processFolder = 'process_baltimore/'
+# simFolder = 'Auto_sprawl_drive_main/simmobility/'
+# gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
+# processFolder = 'process_baltimore/'
+# CURRENT_CRS =  BALTIMORE_CRS
 
-#Singapore
-simFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/04-Innovative-Heavyweight-Singapore/Network/simmobility_wgs84/'
-gtfsFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/04-Innovative-Heavyweight-Singapore/GTFS/bus/'
-processFolder = 'process_innovative_heavyweight/'
+# Singapore
+simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
+gtfsFolder = 'innovative_heavyweight/bus/'
+processFolder = 'innovative_heavyweight/process_iveel/'
+CURRENT_CRS =  SINGAPORE_CRS
 
-
-# # Small example
-# simFolder = 'Baltimore_small/simmobility/'
-# gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
-# processFolder = 'process_small_example/'
-
-# # Small example
+# Small example
 # simFolder = 'Baltimore_small/simmobility/'
 # gtfsFolder = 'gtfs_source_small_example/gtfs-QueenAnne/'
 # processFolder = 'process_small_example/'
 # CURRENT_CRS =  BALTIMORE_CRS
 
-
+# Step 1: Find segments nearby bus routes. SimMobility expresses bus routes by
+# segments.
 def findCandidateSegments(bufferSize=400):
     gtfs_trips_df, gtfs_stoptime_df, gtfs_shape_df, gtfs_stop_df = readGTFS(gtfsFolder,
         trip='trips.txt', stoptime='stop_times.txt', shape='shapes.txt', stop='stops.txt')
@@ -60,18 +56,7 @@ def findCandidateSegments(bufferSize=400):
     candidateShapeSegments = findRouteCandidateSegments(segmentGeo, busShapes, processFolder, bufferSize=bufferSize)
     candidateShapeSegments.to_file(processFolder + 'candidateSegments')
 
-def findCandidateSegments(bufferSize=400):
-    gtfs_trips_df, gtfs_stoptime_df, gtfs_shape_df, gtfs_stop_df = readGTFS(gtfsFolder,
-        trip='trips.txt', stoptime='stop_times.txt', shape='shapes.txt', stop='stops.txt')
-    segmentGeo = getRoadNetworkGeos(simFolder, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS)
-    segmentGeo.to_file(processFolder + 'SegmentGeo')
-    busStops, busShapes = getBusRouteGeo(gtfs_stop_df, gtfs_shape_df, fromCRS=LAT_LONG_CRS, toCRS=CURRENT_CRS)
-    busStops.to_file(processFolder + 'busStops')
-    busShapes.to_file(processFolder + 'busShapes')
-    candidateShapeSegments = findRouteCandidateSegments(segmentGeo, busShapes, processFolder, bufferSize=bufferSize)
-    candidateShapeSegments.to_file(processFolder + 'candidateSegments')
-
-# Step 1: Convert segments into graph with end vertices.
+# Step 2: Convert segments into graph with end vertices.
 # SimMobility segments do not have start and end vertices (nodes).
 def getSegment(simFolder=simFolder):
     # Simmobility segment-nodes in lat and long
@@ -103,15 +88,15 @@ def getSegment_startEndPoint():
 
 # Step 4: Find the nearest segment end for each bus stop. (QGIS NNjoin tool)
     # input files: busStops and segmentStartPoint (prefex S)
-    # output: stop_to_segmentEnd or busStops_segmentStartPoint
+    # output: busStops_segmentStartPoint
     # all in processFolder.
 
 
 # Step 5: Find a representive segment start for each stop.
 # Later we assign a segment based on bus trip connection.
 def stop_to_Segment(maxDistance=400):
-    # stopSegment = gpd.read_file(processFolder + 'busStops/busStops_segmentStartPoint.shp')
-    stopSegment = gpd.read_file(processFolder + 'busStops/stop_to_segmentStart.shp')
+    stopSegment = gpd.read_file(processFolder + 'busStops/busStops_segmentStartPoint.shp')
+    # stopSegment = gpd.read_file(processFolder + 'busStops/stop_to_segmentStart.shp')
 
     stopSegment = stopSegment[['stop_id', 'Sid', 'Sfrom_node', 'Sto_node', 'distance']]
     stopSegment['distance'] = stopSegment['distance'].astype('float')
@@ -246,44 +231,31 @@ def test():
 # test()
 
 
-print('Step 1: Find segments which are in buffered bus routes.')
-findCandidateSegments()
-
-print('Step 2: Convert segments into graph with end vertices.')
-getSegment()
-
-print('Step 3: Find a start point for each segment.')
-getSegment_startEndPoint()
-
-def test():
-    subtrips = pd.read_pickle(processFolder + 'subtrips_found.pkl')
-    print(subtrips.head(10))
-
-
 # print('Step 1: Find segments which are in buffered bus routes.')
 # findCandidateSegments()
-# #
+#
 # print('Step 2: Convert segments into graph with end vertices.')
 # getSegment()
 #
 # print('Step 3: Find a start point for each segment.')
 # getSegment_startEndPoint()
+
 # # Step 4: Find the nearest segment end for each bus stop. (QGIS NNjoin tool)
 #     # input files: busStops and segmentStartPoint in processFolder ( add prefex 'S')
 #     # output: stop_to_segmentEnd
 #     # all in processFolder.
 
-# print('Step 5: Find a representive segment start for each stop.')
-# stop_to_Segment()
-#
-# print('Step 6: Find a unique trips which we will construct.')
-# mainUniqueBusRoutes()
+print('Step 5: Find a representive segment start for each stop.')
+stop_to_Segment()
 
-# print('Step 7: Find connected subsequent bus stops')
-# getConnectedConsequentStops()
-#
-# print('Step 8: Construct connected trips')
-# processConnectedStops()
-#
-# print('Step 9: Express trips in segments as SimMobility requires.')
-# segmentizeTrips()
+print('Step 6: Find a unique trips which we will construct.')
+mainUniqueBusRoutes()
+
+print('Step 7: Find connected subsequent bus stops')
+getConnectedConsequentStops()
+
+print('Step 8: Construct connected trips')
+processConnectedStops()
+
+print('Step 9: Express trips in segments as SimMobility requires.')
+segmentizeTrips()
