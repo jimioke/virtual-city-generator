@@ -31,11 +31,17 @@ CURRENT_CRS =  SINGAPORE_CRS
 # CURRENT_CRS = TELAVIV_CRS
 
 # Singapore
-simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
-gtfsFolder = 'innovative_heavyweight/bus/'
-processFolder = 'innovative_heavyweight/process_iveel/'
-databaseFolder = 'innovative_heavyweight/to_db/'
-CURRENT_CRS =  SINGAPORE_CRS
+#simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
+#gtfsFolder = 'innovative_heavyweight/bus/'
+#processFolder = 'innovative_heavyweight/process_iveel/'
+#databaseFolder = 'innovative_heavyweight/to_db/'
+#CURRENT_CRS =  SINGAPORE_CRS
+
+simFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/Roadnetwork/tel_aviv/simmobility_wgs84/' #'Auto_sprawl_drive_main/simmobility/'
+gtfsFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/GTFS-files/gtfs_clean_israel/bus/'   # 'clean-gtfs-baltimore/MergedBus/'
+processFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/GTFS-files/process_sustainable_anchor/'
+databaseFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/GTFS-files/to_db_bus/'
+CURRENT_CRS = TELAVIV_CRS
 
 # Small example
 # simFolder = 'Baltimore_small/simmobility/'
@@ -367,11 +373,11 @@ def prepareJourneyTime():
     journey_table.to_csv(databaseFolder + 'bus_journeytime_31Mar18.csv', index=False)
 
 print('Preparing database tables for ', simFolder)
-# createBusRouteTables()
-# complete_bus_stops()
-# prepareBusDispatchFreq()
-# findTravelTimeBetweenStops()
-# prepareJourneyTime()
+createBusRouteTables()
+complete_bus_stops()
+prepareBusDispatchFreq()
+findTravelTimeBetweenStops()
+prepareJourneyTime()
 #
-# lat_long_stops()
+lat_long_stops()
 getRouteSegment() # for checking bus route coverage.

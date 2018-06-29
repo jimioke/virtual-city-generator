@@ -13,12 +13,12 @@ LAT_LONG_CRS = {'init': 'epsg:4326'}
 BALTIMORE_CRS = {'init': 'epsg:6487'}
 TELAVIV_CRS = {'init': 'epsg:2039'}
 SINGAPORE_CRS = {'init':'epsg:3414'}
-CURRENT_CRS =  BALTIMORE_CRS #TELAVIV_CRS
+#CURRENT_CRS =  BALTIMORE_CRS #TELAVIV_CRS
 
 # PREPARE SIMMOBILITY
-simFolder = 'Auto_sprawl_drive_main/simmobility/'
-gtfsFolder = 'clean-gtfs/MergedBus/'
-processFolder = 'process_big/'
+#simFolder = 'Auto_sprawl_drive_main/simmobility/'
+#gtfsFolder = 'clean-gtfs/MergedBus/'
+#processFolder = 'process_big/'
 #
 #
 # simFolder = '../../network-from-OSM/Outputs/tel_aviv/simmobility_wgs84/'
@@ -26,16 +26,16 @@ processFolder = 'process_big/'
 # processFolder = 'process_tel_aviv/'
 
 # Baltimore
-# simFolder = 'Auto_sprawl_drive_main/simmobility/'
-# gtfsFolder = 'clean-gtfs-baltimore/MergedBus/'
-# processFolder = 'process_baltimore/'
-# CURRENT_CRS =  BALTIMORE_CRS
+simFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/Roadnetwork/tel_aviv/simmobility_wgs84/' #'Auto_sprawl_drive_main/simmobility/'
+gtfsFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/GTFS-files/gtfs_clean_israel/bus/'   # 'clean-gtfs-baltimore/MergedBus/'
+processFolder = '/home/jimi/Dropbox (MIT)/MITei/Research/Prototype-Cities/02-Sustainable-Anchor-TelAviv/GTFS-files/process_sustainable_anchor/'
+CURRENT_CRS =  TELAVIV_CRS
 
 # Singapore
-simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
-gtfsFolder = 'innovative_heavyweight/bus/'
-processFolder = 'innovative_heavyweight/process_iveel/'
-CURRENT_CRS =  SINGAPORE_CRS
+#simFolder = 'innovative_heavyweight/network/simmobility_wgs84/'
+#gtfsFolder = 'innovative_heavyweight/bus/'
+#processFolder = 'innovative_heavyweight/process_iveel/'
+#CURRENT_CRS =  SINGAPORE_CRS
 
 # Small example
 # simFolder = 'Baltimore_small/simmobility/'
@@ -190,8 +190,16 @@ def processConnectedStops():
     for i, row in subtrips.iterrows():
         if row.stops[0] in stop_to_segment:
             first_stop_segEnds = stop_to_segment[row.stops[0]]
-            subtrips.loc[i, "stop_segmentEnds"] = [first_stop_segEnds] + row.stop_segmentEnds[1:]
-            subtrips.loc[i, "path_segmentEnds"] = [first_stop_segEnds[0]] + row.path_segmentEnds
+            # print subtrips.loc[i]
+            # print row.stop_segmentEnds[1:]
+            # print stop_to_segment
+            # print i
+            # print subtrips.loc[i, "stop_segmentEnds"]
+            print subtrips.ix[i-1, "stop_segmentEnds"]
+            #print i
+            print([first_stop_segEnds] + row.stop_segmentEnds[1:])
+            subtrips.set_value(i, "stop_segmentEnds", [first_stop_segEnds] + row.stop_segmentEnds[1:])
+            subtrips.set_value(i, "path_segmentEnds", [first_stop_segEnds[0]] + row.path_segmentEnds)
 
     subtrips['number_stops'] = subtrips.apply(lambda row: len(row.stops), axis=1)
     print('Number of subtrips ', len(subtrips))
@@ -233,10 +241,10 @@ def test():
 
 # print('Step 1: Find segments which are in buffered bus routes.')
 # findCandidateSegments()
-#
+
 # print('Step 2: Convert segments into graph with end vertices.')
 # getSegment()
-#
+
 # print('Step 3: Find a start point for each segment.')
 # getSegment_startEndPoint()
 
@@ -245,17 +253,17 @@ def test():
 #     # output: stop_to_segmentEnd
 #     # all in processFolder.
 
-print('Step 5: Find a representive segment start for each stop.')
-stop_to_Segment()
+# print('Step 5: Find a representive segment start for each stop.')
+# stop_to_Segment()
 
-print('Step 6: Find a unique trips which we will construct.')
-mainUniqueBusRoutes()
+# print('Step 6: Find a unique trips which we will construct.')
+# mainUniqueBusRoutes()
 
-print('Step 7: Find connected subsequent bus stops')
-getConnectedConsequentStops()
+# print('Step 7: Find connected subsequent bus stops')
+# getConnectedConsequentStops()
 
-print('Step 8: Construct connected trips')
-processConnectedStops()
+# print('Step 8: Construct connected trips')
+# processConnectedStops()
 
 print('Step 9: Express trips in segments as SimMobility requires.')
 segmentizeTrips()
